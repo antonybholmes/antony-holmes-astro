@@ -20,6 +20,10 @@
         {
           "msg": "Added tags system",
           "date": "2025-07-13T01:47:26.221Z"
+        },
+        {
+          "msg": "Added year collection",
+          "date": "2025-07-13T01:55:20.836Z"
         }
       ],
       "Fixed": [

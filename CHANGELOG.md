@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added year collection.
 - Added tags system.
 - Adding sidebars and latest posts.
 - Initial commit.
