@@ -31,7 +31,7 @@ const [, modDate] = files
     const stats = fs.lstatSync(f)
     return [f, stats.mtime] as [string, Date]
   })
-  .sort((a, b) => b[1]!.getTime() - a[1]!.getTime())[0]
+  .sort((a, b) => b[1]!.getTime() - a[1]!.getTime())[0]!
 
 if (!currentDate || modDate.getTime() > currentDate.getTime()) {
   const currentVersion = info.version
