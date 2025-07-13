@@ -10,6 +10,7 @@ import Toc from '@/components/Toc.astro'
 import Tags from '@/components/Tags.astro'
 import { Calendar, Dot } from 'lucide-react'
 import { VCenterRow } from '@/components/layout/v-center-row'
+import { TableOfContents } from '@/components/toc'
 
 type Props = CollectionEntry<'blog'>['data'] & {
   slug: string
@@ -42,46 +43,6 @@ const ogImage = `/og/${slug}.png`
   <head>
     <BaseHead title={title} description={description} />
     <meta property="og:image" content={ogImage} />
-
-    <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
-      .hero-image {
-        width: 100%;
-      }
-      .hero-image img {
-        display: block;
-        margin: 0 auto;
-        border-radius: 12px;
-        box-shadow: var(--box-shadow);
-      }
-      .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
-        color: rgb(var(--gray-dark));
-      }
-      .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
-        text-align: center;
-        line-height: 1;
-      }
-      .title h1 {
-        margin: 0 0 0.5em 0;
-      }
-      .date {
-        margin-bottom: 0.5em;
-        color: rgb(var(--gray));
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
   </head>
 
   <body>
@@ -126,8 +87,9 @@ const ogImage = `/og/${slug}.png`
         <slot />
       </article>
 
-      <aside class="col-span-1">
-        <Toc headings={Astro.props.headings} />
+      <aside class="sticky top-40 col-span-1 h-screen">
+        <!-- <Toc headings={Astro.props.headings} /> -->
+        <TableOfContents client:only="react" />
         <LatestPosts />
       </aside>
 

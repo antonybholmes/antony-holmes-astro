@@ -4,6 +4,7 @@ import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
+import rehypeSlug from 'rehype-slug'
 import remarkSectionize from 'remark-sectionize'
 import { remarkModifiedTime } from './remark-modified-time.mjs'
 import { remarkReadingTime } from './remark-reading-time.mjs'
@@ -15,6 +16,7 @@ export default defineConfig({
   markdown: {
     // Applied to .md and .mdx files
     remarkPlugins: [remarkReadingTime, remarkModifiedTime, remarkSectionize],
+    rehypePlugins: [rehypeSlug],
   },
   //base: '/',
   output: 'static',

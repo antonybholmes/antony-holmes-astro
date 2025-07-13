@@ -1,5 +1,7 @@
+import { httpFetch } from '@/lib/http/http-fetch'
 import { Document } from 'flexsearch'
 import { useEffect, useRef, useState } from 'react'
+import { Autocomplete } from './autocomplete'
 
 export default function SearchReact() {
   const [query, setQuery] = useState('')
@@ -13,10 +15,21 @@ export default function SearchReact() {
   const loadIndex = async () => {
     if (indexRef.current) return
 
-    const [indexJson, docsJson] = await Promise.all([
-      fetch('/search/index.json').then(res => res.json()),
-      fetch('/search/docs.json').then(res => res.json()),
-    ])
+    // const [indexJson, docsJson] = await Promise.all([
+    //   fetch('/search/index.json').then(res => res.json()),
+    //   fetch('/search/docs.json').then(res => res.json()),
+    // ])
+
+    const indexJson =
+      await httpFetch.getJson<Record<string, string>>('/search/index.json')
+
+    const docsJson =
+      await httpFetch.getJson<{ id: string; title: string }[]>(
+        '/search/docs.json'
+      )
+
+    //await fetch('/search/docs.json')
+    //const docsJson = await docsRes.json()
 
     const idx = new Document({
       tokenize: 'forward',
@@ -32,9 +45,7 @@ export default function SearchReact() {
     }
 
     indexRef.current = idx
-    docMapRef.current = new Map(
-      docsJson.map((doc: { id: string }) => [doc.id, doc])
-    )
+    docMapRef.current = new Map(docsJson.map(doc => [doc.id, doc]))
   }
 
   //   useEffect(() => {
@@ -71,7 +82,12 @@ export default function SearchReact() {
     }
 
     const runSearch = async () => {
-      await loadIndex()
+      try {
+        await loadIndex()
+      } catch (error) {
+        console.error('Error loading search index:', error)
+        return
+      }
 
       if (!indexRef.current || !docMapRef.current) {
         return
@@ -98,19 +114,17 @@ export default function SearchReact() {
 
   return (
     <div>
-      <input
-        type="text"
+      <Autocomplete
         placeholder="Search posts..."
         value={query}
-        onChange={e => setQuery(e.target.value)}
-      />
-      <ul>
+        onTextChange={v => setQuery(v)}
+      >
         {results.map(result => (
           <li key={result.id}>
             <a href={`/blog/${result.id}`}>{result.title}</a>
           </li>
         ))}
-      </ul>
+      </Autocomplete>
     </div>
   )
 }

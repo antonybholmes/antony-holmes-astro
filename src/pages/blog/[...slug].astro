@@ -5,8 +5,14 @@ import { render } from 'astro:content'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
+
+  console.log(posts.map(post => post.id))
+
   return posts.map(post => ({
-    params: { slug: post.id },
+    // flatten slug to the last part of the path
+    // e.g. /test/my-post/ becomes /my-post/
+    // this is useful for SEO and readability
+    params: { slug: post.id.split('/').pop() || post.id },
     props: post,
   }))
 }

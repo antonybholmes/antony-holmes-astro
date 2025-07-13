@@ -51,6 +51,10 @@
         {
           "msg": "Added search via flexsearch",
           "date": "2025-07-13T15:27:46.095Z"
+        },
+        {
+          "msg": "Added Toc and some sticky elements",
+          "date": "2025-07-13T17:04:41.619Z"
         }
       ],
       "Changed": [

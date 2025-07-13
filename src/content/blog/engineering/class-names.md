@@ -5,7 +5,7 @@ categories:
 type: post
 status: added
 title: Simplifying class name strings
-slug: simplifying-class-name-strings
+
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes

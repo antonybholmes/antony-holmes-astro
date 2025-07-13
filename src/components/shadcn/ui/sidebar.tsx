@@ -3,6 +3,7 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import { PanelLeftIcon } from 'lucide-react'
 import * as React from 'react'
 
+import { useIsMobile } from '@/hooks/mobile'
 import { BUTTON_MD_H_CLS } from '@/theme'
 import { Button } from '@components/shadcn/ui/button'
 import { Input } from '@components/shadcn/ui/input'
@@ -21,7 +22,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@components/shadcn/ui/tooltip'
-import { useIsMobile } from '@hooks/use-mobile'
 import { cn } from '@lib/shadcn-utils'
 
 const SIDEBAR_COOKIE_NAME = 'sidebar_state'
