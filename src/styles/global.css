@@ -250,19 +250,22 @@ h6 {
   @apply m-0;
 }
 h1 {
-  font-size: 3.052em;
+  @apply text-4xl font-bold;
 }
 h2 {
-  font-size: 2.441em;
+  @apply text-2xl font-bold;
 }
 h3 {
-  font-size: 1.953em;
+  @apply text-xl font-bold;
 }
 h4 {
-  font-size: 1.563em;
+  @apply text-lg font-bold;
 }
 h5 {
-  font-size: 1.25em;
+  @apply text-base font-bold;
+}
+h6 {
+  @apply text-sm font-bold;
 }
 strong,
 b {

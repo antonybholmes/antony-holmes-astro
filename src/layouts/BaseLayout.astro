@@ -1,4 +1,5 @@
 ---
+import Footer from '@/components/Footer.astro'
 import Header from '@/components/Header.astro'
 import BaseHead from '@components/BaseHead.astro'
 import { type ILayoutProps } from '@interfaces/layout-props'
@@ -15,15 +16,15 @@ const cls = cn(BODY_CLS, bg)
 <html lang="en" class={cls}>
   <head>
     <BaseHead title={title} description={description} />
+    <slot name="head" />
   </head>
 
   <body class={cn(cls, className)}>
     <Header />
-    <slot name="header" />
 
     <slot name="main" />
-    <slot name="footer" />
+    <!-- <slot name="footer" /> -->
 
-    <!-- <Footer /> -->
+    <Footer />
   </body>
 </html>

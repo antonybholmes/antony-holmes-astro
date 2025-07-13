@@ -41,17 +41,15 @@ export function TableOfContents() {
   }, [])
 
   return (
-    <nav className="sticky top-40">
+    <nav className="text-sm">
       <ul style={{ listStyleType: 'none', paddingLeft: 0 }}>
         {headings.map(({ id, text, level }) => (
           <li
             key={id}
+            data-active={activeId === id}
+            className="data-[active=true]:font-bold data-[active=true]:text-theme data-[active=true]:bg-theme/10 rounded-theme py-2 cursor-pointer"
             style={{
-              marginLeft: (level - 1) * 16,
-              marginBottom: 8,
-              fontWeight: activeId === id ? 'bold' : 'normal',
-              color: activeId === id ? '#0070f3' : '#000',
-              cursor: 'pointer',
+              paddingLeft: `${level / 2}rem`,
             }}
             onClick={() =>
               document

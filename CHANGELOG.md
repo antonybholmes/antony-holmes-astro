@@ -11,6 +11,7 @@
 
 ### Changed
 
+- Added blurb.
 - Improved formatting.
 
 

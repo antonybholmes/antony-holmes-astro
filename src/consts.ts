@@ -4,6 +4,8 @@ import versionConfig from '../version.json'
 
 //export const SITE = "https://edb.rdf-lab.org"
 export const SITE_TITLE = 'Antony Holmes'
+export const SITE_SUBTITLE = 'Researcher & Software Engineer in New York'
+export const SITE_AUTHOR = 'Antony Holmes'
 export const APP_NAME = SITE_TITLE
 // id for internally indentifying app and for use in prefixes etc
 export const APP_ID = 'antonyholmes.dev'

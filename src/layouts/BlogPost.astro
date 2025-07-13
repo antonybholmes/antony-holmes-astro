@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import BaseLayout from './BaseLayout.astro'
 import FormattedDate from '../components/FormattedDate.astro'
 import { Image } from 'astro:assets'
 import LatestPosts from '@components/LatestPosts.astro'
@@ -11,6 +12,7 @@ import Tags from '@/components/Tags.astro'
 import { Calendar, Dot } from 'lucide-react'
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
+import { ContentDiv } from '@/components/layout/content-div'
 
 type Props = CollectionEntry<'blog'>['data'] & {
   slug: string
@@ -39,16 +41,15 @@ const {
 const ogImage = `/og/${slug}.png`
 ---
 
-<html lang="en">
-  <head>
-    <BaseHead title={title} description={description} />
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
     <meta property="og:image" content={ogImage} />
-  </head>
+  </Fragment>
 
-  <body>
-    <Header />
-    <main class="grid grid-cols-3 gap-4">
-      <article class="col-span-2 flex flex-col gap-y-4">
+  <!-- <Header slot="header" /> -->
+  <ContentDiv slot="main">
+    <main class="grid grid-cols-4 gap-4">
+      <article class="col-span-3 flex flex-col gap-y-4">
         <header class="flex flex-col gap-y-2">
           <div class="hero-image">
             {
@@ -87,13 +88,15 @@ const ogImage = `/og/${slug}.png`
         <slot />
       </article>
 
-      <aside class="sticky top-40 col-span-1 h-screen">
-        <!-- <Toc headings={Astro.props.headings} /> -->
-        <TableOfContents client:only="react" />
-        <LatestPosts />
+      <aside class="col-span-1">
+        <div class="sticky top-20">
+          <!-- <Toc headings={Astro.props.headings} /> -->
+          <TableOfContents client:only="react" />
+          <LatestPosts />
+        </div>
       </aside>
+    </main></ContentDiv
+  >
 
-      <Footer />
-    </main>
-  </body>
-</html>
+  <Footer slot="footer" />
+</BaseLayout>
