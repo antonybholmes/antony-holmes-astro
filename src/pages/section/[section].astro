@@ -1,0 +1,59 @@
+---
+import FormattedDate from '@components/FormattedDate.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+// 1. Generate all unique tags for static paths
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+
+  const sectionSet = new Set()
+  for (const post of posts) {
+    if (post.data.sections) {
+      for (const section of post.data.sections) {
+        sectionSet.add(section.toLowerCase())
+      }
+    }
+  }
+
+  return [...sectionSet].map(section => ({
+    params: { section },
+  }))
+}
+
+// 2. Get the current section param from the URL
+const section = Astro.params.section as string
+const posts = await getCollection('blog')
+
+// 3. Filter posts that include the current section (case-insensitive)
+const filteredPosts = posts.filter(post =>
+  post.data.sections?.some(s => s.toLowerCase() === section.toLowerCase())
+)
+---
+
+<BaseLayout
+  title={`Posts in section "${section}"`}
+  description={`A collection of posts in the "${section}" section.`}
+>
+  <main slot="main">
+    <h1>Posts in section "{section}"</h1>
+
+    {
+      filteredPosts.length === 0 ? (
+        <p>No posts found for this section.</p>
+      ) : (
+        <ul>
+          {filteredPosts.map(post => (
+            <li>
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              <br />
+              <small>
+                <FormattedDate date={post.data.pubDate} />
+              </small>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</BaseLayout>

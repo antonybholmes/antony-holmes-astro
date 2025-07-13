@@ -43,6 +43,10 @@
         {
           "msg": "Added most of the shadcn components if required plus an about page",
           "date": "2025-07-13T02:42:09.280Z"
+        },
+        {
+          "msg": "Added notes capability",
+          "date": "2025-07-13T02:56:10.221Z"
         }
       ]
     },

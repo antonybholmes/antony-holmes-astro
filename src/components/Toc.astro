@@ -1,0 +1,65 @@
+---
+// src/components/TableOfContents.astro
+export interface Heading {
+  depth: number
+  slug: string
+  text: string
+}
+
+type Props = { headings: Heading[] }
+
+const { headings } = Astro.props
+
+// Optional: Filter out anything deeper than h3
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3)
+---
+
+<aside class="toc">
+  <h2>Table of Contents</h2>
+  <ul>
+    {
+      tocHeadings.map(h => (
+        <li class={`toc-item depth-${h.depth}`}>
+          <a href={`#${h.slug}`}>{h.text}</a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>
+
+<style>
+  .toc {
+    padding: 1rem;
+    background: #f7f7f7;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .toc h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .toc ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .toc-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .toc-item.depth-3 {
+    margin-left: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .toc a {
+    text-decoration: none;
+    color: #0070f3;
+  }
+
+  .toc a:hover {
+    text-decoration: underline;
+  }
+</style>
