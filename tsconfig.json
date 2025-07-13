@@ -1,67 +1,31 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@lib/*": [
-        "src/lib/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@interfaces/*": [
-        "src/interfaces/*"
-      ],
-      "@stores/*": [
-        "src/stores/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@content/*": [
-        "src/content/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ],
-      "@hooks/*": [
-        "src/hooks/*"
-      ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@data/*": [
-        "src/data/*"
-      ],
-      "@types/*": [
-        "src/types/*"
-      ],
-      "@constants/*": [
-        "src/constants/*"
-      ],
-      "@config/*": [
-        "src/config/*"
-      ],
-      "@services/*": [
-        "src/services/*"
-      ],
-      "@helpers/*": [
-        "src/helpers/*"
-      ]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@themed/*": ["./src/components/shadcn/ui/themed/*"],
+      "@icons/*": ["./src/components/icons/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@stores/*": ["./src/stores/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@content/*": ["./  src/content/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@data/*": ["./src/data/*"],
+      "@types/*": ["./src/types/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@config/*": ["./src/config/*"],
+      "@services/*": ["./src/services/*"],
+      "@helpers/*": ["./src/helpers/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

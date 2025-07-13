@@ -1,9 +1,142 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
+@import 'tw-animate-css';
 
 @theme {
   --font-*: initial;
   --font-sans: 'Geist Sans', Inter, Figtree, Helvetica, Arial;
+
+  --spacing-header: 3rem;
+
+  --breakpoint-2xl: 112rem;
+  --breakpoint-3xl: 128rem;
+  --breakpoint-4xl: 144rem;
+  --breakpoint-5xl: 160rem;
+
+  /* --scale-101: 1.01;
+  --scale-102: 1.02;
+  --scale-104: 1.04;
+
+  --leading-8: 2rem;
+  --leading-10: 2.5rem;
+  --leading-12: 3rem; */
+
+  /* --color-gray-50: rgb(#f9fafb);
+  --color-gray-100: rgb(#f3f4f6);
+  --color-gray-200: rgb(#e5e7eb);
+  --color-gray-300: rgb(#d1d5db);
+  --color-gray-400: rgb(#9ca3af);
+  --color-gray-500: rgb(#6b7280);
+  --color-gray-600: rgb(#4b5563);
+  --color-gray-700: rgb(#374151);
+  --color-gray-800: rgb(#1f2937);
+  --color-gray-900: rgb(#111827);
+  --color-gray-950: rgb(#030712); */
+
+  --color-border: var(--color-border);
+  /* --color-border-light: var(--color-border-light); */
+  --color-border-dark: var(--color-border-dark);
+
+  --color-input: var(--color-input);
+  --color-ring: var(--color-ring);
+  --color-body: var(--color-body);
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+
+  --color-primary: var(--color-primary);
+  --color-primary-alt: var(--color-primary-alt);
+  --color-primary-foreground: var(--color-primary-foreground);
+
+  --color-theme: var(--color-theme);
+  --color-theme-muted: var(--color-theme-muted);
+  --color-theme-alt: var(--color-theme-alt);
+  --color-theme-foreground: var(--color-primary-foreground);
+
+  /* --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground); */
+
+  --color-destructive: var(--color-destructive);
+  --color-warning: var(--color-warning);
+  --color-destructive-alt: var(--color-destructive-alt);
+  --color-destructive-foreground: var(--color-destructive-foreground);
+
+  --color-shortcuts: var(--color-shortcuts);
+
+  --color-faint: var(--color-faint);
+  --color-muted: var(--color-muted);
+  --color-accent: var(--color-accent);
+  /* --color-toolbar-foreground: var(--color-toolbar-foreground); */
+
+  /* --color-dialog: var(--color-dialog); */
+
+  /* --color-accent: var(--color-accent); */
+  /* --color-accent-dark: var(--color-accent-dark);
+  --color-accent-foreground: var(--color-accent-foreground); */
+
+  --color-popover: var(--color-popover);
+  --color-popover-foreground: var(--color-popover-foreground);
+  --color-popover-alt: var(--color-popover-alt);
+
+  --color-card: var(--color-card);
+  --color-card-foreground: var(--color-card-foreground);
+
+  --color-overlay: var(--color-overlay);
+
+  --shadow-search: 0 0 0.5rem rgba(0, 0, 0, 0.15);
+  --shadow-box: 0 4px 32px rgba(0, 0, 0, 0.1);
+  --shadow-box2: 0 0 8px 4px rgba(0, 0, 0, 0.25);
+  --shadow-header: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  --shadow-4xl:
+    rgba(0, 0, 0, 0.25) 0px 0px 100px -20px,
+    rgba(0, 0, 0, 0.25) 0px 30px 60px -30px;
+  --shadow-3xl: 0px 0px 32px 8px rgba(0, 0, 0, 0.25);
+  /* In order to have a glass effect, which ignores the dimming effect, we create a shadow to fill the screen so that the background appears dimmed, except where the glass div is (sort of like you see in iOS) */
+  --shadow-glass:
+    0px 0px 32px 8px rgba(0, 0, 0, 0.2), 0 0 0 100vw rgba(0, 0, 0, 0.2);
+  --shadow-dark-glass:
+    0px 0px 32px 8px rgba(0, 0, 0, 0.2), 0 0 0 100vw rgba(0, 0, 0, 0.5);
+  /* --shadow-glass:
+    inset 0 0 0 3000px rgba(150, 150, 150, 0.2),
+    rgba(150, 150, 150, 0.2) 0px 0px 100px -20px,
+    rgba(150, 150, 150, 0.2) 0px 30px 60px -30px; */
+  /* --shadow-dark-glass:
+    inset 0 0 0 3000px rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.3) 0px 0px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px; */
+
+  /* --border-width-3: 3px; */
+
+  --radius-theme: var(--radius-theme);
+  --radius-menu: var(--radius-menu);
+  --radius-card: var(--radius-card);
+
+  /* --inset-0_75: 0.1875rem;
+
+  --padding-0_75: 0.1875rem; */
+
+  /* --z-index-60: 60;
+  --z-index-70: 70;
+  --z-index-80: 80;
+  --z-index-90: 90;
+  --z-index-100: 100;
+  --z-index-110: 110; */
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-alert: 400;
+
+  /* --grid-template-columns-16: repeat(16, minmax(0, 1fr));
+  --grid-template-columns-20: repeat(20, minmax(0, 1fr));
+
+  --grid-column-span-13: span 13 / span 13;
+  --grid-column-span-14: span 14 / span 14;
+  --grid-column-span-15: span 15 / span 15;
+  --grid-column-span-18: span 18 / span 18;
+
+  --stroke-width-2: 2px;
+  --stroke-width-3: 3px;
+  --stroke-width-4: 4px; */
+
+  --text-xxs: 0.6rem;
 }
 
 /*
@@ -13,16 +146,87 @@
  */
 
 :root {
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
-  --black: 15, 18, 25;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
-  --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow:
-    0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-    0 16px 32px rgba(var(--gray), 33%);
+  --color-body: oklch(0.985 0.002 247.839);
+  --color-background: white;
+  --color-foreground: oklch(27.8% 0.033 256.848);
+  --color-card: white;
+  --color-card-foreground: rgb(31 41 55);
+  --color-popover: white;
+  --color-popover-foreground: rgb(31 41 55);
+
+  --color-primary: oklch(0.28 0.03 257);
+  --color-primary-alt: oklch(0.37 0.03 260);
+  --color-primary-foreground: white;
+
+  --color-theme: oklch(0.623 0.214 259.815);
+  --color-theme-muted: oklch(0.707 0.165 254.624);
+  --color-theme-alt: oklch(0.546 0.245 262.881);
+
+  --color-shortcuts: rgb(229 231 235);
+
+  --color-faint: oklch(0.967 0.003 264.542);
+  --color-muted: oklch(0.928 0.006 264.531);
+  --color-accent: oklch(0.872 0.01 258.338);
+
+  --color-border: oklch(0.872 0.01 258.338);
+  --color-border-dark: oklch(0.707 0.022 261.325);
+
+  --color-destructive: oklch(0.704 0.191 22.216);
+  --color-warning: oklch(0.879 0.169 91.605);
+  --color-destructive-alt: rgb(220 38 38);
+  --color-destructive-foreground: white;
+
+  --color-overlay: rgb(2 6 23);
+  --color-input: rgb(241 245 249);
+  --color-ring: oklch(0.81 0.1 252);
+
+  --radius-theme: 0.5rem;
+  --radius-menu: 0.375rem;
+  --radius-card: 0.75rem;
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --color-body: oklch(0.27 0 0);
+  --color-background: oklch(0.37 0 0);
+  --color-foreground: white;
+  --color-card: rgb(38 38 38);
+  --color-card-foreground: rgb(248 250 252);
+  --color-popover: rgb(38 38 38);
+  --color-popover-foreground: white;
+  --color-primary: rgb(37 99 235);
+  --color-primary-foreground: white;
+
+  --color-theme: oklch(80.9% 0.105 251.813);
+  --color-theme-muted: rgb(96 165 250);
+  --color-faint: oklch(0.44 0 0);
+  --color-muted: oklch(0.44 0 0);
+  --color-accent: oklch(0.56 0 0);
+  /* --color-accent: rgb(115 115 115);
+  --color-accent-foreground: white; */
+  --color-destructive: rgb(239 68 68);
+  --color-destructive-foreground: white;
+  --color-overlay: rgb(2 6 23);
+  --color-border: rgb(115 115 115);
+  --color-border-light: rgb(51 65 85);
+  --color-border-dark: rgb(115 115 115);
+  --color-input: rgb(115 115 115);
+  --color-ring: rgb(96 165 250);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
 }
 
 /* body {
@@ -37,12 +241,6 @@
   line-height: 1.7;
 } */
 
-main {
-  width: 720px;
-  max-width: calc(100% - 2em);
-  margin: auto;
-  padding: 3em 1em;
-}
 h1,
 h2,
 h3,
@@ -72,12 +270,7 @@ strong,
 b {
   font-weight: 700;
 }
-a {
-  color: var(--accent);
-}
-a:hover {
-  color: var(--accent);
-}
+
 p {
   margin-bottom: 1em;
 }

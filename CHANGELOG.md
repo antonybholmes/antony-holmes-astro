@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1 (Jul, 2025)
+
+### Added
+
+- Added most of the shadcn components if required plus an about page.
+
+
 ## 1.0 (Jul, 2025)
 
 ### Added
