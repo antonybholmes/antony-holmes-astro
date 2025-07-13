@@ -1,0 +1,36 @@
+<theme-toggle>
+  <button id="toggle-theme" aria-label="Toggle Theme">
+    <span class="dark:hidden">🌞 Light</span>
+    <span class="hidden dark:inline">🌙 Dark</span>
+  </button>
+</theme-toggle>
+
+<script>
+  class ThemeToggle extends HTMLElement {
+    connectedCallback() {
+      const toggleButton = this.querySelector('#toggle-theme')!
+      toggleButton.addEventListener('click', () => this.toggleTheme())
+      this.setInitialTheme()
+    }
+
+    setInitialTheme() {
+      const savedTheme = localStorage.getItem('theme')
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches
+
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    }
+
+    toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark')
+      localStorage.setItem('theme', isDark ? 'dark' : 'light')
+    }
+  }
+
+  customElements.define('theme-toggle', ThemeToggle)
+</script>

@@ -1,18 +1,36 @@
 {
   "name": "antony-holmes-astro",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev",
+    "update-version": "tsx scripts/update-version.ts",
+    "predev": "pnpm generate:og && pnpm update-version",
+    "dev": "pnpm generate:og && astro dev",
+    "generate:og": "tsx scripts/generate-og.ts",
+    "prebuild": "pnpm generate:og && pnpm update-version",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "make-changelog-markdown": "tsx scripts/make-changelog-markdown.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.1",
+    "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.11.0",
-    "sharp": "^0.34.2"
+    "date-fns": "^4.1.0",
+    "sharp": "^0.34.3",
+    "tailwind": "^4.0.0",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "globby": "^14.1.0",
+    "gray-matter": "^4.0.3",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.14"
   }
 }
