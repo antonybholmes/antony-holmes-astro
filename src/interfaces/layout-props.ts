@@ -8,4 +8,8 @@ export interface ILayoutProps extends IDivProps {
   tab?: string
   isIndexed?: boolean
   bg?: string
+  pubDate?: Date
+  heroImage?: string
+  heroImageAlt?: string
+  heroImageTitle?: string
 }

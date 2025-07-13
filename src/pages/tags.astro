@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/BlogPost.astro'
+import AboutHeroImage from '../assets/blog-placeholder-about.jpg'
+import BaseLayout from '@layouts/BaseLayout.astro'
+
+import { getCollection } from 'astro:content'
+
+const posts = await getCollection('blog')
+
+// Extract tags from all posts
+const tagMap = new Map()
+
+for (const post of posts) {
+  if (!post.data.tags) continue
+  for (const tag of post.data.tags) {
+    if (!tagMap.has(tag)) tagMap.set(tag, [])
+    tagMap.get(tag).push(post)
+  }
+}
+
+const tags = [...tagMap.keys()].sort()
+---
+
+<BaseLayout
+  title="Tags"
+  description="This page lists all tags used in the blog posts."
+>
+  <main slot="main">
+    <h1>Tags</h1>
+    <ul>
+      {
+        tags.map(tag => (
+          <li>
+            <a href={`/tags/${tag.toLowerCase()}/`}>
+              {tag} ({tagMap.get(tag).length})
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>

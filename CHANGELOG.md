@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added tags system.
 - Adding sidebars and latest posts.
 - Initial commit.
 

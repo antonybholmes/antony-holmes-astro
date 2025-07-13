@@ -1,0 +1,59 @@
+---
+import FormattedDate from '@components/FormattedDate.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { getCollection } from 'astro:content'
+
+// 1. Generate all unique tags for static paths
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+
+  const tagSet = new Set()
+  for (const post of posts) {
+    if (post.data.tags) {
+      for (const tag of post.data.tags) {
+        tagSet.add(tag.toLowerCase())
+      }
+    }
+  }
+
+  return [...tagSet].map(tag => ({
+    params: { tag },
+  }))
+}
+
+// 2. Get the current tag param from the URL
+const tag = Astro.params.tag as string
+const posts = await getCollection('blog')
+
+// 3. Filter posts that include the current tag (case-insensitive)
+const filteredPosts = posts.filter(post =>
+  post.data.tags?.some(t => t.toLowerCase() === tag.toLowerCase())
+)
+---
+
+<BaseLayout
+  title={`Posts tagged with "${tag}"`}
+  description={`A collection of posts tagged with "${tag}".`}
+>
+  <main slot="main">
+    <h1>Posts tagged with "{tag}"</h1>
+
+    {
+      filteredPosts.length === 0 ? (
+        <p>No posts found for this tag.</p>
+      ) : (
+        <ul>
+          {filteredPosts.map(post => (
+            <li>
+              <a href={`/blog/${post.id}`}>{post.data.title}</a>
+              <br />
+              <small>
+                <FormattedDate date={post.data.pubDate} />
+              </small>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </main>
+</BaseLayout>

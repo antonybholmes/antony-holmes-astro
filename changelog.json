@@ -16,6 +16,10 @@
         {
           "msg": "Adding sidebars and latest posts",
           "date": "2025-07-13T01:35:24.041Z"
+        },
+        {
+          "msg": "Added tags system",
+          "date": "2025-07-13T01:47:26.221Z"
         }
       ],
       "Fixed": [
