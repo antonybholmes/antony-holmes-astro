@@ -23,4 +23,4 @@ fi
 tsx scripts/update-changelog.ts "${msg}" "${type}"
 pnpm make-changelog-markdown
 
-./base_commit.sh -t "${type}" -m "${msg}" -b dev
+./base_commit.sh -t "${type}" -m "${msg}" -b "${branch}"
