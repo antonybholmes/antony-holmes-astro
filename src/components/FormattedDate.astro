@@ -1,13 +1,14 @@
 ---
+import type { IClassProps } from '@/interfaces/class-props'
 import { format } from 'date-fns'
 
-interface Props {
+interface Props extends IClassProps {
   date: Date
 }
 
-const { date } = Astro.props
+const { date, className } = Astro.props
 ---
 
-<time datetime={date.toISOString()}>
-  {format(date, 'MMM dd, yyyy HH:mm:ss')}
+<time datetime={date.toISOString()} class={className}>
+  {format(date, 'MMM dd, yyyy')}
 </time>

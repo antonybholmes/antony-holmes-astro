@@ -48,7 +48,7 @@ const filteredPosts = posts.filter(post =>
               <a href={`/blog/${post.id}`}>{post.data.title}</a>
               <br />
               <small>
-                <FormattedDate date={post.data.pubDate} />
+                <FormattedDate date={post.data.added} />
               </small>
             </li>
           ))}

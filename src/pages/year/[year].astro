@@ -11,7 +11,7 @@ export async function getStaticPaths() {
   // and use a Set to ensure uniqueness
   const yearSet = new Set<string>()
   for (const post of posts) {
-    yearSet.add(post.data.pubDate.getFullYear().toString())
+    yearSet.add(post.data.added.getFullYear().toString())
   }
 
   return [...yearSet].map(year => ({
@@ -25,9 +25,9 @@ const posts = await getCollection('blog')
 
 // 3. Filter posts that include the current tag (case-insensitive)
 const filteredPosts = posts
-  .filter(post => post.data.pubDate.getFullYear().toString() === year)
+  .filter(post => post.data.added.getFullYear().toString() === year)
   .sort((a, b) => {
-    return b.data.pubDate.getTime() - a.data.pubDate.getTime()
+    return b.data.added.getTime() - a.data.added.getTime()
   }) // Sort by most recent first
 ---
 
@@ -48,7 +48,7 @@ const filteredPosts = posts
               <a href={`/blog/${post.id}`}>{post.data.title}</a>
               <br />
               <small>
-                <FormattedDate date={post.data.pubDate} />
+                <FormattedDate date={post.data.added} />
               </small>
             </li>
           ))}

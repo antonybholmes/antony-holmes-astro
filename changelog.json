@@ -48,6 +48,12 @@
           "msg": "Added notes capability",
           "date": "2025-07-13T02:56:10.221Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Improved formatting",
+          "date": "2025-07-13T03:56:56.100Z"
+        }
       ]
     },
     "author": "Antony Holmes",

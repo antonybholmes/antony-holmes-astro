@@ -7,6 +7,9 @@ import FormattedDate from '../components/FormattedDate.astro'
 import { Image } from 'astro:assets'
 import LatestPosts from '@components/LatestPosts.astro'
 import Toc from '@/components/Toc.astro'
+import Tags from '@/components/Tags.astro'
+import { Calendar, Dot } from 'lucide-react'
+import { VCenterRow } from '@/components/layout/v-center-row'
 
 type Props = CollectionEntry<'blog'>['data'] & {
   slug: string
@@ -22,12 +25,14 @@ type Props = CollectionEntry<'blog'>['data'] & {
 const {
   title,
   description,
-  pubDate,
+  added,
   //updatedDate,
   heroImage,
   slug,
   minutesRead,
   lastModified,
+  tags,
+  headings,
 } = Astro.props
 
 const ogImage = `/og/${slug}.png`
@@ -82,38 +87,51 @@ const ogImage = `/og/${slug}.png`
   <body>
     <Header />
     <main class="grid grid-cols-3 gap-4">
-      <article class="col-span-2">
-        <div class="hero-image">
+      <article class="col-span-2 flex flex-col gap-y-4">
+        <header class="flex flex-col gap-y-2">
+          <div class="hero-image">
+            {
+              heroImage && (
+                <Image width={1020} height={510} src={heroImage} alt="" />
+              )
+            }
+          </div>
+
+          <h1>
+            {title}
+          </h1>
+          <VCenterRow className="text-foreground/50 gap-x-2">
+            <VCenterRow className="gap-x-2">
+              <Calendar
+                className="stroke-foreground/40 w-5"
+                strokeWidth={1.5}
+              />
+              <FormattedDate date={added} />
+            </VCenterRow>
+            <span class="bg-foreground/30 aspect-square h-2 w-2 rounded-full"
+            ></span>
+            <p>{minutesRead}</p>
+          </VCenterRow>
+
           {
-            heroImage && (
-              <Image width={1020} height={510} src={heroImage} alt="" />
+            lastModified && lastModified !== added && (
+              <p class="text-foreground/50">
+                Last updated on <FormattedDate date={lastModified} />
+              </p>
             )
           }
-        </div>
-        <div class="prose">
-          <div class="title">
-            <div class="date">
-              <FormattedDate date={pubDate} />
-              {
-                lastModified && (
-                  <div class="last-updated-on">
-                    Last updated on <FormattedDate date={lastModified} />
-                  </div>
-                )
-              }
-            </div>
-            <p>{minutesRead}</p>
-            <h1>{title}</h1>
-            <hr />
-          </div>
-          <slot />
-        </div>
+
+          <Tags tags={tags} />
+        </header>
+        <slot />
       </article>
+
       <aside class="col-span-1">
         <Toc headings={Astro.props.headings} />
         <LatestPosts />
       </aside>
+
+      <Footer />
     </main>
-    <Footer />
   </body>
 </html>

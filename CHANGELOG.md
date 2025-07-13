@@ -7,6 +7,10 @@
 - Added notes capability.
 - Added most of the shadcn components if required plus an about page.
 
+### Changed
+
+- Improved formatting.
+
 
 ## 1.0 (Jul, 2025)
 

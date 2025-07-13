@@ -1,0 +1,23 @@
+---
+import { Tag } from 'lucide-react'
+import { VCenterRow } from './layout/v-center-row'
+
+type Props = { tags?: string[] }
+
+const { tags } = Astro.props
+
+// Optional: Filter out anything deeper than h3
+const sortedTags =
+  tags?.sort().map(t => t.toLowerCase().replace(/\s+/g, '-')) || [] // Convert to slug format
+---
+
+<ul class="flex flex-row flex-wrap items-center gap-2">
+  <li><Tag className="stroke-foreground/50" /></li>
+  {
+    sortedTags.map(tag => (
+      <li class="bg-theme/75 hover:bg-theme/100 trans-color rounded-theme px-3 py-1.5 text-sm font-bold text-white shadow-md">
+        <a href={`/tag/${tag}`}>#{tag}</a>
+      </li>
+    ))
+  }
+</ul>

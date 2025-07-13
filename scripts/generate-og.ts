@@ -30,7 +30,7 @@ async function main() {
     const { data } = matter(content)
     const title = escapeXML(data.title || 'Untitled')
     const author = escapeXML(data.author || 'Anonymous')
-    const rawDate = data.pubDate ? new Date(data.pubDate) : new Date()
+    const rawDate = data.added ? new Date(data.added) : new Date()
     const formattedDate = escapeXML(format(rawDate, 'MMM dd, yyyy'))
 
     const svg = template
