@@ -19,7 +19,7 @@ function escapeXML(str: string): string {
 }
 
 async function main() {
-  const files = await globby('src/content/blog/*.md')
+  const files = await globby('src/content/blog/**/*.md')
   const template = await fs.readFile('src/assets/og-template.svg', 'utf8')
   const outputDir = 'public/og'
 

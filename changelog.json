@@ -47,6 +47,10 @@
         {
           "msg": "Added notes capability",
           "date": "2025-07-13T02:56:10.221Z"
+        },
+        {
+          "msg": "Added search via flexsearch",
+          "date": "2025-07-13T15:27:46.095Z"
         }
       ],
       "Changed": [

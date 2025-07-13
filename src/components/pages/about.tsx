@@ -3,7 +3,7 @@
 import { BaseCol } from '@components/layout/base-col'
 import { ThemeLink } from '@components/link/theme-link'
 
-import { APP_NAME, SITE_NAME, UPDATED, VERSION } from '@/consts'
+import { APP_NAME, SITE_TITLE, UPDATED, VERSION } from '@/consts'
 
 import { VCenterRow } from '@components/layout/v-center-row'
 import type { IChildrenProps } from '@interfaces/children-props'
@@ -37,7 +37,7 @@ export function AboutPage({ children }: IChildrenProps) {
             src="/favicon.svg"
             width={512}
             height={512}
-            alt={SITE_NAME}
+            alt={SITE_TITLE}
             className="w-12 aspect-square"
           />
 

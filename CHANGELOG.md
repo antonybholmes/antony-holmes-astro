@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added search via flexsearch.
 - Added notes capability.
 - Added most of the shadcn components if required plus an about page.
 

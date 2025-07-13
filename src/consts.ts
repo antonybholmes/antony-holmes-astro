@@ -3,8 +3,8 @@ import type { IFieldMap } from '@interfaces/field-map'
 import versionConfig from '../version.json'
 
 //export const SITE = "https://edb.rdf-lab.org"
-export const SITE_NAME = 'Antony Holmes'
-export const APP_NAME = SITE_NAME
+export const SITE_TITLE = 'Antony Holmes'
+export const APP_NAME = SITE_TITLE
 // id for internally indentifying app and for use in prefixes etc
 export const APP_ID = 'antonyholmes.dev'
 export const SITE_DOMAIN = 'antonyholmes.dev'
