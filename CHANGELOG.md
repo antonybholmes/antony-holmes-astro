@@ -5,3 +5,7 @@
 ### Added
 
 - Initial commit.
+
+### Fixed
+
+- Bug fixes and updates.
