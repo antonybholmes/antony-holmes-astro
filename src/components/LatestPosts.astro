@@ -1,0 +1,57 @@
+---
+// src/components/LatestPosts.astro
+import { getCollection } from 'astro:content'
+import FormattedDate from './FormattedDate.astro'
+
+const posts = await getCollection('blog')
+
+// Sort posts by date descending and take latest 5
+const latestPosts = posts
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 5)
+---
+
+<aside class="latest-posts-sidebar">
+  <h2>Latest Posts</h2>
+  <ul>
+    {
+      latestPosts.map(post => (
+        <li>
+          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <br />
+          <small>
+            <FormattedDate date={post.data.pubDate} />
+          </small>
+        </li>
+      ))
+    }
+  </ul>
+</aside>
+
+<style>
+  .latest-posts-sidebar {
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+  .latest-posts-sidebar h2 {
+    margin-bottom: 0.75rem;
+  }
+  .latest-posts-sidebar ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .latest-posts-sidebar li {
+    margin-bottom: 0.5rem;
+  }
+  .latest-posts-sidebar a {
+    text-decoration: none;
+    color: #0070f3;
+  }
+  .latest-posts-sidebar a:hover {
+    text-decoration: underline;
+  }
+  .latest-posts-sidebar small {
+    color: #666;
+  }
+</style>

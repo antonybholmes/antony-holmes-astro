@@ -4,6 +4,7 @@
 
 ### Added
 
+- Adding sidebars and latest posts.
 - Initial commit.
 
 ### Fixed

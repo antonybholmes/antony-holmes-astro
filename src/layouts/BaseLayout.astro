@@ -1,0 +1,27 @@
+---
+import BaseHead from '@components/BaseHead.astro'
+import { type ILayoutProps } from '@interfaces/layout-props'
+import { cn } from '@lib/class-names'
+
+interface Props extends ILayoutProps {}
+
+const BODY_CLS = 'margin-0 min-h-screen text-foreground flex flex-col grow'
+
+const { title = '', description = '', bg = 'bg-body', className } = Astro.props
+const cls = cn(BODY_CLS, bg)
+---
+
+<html lang="en" class={cls}>
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body class={cn(cls, className)}>
+    <slot name="header" />
+
+    <slot name="main" />
+    <slot name="footer" />
+
+    <!-- <Footer /> -->
+  </body>
+</html>

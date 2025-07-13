@@ -1,17 +1,13 @@
 ---
+import { format } from 'date-fns'
+
 interface Props {
-	date: Date;
+  date: Date
 }
 
-const { date } = Astro.props;
+const { date } = Astro.props
 ---
 
 <time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+  {format(date, 'MMM dd, yyyy HH:mm:ss')}
 </time>

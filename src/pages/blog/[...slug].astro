@@ -14,9 +14,14 @@ type Props = CollectionEntry<'blog'>
 
 const post = Astro.props
 const { slug } = Astro.params
-const { Content } = await render(post)
+const { Content, remarkPluginFrontmatter } = await render(post)
 ---
 
-<BlogPost {...post.data} slug={slug}>
+<BlogPost
+  {...post.data}
+  slug={slug}
+  minutesRead={remarkPluginFrontmatter.minutesRead}
+  lastModified={remarkPluginFrontmatter.lastModified}
+>
   <Content />
 </BlogPost>
