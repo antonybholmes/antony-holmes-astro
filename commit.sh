@@ -1,6 +1,6 @@
 msg=$1 #"Bug fixes and updates."
 type=$2
-branch="dev"
+branch=$3
 
 #pnpm update-module-version
 #pnpm update-version
@@ -13,6 +13,11 @@ fi
 if [[ -z "${type}" ]]
 then
 	type="Fixed"
+fi
+
+if [[ -z "${branch}" ]]
+then
+	branch="dev"
 fi
 
 tsx scripts/update-changelog.ts "${msg}" "${type}"
