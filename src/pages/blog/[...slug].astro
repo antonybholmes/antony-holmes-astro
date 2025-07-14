@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
   posts = sortPostsByDateDesc(posts)
 
-  let paths: { params: { slug: string }; props: Props }[] = []
+  let paths: { params: { slug?: string }; props: Props }[] = []
 
   for (const post of posts) {
     if (post.data.draft) continue // Skip draft posts
@@ -42,52 +42,52 @@ export async function getStaticPaths() {
         data: [post],
       },
     })
+  }
 
-    const pages = paginate(posts, '').map(p => ({
+  const pages = paginate(posts, '').map(p => ({
+    ...p,
+    props: {
+      ...p.props,
+      type: 'posts' as PaginationType,
+      title: 'Blog',
+      root: `/blog`,
+    },
+  }))
+
+  paths = paths.concat(pages)
+
+  const sectionMap = getPostSectionMap(posts)
+
+  for (const [section, posts] of sectionMap.entries()) {
+    // create a path for each section
+    // e.g. /blog/engineering/page/2/
+    // paths.push({
+    //   params: { slug: section },
+    //   props: {
+    //     type: 'posts',
+    //     title: section,
+    //     root: `/blog/${section}/`,
+    //     page: 1,
+    //     pages: Math.ceil(posts.length / 10), // assuming 10 posts per page
+    //     data: posts.slice(0, 10), // first page of posts
+    //   },
+    // })
+
+    const title = section.split('/').pop() || section
+    const slug = getUrlFriendlyTag(section)
+    const root = `/blog/${slug}`
+
+    const pages = paginate(posts, slug).map(p => ({
       ...p,
       props: {
         ...p.props,
         type: 'posts' as PaginationType,
-        title: 'Blog',
-        root: `/blog`,
+        title,
+        root,
       },
     }))
 
     paths = paths.concat(pages)
-
-    const sectionMap = getPostSectionMap(posts)
-
-    for (const [section, posts] of sectionMap.entries()) {
-      // create a path for each section
-      // e.g. /blog/engineering/page/2/
-      // paths.push({
-      //   params: { slug: section },
-      //   props: {
-      //     type: 'posts',
-      //     title: section,
-      //     root: `/blog/${section}/`,
-      //     page: 1,
-      //     pages: Math.ceil(posts.length / 10), // assuming 10 posts per page
-      //     data: posts.slice(0, 10), // first page of posts
-      //   },
-      // })
-
-      const title = section.split('/').pop() || section
-      const slug = getUrlFriendlyTag(section)
-      const root = `/blog/${slug}/`
-
-      const pages = paginate(posts, slug).map(p => ({
-        ...p,
-        props: {
-          ...p.props,
-          type: 'posts' as PaginationType,
-          title,
-          root,
-        },
-      }))
-
-      paths = paths.concat(pages)
-    }
   }
 
   console.log(

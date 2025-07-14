@@ -19,7 +19,7 @@ tags:
 
 If you're a developer and you are interested in how this site was made, read on.
 
-<!-- end -->
+<!-- more -->
 
 The site was originally developed using Gatsby, a framework for building websites in React. Gatsby is component based and takes care of the tiresome routing, transpiling, and hot-reloading that can make React annoying.
 

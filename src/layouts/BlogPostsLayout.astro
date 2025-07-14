@@ -1,7 +1,6 @@
 ---
 import { PostsPage } from '@components/posts/posts-page'
 import ContentLayout from '@layouts/ContentLayout.astro'
-import { formatSection } from '@lib/post'
 
 import type { CollectionEntry } from 'astro:content'
 
@@ -19,6 +18,8 @@ interface Props {
 }
 
 const { title, page, pages, data, root } = Astro.props
+
+console.log('root', root)
 ---
 
 <ContentLayout title={title} tab="Blog" className="py-8">

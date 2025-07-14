@@ -28,7 +28,7 @@ updated: 2022-07-25
 
 Mint Mobile is a great low cost wireless provider.
 
-<!-- end -->
+<!-- more -->
 
 It operates on the T-Mobile networks and gives discounts if you pay upfront for periods of time ranging from 3 to 12 months with the discount increasing the more time you buy.
 
@@ -38,4 +38,4 @@ I think it's a good deal and they throw in services like hotspot for free that t
 
 I've never had cause to complain about the cell service nor 4G speeds, so all in all I highly recommend them if you are looking to save money on your wireless plan.
 
-*Do you use Mint Mobile? What were your experiences?*
+_Do you use Mint Mobile? What were your experiences?_

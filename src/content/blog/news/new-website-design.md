@@ -6,7 +6,7 @@ categories:
 type: post
 status: added
 title: New website design!
-hero: /assets/posts/opt/code-1600x800.avif
+# hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
 added: 2021-07-05
@@ -19,7 +19,7 @@ updated: 2021-07-05
 
 I have redesigned my website using React and Astro.
 
-<!-- end -->
+<!-- more -->
 
 If you're a developer and you are interested in how the work is done, here are some details. The site is not open source but please feel free to get in touch at [antony@antonyholmes.com](mailto:antony@antonyholmes.com) if you would like to view the code base.
 

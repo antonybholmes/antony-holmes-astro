@@ -118,7 +118,6 @@ interface IProps {
 }
 
 function getPath(page: number, root: string = ''): string {
-  console.log('getPath:', page, root)
   return `${root ? `${root}/` : ''}page/${page + 1}`
 }
 

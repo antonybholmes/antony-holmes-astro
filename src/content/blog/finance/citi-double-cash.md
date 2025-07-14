@@ -29,7 +29,7 @@ updated: 2022-05-22
 
 Citi offers a compelling card to get 2% cash back.
 
-<!-- end -->
+<!-- more -->
 
 My secondary card for many years. Very easy to use and has no gotchas. I'm not a fan of the card design, but you can't have everything.
 

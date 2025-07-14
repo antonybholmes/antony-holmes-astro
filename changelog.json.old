@@ -100,5 +100,18 @@
     },
     "author": "Antony Holmes",
     "date": "2025-07-14T03:24:41.731Z"
+  },
+  {
+    "version": "1.4",
+    "messages": {
+      "Added": [
+        {
+          "msg": "Adding support for blog sections and pages.",
+          "date": "2025-07-14T22:40:52.737Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2025-07-14T22:40:52.737Z"
   }
 ]

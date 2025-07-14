@@ -30,7 +30,7 @@ tags:
 
 A great card for someone wanting to build a credit history.
 
-<!-- end -->
+<!-- more -->
 
 When I first arrived in the US, this was the first card I got to establish a credit history. Unlike some other secured cards, this card is free to apply for and has no associated fees. You can put down a deposit to increase your credit limit. Use this card for a year and then you can apply for an unsecured card.
 

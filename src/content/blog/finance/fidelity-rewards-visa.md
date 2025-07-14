@@ -30,7 +30,7 @@ updated: 2022-10-22
 
 Fidelity's credit card is a solid 2% cash back card that works exactly as expected.
 
-<!-- end -->
+<!-- more -->
 
 My daily card for many years. It does require a Fidelity account for best use, but since I use Fidelity as a one-stop shop, it made sense for me to also use their credit card. Once it is setup, cashback is automatically deposited into my Fidelity account.
 

@@ -8,7 +8,7 @@ export function paginate<T>(
   data: T[],
   slugRoot: string = ''
 ): {
-  params: { slug: string }
+  params: { slug?: string }
   props: {
     type: PaginationType
     page: number
@@ -20,28 +20,29 @@ export function paginate<T>(
 
   const pages = getPageCount(data)
 
-  // remove trailing slash for consistency
+  // if not the root, add a trailing slash for consistency
   if (slugRoot.length > 0 && !slugRoot.endsWith('/')) {
     slugRoot += '/'
   }
 
-  if (slugRoot !== '') {
-    paths.push({
-      params: {
-        slug: slugRoot,
-      },
-      props: {
-        type: 'posts' as PaginationType,
-        page: 0,
-        pages,
-        data: getPageItems(data, 0),
-      },
-    })
-  }
+  //if (slugRoot !== '') {
+  paths.push({
+    params: {
+      // if slugRoot is empty use undefined rather than an empty string
+      //  https://docs.astro.build/en/guides/routing/
+      slug: slugRoot !== '' ? slugRoot : undefined,
+    },
+    props: {
+      type: 'posts' as PaginationType,
+      page: 0,
+      pages,
+      data: getPageItems(data, 0),
+    },
+  })
+  //}
 
   // add page to slug since we are going to generate an array of
   // slugs one for each page of results
-
   slugRoot += 'page/'
 
   for (let page = 0; page < pages; page++) {

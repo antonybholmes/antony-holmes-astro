@@ -35,7 +35,7 @@ updated: 2022-07-18
 
 Fidelity is a great one-stop-shop for all your banking and investing needs. I currently use them as my primary bank. Maybe you should too after reading this.
 
-<!-- end -->
+<!-- more -->
 
 # Investing
 
@@ -53,10 +53,10 @@ I'm surprised more people don't use it and instead stick with tranditional banks
 
 It offers amongst other things:
 
-* Free debit card
-* Free ATM withdrawls worldwide from any ATM so you don't have to worry about going out of network
-* Transfers between banks often occur same day. Much faster than the 3 or 4 day window at most banks.
-* Early deposit of direct deposits. Get your paycheck a day or 2 early.
+- Free debit card
+- Free ATM withdrawls worldwide from any ATM so you don't have to worry about going out of network
+- Transfers between banks often occur same day. Much faster than the 3 or 4 day window at most banks.
+- Early deposit of direct deposits. Get your paycheck a day or 2 early.
 
 I've been a Fidelity convert for several years. It surprises me more people aren't given the nickel and diming and inconvenience of the most of the brick and mortar banks.
 
@@ -73,4 +73,4 @@ Fidelity offers an unlimited 2% cash back credit card. It doesn't seem to get a 
 </ol>
 </div> -->
 
-*Do you have a Fidelity account? What were your experiences?*
+_Do you have a Fidelity account? What were your experiences?_

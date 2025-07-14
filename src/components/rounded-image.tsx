@@ -3,7 +3,12 @@ import type { ComponentProps } from 'react'
 
 export function RoundedImage({ className, ...props }: ComponentProps<'img'>) {
   return (
-    <div className={cn('relative rounded-full overflow-hidden', className)}>
+    <div
+      className={cn(
+        'relative rounded-full overflow-hidden aspect-square',
+        className
+      )}
+    >
       <img
         style={{
           objectFit: 'cover',

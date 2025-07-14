@@ -20,7 +20,7 @@ updated: 2022-02-07
 
 Small changes can lead to big outcomes with a little bit of disipline.
 
-<!-- end -->
+<!-- more -->
 
 Apropos of nothing, you might have heard a rubbish, but frequently repeated, expression along the lines of **"save $5 on a coffee a day, retire a multi-millionaire"** popularized by financial gurus like Suzie Orman and Dave Ramsey.
 

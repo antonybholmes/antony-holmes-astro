@@ -33,7 +33,7 @@ updated: 2022-08-22
 
 Schwab is a great one-stop-shop for all your banking and investing needs. Let's see why.
 
-<!-- end -->
+<!-- more -->
 
 # Investing
 
@@ -49,10 +49,10 @@ I'm surprised more people don't use it and instead stick with tranditional banks
 
 It offers amongst other things:
 
-* Free debit card
-* Free ATM withdrawls worldwide from any ATM so you don't have to worry about going out of network
-* Free transfers between accounts at other institutions.
-* Early deposit of direct deposits. Get your paycheck a day early.
+- Free debit card
+- Free ATM withdrawls worldwide from any ATM so you don't have to worry about going out of network
+- Free transfers between accounts at other institutions.
+- Early deposit of direct deposits. Get your paycheck a day early.
 
 # Credit Card
 
@@ -67,4 +67,4 @@ Schwab offers an unlimited 1.5% cash back credit card through American Express. 
 </ol>
 </div> -->
 
-*Do you have a Schwab account? What were your experiences?*
+_Do you have a Schwab account? What were your experiences?_

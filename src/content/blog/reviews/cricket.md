@@ -31,8 +31,8 @@ updated: 2022-08-20
 
 Mint Mobile is a great low cost wireless provider
 
-<!-- end -->
+<!-- more -->
 
 My daily card for many years. It does require a Fidelity account for best use, but since I use Fidelity as a one-stop shop, it made sense for me to also use their credit card. Once it is setup, cashback is automatically deposited into my Fidelity account.
 
-*Do you use a Mint Mobile? What were your experiences?*
+_Do you use a Mint Mobile? What were your experiences?_

@@ -17,10 +17,10 @@ export function CompactAvatars({
   className,
 }: IProps) {
   return (
-    <VCenterRow className="gap-x-3">
+    <VCenterRow className="gap-x-1">
       {showImages && (
         <ul
-          className={cn('relative h-12', className)}
+          className={cn('relative h-10', className)}
           style={{ width: `${3 + (people.length - 1) * 0.5}rem` }}
         >
           {people.map((person, index) => (
@@ -30,7 +30,7 @@ export function CompactAvatars({
                 aria-label={`Click to read more about ${person}`}
                 className={cn('absolute block rounded-full', `ml-${index * 2}`)}
               >
-                <AvatarImage person={person} className="h-12 w-12" />
+                <AvatarImage person={person} className="h-10 w-10" />
               </BaseLink>
             </li>
           ))}

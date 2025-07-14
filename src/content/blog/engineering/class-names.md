@@ -20,7 +20,7 @@ updated: 2023-01-01
 
 Simplify class name strings without external libraries.
 
-<!-- end -->
+<!-- more -->
 
 Using a class based approach for css, such as Tailwind can often mean long strings of class names. I created
 this simple function to concatenate and deal with conditional renderings. Instead of writing strings such as `${x ? "y" : "z"}`
