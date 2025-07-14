@@ -1,10 +1,10 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu'
 import { DotFilledIcon } from '@radix-ui/react-icons'
 
+import { cn } from '@/lib/shadcn-utils'
 import { BUTTON_MD_H_CLS, ROUNDED_CLS } from '@/theme'
 import { CheckIcon } from '@icons/check-icon'
 import { ChevronRightIcon } from '@icons/chevron-right-icon'
-import { cn } from '@lib/class-names'
 import { cva, type VariantProps } from 'class-variance-authority'
 import {
   Children,

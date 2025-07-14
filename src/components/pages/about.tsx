@@ -1,12 +1,12 @@
 // 'use client'
 
-import { BaseCol } from '@components/layout/base-col'
 import { ThemeLink } from '@components/link/theme-link'
+import { BaseCol } from '@layout/base-col'
 
 import { APP_NAME, SITE_TITLE, UPDATED, VERSION } from '@/consts'
 
-import { VCenterRow } from '@components/layout/v-center-row'
 import type { IChildrenProps } from '@interfaces/children-props'
+import { VCenterRow } from '@layout/v-center-row'
 import { getCopyright } from '@lib/copyright'
 import { Card } from '@themed/card'
 import { MenuSeparator } from '@themed/dropdown-menu'

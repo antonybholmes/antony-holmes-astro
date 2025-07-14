@@ -1,5 +1,5 @@
+import { cn } from '@/lib/shadcn-utils'
 import { type IIconProps } from '@interfaces/icon-props'
-import { cn } from '@lib/class-names'
 import { Search } from 'lucide-react'
 
 export function SearchIcon({

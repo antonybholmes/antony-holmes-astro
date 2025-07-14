@@ -7,7 +7,7 @@
 //import Button from "../../components/button"
 //import PublicationYears from "./publicationyears"
 
-import { HCenterRow } from '@components/layout/h-center-row'
+import { HCenterRow } from '@layout/h-center-row'
 
 import { TEXT_SHOW_MORE } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'

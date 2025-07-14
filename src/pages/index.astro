@@ -1,70 +1,107 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUBTITLE } from '../consts'
+import {
+  SITE_TITLE,
+  SITE_DESCRIPTION,
+  SITE_SUBTITLE,
+  RECORDS_PER_PAGE,
+} from '../consts'
 
 import { ThemeLink } from '@/components/link/theme-link'
 
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { BaseCol } from '@/components/layout/base-col'
 import ContentLayout from '@/layouts/ContentLayout.astro'
+import { AvatarImage } from '@/components/people/avatar-image'
+import { RoundedImage } from '@/components/rounded-image'
+import SidebarDiv from '@/components/layout/SidebarDiv.astro'
+import PostSection from '@/components/posts/PostSection.astro'
+import { ChevronRightIcon } from '@/components/icons/chevron-right-icon'
+import { BaseLink } from '@/components/link/base-link'
+import { PostsPage } from '@/components/posts/posts-page'
+import { getPageItems } from '@/lib/paginate'
+import { getSortedPosts } from '@/lib/astro/post'
+
+const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
 <ContentLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <BaseCol className="gap-y-8" slot="main">
-    <VCenterRow className="justify-between py-3">
-      <BaseCol>
-        <h1 class="font-bold">
-          <a href="/" class="text-foreground hover:text-primary">
-            {SITE_TITLE}
-          </a>
-        </h1>
+  <SidebarDiv slot="main">
+    <BaseCol className="gap-y-8" slot="main">
+      <VCenterRow className="justify-between py-3">
+        <BaseCol>
+          <h1 class="font-bold">
+            <a href="/" class="text-foreground hover:text-primary">
+              {SITE_TITLE}
+            </a>
+          </h1>
 
-        <h2 class="text-foreground/30">
-          {SITE_SUBTITLE}
-        </h2>
-      </BaseCol>
+          <h2 class="text-foreground/30">
+            {SITE_SUBTITLE}
+          </h2>
+        </BaseCol>
+      </VCenterRow>
 
-      <div class="h-42 w-42 overflow-hidden rounded-full">
-        <img src="/img/antony-holmes-1024x1024.webp" alt="Antony Holmes Logo" />
-      </div>
-    </VCenterRow>
+      <section>
+        <p>
+          Hi there! I'm Antony and I like making software. That's me posing by
+          the Hudson River for no particular reason, except maybe to look cool
+          wearing Risky Business sunglasses.
+        </p>
 
-    <section>
-      <p>
-        Hi there! I'm Antony and I like making software. That's me posing by the
-        Hudson River for no particular reason, except maybe to look cool wearing
-        Risky Business sunglasses.
-      </p>
+        <p>
+          I'm a researcher and sofware engineer in New York City who's learned
+          how to do a few nifty things with Java, Python, C++, Go, React,
+          Next.js, and Astro, some of which were used to make the very site
+          you're looking at right now.
+        </p>
 
-      <p>
-        I'm a researcher and sofware engineer in New York City who's learned how
-        to do a few nifty things with Java, Python, C++, Go, React, Next.js, and
-        Astro, some of which were used to make the very site you're looking at
-        right now.
-      </p>
+        <p>
+          I made this site with love and to try and get high{' '}
+          <ThemeLink href="https://pagespeed.web.dev/" data-underline={true}
+            >Lighthouse</ThemeLink
+          >{' '}
+          scores. I think I mostly succeeded.
+        </p>
 
-      <p>
-        I made this site with love and to try and get high{' '}
-        <ThemeLink href="https://pagespeed.web.dev/" data-underline={true}
-          >Lighthouse</ThemeLink
-        >{' '}
-        scores. I think I mostly succeeded.
-      </p>
+        <p>
+          My blog covers an assortment of topics, mostly on tech, finance and
+          whatever else takes my fancy.
+        </p>
 
-      <p>
-        My blog covers an assortment of topics, mostly on tech, finance and
-        whatever else takes my fancy.
-      </p>
+        <p>
+          I have an aptly named publications page where you can view all of the
+          scientific literature I have written, primarily focused on cancer
+          genetics.
+        </p>
 
-      <p>
-        I have an aptly named publications page where you can view all of the
-        scientific literature I have written, primarily focused on cancer
-        genetics.
-      </p>
+        <p>
+          My life story probably won't be optioned, but if it is, I hope the
+          movie contains the music of Kraftwerk.
+        </p>
+      </section>
 
-      <p>
-        My life story probably won't be optioned, but if it is, I hope the movie
-        contains the music of Kraftwerk.
-      </p>
-    </section>
-  </BaseCol>
+      <PostSection title="Latest posts">
+        <BaseLink
+          href="/blog/latest"
+          data-underline={true}
+          className="trans-color group hover:text-primary-color data-[underline=true]:hover:decoration-primary-color inline-flex flex-row gap-x-1 text-xs"
+          slot="header"
+        >
+          <span>View all</span>
+          <ChevronRightIcon
+            stroke="stroke-[2px] stroke-foreground group-hover:stroke-primary-color"
+          />
+        </BaseLink>
+
+        <PostsPage posts={posts} page={0} pages={1} slot="main" />
+      </PostSection>
+    </BaseCol>
+
+    <RoundedImage
+      className="h-42 w-42 overflow-hidden rounded-full"
+      src="/img/people/antony-holmes.webp"
+      alt="Antony Holmes Logo"
+      slot="side"
+    />
+  </SidebarDiv>
 </ContentLayout>

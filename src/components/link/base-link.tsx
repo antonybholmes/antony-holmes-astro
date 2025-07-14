@@ -1,7 +1,7 @@
 import { BASE_COMPONENT_CLS } from '@/theme'
 import { type ILinkProps } from '@interfaces/link-props'
 
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 
 export const UNDERLINE_CLS =
   'data-[underline=true]:underline data-[underline=hover]:hover:underline data-[underline=false]:decoration-transparent'

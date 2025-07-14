@@ -1,6 +1,6 @@
+import { cn } from '@/lib/shadcn-utils'
 import { BUTTON_MD_H_CLS, BUTTON_SM_H_CLS, FOCUS_INSET_RING_CLS } from '@/theme'
 import { CheckIcon } from '@icons/check-icon'
-import { cn } from '@lib/class-names'
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons'
 import * as SelectPrimitive from '@radix-ui/react-select'
 

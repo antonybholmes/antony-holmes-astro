@@ -1,14 +1,14 @@
-import { existsSync, readdirSync, statSync } from "fs"
-import fs from "fs-extra"
-import { join } from "path"
-import { getCanonicalSlug } from "./urls"
+import { existsSync, readdirSync, statSync } from 'fs'
+import fs from 'fs-extra'
+import { join } from 'path'
+import { getCanonicalSlug } from './urls'
 
-export const CONTENT_DIR = join(process.cwd(), "content")
-export const POSTS_DIR = join(CONTENT_DIR, "posts")
-export const PEOPLE_DIR = join(CONTENT_DIR, "people")
-export const NEWS_DIR = join(CONTENT_DIR, "news")
-export const JOBS_DIR = join(CONTENT_DIR, "jobs")
-export const PUBLICATIONS_DIR = join(CONTENT_DIR, "publications")
+export const CONTENT_DIR = join(process.cwd(), 'content')
+//export const POSTS_DIR = join(CONTENT_DIR, "posts")
+export const PEOPLE_DIR = join(CONTENT_DIR, 'people')
+export const NEWS_DIR = join(CONTENT_DIR, 'news')
+export const JOBS_DIR = join(CONTENT_DIR, 'jobs')
+export const PUBLICATIONS_DIR = join(CONTENT_DIR, 'publications')
 
 export function getAllFiles(dir: string, ret: string[] = []) {
   const files = readdirSync(dir)

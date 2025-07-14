@@ -1,4 +1,4 @@
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 import type { TooltipContentProps } from '@radix-ui/react-tooltip'
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import { type ComponentProps } from 'react'

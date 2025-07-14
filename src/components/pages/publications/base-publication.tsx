@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 
 import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
-import { BaseRow } from '@components/layout/base-row'
-import { HCenterCol } from '@components/layout/h-center-col'
 import { BaseLink } from '@components/link/base-link'
+import { BaseRow } from '@layout/base-row'
+import { HCenterCol } from '@layout/h-center-col'
 
 import { ThemeLink } from '@/components/link/theme-link'
 import type { IClassProps } from '@/interfaces/class-props'
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 
 type AbstractProps = {
   publication: any

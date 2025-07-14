@@ -1,4 +1,4 @@
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 
 import type { IClassProps } from '@/interfaces/class-props'
 import { range } from '@/lib/math/range'

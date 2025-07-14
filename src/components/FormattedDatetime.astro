@@ -6,6 +6,8 @@ interface Props {
 }
 
 const { date } = Astro.props
+
+console.log('FormattedDatetime', date)
 ---
 
 <time datetime={date.toISOString()}>

@@ -1,8 +1,8 @@
-import { BaseCol } from '@components/layout/base-col'
-import { ContentDiv } from '@components/layout/content-div'
+import { BaseCol } from '@layout/base-col'
+import { ContentDiv } from '@layout/content-div'
 
-import { VCenterCol } from '@components/layout/v-center-col'
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
+import { VCenterCol } from '@layout/v-center-col'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type HTMLAttributes } from 'react'
 

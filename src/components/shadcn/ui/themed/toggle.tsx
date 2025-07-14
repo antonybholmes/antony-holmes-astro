@@ -1,5 +1,5 @@
+import { cn } from '@/lib/shadcn-utils'
 import { BUTTON_MD_H_CLS, FOCUS_INSET_RING_CLS } from '@/theme'
-import { cn } from '@lib/class-names'
 import * as TogglePrimitive from '@radix-ui/react-toggle'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { type ComponentProps } from 'react'

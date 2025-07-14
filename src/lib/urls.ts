@@ -13,14 +13,18 @@ export function getUrlFriendlyTag(tag: string): string {
 
 export function getUrlFriendlyImg(
   img: string,
-  ext = 'avif',
-  size: number | [number, number] = 800
+  ext = 'webp',
+  size: number | [number, number] | undefined = undefined
 ): string {
-  if (!Array.isArray(size)) {
-    size = [size, size]
-  }
+  if (size) {
+    if (!Array.isArray(size)) {
+      size = [size, size]
+    }
 
-  return `${getUrlFriendlyTag(img)}-${size[0]}x${size[1]}.${ext}`
+    return `${getUrlFriendlyTag(img)}-${size[0]}x${size[1]}.${ext}`
+  } else {
+    return `${getUrlFriendlyTag(img)}.${ext}`
+  }
 }
 
 export function getUrlFriendlyTags(tags: string[]): string[] {

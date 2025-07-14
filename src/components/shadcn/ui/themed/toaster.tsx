@@ -1,4 +1,4 @@
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 import * as ToastPrimitives from '@radix-ui/react-toast'
 import type { ComponentProps } from 'react'
 import { Toast } from './toast'

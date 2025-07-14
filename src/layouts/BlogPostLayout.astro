@@ -1,5 +1,5 @@
 ---
-import type { CollectionEntry } from 'astro:content'
+import { render, type CollectionEntry } from 'astro:content'
 
 import Footer from '../components/Footer.astro'
 import BaseLayout from './BaseLayout.astro'
@@ -16,35 +16,50 @@ import ContentLayout from './ContentLayout.astro'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
 import { BaseCol } from '@/components/layout/base-col'
 
-type Props = CollectionEntry<'blog'>['data'] & {
-  slug: string
-  minutesRead: string
-  lastModified: Date
-  headings: {
-    depth: number
-    slug: string
-    text: string
-  }[]
+// type Props = CollectionEntry<'blog'>['data'] & {
+//   slug: string
+//   minutesRead: string
+//   //lastModified: Date
+//   headings: {
+//     depth: number
+//     slug: string
+//     text: string
+//   }[]
+// }
+
+interface Props {
+  post: CollectionEntry<'blog'>
 }
 
-const {
-  title,
-  description,
-  added,
-  //updatedDate,
-  heroImage,
-  slug,
-  minutesRead,
-  lastModified,
-  tags,
-} = Astro.props
+// const {
+//   title,
+//   description,
+//   added,
+//   updated,
+//   heroImage,
+//   slug,
+//   minutesRead,
+//   tags,
+// } = Astro.props
+
+const { post } = Astro.props
+
+const slug = post.id.split('/').pop() || post.id // Flatten the slug
+
+const { Content, remarkPluginFrontmatter, headings } = await render(post)
 
 const ogImage = `/img/og/${slug}.png`
 
-const hero = heroImage ? heroImage : `/img/blog/${slug}.webp`
+const hero = post.data.heroImage
+  ? post.data.heroImage
+  : `/img/blog/${slug}.webp`
 ---
 
-<ContentLayout title={title} description={description} tab="Blog">
+<ContentLayout
+  title={post.data.title}
+  description={post.data.description}
+  tab="Blog"
+>
   <Fragment slot="head">
     <meta property="og:image" content={ogImage} />
   </Fragment>
@@ -58,7 +73,7 @@ const hero = heroImage ? heroImage : `/img/blog/${slug}.webp`
             <div class="h-64 w-full overflow-hidden">
               <img
                 src={hero}
-                alt={title}
+                alt={post.data.heroAlt || post.data.title}
                 class="w-full object-cover object-center"
                 style="height: 100%;"
               />
@@ -67,33 +82,34 @@ const hero = heroImage ? heroImage : `/img/blog/${slug}.webp`
         }
 
         <h1>
-          {title}
+          {post.data.title}
         </h1>
         <VCenterRow
           className="text-foreground/50 justify-between gap-x-2 text-sm"
         >
           <VCenterRow className="gap-x-2">
             <Calendar className="stroke-foreground/40 w-5" strokeWidth={1.5} />
-            <FormattedDate date={added} />
+            <FormattedDate date={post.data.added} />
 
             <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
             ></span>
-            <span>{minutesRead}</span></VCenterRow
+            <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
           >
 
           {
-            lastModified && lastModified !== added && (
-              <span class="text-foreground/50">
-                Last updated <FormattedDate date={lastModified} />
-              </span>
-            )
+            post.data.updated &&
+              post.data.updated.getTime() !== post.data.added.getTime() && (
+                <span class="text-foreground/50">
+                  Last updated <FormattedDate date={post.data.updated} />
+                </span>
+              )
           }
         </VCenterRow>
 
-        <Tags tags={tags} />
+        {post.data.tags && <Tags tags={post.data.tags} />}
       </header>
       <section class="markdown">
-        <slot name="content" />
+        <Content />
       </section>
     </article>
 

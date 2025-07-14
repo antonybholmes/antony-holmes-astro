@@ -9,14 +9,18 @@ const blog = defineCollection({
     z.object({
       // Transform string to Date object
       title: z.string(),
-      description: z.string(),
+      description: z.string().optional(),
       authors: z.array(z.string()).optional(),
       // Transform string to Date object
       added: z.coerce.date(),
+      updated: z.coerce.date().optional(),
       //updatedDate: z.coerce.date().optional(),
       heroImage: z.string().optional(), //image().optional(),
+      //heroCaption: z.string().optional(),
+      heroAlt: z.string().optional(),
       tags: z.array(z.string()).optional(),
-      sections: z.array(z.string()).optional(),
+      sections: z.array(z.array(z.string())).optional(),
+      draft: z.boolean().optional(),
     }),
 })
 
@@ -27,7 +31,7 @@ const notes = defineCollection({
   schema: () =>
     z.object({
       title: z.string(),
-      description: z.string(),
+      description: z.string().optional(),
       authors: z.array(z.string()).optional(),
       // Transform string to Date object
       added: z.coerce.date(),
@@ -38,4 +42,23 @@ const notes = defineCollection({
     }),
 })
 
-export const collections = { blog, notes }
+const people = defineCollection({
+  // Load Markdown and MDX files in the `src/content/people /` directory.
+  loader: glob({ base: './src/content/people', pattern: '**/*.md' }),
+  // Type-check frontmatter using a schema
+  schema: () =>
+    z.object({
+      name: z.string(),
+      email: z.string().email(),
+      title: z.string().optional(),
+      description: z.string().optional(),
+      pubmed: z.string().optional(),
+      twitter: z.string().optional(),
+      github: z.string().optional(),
+      linkedin: z.string().optional(),
+      website: z.string().optional(),
+      image: z.string().optional(),
+    }),
+})
+
+export const collections = { blog, notes, people }

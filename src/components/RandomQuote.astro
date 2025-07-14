@@ -1,0 +1,21 @@
+---
+
+---
+
+<random-quote>
+  <span id="random-quote" class="text-foreground/50"></span>
+</random-quote>
+
+<script>
+  class RandomQuote extends HTMLElement {
+    async connectedCallback() {
+      const res = await fetch('/quotes.json')
+      const quotes = await res.json()
+      const randomIndex = Math.floor(Math.random() * quotes.length)
+      this.querySelector('#random-quote')!.textContent =
+        `"${quotes[randomIndex]}"`
+    }
+  }
+
+  customElements.define('random-quote', RandomQuote)
+</script>

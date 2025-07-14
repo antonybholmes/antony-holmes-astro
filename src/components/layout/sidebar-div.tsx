@@ -1,4 +1,4 @@
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 
 import type { IDivProps } from '@interfaces/div-props'
 import { Children } from 'react'

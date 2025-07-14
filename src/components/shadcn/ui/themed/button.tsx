@@ -1,5 +1,6 @@
 import type { IPos } from '@interfaces/pos'
 
+import { cn } from '@/lib/shadcn-utils'
 import {
   BASE_BUTTON_CLS,
   BASE_ICON_BUTTON_CLS,
@@ -23,7 +24,6 @@ import {
   XS_ICON_BUTTON_CLS,
 } from '@/theme'
 import type { ITooltipSide } from '@interfaces/tooltip-side-props'
-import { cn } from '@lib/class-names'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 

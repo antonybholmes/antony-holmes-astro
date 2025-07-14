@@ -1,6 +1,6 @@
 import { CENTERED_ROW_CLS } from '@/theme'
 
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 
 import { TEXT_SEARCH } from '@/consts'
 import { randId } from '@lib/utils'

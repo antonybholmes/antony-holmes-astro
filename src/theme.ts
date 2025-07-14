@@ -1,4 +1,4 @@
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 
 export const ROUNDED_LG_CLS = 'rounded-lg'
 export const ROUNDED_MD_CLS = 'rounded-theme'

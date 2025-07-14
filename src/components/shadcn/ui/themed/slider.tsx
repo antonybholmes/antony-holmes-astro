@@ -1,5 +1,5 @@
+import { cn } from '@/lib/shadcn-utils'
 import { FOCUS_RING_CLS, TRANS_COLOR_CLS } from '@/theme'
-import { cn } from '@lib/class-names'
 import * as SliderPrimitive from '@radix-ui/react-slider'
 
 import {

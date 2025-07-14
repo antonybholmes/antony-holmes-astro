@@ -1,6 +1,6 @@
+import { cn } from '@/lib/shadcn-utils'
 import { CENTERED_ROW_CLS, FOCUS_RING_CLS, V_CENTERED_ROW_CLS } from '@/theme'
 import type { IStringMap } from '@interfaces/string-map'
-import { cn } from '@lib/class-names'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import {
   forwardRef,

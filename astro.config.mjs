@@ -6,7 +6,6 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'astro/config'
 import rehypeSlug from 'rehype-slug'
 import remarkSectionize from 'remark-sectionize'
-import { remarkModifiedTime } from './remark-modified-time.mjs'
 import { remarkReadingTime } from './remark-reading-time.mjs'
 
 // https://astro.build/config
@@ -15,7 +14,7 @@ export default defineConfig({
   compressHTML: true,
   markdown: {
     // Applied to .md and .mdx files
-    remarkPlugins: [remarkReadingTime, remarkModifiedTime, remarkSectionize],
+    remarkPlugins: [remarkReadingTime, remarkSectionize],
     rehypePlugins: [rehypeSlug],
   },
   //base: '/',

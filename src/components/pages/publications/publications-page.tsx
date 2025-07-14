@@ -1,7 +1,7 @@
-import { HCenterRow } from '@components/layout/h-center-row'
+import { HCenterRow } from '@layout/h-center-row'
 //import { SearchBar } from '@components/search/searchbar'
-import { VCenterRow } from '@components/layout/v-center-row'
 import { Switch } from '@components/shadcn/ui/themed/switch'
+import { VCenterRow } from '@layout/v-center-row'
 
 import getAuthorPublications from '@lib/pub/author-publications'
 import getJournalPublications from '@lib/pub/journal-publications'
@@ -12,7 +12,7 @@ import { getTopAuthors } from '@lib/top-authors'
 import getTopJournals from '@lib/top-journals'
 
 import { SEARCH_RECORDS_PER_PAGE, TEXT_SHOW_MORE } from '@/consts'
-import { BaseCol } from '@components/layout/base-col'
+import { BaseCol } from '@layout/base-col'
 
 import { SidebarDiv } from '@/components/layout/sidebar-div'
 import { useEffect, useState } from 'react'

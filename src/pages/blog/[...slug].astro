@@ -1,32 +1,123 @@
 ---
 import { type CollectionEntry, getCollection } from 'astro:content'
-import BlogPost from '../../layouts/BlogPost.astro'
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
 import { render } from 'astro:content'
+import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
+import { getPostSectionMap, sortPostsByDateDesc } from '@/lib/astro/post'
+import { paginate, type PaginationType } from '@/lib/paginate'
+import { getUrlFriendlyTag } from '@/lib/urls'
+
+interface Props {
+  type: PaginationType
+  title: string
+  root: string
+  page: number
+  pages: number
+  data: CollectionEntry<'blog'>[]
+}
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog')
+  let posts = await getCollection('blog')
 
-  return posts.map(post => ({
+  posts = sortPostsByDateDesc(posts)
+
+  let paths: { params: { slug: string }; props: Props }[] = []
+
+  for (const post of posts) {
+    if (post.data.draft) continue // Skip draft posts
+
+    // If the post has sections, create a path for each section
     // flatten slug to the last part of the path
     // e.g. /test/my-post/ becomes /my-post/
     // this is useful for SEO and readability
-    params: { slug: post.id.split('/').pop() || post.id },
-    props: post,
-  }))
-}
-type Props = CollectionEntry<'blog'>
 
-const post = Astro.props
-const { slug } = Astro.params
-const { Content, remarkPluginFrontmatter, headings } = await render(post)
+    paths.push({
+      params: { slug: post.id.split('/').pop() || post.id },
+      props: {
+        type: 'post',
+        title: post.data.title,
+        root: '',
+        page: 0,
+        pages: 1,
+        data: [post],
+      },
+    })
+
+    const pages = paginate(posts, '').map(p => ({
+      ...p,
+      props: {
+        ...p.props,
+        type: 'posts' as PaginationType,
+        title: 'Blog',
+        root: `/blog`,
+      },
+    }))
+
+    paths = paths.concat(pages)
+
+    const sectionMap = getPostSectionMap(posts)
+
+    for (const [section, posts] of sectionMap.entries()) {
+      // create a path for each section
+      // e.g. /blog/engineering/page/2/
+      // paths.push({
+      //   params: { slug: section },
+      //   props: {
+      //     type: 'posts',
+      //     title: section,
+      //     root: `/blog/${section}/`,
+      //     page: 1,
+      //     pages: Math.ceil(posts.length / 10), // assuming 10 posts per page
+      //     data: posts.slice(0, 10), // first page of posts
+      //   },
+      // })
+
+      const title = section.split('/').pop() || section
+      const slug = getUrlFriendlyTag(section)
+      const root = `/blog/${slug}/`
+
+      const pages = paginate(posts, slug).map(p => ({
+        ...p,
+        props: {
+          ...p.props,
+          type: 'posts' as PaginationType,
+          title,
+          root,
+        },
+      }))
+
+      paths = paths.concat(pages)
+    }
+  }
+
+  console.log(
+    'Blog paths:',
+    paths.map(p => p.params.slug)
+  )
+
+  return paths
+}
+
+// interface Props {
+//   post: CollectionEntry<'blog'>
+// }
+
+//const { post } = Astro.props
+//const { slug } = Astro.params
+
+const { type, title, root, page, pages, data } = Astro.props
 ---
 
-<BlogPost
-  {...post.data}
-  slug={slug}
-  minutesRead={remarkPluginFrontmatter.minutesRead}
-  lastModified={remarkPluginFrontmatter.lastModified}
-  headings={headings}
->
-  <Content slot="content" />
-</BlogPost>
+{type === 'post' && <BlogPostLayout post={data[0]} />}
+
+{
+  type === 'posts' && (
+    <BlogPostsLayout
+      title={title}
+      page={page}
+      pages={pages}
+      data={data}
+      root={root}
+    />
+  )
+}

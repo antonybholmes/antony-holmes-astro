@@ -1,7 +1,7 @@
+import { cn } from '@/lib/shadcn-utils'
 import { VScrollPanel } from '@components/v-scroll-panel'
 import { ChevronRightIcon } from '@icons/chevron-right-icon'
 import type { IChildrenProps } from '@interfaces/children-props'
-import { cn } from '@lib/class-names'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { cva, type VariantProps } from 'class-variance-authority'
 import {

@@ -1,6 +1,6 @@
-import { VCenterCol } from '@components/layout/v-center-col'
+import { cn } from '@/lib/shadcn-utils'
 import { SmallVerticalGripIcon } from '@icons/small-vertical-grip-icon'
-import { cn } from '@lib/class-names'
+import { VCenterCol } from '@layout/v-center-col'
 import type { ComponentProps } from 'react'
 import * as ResizablePrimitive from 'react-resizable-panels'
 

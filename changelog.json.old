@@ -91,6 +91,10 @@
         {
           "msg": "Moved sections, years, and tags under blog for better organization",
           "date": "2025-07-14T03:24:41.731Z"
+        },
+        {
+          "msg": "UI tweaks",
+          "date": "2025-07-14T13:01:12.749Z"
         }
       ]
     },

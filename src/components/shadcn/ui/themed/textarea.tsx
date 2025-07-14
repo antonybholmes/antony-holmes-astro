@@ -1,9 +1,9 @@
+import { cn } from '@/lib/shadcn-utils'
 import { FOCUS_INSET_RING_CLS } from '@/theme'
-import { BaseCol } from '@components/layout/base-col'
-import { cn } from '@lib/class-names'
+import { BaseCol } from '@layout/base-col'
 
-import { BaseRow } from '@components/layout/base-row'
-import { VCenterRow } from '@components/layout/v-center-row'
+import { BaseRow } from '@layout/base-row'
+import { VCenterRow } from '@layout/v-center-row'
 import { randId } from '@lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { useState, type ComponentProps, type ReactNode } from 'react'

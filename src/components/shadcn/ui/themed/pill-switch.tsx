@@ -1,7 +1,7 @@
 import { ANIMATION_DURATION_S } from '@/consts'
+import { cn } from '@/lib/shadcn-utils'
 import { FOCUS_RING_CLS } from '@/theme'
-import { VCenterRow } from '@components/layout/v-center-row'
-import { cn } from '@lib/class-names'
+import { VCenterRow } from '@layout/v-center-row'
 import * as SwitchPrimitives from '@radix-ui/react-switch'
 import gsap from 'gsap'
 import {

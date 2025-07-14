@@ -1,6 +1,6 @@
-import { HCenterCol } from "@components/h-center-col"
-import { VCenterRow } from "@components/v-center-row"
-import { useRef, useState } from "react"
+import { HCenterCol } from '@layout/h-center-col'
+import { VCenterRow } from '@layout/v-center-row'
+import { useRef, useState } from 'react'
 
 function Bar({
   x,
@@ -20,7 +20,7 @@ function Bar({
   return (
     <rect
       fill={
-        isColored ? (isHighlighted ? "url('#g2')" : "url('#g1')") : "#d1d5db"
+        isColored ? (isHighlighted ? "url('#g2')" : "url('#g1')") : '#d1d5db'
       }
       x={x}
       y={y}
@@ -105,14 +105,14 @@ export function PubRangeSlider({
 
   function onMouseDownYear1() {
     // @ts-ignore
-    window.addEventListener("mousemove", onMouseMoveYear1)
-    window.addEventListener("mouseup", onMouseUpYear1)
+    window.addEventListener('mousemove', onMouseMoveYear1)
+    window.addEventListener('mouseup', onMouseUpYear1)
   }
 
   function onMouseUpYear1() {
     // @ts-ignore
-    window.removeEventListener("mousemove", onMouseMoveYear1)
-    window.removeEventListener("mouseup", onMouseUpYear1)
+    window.removeEventListener('mousemove', onMouseMoveYear1)
+    window.removeEventListener('mouseup', onMouseUpYear1)
   }
 
   function onMouseMoveYear2(e: any) {
@@ -123,29 +123,29 @@ export function PubRangeSlider({
 
   function onMouseDownYear2() {
     // @ts-ignore
-    window.addEventListener("mousemove", onMouseMoveYear2)
-    window.addEventListener("mouseup", onMouseUpYear2)
+    window.addEventListener('mousemove', onMouseMoveYear2)
+    window.addEventListener('mouseup', onMouseUpYear2)
   }
 
   function onMouseUpYear2() {
     // @ts-ignore
-    window.removeEventListener("mousemove", onMouseMoveYear2)
-    window.removeEventListener("mouseup", onMouseUpYear2)
+    window.removeEventListener('mousemove', onMouseMoveYear2)
+    window.removeEventListener('mouseup', onMouseUpYear2)
   }
 
   function onMouseEnter() {
     // @ts-ignore
-    refHint.current.style.visibility = "visible"
+    refHint.current.style.visibility = 'visible'
   }
 
   function onMouseMove(e: any) {
     if (e.offsetY < height) {
       // @ts-ignore
-      refHint.current.style.visibility = "visible"
+      refHint.current.style.visibility = 'visible'
 
       const idx = Math.max(
         0,
-        Math.min(data.length - 1, Math.floor((e.offsetX - xMargin) / barW)),
+        Math.min(data.length - 1, Math.floor((e.offsetX - xMargin) / barW))
       )
       const p = idx * barW + halfBarWidth + xMargin
 
@@ -157,13 +157,13 @@ export function PubRangeSlider({
       setHighlightIdx(idx)
     } else {
       // @ts-ignore
-      refHint.current.style.visibility = "hidden"
+      refHint.current.style.visibility = 'hidden'
     }
   }
 
   function onMouseLeave() {
     // @ts-ignore
-    refHint.current.style.visibility = "hidden"
+    refHint.current.style.visibility = 'hidden'
 
     setHighlightIdx(-1)
   }
@@ -171,7 +171,7 @@ export function PubRangeSlider({
   function onClick(e: any) {
     const idx = Math.max(
       0,
-      Math.min(data.length - 1, Math.floor((e.offsetX - xMargin) / barW)),
+      Math.min(data.length - 1, Math.floor((e.offsetX - xMargin) / barW))
     )
 
     setYear1(idx)

@@ -27,6 +27,8 @@ export const ANIMATION_DURATION_MS = 250
 
 export const TAG_SLUG = 'tag'
 export const PAGE_1_SLUG = 'page-1'
+export const PEOPLE_SLUG = '/people'
+export const BLOG_SLUG = '/blog'
 
 export const YEAR = new Date().getFullYear()
 
@@ -85,6 +87,8 @@ export const TEXT_ZOOM = 'Zoom'
 export const TEXT_SAVE_IMAGE = 'Save Image'
 export const TEXT_SAVE_TABLE = 'Save Table'
 export const TEXT_REMOVE_FROM_CART = 'Remove from Cart'
+
+export const POST_EXCERPT_MARKER = '<!-- more -->'
 
 export const SVG_CRISP_EDGES = 'crispEdges'
 

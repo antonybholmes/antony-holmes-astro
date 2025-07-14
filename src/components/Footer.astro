@@ -1,10 +1,10 @@
 ---
 import { GITHUB_URL, SITE_AUTHOR, TARGET_BLANK } from '@/consts'
-import RandomSaying from './RandomSaying.astro'
+import RandomQuote from './RandomQuote.astro'
 import { VCenterRow } from './layout/v-center-row'
 import { BaseCol } from './layout/base-col'
 import ContentDiv from './layout/ContentDiv.astro'
-import { Github, Rss } from 'lucide-react'
+import { Rss } from 'lucide-react'
 import { GitHubIcon } from './icons/github-icon'
 import ThemeToggle from './ThemeToggle.astro'
 
@@ -21,7 +21,7 @@ const today = new Date()
           >
             {SITE_AUTHOR}
           </span> -->
-          <RandomSaying />
+          <RandomQuote />
         </BaseCol>
 
         <div></div>

@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "generate:og": "tsx scripts/generate-og.ts",
     "generate:hero": "tsx scripts/generate-hero.ts",
-    "prebuild": "pnpm generate:og && pnpm update-version",
+    "prebuild": "pnpm generate:og && pnpm generate:hero && pnpm update-version",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -69,6 +69,7 @@
   },
   "devDependencies": {
     "@resvg/resvg-js": "^2.6.2",
+    "@types/fs-extra": "^11.0.4",
     "globby": "^14.1.0",
     "gray-matter": "^4.0.3",
     "prettier": "^3.6.2",
@@ -77,6 +78,7 @@
     "prettier-plugin-tailwindcss": "^0.6.14",
     "rehype-slug": "^6.0.0",
     "remark-sectionize": "^2.1.0",
-    "sharp": "^0.34.3"
+    "sharp": "^0.34.3",
+     "unist-util-visit": "^5.0.0"
   }
 }

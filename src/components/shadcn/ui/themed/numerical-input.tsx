@@ -1,4 +1,4 @@
-import { BaseCol } from '@components/layout/base-col'
+import { BaseCol } from '@layout/base-col'
 
 import { clamp } from '@/lib/math/clamp'
 import { TriangleRightIcon } from '@icons/triangle-right-icon'

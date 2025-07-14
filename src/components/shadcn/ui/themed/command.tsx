@@ -1,10 +1,10 @@
 import type { DialogProps } from '@radix-ui/react-dialog'
 import { Command as CommandPrimitive } from 'cmdk'
 
+import { cn } from '@/lib/shadcn-utils'
 import { BUTTON_MD_H_CLS } from '@/theme'
-import { VCenterRow } from '@components/layout/v-center-row'
 import { SearchIcon } from '@icons/search-icon'
-import { cn } from '@lib/class-names'
+import { VCenterRow } from '@layout/v-center-row'
 import { Dialog, DialogContent } from '@themed/dialog'
 import type { VariantProps } from 'class-variance-authority'
 import {

@@ -1,8 +1,8 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
 
+import { cn } from '@/lib/shadcn-utils'
 import { CENTERED_ROW_CLS, FOCUS_INSET_RING_CLS } from '@/theme'
 import { CheckIcon } from '@icons/check-icon'
-import { cn } from '@lib/class-names'
 import { type IButtonProps } from '@themed/button'
 
 export type ICheckedChange = (state: boolean) => void

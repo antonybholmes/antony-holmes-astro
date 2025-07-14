@@ -1,14 +1,15 @@
 //import SecondaryButtonLink from "../link/secondary-button-link"
 
-import PubMedIcon from "@components/icons/pubmed"
-import { BaseLink } from "@components/link/base-link"
-import type { CollectionEntry } from "astro:content"
-import { useState } from "react"
+import PubMedIcon from '@/components/icons/pubmed-icon'
+import { BaseLink } from '@components/link/base-link'
+import type { CollectionEntry } from 'astro:content'
+
+import { useState } from 'react'
 
 // `https://pubmed.ncbi.nlm.nih.gov/?term=${person.lastName}+${person.firstName}%5BAuthor%5D&sort=pubdate`
 
-function getLink(person: CollectionEntry<"people">): string {
-  const tokens = person.data.name.split(" ")
+function getLink(person: CollectionEntry<'people'>): string {
+  const tokens = person.data.name.split(' ')
   const f = tokens[0]
   const l = tokens[tokens.length - 1]
 
@@ -16,7 +17,7 @@ function getLink(person: CollectionEntry<"people">): string {
 }
 
 interface IPubMedLinkProps {
-  person: CollectionEntry<"people">
+  person: CollectionEntry<'people'>
 }
 
 export default function PubMedLink({ person }: IPubMedLinkProps) {

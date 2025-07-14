@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4 (Jul, 2025)
+
+### Added
+
+- Adding support for blog sections and pages.
+
+
 ## 1.3 (Jul, 2025)
 
 ### Changed

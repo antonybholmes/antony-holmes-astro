@@ -1,5 +1,5 @@
+import { cn } from '@/lib/shadcn-utils'
 import { type IDivProps } from '@interfaces/div-props'
-import { cn } from '@lib/class-names'
 
 export const CENTERED_COL_CLS = 'flex flex-col items-center justify-center grow'
 

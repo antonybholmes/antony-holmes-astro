@@ -1,9 +1,9 @@
+import { cn } from '@/lib/shadcn-utils'
 import { BUTTON_MD_H_CLS, BUTTON_XL_H_CLS, FOCUS_INSET_RING_CLS } from '@/theme'
-import { BaseCol } from '@components/layout/base-col'
-import { VCenterRow } from '@components/layout/v-center-row'
 import { WarningIcon } from '@icons/warning-icon'
 import type { IDivProps } from '@interfaces/div-props'
-import { cn } from '@lib/class-names'
+import { BaseCol } from '@layout/base-col'
+import { VCenterRow } from '@layout/v-center-row'
 import { randId } from '@lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import {

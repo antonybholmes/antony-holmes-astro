@@ -1,117 +1,40 @@
 ---
 import ContentLayout from '@/layouts/ContentLayout.astro'
+
 import FormattedDate from '@components/FormattedDate.astro'
 
-import { getCollection, type CollectionEntry } from 'astro:content'
-import fs from 'fs'
-import path from 'path'
-
-/**
- * Recursively search for a file matching `id` with extensions in a base directory.
- * @param baseDir - the root directory to search (e.g. 'src/content/blog')
- * @param id - the id string from Astro content (e.g. '2025/another-post')
- * @param exts - possible extensions (default: ['.md', '.mdx'])
- * @returns full absolute path of the matching file or null if not found
- */
-function findFileById(
-  baseDir: string,
-  id: string,
-  exts = ['.md', '.mdx']
-): string | null {
-  const targetPaths = exts.map(ext => path.join(baseDir, id + ext))
-
-  // Check direct expected paths first
-  for (const p of targetPaths) {
-    if (fs.existsSync(p)) return p
-  }
-
-  // If not found directly, walk the directory recursively
-  function walk(dir: string): string | null {
-    const entries = fs.readdirSync(dir, { withFileTypes: true })
-
-    for (const entry of entries) {
-      const entryPath = path.join(dir, entry.name)
-
-      if (entry.isDirectory()) {
-        const found = walk(entryPath)
-        if (found) return found
-      } else if (exts.some(ext => entry.name === id.split('/').pop() + ext)) {
-        // Match filename ignoring folders? Less reliable.
-        return entryPath
-      }
-    }
-
-    return null
-  }
-
-  return walk(baseDir)
-}
+import { getCollection } from 'astro:content'
 
 // 1. Generate all unique tags for static paths
 export async function getStaticPaths() {
-  /**
-   * Recursively search for a file matching `id` with extensions in a base directory.
-   * @param baseDir - the root directory to search (e.g. 'src/content/blog')
-   * @param id - the id string from Astro content (e.g. '2025/another-post')
-   * @param exts - possible extensions (default: ['.md', '.mdx'])
-   * @returns full absolute path of the matching file or null if not found
-   */
-  function findFileById(
-    baseDir: string,
-    id: string,
-    exts = ['.md', '.mdx']
-  ): string | null {
-    const targetPaths = exts.map(ext => path.join(baseDir, id + ext))
-
-    // Check direct expected paths first
-    for (const p of targetPaths) {
-      if (fs.existsSync(p)) return p
-    }
-
-    // If not found directly, walk the directory recursively
-    function walk(dir: string): string | null {
-      const entries = fs.readdirSync(dir, { withFileTypes: true })
-
-      for (const entry of entries) {
-        const entryPath = path.join(dir, entry.name)
-
-        if (entry.isDirectory()) {
-          const found = walk(entryPath)
-          if (found) return found
-        } else if (exts.some(ext => entry.name === id.split('/').pop() + ext)) {
-          // Match filename ignoring folders? Less reliable.
-          return entryPath
-        }
-      }
-
-      return null
-    }
-
-    return walk(baseDir)
-  }
-
   const posts = await getCollection('blog')
-  const baseDir = path.resolve('src/content/blog')
+  //const baseDir = path.resolve('src/content/blog')
 
-  const postsWithLastModified = posts.map(post => {
-    const filePath = findFileById(baseDir, post.id)
-    if (!filePath) {
-      throw new Error(`File not found for post id: ${post.id}`)
-    }
+  // const postsWithLastModified = posts.map(post => {
+  //   const filePath = findFileById(baseDir, post.id)
+  //   if (!filePath) {
+  //     throw new Error(`File not found for post id: ${post.id}`)
+  //   }
 
-    const stats = fs.statSync(filePath)
-    return {
-      ...post,
-      lastModified: stats.mtime, // or .mtime.toISOString()
-    }
-  })
+  //   const stats = fs.statSync(filePath)
+  //   return {
+  //     ...post,
+  //     lastModified: stats.mtime, // or .mtime.toISOString()
+  //   }
+  // })
 
   // params need to be strings so we convert the year to a string
   // and use a Set to ensure uniqueness
   const yearSet = new Set<string>()
-  for (const post of postsWithLastModified) {
+  for (const post of posts) {
     yearSet.add(post.data.added.getFullYear().toString())
-    yearSet.add(post.lastModified.getFullYear().toString())
+
+    if (post.data.updated) {
+      // if the post has an updated date, add that year as well
+      // to ensure we include posts that were updated in a different year
+      // than they were added
+      yearSet.add(post.data.updated.getFullYear().toString())
+    }
   }
 
   return [...yearSet].map(year => ({
@@ -122,32 +45,32 @@ export async function getStaticPaths() {
 // 2. Get the current tag param from the URL
 const year = Number(Astro.params.year)
 
-const baseDir = path.resolve('src/content/blog')
+//const baseDir = path.resolve('src/content/blog')
 const posts = await getCollection('blog')
 
 // a little inefficient but ensures we get the last modified date
 // for each post based on its file system last modified time
 // but since it is a static site, this only affects the build time
 // and not runtime performance
-const postsWithLastModified = posts.map(post => {
-  const filePath = findFileById(baseDir, post.id)
-  if (!filePath) {
-    throw new Error(`File not found for post id: ${post.id}`)
-  }
+// const postsWithLastModified = posts.map(post => {
+//   const filePath = findFileById(baseDir, post.id)
+//   if (!filePath) {
+//     throw new Error(`File not found for post id: ${post.id}`)
+//   }
 
-  const stats = fs.statSync(filePath)
-  return {
-    ...post,
-    lastModified: stats.mtime, // or .mtime.toISOString()
-  }
-})
+//   const stats = fs.statSync(filePath)
+//   return {
+//     ...post,
+//     lastModified: stats.mtime, // or .mtime.toISOString()
+//   }
+// })
 
 // 3. Filter posts that include the current tag (case-insensitive)
-const filteredPosts = postsWithLastModified
+const filteredPosts = posts
   .filter(
     post =>
       post.data.added.getFullYear() === year ||
-      post.lastModified.getFullYear() === year
+      post.data.updated?.getFullYear() === year
   )
   .sort((a, b) => {
     return b.data.added.getTime() - a.data.added.getTime()

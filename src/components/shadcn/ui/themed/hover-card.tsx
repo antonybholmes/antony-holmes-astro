@@ -1,8 +1,8 @@
 // 'use client'
 
+import { cn } from '@/lib/shadcn-utils'
 import { InfoIcon } from '@components/icons/info-icon'
 import type { IChildrenProps } from '@interfaces/children-props'
-import { cn } from '@lib/class-names'
 import * as HoverCardPrimitive from '@radix-ui/react-hover-card'
 import {
   forwardRef,

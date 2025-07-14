@@ -1,5 +1,5 @@
-import { VCenterRow } from '@components/layout/v-center-row'
 import { Checkbox } from '@components/shadcn/ui/themed/check-box'
+import { VCenterRow } from '@layout/v-center-row'
 
 interface JournalProps {
   index: number

@@ -1,6 +1,6 @@
 import { useClickListener } from '@/hooks/click-listener'
 import { useKeyDownListener } from '@/hooks/keydown-listener'
-import { cn } from '@lib/class-names'
+import { cn } from '@/lib/shadcn-utils'
 import { randId } from '@lib/utils'
 import {
   Children,

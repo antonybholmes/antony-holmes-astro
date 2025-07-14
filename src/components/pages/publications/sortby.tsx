@@ -1,16 +1,16 @@
+import { cn } from '@/lib/shadcn-utils'
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@components/shadcn/ui/themed/radio-group"
-import type { IElementProps } from "@interfaces/element-props"
-import { cn } from "@lib/class-names"
+} from '@components/shadcn/ui/themed/radio-group'
+import type { IElementProps } from '@interfaces/element-props'
 
 const ITEMS = [
-  "Publication Date",
-  "Title",
-  "Journal",
-  "First Author",
-  "Last Author",
+  'Publication Date',
+  'Title',
+  'Journal',
+  'First Author',
+  'Last Author',
 ]
 
 interface SortProps extends IElementProps {
@@ -26,7 +26,7 @@ export function SortOrder({ className }: SortProps) {
       //items={ITEMS}
       //selected={selected}
       //onClick={onClick}
-      className={cn("mt-4 flex flex-col gap-y-1", className)}
+      className={cn('mt-4 flex flex-col gap-y-1', className)}
     >
       <>
         {ITEMS.map((text: string, index: number) => {

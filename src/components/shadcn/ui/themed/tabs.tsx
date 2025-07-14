@@ -1,6 +1,6 @@
+import { cn } from '@/lib/shadcn-utils'
 import { BUTTON_MD_H_CLS, FOCUS_RING_CLS } from '@/theme'
 import type { ITab } from '@components/tabs/tab-provider'
-import { cn } from '@lib/class-names'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { cva, type VariantProps } from 'class-variance-authority'
 
