@@ -83,5 +83,18 @@
     },
     "author": "Antony Holmes",
     "date": "2025-07-14T00:45:50.806Z"
+  },
+  {
+    "version": "1.3",
+    "messages": {
+      "Changed": [
+        {
+          "msg": "Moved sections, years, and tags under blog for better organization",
+          "date": "2025-07-14T03:24:41.731Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2025-07-14T03:24:41.731Z"
   }
 ]

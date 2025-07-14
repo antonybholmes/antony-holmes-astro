@@ -4,6 +4,7 @@
 
 ### Changed
 
+- UI tweaks.
 - Moved sections, years, and tags under blog for better organization.
 
 
