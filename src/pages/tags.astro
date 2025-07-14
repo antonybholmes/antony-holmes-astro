@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/BlogPost.astro'
 import AboutHeroImage from '../assets/blog-placeholder-about.jpg'
-import BaseLayout from '@layouts/BaseLayout.astro'
+import BaseLayout from '@components/layouts/BaseLayout.astro'
 
 import { getCollection } from 'astro:content'
 
@@ -31,7 +31,7 @@ const tags = [...tagMap.keys()].sort()
       {
         tags.map(tag => (
           <li>
-            <a href={`/tags/${tag.toLowerCase()}/`}>
+            <a href={`/blog/tag/${tag.toLowerCase()}/`}>
               {tag} ({tagMap.get(tag).length})
             </a>
           </li>

@@ -11,7 +11,10 @@ import Tags from '@/components/Tags.astro'
 import { Calendar, Dot } from 'lucide-react'
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
-import { ContentDiv } from '@/components/layout/content-div'
+
+import ContentLayout from './ContentLayout.astro'
+import SidebarDiv from '@/components/layout/SidebarDiv.astro'
+import { BaseCol } from '@/components/layout/base-col'
 
 type Props = CollectionEntry<'blog'>['data'] & {
   slug: string
@@ -39,71 +42,65 @@ const {
 const ogImage = `/img/og/${slug}.png`
 
 const hero = heroImage ? heroImage : `/img/blog/${slug}.webp`
-
-console.log('Hero image:', hero)
 ---
 
-<BaseLayout title={title} description={description} tab="Blog">
+<ContentLayout title={title} description={description} tab="Blog">
   <Fragment slot="head">
     <meta property="og:image" content={ogImage} />
   </Fragment>
 
   <!-- <Header slot="header" /> -->
-  <ContentDiv slot="main">
-    <main class="grid grid-cols-4 gap-4">
-      <article class="col-span-3 flex flex-col gap-y-4">
-        <header class="flex flex-col gap-y-2">
-          {
-            hero && (
-              <div class="h-64 w-full overflow-hidden">
-                <img
-                  src={hero}
-                  alt={title}
-                  class="w-full object-cover object-center"
-                  style="height: 100%;"
-                />
-              </div>
-            )
-          }
-
-          <h1>
-            {title}
-          </h1>
-          <VCenterRow className="text-foreground/50 gap-x-2">
-            <VCenterRow className="gap-x-2">
-              <Calendar
-                className="stroke-foreground/40 w-5"
-                strokeWidth={1.5}
+  <SidebarDiv slot="main">
+    <article slot="main" class="flex flex-col gap-y-8">
+      <header class="flex flex-col gap-y-4">
+        {
+          hero && (
+            <div class="h-64 w-full overflow-hidden">
+              <img
+                src={hero}
+                alt={title}
+                class="w-full object-cover object-center"
+                style="height: 100%;"
               />
-              <FormattedDate date={added} />
-            </VCenterRow>
-            <span class="bg-foreground/30 aspect-square h-2 w-2 rounded-full"
+            </div>
+          )
+        }
+
+        <h1>
+          {title}
+        </h1>
+        <VCenterRow
+          className="text-foreground/50 justify-between gap-x-2 text-sm"
+        >
+          <VCenterRow className="gap-x-2">
+            <Calendar className="stroke-foreground/40 w-5" strokeWidth={1.5} />
+            <FormattedDate date={added} />
+
+            <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
             ></span>
-            <p>{minutesRead}</p>
-          </VCenterRow>
+            <span>{minutesRead}</span></VCenterRow
+          >
 
           {
             lastModified && lastModified !== added && (
-              <p class="text-foreground/50">
-                Last updated on <FormattedDate date={lastModified} />
-              </p>
+              <span class="text-foreground/50">
+                Last updated <FormattedDate date={lastModified} />
+              </span>
             )
           }
+        </VCenterRow>
 
-          <Tags tags={tags} />
-        </header>
-        <slot />
-      </article>
+        <Tags tags={tags} />
+      </header>
+      <section class="markdown">
+        <slot name="content" />
+      </section>
+    </article>
 
-      <aside class="col-span-1">
-        <div class="sticky top-20">
-          <!-- <Toc headings={Astro.props.headings} /> -->
-          <TableOfContents client:only="react" />
-          <LatestPosts />
-        </div>
-      </aside>
-    </main></ContentDiv
-  >
-
-  <Footer slot="footer" />
-</BaseLayout>
+    <BaseCol className="sticky top-20 gap-8" slot="side">
+      <!-- <Toc headings={Astro.props.headings} /> -->
+      <TableOfContents client:only="react" />
+      <LatestPosts />
+    </BaseCol>
+  </SidebarDiv>
+</ContentLayout>

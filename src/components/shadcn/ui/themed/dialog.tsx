@@ -1,4 +1,4 @@
-import { VCenterRow } from '@layout/v-center-row'
+import { VCenterRow } from '@components/layout/v-center-row'
 import { cn } from '@lib/class-names'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { cva, type VariantProps } from 'class-variance-authority'

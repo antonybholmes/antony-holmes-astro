@@ -1,10 +1,9 @@
 ---
 import HeaderLink from './HeaderLink.astro'
-import { MENU_ITEMS, SITE_SUBTITLE, SITE_TITLE } from '../../consts'
+import { MENU_ITEMS } from '../../consts'
 import ThemeToggle from '../ThemeToggle.astro'
 import { VCenterRow } from '../layout/v-center-row'
 
-import { BaseCol } from '../layout/base-col'
 import { Logo } from './logo'
 import ContentDiv from '../layout/ContentDiv.astro'
 import { Rss } from 'lucide-react'
@@ -19,8 +18,10 @@ import { Rss } from 'lucide-react'
         <ul class="flex flex-row justify-center gap-x-5" slot="main">
           {
             MENU_ITEMS.map(item => (
-              <li>
-                <HeaderLink href={item.href}>{item.label}</HeaderLink>
+              <li class="block">
+                <HeaderLink aria-label={item.label} href={item.href}>
+                  {item.label}
+                </HeaderLink>
               </li>
             ))
           }

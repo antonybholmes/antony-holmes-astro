@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3 (Jul, 2025)
+
+### Changed
+
+- Moved sections, years, and tags under blog for better organization.
+
+
 ## 1.2 (Jul, 2025)
 
 ### Changed

@@ -1,6 +1,8 @@
 ---
+import ContentLayout from '@/layouts/ContentLayout.astro'
 import FormattedDate from '@components/FormattedDate.astro'
-import BaseLayout from '@layouts/BaseLayout.astro'
+import BaseLayout from '@components/layouts/BaseLayout.astro'
+import { Content } from '@radix-ui/react-dropdown-menu'
 import { getCollection } from 'astro:content'
 
 // 1. Generate all unique tags for static paths
@@ -31,7 +33,7 @@ const filteredPosts = posts.filter(post =>
 )
 ---
 
-<BaseLayout
+<ContentLayout
   title={`Posts tagged with "${tag}"`}
   description={`A collection of posts tagged with "${tag}".`}
 >
@@ -56,4 +58,4 @@ const filteredPosts = posts.filter(post =>
       )
     }
   </main>
-</BaseLayout>
+</ContentLayout>

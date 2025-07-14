@@ -1,4 +1,5 @@
 ---
+import { BaseCol } from '@/components/layout/base-col'
 import education from '../../content/education.json'
 import jobs from '../../content/jobs.json'
 import skills from '../../content/skills.json'
@@ -19,7 +20,7 @@ skills.map((skillset: any) => {
 ---
 
 <ContentLayout title="Resume" tab="Resume">
-  <div slot="main" class="mb-32 flex flex-col gap-y-32">
+  <BaseCol slot="main" className="mb-32 gap-y-32">
     <div>
       <h2 class="text-center text-4xl font-semibold">Skills</h2>
 
@@ -130,5 +131,5 @@ skills.map((skillset: any) => {
         }
       </ul>
     </div>
-  </div>
+  </BaseCol>
 </ContentLayout>

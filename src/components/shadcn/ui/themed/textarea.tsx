@@ -1,5 +1,5 @@
 import { FOCUS_INSET_RING_CLS } from '@/theme'
-import { BaseCol } from '@layout/base-col'
+import { BaseCol } from '@components/layout/base-col'
 import { cn } from '@lib/class-names'
 
 import { BaseRow } from '@components/layout/base-row'

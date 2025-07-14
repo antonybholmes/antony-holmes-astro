@@ -8,15 +8,13 @@ const { href, class: className, ...props } = Astro.props
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '')
 const subpath = pathname.match(/[^\/]+/g)
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '')
-
-console.log(pathname, href, isActive)
 ---
 
 <a
   href={href}
   data-state={isActive ? 'active' : 'inactive'}
   class={cn(
-    'data-[state=active]:font-bold data-[state=active]:text-theme boldable-text-tab',
+    'block data-[state=active]:font-bold data-[state=active]:text-theme boldable-text-tab',
     className
   )}
   {...props}

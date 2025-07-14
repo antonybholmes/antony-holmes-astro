@@ -1,5 +1,5 @@
+import { VCenterCol } from '@components/layout/v-center-col'
 import { SmallVerticalGripIcon } from '@icons/small-vertical-grip-icon'
-import { VCenterCol } from '@layout/v-center-col'
 import { cn } from '@lib/class-names'
 import type { ComponentProps } from 'react'
 import * as ResizablePrimitive from 'react-resizable-panels'

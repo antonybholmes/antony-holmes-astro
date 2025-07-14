@@ -9,7 +9,7 @@
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@lib/*": ["./src/lib/*"],
-      "@layouts/*": ["./src/layouts/*"],
+      "@components/layouts/*": ["./src/layouts/*"],
       "@themed/*": ["./src/components/shadcn/ui/themed/*"],
       "@icons/*": ["./src/components/icons/*"],
       "@interfaces/*": ["./src/interfaces/*"],

@@ -18,7 +18,7 @@ details:
 url: 'https://www.fidelity.com'
 status: added
 title: Fidelity Rewards Credit Card
-slug: fidelity-rewards-credit-card
+
 hero: /assets/posts/opt/credit-cards-1600x800.avif
 authors:
   - Antony Holmes
@@ -36,4 +36,4 @@ My daily card for many years. It does require a Fidelity account for best use, b
 
 It doesn't seem to get much advertising so I don't think a lot of people are aware of it.
 
-*Do you have a Fidelity credit card? What were your experiences?*
+_Do you have a Fidelity credit card? What were your experiences?_

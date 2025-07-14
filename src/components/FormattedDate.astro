@@ -7,8 +7,14 @@ interface Props extends IClassProps {
 }
 
 const { date, className } = Astro.props
+
+const formattedDate = format(date, 'MMM dd')
+const formattedYear = format(date, 'yyyy')
 ---
 
 <time datetime={date.toISOString()} class={className}>
-  {format(date, 'MMM dd, yyyy')}
+  {formattedDate}, <a
+    href={`/blog/year/${formattedYear}`}
+    class="hover:underline">{formattedYear}</a
+  >
 </time>

@@ -4,6 +4,7 @@ import Header from '@components/header/Header.astro'
 import BaseHead from '@components/BaseHead.astro'
 import { type ILayoutProps } from '@interfaces/layout-props'
 import { cn } from '@lib/class-names'
+import { BaseCol } from '@/components/layout/base-col'
 
 interface Props extends ILayoutProps {}
 
@@ -28,7 +29,7 @@ const cls = cn(BODY_CLS, bg)
   <body class={cn(cls, className)}>
     <Header tab={tab} />
 
-    <main class="flex grow flex-col"><slot name="main" /></main>
+    <BaseCol className="flex grow flex-col"><slot name="main" /></BaseCol>
     <!-- <slot name="footer" /> -->
 
     <Footer />

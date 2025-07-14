@@ -6,8 +6,6 @@ import { render } from 'astro:content'
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
 
-  console.log(posts.map(post => post.id))
-
   return posts.map(post => ({
     // flatten slug to the last part of the path
     // e.g. /test/my-post/ becomes /my-post/
@@ -30,5 +28,5 @@ const { Content, remarkPluginFrontmatter, headings } = await render(post)
   lastModified={remarkPluginFrontmatter.lastModified}
   headings={headings}
 >
-  <Content />
+  <Content slot="content" />
 </BlogPost>

@@ -120,12 +120,7 @@ export const MENU_ITEMS = [
     icon: 'projects',
     ariaLabel: 'Projects',
   },
-  {
-    label: 'About',
-    href: '/about',
-    icon: 'about',
-    ariaLabel: 'About',
-  },
+
   {
     label: 'Resume',
     href: '/resume',

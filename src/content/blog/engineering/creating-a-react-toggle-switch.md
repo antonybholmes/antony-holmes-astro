@@ -5,7 +5,7 @@ categories:
 type: post
 status: added
 title: Creating a React toggle switch using SVG
-slug: creating-a-react-toggle
+
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
@@ -30,7 +30,7 @@ This is a tutorial on making an animated toggle switch using React, Tailwind and
 
 I work with Typescript (I dislike Javascript's lack of a type checking system so I think TS is an acceptable superset of the language).
 
-# Interfaces
+## Interfaces
 
 First let's setup some interfaces to describe the parameters the toggle can accept. You may need to modify this to meet your needs. I like to use separate, reusable interfaces, but you could easily combine these into one file.
 
@@ -46,7 +46,7 @@ export interface IClassProps {
 ```typescript
 // children-props.ts
 
-import IClassProps from "./class-props"
+import IClassProps from './class-props'
 
 export interface IChildrenProps extends IClassProps {
   children?: any
@@ -58,7 +58,7 @@ Put everything together to make a toggle props interface. We want to pass if the
 ```typescript
 // toggle-props.ts
 
-import IChildrenProps from "./children-props"
+import IChildrenProps from './children-props'
 
 export interface IToggleProps extends IChildrenProps {
   index?: number
@@ -67,7 +67,7 @@ export interface IToggleProps extends IChildrenProps {
 }
 ```
 
-# SCSS/CSS
+## SCSS/CSS
 
 I like to standardize animation timings so I created a simple global CSS class that applies default tailwind animation properties to a class. I like to use 300ms timings which I find the most aesthetically pleasing. You can see animations move smoothly, but without taking so long that the UI feels sluggish.
 
@@ -103,7 +103,7 @@ module.exports = {
 }
 ```
 
-# The Toggle
+## The Toggle
 
 The toggle is a simple component containing the SVG and some event handling. The SVG which consists of a rounded rectangle with a circular switch on top. The circular switch has animated movement and the rounded rect changes color depending on whether the toggle is on or not. The toggle is scalable, but the look and feel was based on using Tailwind's w-9 width property.
 

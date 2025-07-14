@@ -1,37 +1,34 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUBTITLE } from '../consts'
-import SearchPosts from '@/components/search-posts'
+
 import { ThemeLink } from '@/components/link/theme-link'
-import BaseLayout from '@/layouts/BaseLayout.astro'
-import ContentDiv from '@/components/layout/ContentDiv.astro'
+
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { BaseCol } from '@/components/layout/base-col'
+import ContentLayout from '@/layouts/ContentLayout.astro'
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <ContentDiv slot="main">
-    <Fragment slot="main">
-      <VCenterRow className="justify-between py-2">
-        <BaseCol>
-          <h1 class="font-bold">
-            <a href="/" class="text-foreground hover:text-primary">
-              {SITE_TITLE}
-            </a>
-          </h1>
+<ContentLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <BaseCol className="gap-y-8" slot="main">
+    <VCenterRow className="justify-between py-3">
+      <BaseCol>
+        <h1 class="font-bold">
+          <a href="/" class="text-foreground hover:text-primary">
+            {SITE_TITLE}
+          </a>
+        </h1>
 
-          <h2 class="text-foreground/50">
-            {SITE_SUBTITLE}
-          </h2>
-        </BaseCol>
+        <h2 class="text-foreground/30">
+          {SITE_SUBTITLE}
+        </h2>
+      </BaseCol>
 
-        <div class="h-42 w-42 overflow-hidden rounded-full">
-          <img
-            src="/img/antony-holmes-1024x1024.webp"
-            alt="Antony Holmes Logo"
-          />
-        </div>
-      </VCenterRow>
+      <div class="h-42 w-42 overflow-hidden rounded-full">
+        <img src="/img/antony-holmes-1024x1024.webp" alt="Antony Holmes Logo" />
+      </div>
+    </VCenterRow>
 
+    <section>
       <p>
         Hi there! I'm Antony and I like making software. That's me posing by the
         Hudson River for no particular reason, except maybe to look cool wearing
@@ -68,8 +65,6 @@ import { BaseCol } from '@/components/layout/base-col'
         My life story probably won't be optioned, but if it is, I hope the movie
         contains the music of Kraftwerk.
       </p>
-
-      <SearchPosts client:only="react" /></Fragment
-    >
-  </ContentDiv>
-</BaseLayout>
+    </section>
+  </BaseCol>
+</ContentLayout>

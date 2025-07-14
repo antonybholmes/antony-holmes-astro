@@ -6,7 +6,6 @@ categories:
 type: post
 status: added
 title: New website design!
-slug: new-website-design
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes

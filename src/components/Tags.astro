@@ -12,11 +12,11 @@ const sortedTags =
 ---
 
 <ul class="flex flex-row flex-wrap items-center gap-2">
-  <li><Tag className="stroke-foreground/50" /></li>
+  <li><Tag className="stroke-foreground/50 h-5 w-5" /></li>
   {
     sortedTags.map(tag => (
-      <li class="bg-theme/75 hover:bg-theme/100 trans-color rounded-theme px-3 py-1.5 text-sm font-bold text-white shadow-md">
-        <a href={`/tag/${tag}`}>#{tag}</a>
+      <li class="bg-theme/75 hover:bg-theme/100 trans-color rounded-theme px-3 py-1 text-sm font-bold text-white">
+        <a href={`/blog/tag/${tag}`}>#{tag}</a>
       </li>
     ))
   }

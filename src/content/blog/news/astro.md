@@ -5,7 +5,7 @@ categories:
 type: post
 status: draft
 title: Experiments with Astro
-slug: experiments-with-astro
+
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
