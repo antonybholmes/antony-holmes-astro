@@ -97,4 +97,45 @@ export const NO_DIALOG: IDialogParams = { id: '' }
 
 export const DEFAULT_DATE_FORMAT = 'MM/dd/yyyy'
 
-export const SITE_URL = 'https://edb.rdf-lab.org'
+export const SITE_URL = 'https://antonyholmes.dev'
+
+export const TARGET_BLANK = '_blank'
+
+export const MENU_ITEMS = [
+  {
+    label: TEXT_HOME,
+    href: '/',
+    icon: 'home',
+    ariaLabel: 'Home',
+  },
+  {
+    label: 'Blog',
+    href: '/blog',
+    icon: 'blog',
+    ariaLabel: 'Blog',
+  },
+  {
+    label: 'Projects',
+    href: '/projects',
+    icon: 'projects',
+    ariaLabel: 'Projects',
+  },
+  {
+    label: 'About',
+    href: '/about',
+    icon: 'about',
+    ariaLabel: 'About',
+  },
+  {
+    label: 'Resume',
+    href: '/resume',
+    icon: 'resume',
+    ariaLabel: 'Resume',
+  },
+  {
+    label: 'Publications',
+    href: '/publications',
+    icon: 'publications',
+    ariaLabel: 'Publications',
+  },
+]

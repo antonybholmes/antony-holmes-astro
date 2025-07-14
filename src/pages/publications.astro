@@ -1,0 +1,16 @@
+---
+import { PublicationsPage } from '@components/pages/publications/publications-page'
+
+import ContentLayout from '@layouts/ContentLayout.astro'
+import { getSelectedPublications } from '@lib/api'
+
+const publications = getSelectedPublications('antony-holmes')
+---
+
+<ContentLayout title="Publications">
+  <PublicationsPage
+    publications={publications}
+    client:only="react"
+    slot="main"
+  />
+</ContentLayout>

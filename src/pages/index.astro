@@ -1,51 +1,75 @@
 ---
-import BaseHead from '../components/BaseHead.astro'
-import Header from '../components/Header.astro'
-import Footer from '../components/Footer.astro'
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts'
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_SUBTITLE } from '../consts'
 import SearchPosts from '@/components/search-posts'
 import { ThemeLink } from '@/components/link/theme-link'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
+import { VCenterRow } from '@/components/layout/v-center-row'
+import { BaseCol } from '@/components/layout/base-col'
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main slot="main" class="grow">
-    <p>
-      Hi there! I'm Antony and I like making software. That's me in the photo,
-      posing by the Hudson River for no particular reason, except maybe to look
-      cool wearing Risky Business sunglasses.
-    </p>
+  <ContentDiv slot="main">
+    <Fragment slot="main">
+      <VCenterRow className="justify-between py-2">
+        <BaseCol>
+          <h1 class="font-bold">
+            <a href="/" class="text-foreground hover:text-primary">
+              {SITE_TITLE}
+            </a>
+          </h1>
 
-    <p>
-      I'm a researcher and sofware engineer in New York City who's learned how
-      to do a few cool things with Java, Python, C++, Go, React, Next.js, and
-      Astro, some of which were used to make what you're looking at right now.
-    </p>
+          <h2 class="text-foreground/50">
+            {SITE_SUBTITLE}
+          </h2>
+        </BaseCol>
 
-    <p>
-      I made this site with love and to try and get high{' '}
-      <ThemeLink href="https://pagespeed.web.dev/" data-underline={true}
-        >Lighthouse</ThemeLink
-      >{' '}
-      scores. I think I mostly succeeded.
-    </p>
+        <div class="h-42 w-42 overflow-hidden rounded-full">
+          <img
+            src="/img/antony-holmes-1024x1024.webp"
+            alt="Antony Holmes Logo"
+          />
+        </div>
+      </VCenterRow>
 
-    <p>
-      My blog covers an assortment of topics, mostly on tech, finance and
-      whatever else takes my fancy.
-    </p>
+      <p>
+        Hi there! I'm Antony and I like making software. That's me posing by the
+        Hudson River for no particular reason, except maybe to look cool wearing
+        Risky Business sunglasses.
+      </p>
 
-    <p>
-      I have an aptly named publications page where you can view all of the
-      scientific literature I have written, primarily focused on cancer
-      genetics.
-    </p>
+      <p>
+        I'm a researcher and sofware engineer in New York City who's learned how
+        to do a few nifty things with Java, Python, C++, Go, React, Next.js, and
+        Astro, some of which were used to make the very site you're looking at
+        right now.
+      </p>
 
-    <p>
-      My life story probably won't be optioned, but if it is, I hope the movie
-      contains the music of Kraftwerk.
-    </p>
+      <p>
+        I made this site with love and to try and get high{' '}
+        <ThemeLink href="https://pagespeed.web.dev/" data-underline={true}
+          >Lighthouse</ThemeLink
+        >{' '}
+        scores. I think I mostly succeeded.
+      </p>
 
-    <SearchPosts client:only="react" />
-  </main>
+      <p>
+        My blog covers an assortment of topics, mostly on tech, finance and
+        whatever else takes my fancy.
+      </p>
+
+      <p>
+        I have an aptly named publications page where you can view all of the
+        scientific literature I have written, primarily focused on cancer
+        genetics.
+      </p>
+
+      <p>
+        My life story probably won't be optioned, but if it is, I hope the movie
+        contains the music of Kraftwerk.
+      </p>
+
+      <SearchPosts client:only="react" /></Fragment
+    >
+  </ContentDiv>
 </BaseLayout>

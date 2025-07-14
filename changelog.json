@@ -70,5 +70,18 @@
     },
     "author": "Antony Holmes",
     "date": "2025-07-13T02:42:09.280Z"
+  },
+  {
+    "version": "1.2",
+    "messages": {
+      "Changed": [
+        {
+          "msg": "Lots of fixes",
+          "date": "2025-07-14T00:45:50.806Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2025-07-14T00:45:50.806Z"
   }
 ]

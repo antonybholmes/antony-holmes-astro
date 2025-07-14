@@ -1,0 +1,16 @@
+---
+import { cn } from '@lib/class-names'
+
+import { BaseCol } from './base-col'
+import type { IClassProps } from '@/interfaces/class-props'
+
+interface Props extends IClassProps {}
+
+const { className } = Astro.props
+---
+
+<div class={cn('grid grid-cols-1 md:grid-cols-5 grow', className)}>
+  <BaseCol className="hidden md:flex"><slot name="left" /></BaseCol>
+  <BaseCol className="col-span-3"><slot name="main" /></BaseCol>
+  <BaseCol className="hidden md:flex"><slot name="right" /></BaseCol>
+</div>

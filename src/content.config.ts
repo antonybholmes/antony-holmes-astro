@@ -10,10 +10,11 @@ const blog = defineCollection({
       // Transform string to Date object
       title: z.string(),
       description: z.string(),
+      authors: z.array(z.string()).optional(),
       // Transform string to Date object
       added: z.coerce.date(),
       //updatedDate: z.coerce.date().optional(),
-      heroImage: image().optional(),
+      heroImage: z.string().optional(), //image().optional(),
       tags: z.array(z.string()).optional(),
       sections: z.array(z.string()).optional(),
     }),
@@ -27,6 +28,7 @@ const notes = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
+      authors: z.array(z.string()).optional(),
       // Transform string to Date object
       added: z.coerce.date(),
       //updatedDate: z.coerce.date().optional(),

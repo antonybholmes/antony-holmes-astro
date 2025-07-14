@@ -1,7 +1,15 @@
+---
+import { Moon, Sun } from 'lucide-react'
+---
+
 <theme-toggle>
-  <button id="toggle-theme" aria-label="Toggle Theme">
-    <span class="dark:hidden">🌞 Light</span>
-    <span class="hidden dark:inline">🌙 Dark</span>
+  <button
+    id="toggle-theme"
+    aria-label="Toggle Theme"
+    class="flex aspect-square h-5 w-5 items-center justify-center"
+  >
+    <Sun className="dark:hidden" />
+    <Moon className="hidden dark:inline" />
   </button>
 </theme-toggle>
 

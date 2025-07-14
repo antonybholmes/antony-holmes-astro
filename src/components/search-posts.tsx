@@ -120,8 +120,13 @@ export default function SearchReact() {
         onTextChange={v => setQuery(v)}
       >
         {results.map(result => (
-          <li key={result.id}>
-            <a href={`/blog/${result.id}`}>{result.title}</a>
+          <li key={result.id} className="w-full">
+            <a
+              href={`/blog/${result.id}`}
+              className="hover:bg-muted/50 p-1.5 w-full block"
+            >
+              {result.title}
+            </a>
           </li>
         ))}
       </Autocomplete>

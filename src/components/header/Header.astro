@@ -1,42 +1,31 @@
 ---
 import HeaderLink from './HeaderLink.astro'
-import { SITE_SUBTITLE, SITE_TITLE } from '../consts'
-import ThemeToggle from './ThemeToggle.astro'
-import { VCenterRow } from './layout/v-center-row'
-import { ContentDiv } from './layout/content-div'
-import { BaseCol } from './layout/base-col'
+import { MENU_ITEMS, SITE_SUBTITLE, SITE_TITLE } from '../../consts'
+import ThemeToggle from '../ThemeToggle.astro'
+import { VCenterRow } from '../layout/v-center-row'
+
+import { BaseCol } from '../layout/base-col'
+import { Logo } from './logo'
+import ContentDiv from '../layout/ContentDiv.astro'
+import { Rss } from 'lucide-react'
 ---
 
-<header>
-  <ContentDiv>
-    <VCenterRow className="justify-between py-2">
-      <BaseCol>
-        <h1 class="font-bold">
-          <a href="/" class="text-foreground hover:text-primary">
-            {SITE_TITLE}
-          </a>
-        </h1>
+<header class="bg-background/70 sticky top-0 z-20 py-2 backdrop-blur-md">
+  <nav>
+    <ContentDiv>
+      <ContentDiv slot="main" className="items-center">
+        <Logo slot="left" />
 
-        <h2 class="text-foreground/50">
-          {SITE_SUBTITLE}
-        </h2>
-      </BaseCol>
-
-      <div class="h-42 w-42 overflow-hidden rounded-full">
-        <img src="/img/antony-holmes-1024x1024.webp" alt="Antony Holmes Logo" />
-      </div>
-    </VCenterRow>
-  </ContentDiv>
-</header>
-<nav class="bg-body/50 sticky top-0 z-20 py-4 backdrop-blur-md">
-  <ContentDiv>
-    <VCenterRow className="justify-center">
-      <VCenterRow className="gap-x-4">
-        <HeaderLink href="/">Home</HeaderLink>
-        <HeaderLink href="/blog">Blog</HeaderLink>
-        <HeaderLink href="/about">About</HeaderLink>
-      </VCenterRow>
-      <!-- <div class="social-links">
+        <ul class="flex flex-row justify-center gap-x-5" slot="main">
+          {
+            MENU_ITEMS.map(item => (
+              <li>
+                <HeaderLink href={item.href}>{item.label}</HeaderLink>
+              </li>
+            ))
+          }
+        </ul>
+        <!-- <div class="social-links">
         <a href="https://m.webtoo.ls/@astro" target="_blank">
           <span class="sr-only">Follow Astro on Mastodon</span>
           <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
@@ -65,7 +54,12 @@ import { BaseCol } from './layout/base-col'
           >
         </a>
       </div> -->
-      <!-- <ThemeToggle /> -->
-    </VCenterRow>
-  </ContentDiv>
-</nav>
+
+        <VCenterRow slot="right" className="justify-end gap-x-2">
+          <ThemeToggle />
+          <a href="/rss.xml"><Rss className="h-5 w-5" /></a>
+        </VCenterRow>
+      </ContentDiv>
+    </ContentDiv>
+  </nav>
+</header>

@@ -1,0 +1,17 @@
+---
+import type { ILayoutProps } from '@interfaces/layout-props'
+import BaseLayout from './BaseLayout.astro'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
+
+export interface Props extends ILayoutProps {
+  contentClassName?: string
+}
+
+let { title, tab, className = 'py-8' } = Astro.props
+---
+
+<BaseLayout title={title} tab={tab} className={className}>
+  <ContentDiv slot="main">
+    <slot name="main" slot="main" />
+  </ContentDiv>
+</BaseLayout>

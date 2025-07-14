@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2 (Jul, 2025)
+
+### Changed
+
+- Lots of fixes.
+
+
 ## 1.1 (Jul, 2025)
 
 ### Added

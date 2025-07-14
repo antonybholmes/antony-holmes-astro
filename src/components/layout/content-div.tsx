@@ -2,7 +2,7 @@ import { cn } from '@lib/class-names'
 
 import type { IDivProps } from '@interfaces/div-props'
 import { Children } from 'react'
-import { HCenterRow } from './h-center-row'
+import { BaseCol } from './base-col'
 
 export function ContentDiv({ ref, className, children, ...props }: IDivProps) {
   const c = Children.toArray(children)
@@ -12,16 +12,14 @@ export function ContentDiv({ ref, className, children, ...props }: IDivProps) {
   }
 
   return (
-    <HCenterRow
+    <div
       ref={ref}
-      className={cn('px-2 min-h-0 grow', className)}
+      className={cn('grid grid-cols-1 md:grid-cols-5', className)}
       {...props}
     >
-      {c.length > 1 && <div>{c[0]}</div>}
-      <div className="w-9/10 lg:w-3/5 min-h-0">
-        {c.length > 1 ? c[1] : c[0]}
-      </div>
-      {c.length > 1 && <div>{c.length > 2 && c[2]}</div>}
-    </HCenterRow>
+      <BaseCol className="hidden md:flex">{c.length > 1 && c[0]}</BaseCol>
+      <BaseCol className="col-span-3">{c.length > 1 ? c[1] : c[0]}</BaseCol>
+      <BaseCol className="hidden md:flex">{c.length > 2 && c[2]}</BaseCol>
+    </div>
   )
 }

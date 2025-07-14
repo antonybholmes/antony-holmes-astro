@@ -1,0 +1,134 @@
+---
+import education from '../../content/education.json'
+import jobs from '../../content/jobs.json'
+import skills from '../../content/skills.json'
+import volunteer from '../../content/volunteer.json'
+import ContentLayout from '../layouts/ContentLayout.astro'
+
+const skillList: any[] = []
+
+skills.map((skillset: any) => {
+  skillset.skills
+    .sort((a: { name: string }, b: { name: string }) =>
+      a.name.localeCompare(b.name)
+    )
+    .map((skill: any) => {
+      skillList.push(skill)
+    })
+})
+---
+
+<ContentLayout title="Resume" tab="Resume">
+  <div slot="main" class="mb-32 flex flex-col gap-y-32">
+    <div>
+      <h2 class="text-center text-4xl font-semibold">Skills</h2>
+
+      <ul
+        class="mt-16 grid grid-cols-1 gap-x-4 gap-y-4 text-sm md:grid-cols-3 xl:grid-cols-4"
+      >
+        {
+          skillList.map(skill => {
+            return (
+              <li class="trans-color rounded-xl bg-indigo-400 bg-gradient-to-br px-4 py-8 text-white hover:bg-indigo-500">
+                <h3 class="font-semibold">{skill.name}</h3>
+                <p>{skill.details.sort().join(', ')}</p>
+              </li>
+            )
+          })
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-center text-4xl font-semibold">Experience</h2>
+      <ul class="mt-16 flex flex-col gap-y-8">
+        {
+          jobs.map(job => (
+            <li>
+              <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
+                <header class="mt-4">
+                  <h3 class="font-semibold">{job.title}</h3>
+                  <h4 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    {job.company}
+                  </h4>
+                  <h4 class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                    {job.date}
+                  </h4>
+                </header>
+                <div class="trans-300 transition-color col-span-3 rounded-2xl bg-gray-100 p-6 hover:bg-gray-200 lg:p-10 dark:bg-white/10">
+                  <p>{job.overview}</p>
+                  <ul class="mt-4 ml-6 flex list-disc flex-col gap-y-2">
+                    {job.details.map(detail => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-center text-4xl font-semibold">Volunteer Work</h2>
+      <ul class="mt-16 flex flex-col gap-y-8">
+        {
+          volunteer.map(job => (
+            <li>
+              <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
+                <header class="mt-4">
+                  <h3 class="font-semibold">{job.title}</h3>
+                  <h4 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                    {job.company}
+                  </h4>
+                  <h4 class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                    {job.date}
+                  </h4>
+                </header>
+                <div class="trans-300 transition-color col-span-3 rounded-2xl bg-gray-100 p-8 hover:bg-gray-200 dark:bg-white/10">
+                  <ul class="ml-6 flex list-disc flex-col gap-y-2">
+                    {job.details.map(detail => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-center text-4xl font-semibold">Education</h2>
+
+      <ul class="mt-16 flex flex-col gap-y-4">
+        {
+          education.map(degree => (
+            <li>
+              <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
+                <div />
+                <div class="trans-300 transition-color border-border hover:bg-theme/5 col-span-3 h-full w-full rounded-2xl border px-8 py-12">
+                  <header>
+                    <h3 class="text-xl font-semibold">{degree.title}</h3>
+                    {/* {degree.date !== '' && (
+      <h3 class="degree-date">{degree.date}</h3>
+      )} */}
+                    <h4 class="font-light">{degree.school}</h4>
+                  </header>
+
+                  <ul class="mt-2 text-sm text-gray-500">
+                    {degree.details.map(detail => (
+                      <li>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</ContentLayout>

@@ -146,7 +146,7 @@
  */
 
 :root {
-  --color-body: oklch(0.985 0.002 247.839);
+  --color-body: white;
   --color-background: white;
   --color-foreground: oklch(27.8% 0.033 256.848);
   --color-card: white;
@@ -267,6 +267,11 @@ h5 {
 h6 {
   @apply text-sm font-bold;
 }
+
+p {
+  @apply mb-2;
+}
+
 strong,
 b {
   font-weight: 700;
@@ -367,4 +372,22 @@ input[type='search']::-webkit-search-cancel-button {
 
 .trans-color {
   @apply trans-300 transition-colors;
+}
+
+.boldable-text-tab {
+  @apply text-nowrap;
+}
+
+/* // we use this on text tabs to keep the width fixed
+// when we bold or debold the text by duplicating
+// the label as a hidden bolded element to force
+// the width of the element. The tab uses a flex col
+// layout so the hidden element is rendered under
+// the real label, but since it has a height of 0
+// and is hidden, it occupies no vertical space
+// but keeps its width
+// https://css-tricks.com/bold-on-hover-without-the-layout-shift/  */
+.boldable-text-tab::after {
+  @apply pointer-events-none invisible flex h-0 flex-col overflow-hidden font-bold select-none;
+  content: attr(aria-label);
 }
