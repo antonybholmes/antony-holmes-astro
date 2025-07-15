@@ -19,12 +19,12 @@ export const PageTitle = ({
   subClassName,
 }: IProps) => (
   <header className={cn('flex flex-col gap-y-1', className)}>
-    {superTitle && <h3 className="text-lg font-normal">{superTitle}</h3>}
+    {superTitle && <h3 className="font-normal">{superTitle}</h3>}
 
-    <h1 className="text-4xl font-semibold capitalize">{title}</h1>
+    <h1 className="capitalize">{title}</h1>
 
     {subTitle && (
-      <h2 className={cn('text-lg font-normal', subClassName)}>{subTitle}</h2>
+      <h2 className={cn('font-normal', subClassName)}>{subTitle}</h2>
     )}
   </header>
 )

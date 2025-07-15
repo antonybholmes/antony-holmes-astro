@@ -2,17 +2,49 @@
 import type { ILayoutProps } from '@interfaces/layout-props'
 import BaseLayout from './BaseLayout.astro'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
+import { BaseCol } from '@/components/layout/base-col'
+import { PageTitle } from '@/components/page-title'
+import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
+import { Breadcrumb } from '@/components/breadcrumb'
 
-export interface Props extends ILayoutProps {
-  contentClassName?: string
+export interface Props extends ILayoutProps, ICrumbProps {
+  showTitle?: boolean
+  subTitle?: string
+  superTitle?: string
 }
 
-let { title, tab, className } = Astro.props
+let {
+  title,
+  showTitle,
+  subTitle,
+  superTitle,
+  tab,
+  crumbs,
+  showCrumbs,
+  className,
+} = Astro.props
+
+if (!crumbs) {
+  crumbs = createCrumbs(Astro.url.pathname)
+}
 ---
 
 <BaseLayout title={title} tab={tab} className={className}>
   <slot name="head" slot="head" />
   <ContentDiv slot="main" className="mt-8">
-    <slot name="main" slot="main" />
+    <BaseCol slot="main" className="gap-y-8">
+      {
+        showTitle && (
+          <PageTitle
+            title={title}
+            subTitle={subTitle}
+            superTitle={superTitle}
+          />
+        )
+      }
+      {showCrumbs && <Breadcrumb crumbs={crumbs} />}
+
+      <slot name="main" />
+    </BaseCol>
   </ContentDiv>
 </BaseLayout>

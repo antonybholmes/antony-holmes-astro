@@ -4,16 +4,16 @@ import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
 
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getPostSectionMap, getSortedPosts } from '@/lib/astro/post'
-import { paginate, type PaginationType } from '@/lib/paginate'
+import {
+  paginate,
+  type IPaginationProps,
+  type PaginationType,
+} from '@/lib/paginate'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 
-interface Props {
-  type: PaginationType
+interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
   title: string
   root: string
-  page: number
-  pages: number
-  data: CollectionEntry<'blog'>[]
 }
 
 export async function getStaticPaths() {

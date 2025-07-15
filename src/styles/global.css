@@ -268,10 +268,6 @@ h6 {
   @apply text-sm font-bold;
 }
 
-p {
-  @apply mb-2;
-}
-
 strong,
 b {
   font-weight: 700;

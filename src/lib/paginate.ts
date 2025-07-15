@@ -4,17 +4,19 @@ export type AstroPage = { props: any; params: any }
 
 export type PaginationType = 'posts' | 'post'
 
+export interface IPaginationProps<T> {
+  type: PaginationType
+  page: number
+  pages: number
+  data: T[]
+}
+
 export function paginate<T>(
   data: T[],
   slugRoot: string = ''
 ): {
   params: { slug?: string }
-  props: {
-    type: PaginationType
-    page: number
-    pages: number
-    data: T[]
-  }
+  props: IPaginationProps<T>
 }[] {
   const paths = []
 

@@ -1,0 +1,78 @@
+---
+import { PostsPage } from '@/components/posts/posts-page'
+import ContentLayout from '@/layouts/ContentLayout.astro'
+import { getSortedPosts } from '@/lib/astro/post'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
+import { paginate, type IPaginationProps } from '@/lib/paginate'
+import type { IPost } from '@/lib/post'
+
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
+  title: string
+  root: string
+}
+
+// 1. Generate all unique tags for static paths
+export async function getStaticPaths() {
+  const posts = await getSortedPosts()
+
+  // params need to be strings so we convert the year to a string
+  // and use a Set to ensure uniqueness
+  const yearSet = new Set<number>()
+  for (const post of posts) {
+    yearSet.add(post.data.added.getFullYear())
+
+    if (post.data.updated) {
+      // if the post has an updated date, add that year as well
+      // to ensure we include posts that were updated in a different year
+      // than they were added
+      yearSet.add(post.data.updated.getFullYear())
+    }
+  }
+
+  let paths: {
+    params: { slug?: string }
+    props: Props
+  }[] = []
+
+  for (const year of yearSet) {
+    const slug = year.toString()
+    const filteredPosts = posts
+      .filter(
+        post =>
+          post.data.added.getFullYear() === year ||
+          post.data.updated?.getFullYear() === year
+      )
+      .sort((a, b) => {
+        return b.data.added.getTime() - a.data.added.getTime()
+      })
+
+    paths = paths.concat(
+      paginate(filteredPosts, slug).map(p => ({
+        ...p,
+        props: {
+          ...p.props,
+          title: `Posts from ${year}`,
+          showTitle: true,
+          root: `/blog/year/${slug}`,
+        },
+      }))
+    )
+  }
+
+  return paths
+}
+
+const { title, page, root, pages, data } = Astro.props
+---
+
+<ContentLayout title={title} showTitle={true} tab="Blog">
+  <PostsPage
+    posts={data as IPost[]}
+    page={page}
+    pages={pages}
+    root={root}
+    slot="main"
+  />
+</ContentLayout>

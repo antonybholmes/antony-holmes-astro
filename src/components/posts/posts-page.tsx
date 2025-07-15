@@ -19,7 +19,7 @@ export function PostsPage({
   const restPosts = posts.slice(6)
 
   return (
-    <BaseCol className=" gap-y-16">
+    <BaseCol className="gap-y-16">
       <HeroPosts posts={heroPosts} page={0} pages={0} />
 
       {/* <HeadPost post={heroPost} /> */}

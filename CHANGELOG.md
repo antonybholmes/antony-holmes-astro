@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added headings and breadcrumb support.
 - Added some more quotes.
 - Added more complex blog layours.
 - Adding support for blog sections and pages.
