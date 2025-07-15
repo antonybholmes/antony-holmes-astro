@@ -105,7 +105,7 @@ export function NumericalInput({
     intervalRef.current = setInterval(
       () => updateValue(delta),
       UPDATE_INTERVAL_MS
-    )
+    ) as NodeJS.Timeout
   }
 
   function stopUpdating() {

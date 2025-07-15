@@ -108,6 +108,10 @@
         {
           "msg": "Adding support for blog sections and pages.",
           "date": "2025-07-14T22:40:52.737Z"
+        },
+        {
+          "msg": "Added more complex blog layours",
+          "date": "2025-07-15T03:52:45.509Z"
         }
       ]
     },

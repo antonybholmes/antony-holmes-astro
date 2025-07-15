@@ -1,9 +1,10 @@
 ---
-import { PostsPage } from "@components/posts/posts-page"
-import { RECORDS_PER_PAGE } from "@consts"
-import ContentLayout from "@layouts/ContentLayout.astro"
-import { getSortedPosts } from "@lib/astro/post"
-import { getPageCount, getPageItems } from "@lib/paginate"
+import { PostsPage } from '@components/posts/posts-page'
+import { RECORDS_PER_PAGE } from '@/consts'
+import ContentLayout from '@layouts/ContentLayout.astro'
+import { getSortedPosts } from '@lib/astro/post'
+import { getPageCount, getPageItems } from '@lib/paginate'
+import type { IPost } from '@/lib/post'
 
 const allPosts = await getSortedPosts()
 
@@ -14,7 +15,7 @@ const posts = getPageItems(allPosts, 0, RECORDS_PER_PAGE)
 
 <ContentLayout title="Latest" showTitle={false}>
   <PostsPage
-    posts={posts}
+    posts={posts as IPost[]}
     page={0}
     pages={pages}
     root="/blog/latest"
