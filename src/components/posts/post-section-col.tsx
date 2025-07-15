@@ -18,7 +18,7 @@ interface IProps extends IClassProps {
 }
 
 export function PostSectionCol({ section, href, postMap }: IProps) {
-  const [_section, setSection] = useState('')
+  const [_section, setSection] = useState(section)
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export function PostSectionCol({ section, href, postMap }: IProps) {
 
   return (
     <PostCol
-      title={formatSection(_section)}
+      title={'Popular'}
       href={href}
       posts={posts ?? []}
       page={0}
@@ -37,8 +37,8 @@ export function PostSectionCol({ section, href, postMap }: IProps) {
       showSectionLinks={false}
     >
       <DropdownMenu open={open} onOpenChange={setOpen}>
-        <DropdownMenuTrigger className="flex flex-row items-center gap-x-1 text-xs">
-          <span>All categories</span>
+        <DropdownMenuTrigger className="flex flex-row items-center gap-x-1 text-sm">
+          <span>{_section}</span>
           <ChevronRightIcon
             data-open={open}
             className="data-[open=false]:rotate-90 data-[open=true]:-rotate-90 transition-all trans-500"

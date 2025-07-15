@@ -1,8 +1,6 @@
 ---
 import { BaseCol } from '@/components/layout/base-col'
 import type { IPost } from '@/lib/post'
-import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
-import { BaseLink } from '@components/link/base-link'
 import { HeroPosts } from '@components/posts/hero-posts'
 import { PostSectionCol } from '@/components/posts/post-section-col'
 import { PostCol } from '@components/posts/post-col'
@@ -10,6 +8,7 @@ import { PostTwoCol } from '@components/posts/post-two-col'
 import ContentLayout from '@layouts/ContentLayout.astro'
 import { getPostSectionMap, getSortedPosts } from '@lib/astro/post'
 import { getPageCount } from '@lib/paginate'
+import { ArrowLink } from '@/components/link/arrow-link'
 
 const allPosts = await getSortedPosts()
 
@@ -28,24 +27,21 @@ const news = allPosts.filter(post =>
     <section class="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-12">
       <PostCol
         title="Latest"
+        href="/blog/latest"
         posts={allPosts as IPost[]}
         page={0}
         pages={pages}
       >
-        <BaseLink
+        <ArrowLink
           href="/blog/latest"
-          data-underline={true}
-          className="trans-color group hover:text-primary-color data-[underline=true]:hover:decoration-primary-color inline-flex flex-row gap-x-1 text-xs"
-          ><span>View all</span>
-          <ChevronRightIcon
-            stroke="stroke-[2px] stroke-foreground group-hover:stroke-primary-color"
-          />
-        </BaseLink>
+          className="hover:text-theme trans-color text-sm"
+          stroke="stroke-foreground group-hover:stroke-theme"
+          >View all</ArrowLink
+        >
       </PostCol>
 
       <PostSectionCol
-        section="Engineering"
-        href="/blog/engineering"
+        section="All categories"
         postMap={postMap}
         client:only="react"
       />
@@ -59,14 +55,10 @@ const news = allPosts.filter(post =>
       pages={pages}
       showSectionLinks={false}
     >
-      <BaseLink
+      <ArrowLink
         href="/blog/news"
-        data-underline={true}
-        className="trans-color group hover:text-primary-color data-[underline=true]:hover:decoration-primary-color inline-flex flex-row gap-x-1 text-xs"
-        ><span>More news</span>
-        <ChevronRightIcon
-          stroke="stroke-[2px] stroke-foreground group-hover:stroke-primary-color"
-        /></BaseLink
+        className="hover:text-theme trans-color text-sm"
+        stroke="stroke-foreground group-hover:stroke-theme">More news</ArrowLink
       >
     </PostTwoCol>
 

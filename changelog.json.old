@@ -120,6 +120,10 @@
         {
           "msg": "Added headings and breadcrumb support",
           "date": "2025-07-15T15:16:47.338Z"
+        },
+        {
+          "msg": "Added extra links and fixed UI issues",
+          "date": "2025-07-15T16:37:33.597Z"
         }
       ]
     },

@@ -20,6 +20,8 @@ import { type CollectionEntry, getCollection } from 'astro:content'
 import { getAuthorBaseUrl } from '@/lib/astro/author'
 import { PEOPLE_SLUG } from '@/consts'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
+import type { IPost } from '@/lib/post'
+import { MenuSeparator } from '@/components/shadcn/ui/themed/dropdown-menu'
 
 export async function getStaticPaths() {
   let paths: any[] = []
@@ -88,13 +90,13 @@ const { Content } = await render(person)
       />
     </BaseRow>
 
-    <section class="border-border border-t pt-16">
-      <PostsPage
-        posts={data}
-        page={page}
-        pages={pages}
-        root={`${PEOPLE_SLUG}/${person.id}`}
-      />
-    </section>
+    <MenuSeparator />
+
+    <PostsPage
+      posts={data as IPost[]}
+      page={page}
+      pages={pages}
+      root={`${PEOPLE_SLUG}/${person.id}`}
+    />
   </BaseCol>
 </ContentLayout>

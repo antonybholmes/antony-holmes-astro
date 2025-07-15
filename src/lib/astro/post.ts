@@ -112,6 +112,9 @@ export function getPostSectionMap(
 ): Map<string, CollectionEntry<'blog'>[]> {
   const sectionMap = new Map<string, CollectionEntry<'blog'>[]>()
 
+  //sectionMap.set('All', posts)
+  sectionMap.set('All categories', posts)
+
   for (const post of posts) {
     for (const section of post.data.sections ?? []) {
       // for each section, create all growing subsets of url names

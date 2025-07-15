@@ -70,8 +70,8 @@ export async function getStaticPaths() {
     //     data: posts.slice(0, 10), // first page of posts
     //   },
     // })
-
-    const title = section.split('/').pop() || section
+    const sectionParts = section.split('/').map(part => part.trim())
+    const title = sectionParts[sectionParts.length - 1]
     const slug = getUrlFriendlyTag(section)
     const root = `/blog/${slug}`
 

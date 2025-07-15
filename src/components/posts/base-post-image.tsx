@@ -13,7 +13,7 @@ export function BasePostImage({ post, imgClassName, className }: IProps) {
     >
       <img
         src={post.data.heroImage}
-        alt={post.data.heroAlt || post.data.title}
+        alt={post.data.heroImageAlt || post.data.title}
         //title={post.data.title}
         className={cn(
           'scale-102 hover:scale-103 z-0 transition-300 transition-transform w-full h-full ease-linear object-cover',

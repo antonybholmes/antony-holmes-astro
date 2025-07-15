@@ -7,16 +7,12 @@ import { ChevronRightIcon } from './icons/chevron-right-icon'
 import { BaseLink } from './link/base-link'
 
 const BTN_CLS =
-  'flex flex-row justify-center items-center min-w-8 h-8 border border-transparent rounded'
+  'flex flex-row justify-center items-center min-w-8 h-8 border border-transparent rounded-md trans-300'
 
 function LinkButton({ className, children, ...props }: ILinkProps) {
   return (
     <BaseLink
-      className={cn(
-        BTN_CLS,
-        'transition duration-300 hover:border-border',
-        className
-      )}
+      className={cn(BTN_CLS, 'hover:border-border', className)}
       {...props}
     >
       {children}
@@ -26,7 +22,10 @@ function LinkButton({ className, children, ...props }: ILinkProps) {
 
 function NavButton({ className, children, ...props }: ILinkProps) {
   return (
-    <LinkButton className={cn('gap-x-2   px-2 ', className)} {...props}>
+    <LinkButton
+      className={cn('gap-x-2 px-2 text-theme stroke-theme', className)}
+      {...props}
+    >
       {children}
     </LinkButton>
   )
@@ -35,7 +34,8 @@ function NavButton({ className, children, ...props }: ILinkProps) {
 function PrevButton({ href }: ILinkProps) {
   return (
     <NavButton href={href} aria-label="Previous page">
-      <ChevronRightIcon className="rotate-180" /> Prev
+      <ChevronRightIcon className="rotate-180" stroke="" />
+      <span>Prev</span>
     </NavButton>
   )
 }
@@ -43,7 +43,7 @@ function PrevButton({ href }: ILinkProps) {
 function NextButton({ href }: ILinkProps) {
   return (
     <NavButton href={href} aria-label="Next page">
-      Next <ChevronRightIcon />
+      <span>Next</span> <ChevronRightIcon stroke="" />
     </NavButton>
   )
 }
@@ -124,16 +124,16 @@ function getPath(page: number, root: string = ''): string {
 export function PagePagination({ page = 0, pages = 1, root }: IProps) {
   page = Math.max(0, Math.min(page, pages - 1))
 
-  const pageStart = Math.max(page - 1, 0)
-  const pageEnd = Math.min(page + 1, pages - 1)
+  const pageStart = Math.max(page - 1, 1)
+  const pageEnd = Math.min(page + 1, pages - 2)
 
   const prevPage = Math.max(0, page - 1)
   const nextPage = Math.min(pages - 1, page + 1)
 
-  console.log('PagePagination:', pageStart, pageEnd, 1)
+  console.log(pageStart, pageEnd, pages, 'pag')
 
   return (
-    <ul className="flex flex-row items-center gap-x-1 font-medium">
+    <ul className="flex flex-row items-center gap-x-2 font-bold">
       <li>
         <PrevButton href={getPath(prevPage, root)} />
       </li>
@@ -142,11 +142,11 @@ export function PagePagination({ page = 0, pages = 1, root }: IProps) {
         <PageButton page={0} href={getPath(0, root)} selected={page === 0} />
       </li>
 
-      {pageStart > 2 && <Ellipsis />}
+      {pageStart > 1 && <Ellipsis />}
 
-      {pageStart > 0 && pageEnd - pageStart > 0 && (
+      {pages > 2 && (
         <>
-          {range(pageStart, pageEnd).map((p: number) => (
+          {range(pageStart, pageEnd + 1).map((p: number) => (
             <li key={p}>
               <PageButton
                 href={getPath(p, root)}

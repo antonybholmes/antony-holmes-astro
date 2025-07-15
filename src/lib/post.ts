@@ -31,8 +31,16 @@ export interface IPost {
   }
 }
 
+/**
+ * Format a section id which is a slug into a human readable string.
+ * It replaces dashes with spaces, capitalizes each word, and replaces 'and' with '&'.
+ * It also replaces slashes with ' / ' to indicate hierarchy but in a more readable way.
+ * @param section
+ * @returns
+ */
 export function formatSection(section: string): string {
   return section
+    .replace('/', ' / ')
     .replace(/-+/g, ' ')
     .replace('and', '&')
     .split(' ')

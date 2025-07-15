@@ -57,7 +57,7 @@ export function getUrlFriendlyTag(tag: string): string {
     .trim()
     .toLowerCase()
     .replaceAll('&', 'and')
-    .replaceAll(/[\ \-\_]+/g, '-')
+    .replaceAll(/[ \-\_]+/g, '-')
 }
 
 export function getUrlFriendlyImg(

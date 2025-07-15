@@ -10,6 +10,10 @@
 - Added more complex blog layours.
 - Adding support for blog sections and pages.
 
+### Changed
+
+- Fixing UI issues.
+
 
 ## 1.3 (Jul, 2025)
 

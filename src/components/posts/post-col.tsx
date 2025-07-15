@@ -8,6 +8,7 @@ import { PostSection } from './post-section'
 interface IProps extends IPostsProps, IChildrenProps {
   title: string
   href?: string
+  showTopSectionSeparator?: boolean
   maxPosts?: number
 }
 
@@ -15,6 +16,7 @@ export function BasePostCol({
   posts,
   maxPosts = 3,
   showSectionLinks = true,
+  showTopSectionSeparator = true,
 }: IProps) {
   return (
     <ul className="flex flex-col gap-y-8">
@@ -25,7 +27,12 @@ export function BasePostCol({
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}
-              className={cn(index > 0 && 'pt-8 border-t border-border')}
+              className={cn(
+                'pb-8 border-b border-border',
+                showTopSectionSeparator &&
+                  index === 0 &&
+                  'pt-8 border-t border-border'
+              )}
             />
           </li>
         )
@@ -40,6 +47,7 @@ export function PostCol({
   posts,
   maxPosts = 3,
   showSectionLinks = true,
+  showTopSectionSeparator = false,
   children,
 }: IProps) {
   return (
@@ -49,6 +57,7 @@ export function PostCol({
         posts={posts}
         maxPosts={maxPosts}
         showSectionLinks={showSectionLinks}
+        showTopSectionSeparator={showTopSectionSeparator}
       />
     </PostSection>
   )

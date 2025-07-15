@@ -1,6 +1,6 @@
-import type { IPostsProps } from "./hero-posts"
+import type { IPostsProps } from './hero-posts'
 
-import { PreviewPost } from "./preview-post"
+import { PreviewPost } from './preview-post'
 
 export function LatestPosts({ posts }: IPostsProps) {
   return (

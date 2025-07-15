@@ -20,7 +20,7 @@ export function PostsPage({
   const restPosts = posts.slice(6)
 
   return (
-    <BaseCol className="gap-y-16">
+    <BaseCol className="gap-y-24">
       <HeroPosts
         posts={heroPosts}
         page={0}
@@ -29,15 +29,25 @@ export function PostsPage({
       />
 
       {/* <HeadPost post={heroPost} /> */}
-      {headPosts.length > 0 && <HeadPosts posts={headPosts} />}
+      {headPosts.length > 0 && (
+        <>
+          {/* <MenuSeparator /> */}
+          <HeadPosts posts={headPosts} />
+        </>
+      )}
       {/* <HeroPost post={heroPost} /> */}
       {/* <MorePosts posts={morePosts} /> */}
 
-      {restPosts.length > 0 && <RestPosts posts={restPosts} />}
+      {restPosts.length > 0 && (
+        <>
+          {/* <MenuSeparator /> */}
+          <RestPosts posts={restPosts} />
+        </>
+      )}
 
       {/* <Pagination page={page} pages={pages} /> */}
 
-      <HCenterRow className="mt-16">
+      <HCenterRow>
         <PagePagination page={page} pages={pages} root={root} />
       </HCenterRow>
 

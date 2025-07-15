@@ -1,7 +1,6 @@
 import type { IPostsProps } from './hero-posts'
 
 import type { IChildrenProps } from '@/interfaces/children-props'
-import { cn } from '@/lib/shadcn-utils'
 import { HeroPostSmall } from './hero-post-small'
 import { PostSection } from './post-section'
 
@@ -28,7 +27,7 @@ export function PostTwoCol({
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}
-              className={cn(index > 1 && 'pt-8 border-t border-border')}
+              className="pb-8 border-b border-border"
             />
           )
         })}

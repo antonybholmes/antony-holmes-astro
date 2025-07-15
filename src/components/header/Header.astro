@@ -1,12 +1,13 @@
 ---
 import HeaderLink from './HeaderLink.astro'
-import { MENU_ITEMS } from '../../consts'
+
 import ThemeToggle from '../ThemeToggle.astro'
-import { VCenterRow } from '../layout/v-center-row'
+import { VCenterRow } from '@components/layout/v-center-row'
 
 import { Logo } from './logo'
-import ContentDiv from '../layout/ContentDiv.astro'
+import ContentDiv from '@components/layout/ContentDiv.astro'
 import { Rss } from 'lucide-react'
+import { MENU_ITEMS } from '@/consts'
 ---
 
 <header class="bg-background/60 sticky top-0 z-20 backdrop-blur-md">
