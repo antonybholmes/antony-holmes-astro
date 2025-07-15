@@ -43,7 +43,7 @@ export function PreviewPost({
   //{post.data.description}
 
   return (
-    <article className={cn('flex flex-col gap-y-4', className)}>
+    <article className={cn('flex flex-col gap-y-4 group', className)}>
       {post.data.heroImage && (
         <PostImage post={post} className={imgClassName} />
       )}

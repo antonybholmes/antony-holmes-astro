@@ -6,6 +6,10 @@
 
 - UI fixes and standardization.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 1.4 (Jul, 2025)
 
