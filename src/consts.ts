@@ -118,13 +118,12 @@ export const MENU_ITEMS = [
     icon: 'blog',
     ariaLabel: 'Blog',
   },
-  {
-    label: 'Projects',
-    href: '/projects',
-    icon: 'projects',
-    ariaLabel: 'Projects',
-  },
-
+  // {
+  //   label: 'Projects',
+  //   href: '/projects',
+  //   icon: 'projects',
+  //   ariaLabel: 'Projects',
+  // },
   {
     label: 'Resume',
     href: '/resume',
