@@ -3,6 +3,7 @@
 //import { join } from "path"
 
 import { BLOG_SLUG, POST_EXCERPT_MARKER } from '@/consts'
+import { PATH_SEP } from './http/urls'
 import { capitalCase } from './text/capital-case'
 import { getSlug, getSlugBaseName, getSlugDir, getSlugSubPaths } from './urls'
 
@@ -26,7 +27,7 @@ export interface IPost {
 
     added: Date
     updated?: Date
-    sections?: string[][]
+    sections?: string[]
     tags: string[]
   }
 }
@@ -46,6 +47,10 @@ export function formatSection(section: string): string {
     .split(' ')
     .map(t => capitalCase(t))
     .join(' ')
+}
+
+export function sectionToParts(section: string): string[] {
+  return section.split(PATH_SEP).map(part => part.trim())
 }
 
 // export function getPostExcerpt(post: IPost) {

@@ -1,7 +1,7 @@
 ---
 product: Schwab
 description: My review of Schwab.
-categories:
+sections:
   - Reviews/Brokerages
 type: review
 rating: 4

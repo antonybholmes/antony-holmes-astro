@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5 (Jul, 2025)
+
+### Changed
+
+- UI fixes and standardization.
+
+
 ## 1.4 (Jul, 2025)
 
 ### Added

@@ -5,10 +5,18 @@ import { PostsPage } from '@components/posts/posts-page'
 import ContentLayout from '@layouts/ContentLayout.astro'
 
 import type { CollectionEntry } from 'astro:content'
+import BaseLayout from './BaseLayout.astro'
+import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
+import { Breadcrumb } from '@/components/breadcrumb'
+import { PageTitle } from '@/components/page-title'
+import { BaseCol } from '@/components/layout/base-col'
 
 interface Props
-  extends Omit<IPaginationProps<CollectionEntry<'blog'>>, 'type'> {
+  extends Omit<IPaginationProps<CollectionEntry<'blog'>>, 'type'>,
+    ICrumbProps {
   title: string
+  pageTitle?: string
 
   // the root without page numbers etc added to it
   // e.g. /blog/tag/javascript/ instead of /blog/tag/javascript/page/2
@@ -20,11 +28,41 @@ interface Props
   showSectionLinks?: boolean
 }
 
-const { title, showTitle, page, pages, data, root, showSectionLinks } =
-  Astro.props
+let {
+  title,
+  pageTitle,
+  showTitle,
+  crumbs,
+  showCrumbs = true,
+  page,
+  pages,
+  data,
+  root,
+  showSectionLinks = false,
+} = Astro.props
+
+if (!crumbs) {
+  crumbs = createCrumbs(Astro.url.pathname)
+}
 ---
 
-<ContentLayout title={title} showTitle={showTitle} tab="Blog" showCrumbs={true}>
+<BaseLayout title={pageTitle ?? title} tab="Blog">
+  <Fragment slot="main">
+    <>
+      {
+        (showTitle || showCrumbs) && (
+          <ContentDiv className="pt-8 pb-16">
+            <BaseCol className="gap-y-4" slot="main">
+              {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
+              {showTitle && <PageTitle title={title} />}
+            </BaseCol>
+          </ContentDiv>
+        )
+      }
+    </>
+    <slot name="main" />
+  </Fragment>
+
   <PostsPage
     posts={data as IPost[]}
     page={page}
@@ -33,4 +71,4 @@ const { title, showTitle, page, pages, data, root, showSectionLinks } =
     showSectionLinks={showSectionLinks}
     slot="main"
   />
-</ContentLayout>
+</BaseLayout>

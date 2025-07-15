@@ -19,86 +19,97 @@ import { PostsPage } from '@/components/posts/posts-page'
 import { getPageItems } from '@/lib/paginate'
 import { getSortedPosts } from '@/lib/astro/post'
 import type { IPost } from '@/lib/post'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
+import { Content } from '@radix-ui/react-dropdown-menu'
 
 const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
-<ContentLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <BaseCol className="gap-y-8" slot="main">
-    <VCenterRow className="justify-between py-3">
-      <BaseCol>
-        <h1 class="font-bold">
-          <a href="/" class="text-foreground hover:text-primary">
-            {SITE_TITLE}
-          </a>
-        </h1>
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <BaseCol className="gap-y-16" slot="main">
+    <ContentDiv>
+      <BaseCol className="gap-y-8" slot="main">
+        <VCenterRow className="justify-between">
+          <BaseCol className="gap-y-2">
+            <h1 class="text-5xl font-bold">
+              <a href="/" class="text-foreground hover:text-primary">
+                {SITE_TITLE}
+              </a>
+            </h1>
 
-        <h2 class="text-foreground/30">
-          {SITE_SUBTITLE}
-        </h2>
+            <h2 class="text-foreground/30 text-3xl">
+              {SITE_SUBTITLE}
+            </h2>
+          </BaseCol>
+
+          <RoundedImage
+            className="h-42 w-42"
+            src="/img/people/antony-holmes.webp"
+            alt="Antony Holmes Logo"
+          />
+        </VCenterRow>
+
+        <section class="flex flex-col gap-y-4">
+          <p>
+            Hi there! I'm Antony and I like making software. I'm a researcher
+            and sofware engineer in New York City who's learned how to do a few
+            nifty things with Java, Python, C++, Go, React, Next.js, and Astro,
+            some of which were used to make the very site you're looking at
+            right now.
+          </p>
+
+          <p>
+            That's me posing by the Hudson River for no particular reason,
+            except maybe to look cool wearing Risky Business sunglasses.
+          </p>
+
+          <p>
+            I made this site with love and to try and get high{' '}
+            <ThemeLink
+              href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
+              >Lighthouse</ThemeLink
+            >{' '}
+            scores. I think I mostly succeeded.
+          </p>
+
+          <p>
+            My blog covers an assortment of topics, mostly on tech, finance and
+            whatever else takes my fancy.
+          </p>
+
+          <p>
+            I have an aptly named publications page where you can view all of
+            the scientific literature I have written, primarily focused on
+            cancer genetics.
+          </p>
+
+          <p>
+            My life story probably won't be optioned, but if it is, I hope the
+            movie contains the music of Kraftwerk.
+          </p>
+        </section>
       </BaseCol>
+    </ContentDiv>
 
-      <RoundedImage
-        className="h-42 w-42 overflow-hidden rounded-full"
-        src="/img/people/antony-holmes.webp"
-        alt="Antony Holmes Logo"
-      />
-    </VCenterRow>
-
-    <section class="flex flex-col gap-y-4">
-      <p>
-        Hi there! I'm Antony and I like making software. That's me posing by the
-        Hudson River for no particular reason, except maybe to look cool wearing
-        Risky Business sunglasses.
-      </p>
-
-      <p>
-        I'm a researcher and sofware engineer in New York City who's learned how
-        to do a few nifty things with Java, Python, C++, Go, React, Next.js, and
-        Astro, some of which were used to make the very site you're looking at
-        right now.
-      </p>
-
-      <p>
-        I made this site with love and to try and get high{' '}
-        <ThemeLink
-          href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
-          >Lighthouse</ThemeLink
-        >{' '}
-        scores. I think I mostly succeeded.
-      </p>
-
-      <p>
-        My blog covers an assortment of topics, mostly on tech, finance and
-        whatever else takes my fancy.
-      </p>
-
-      <p>
-        I have an aptly named publications page where you can view all of the
-        scientific literature I have written, primarily focused on cancer
-        genetics.
-      </p>
-
-      <p>
-        My life story probably won't be optioned, but if it is, I hope the movie
-        contains the music of Kraftwerk.
-      </p>
-    </section>
-
-    <PostSection title="Latest posts">
+    <ContentDiv>
+      <BaseCol className="border-border gap-y-8 border-b pb-4" slot="main">
+        <h2 class="text-2xl font-bold">Posts by this author</h2>
+      </BaseCol>
+    </ContentDiv>
+    <!-- <PostSection title="Latest posts">
       <BaseLink
         href="/blog/latest"
         data-underline={true}
         className="trans-color group hover:text-primary-color data-[underline=true]:hover:decoration-primary-color inline-flex flex-row gap-x-1 text-xs"
-        slot="header"
       >
         <span>View all</span>
         <ChevronRightIcon
           stroke="stroke-[2px] stroke-foreground group-hover:stroke-primary-color"
         />
       </BaseLink>
+    </PostSection> -->
 
-      <PostsPage posts={posts as IPost[]} page={0} pages={1} slot="main" />
-    </PostSection>
+    <PostsPage posts={posts as IPost[]} page={0} pages={1} />
   </BaseCol>
-</ContentLayout>
+</BaseLayout>

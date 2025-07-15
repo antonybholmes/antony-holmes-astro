@@ -1,7 +1,7 @@
 ---
 description: Redesigning the website using Astro.
 sections:
-  - ['News']
+  - 'News'
 type: post
 status: draft
 title: Experiments with Astro

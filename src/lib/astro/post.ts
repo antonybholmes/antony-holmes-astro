@@ -11,7 +11,7 @@ import { getSlugSubPaths } from '../urls'
 import { getAllMDFiles } from './files'
 
 import { getUrlFriendlyTag } from '../http/urls'
-import { POSTS_DIR, REVIEWS_DIR } from '../post'
+import { POSTS_DIR, REVIEWS_DIR, sectionToParts } from '../post'
 import { growingSubsets } from '../utils'
 
 export function getPostPaths() {
@@ -113,7 +113,7 @@ export function getPostSectionMap(
   const sectionMap = new Map<string, CollectionEntry<'blog'>[]>()
 
   //sectionMap.set('All', posts)
-  sectionMap.set('All categories', posts)
+  sectionMap.set('All categories', max === -1 ? posts : posts.slice(0, max))
 
   for (const post of posts) {
     for (const section of post.data.sections ?? []) {
@@ -121,12 +121,14 @@ export function getPostSectionMap(
       // e.g. from ["Reviews", "Engineering", "AI"] we get:
       // [["Reviews"], ["Reviews",Engineering"], ["Reviews","Engineering","AI"]]
       // so we can map each post to more specific sections
-      for (const sectionNames of growingSubsets(section)) {
+      for (const sectionNames of growingSubsets(sectionToParts(section))) {
         const sectionName = sectionNames.join('/')
 
         if (!sectionMap.has(sectionName)) {
           sectionMap.set(sectionName, [])
         }
+
+        // if max is -1 or the section has less than max posts, add the post
         if (max === -1 || sectionMap.get(sectionName)!.length < max) {
           sectionMap.get(sectionName)!.push(post)
         }

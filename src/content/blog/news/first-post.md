@@ -1,7 +1,7 @@
 ---
 description: Welcome to my personal website.
 sections:
-  - ['News']
+  - 'News'
 type: post
 heroCaption: This post is more technologically advanced than a stamp.
 status: added

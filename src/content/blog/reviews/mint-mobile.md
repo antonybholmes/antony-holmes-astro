@@ -1,8 +1,8 @@
 ---
 product: Mint Mobile
 description: Mint Mobile.
-categories:
-  - Reviews/Cell Phones
+sections:
+  - 'Reviews/Cell Phones'
 type: review
 rating: 4.5
 pros:

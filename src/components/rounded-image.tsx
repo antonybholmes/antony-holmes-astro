@@ -5,7 +5,7 @@ export function RoundedImage({ className, ...props }: ComponentProps<'img'>) {
   return (
     <div
       className={cn(
-        'relative rounded-full overflow-hidden aspect-square',
+        'relative rounded-full overflow-hidden aspect-square shrink-0 grow-0',
         className
       )}
     >

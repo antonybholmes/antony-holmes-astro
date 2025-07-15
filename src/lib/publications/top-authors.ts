@@ -1,4 +1,6 @@
-export function getTopAuthors(publications: any[]) {
+import type { IPublication } from './publication'
+
+export function getTopAuthors(publications: IPublication[]) {
   const countMap = new Map<string, number>()
 
   publications.forEach(pub => {

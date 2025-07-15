@@ -1,11 +1,11 @@
 import { BaseCol } from '@layout/base-col'
-import { HCenterRow } from '@layout/h-center-row'
 
 import { PagePagination } from '@components/page-pagination'
-import HeadPosts from './head-posts'
+import { ContentDiv } from '../layout/content-div'
+import { HeadPosts } from './head-posts'
 import { HeroPosts, type IPostsProps } from './hero-posts'
 import { LatestPosts } from './latest-posts'
-import RestPosts from './rest-posts'
+import { RestPosts } from './rest-posts'
 
 export function PostsPage({
   posts,
@@ -16,40 +16,40 @@ export function PostsPage({
   root,
 }: IPostsProps) {
   const heroPosts = posts.slice(0, 4)
-  const headPosts = posts.slice(4, 6)
-  const restPosts = posts.slice(6)
+  const headPosts = posts.slice(4, 8)
+  const restPosts = posts.slice(8)
 
   return (
     <BaseCol className="gap-y-24">
-      <HeroPosts
-        posts={heroPosts}
-        page={0}
-        pages={0}
-        showSectionLinks={showSectionLinks}
-      />
-
+      <ContentDiv className="py-16 bg-gradient-to-br from-gray-900 to-gray-700  ">
+        <HeroPosts
+          posts={heroPosts}
+          page={0}
+          pages={0}
+          showSectionLinks={showSectionLinks}
+          mode="dark"
+        />
+      </ContentDiv>
       {/* <HeadPost post={heroPost} /> */}
       {headPosts.length > 0 && (
-        <>
+        <ContentDiv>
           {/* <MenuSeparator /> */}
           <HeadPosts posts={headPosts} />
-        </>
+        </ContentDiv>
       )}
       {/* <HeroPost post={heroPost} /> */}
       {/* <MorePosts posts={morePosts} /> */}
 
       {restPosts.length > 0 && (
-        <>
+        <ContentDiv>
           {/* <MenuSeparator /> */}
           <RestPosts posts={restPosts} />
-        </>
+        </ContentDiv>
       )}
 
       {/* <Pagination page={page} pages={pages} /> */}
 
-      <HCenterRow>
-        <PagePagination page={page} pages={pages} root={root} />
-      </HCenterRow>
+      <PagePagination page={page} pages={pages} root={root} />
 
       {showLatestPosts && <LatestPosts posts={posts} />}
 

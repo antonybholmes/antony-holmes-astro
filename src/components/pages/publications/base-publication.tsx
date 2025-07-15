@@ -7,6 +7,7 @@ import { HCenterCol } from '@layout/h-center-col'
 
 import { ThemeLink } from '@/components/link/theme-link'
 import type { IClassProps } from '@/interfaces/class-props'
+import type { IPublication } from '@/lib/publications/publication'
 import { cn } from '@/lib/shadcn-utils'
 
 type AbstractProps = {
@@ -17,8 +18,8 @@ type AbstractProps = {
 function Abstract({ publication, isExpanded = false }: AbstractProps) {
   return (
     <>
-      <div className="mt-2 text-sm text-gray-500">
-        <p className={cn('overflow-hidden', [!isExpanded, 'h-0'])}>
+      <div className="mt-2 text-sm text-foreground/50">
+        <p className={cn('overflow-hidden', !isExpanded && 'h-0')}>
           {publication.abstract}
         </p>
       </div>
@@ -46,7 +47,7 @@ function getUrl(publication: any) {
 
 interface BasePublicationProps extends IClassProps {
   index?: number
-  publication: any
+  publication: IPublication
   showCount?: boolean
   showAbstract?: boolean
 }
@@ -70,8 +71,6 @@ export function BasePublication({
   //     onPubClick(journal)
   //   }
   // }
-
-  //console.log(publication)
 
   const url = getUrl(publication)
 
@@ -103,7 +102,7 @@ export function BasePublication({
   //   )
   // }
 
-  if (publication.pmid && publication.pmid !== '') {
+  if (publication.pmid) {
     links.push(
       <li key={links.length}>
         {`PMID: `}
@@ -158,7 +157,7 @@ export function BasePublication({
             {/* <ul className="m-0 flex flex-row flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
           {links.map(link => link)}
         </ul> */}
-            <h2 className="text-sm font-semibold">
+            <h2>
               {url !== '' ? (
                 <ThemeLink
                   aria-label="View article"
@@ -171,10 +170,9 @@ export function BasePublication({
                 title
               )}
             </h2>
+            {/* We need to use `dangerouslySetInnerHTML` here to allow HTML
+            rendering for the authors. */}
             <span dangerouslySetInnerHTML={{ __html: authors }} />
-            {/* <p className="text-sm font-light capitalize text-green-600">
-        {publication.journal}. {publication.year}.
-      </p> */}
 
             <ul className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1 text-emerald-700">
               <li>

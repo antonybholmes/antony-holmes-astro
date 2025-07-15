@@ -4,6 +4,7 @@ import { PostTagLink } from './post-tag-link'
 
 export interface IPostProps extends IClassProps {
   post: IPost
+  mode?: 'light' | 'dark'
 }
 
 export function PostTags({ post }: IPostProps) {

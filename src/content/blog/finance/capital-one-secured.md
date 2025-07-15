@@ -4,7 +4,7 @@ description: My review of the Capital One Secured Mastercard credit card.
 authors:
   - Antony Holmes
 sections:
-  - ['Reviews', 'Credit Cards']
+  - 'Reviews/Credit Cards'
 type: review
 rating: 4
 pros:
@@ -16,7 +16,7 @@ cons:
   - Requires refundable deposit.
 details:
   - Great starter credit card.
-url: 'https://www.capitalone.com/credit-cards/secured-mastercard'
+url: https://www.capitalone.com/credit-cards/secured-mastercard
 status: added
 title: Capital One Secured Mastercard Credit Card
 slug: capital-one-secured

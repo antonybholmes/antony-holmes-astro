@@ -1,4 +1,6 @@
-export function getTopJournals(publications: any[]) {
+import type { IPublication } from './publication'
+
+export function getTopJournals(publications: IPublication[]) {
   const countMap = new Map<string, number>()
 
   for (let pub of publications) {
@@ -35,5 +37,3 @@ export function getTopJournals(publications: any[]) {
 
   return ret
 }
-
-export default getTopJournals

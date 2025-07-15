@@ -1,25 +1,24 @@
 import { cn } from '@/lib/shadcn-utils'
+import { HeroPostSmall } from './hero-post-small'
 import type { IPostsProps } from './hero-posts'
-import { PreviewPost } from './preview-post'
 
 interface IProps extends IPostsProps {
   showAvatar?: boolean
 }
 
-export default function HeadPosts({ posts, showAvatar = true }: IProps) {
+export function HeadPosts({ posts, showAvatar = false }: IProps) {
   return (
     <section>
-      <ul className="grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-2">
         {posts.map((post, index) => (
           <li key={index}>
-            <PreviewPost
+            <HeroPostSmall
               post={post}
               showAvatar={showAvatar}
               className={cn(
-                'pb-8 border-b border-border',
-                index < 2 && 'pt-8 border-t border-border'
+                'pb-6 border-b border-border',
+                index < 2 && 'pt-6 border-t border-border'
               )}
-              imgClassName="h-48 md:h-64 xl:h-72 rounded-md"
             />
           </li>
         ))}

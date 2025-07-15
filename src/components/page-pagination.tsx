@@ -4,6 +4,7 @@ import { range } from '@/lib/math/range'
 import { cn } from '@/lib/shadcn-utils'
 import { EllipsisIcon } from 'lucide-react'
 import { ChevronRightIcon } from './icons/chevron-right-icon'
+import { HCenterRow } from './layout/h-center-row'
 import { BaseLink } from './link/base-link'
 
 const BTN_CLS =
@@ -130,49 +131,53 @@ export function PagePagination({ page = 0, pages = 1, root }: IProps) {
   const prevPage = Math.max(0, page - 1)
   const nextPage = Math.min(pages - 1, page + 1)
 
-  console.log(pageStart, pageEnd, pages, 'pag')
+  if (pages < 2) {
+    return null
+  }
 
   return (
-    <ul className="flex flex-row items-center gap-x-2 font-bold">
-      <li>
-        <PrevButton href={getPath(prevPage, root)} />
-      </li>
-
-      <li>
-        <PageButton page={0} href={getPath(0, root)} selected={page === 0} />
-      </li>
-
-      {pageStart > 1 && <Ellipsis />}
-
-      {pages > 2 && (
-        <>
-          {range(pageStart, pageEnd + 1).map((p: number) => (
-            <li key={p}>
-              <PageButton
-                href={getPath(p, root)}
-                page={p}
-                selected={p === page}
-              />
-            </li>
-          ))}
-        </>
-      )}
-
-      {pageEnd < pages - 2 && <Ellipsis />}
-
-      {pages > 1 && (
+    <HCenterRow>
+      <ul className="flex flex-row items-center gap-x-2 font-bold">
         <li>
-          <PageButton
-            href={getPath(pages - 1, root)}
-            page={pages - 1}
-            selected={page === pages - 1}
-          />
+          <PrevButton href={getPath(prevPage, root)} />
         </li>
-      )}
 
-      <li>
-        <NextButton href={getPath(nextPage, root)} />
-      </li>
-    </ul>
+        <li>
+          <PageButton page={0} href={getPath(0, root)} selected={page === 0} />
+        </li>
+
+        {pageStart > 1 && <Ellipsis />}
+
+        {pages > 2 && (
+          <>
+            {range(pageStart, pageEnd + 1).map((p: number) => (
+              <li key={p}>
+                <PageButton
+                  href={getPath(p, root)}
+                  page={p}
+                  selected={p === page}
+                />
+              </li>
+            ))}
+          </>
+        )}
+
+        {pageEnd < pages - 2 && <Ellipsis />}
+
+        {pages > 1 && (
+          <li>
+            <PageButton
+              href={getPath(pages - 1, root)}
+              page={pages - 1}
+              selected={page === pages - 1}
+            />
+          </li>
+        )}
+
+        <li>
+          <NextButton href={getPath(nextPage, root)} />
+        </li>
+      </ul>
+    </HCenterRow>
   )
 }

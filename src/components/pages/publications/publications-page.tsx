@@ -8,13 +8,15 @@ import getJournalPublications from '@lib/pub/journal-publications'
 import pubYearCount from '@lib/pub/pub-year-count'
 import sortPublications from '@lib/pub/sort-publications'
 
-import { getTopAuthors } from '@lib/top-authors'
-import getTopJournals from '@lib/top-journals'
+import { getTopAuthors } from '@/lib/publications/top-authors'
+import { getTopJournals } from '@/lib/publications/top-journals'
 
 import { SEARCH_RECORDS_PER_PAGE, TEXT_SHOW_MORE } from '@/consts'
 import { BaseCol } from '@layout/base-col'
 
 import { SidebarDiv } from '@/components/layout/sidebar-div'
+import { httpFetch } from '@/lib/http/http-fetch'
+import type { IPublication } from '@/lib/publications/publication'
 import { useEffect, useState } from 'react'
 import { JournalFilter } from './journal-filter'
 import { Publications } from './publications'
@@ -25,7 +27,7 @@ const EMPTY_QUERY = ''
 
 export const PUB_API_URL = '/api/publications/lab.json'
 
-function searchAuthors(q: string, publication: any) {
+function searchAuthors(q: string, publication: IPublication) {
   for (let author of publication.authorList) {
     if (author.toLowerCase().includes(q)) {
       return true
@@ -35,8 +37,11 @@ function searchAuthors(q: string, publication: any) {
   return false
 }
 
-export function search(query: any, publications: any[]): any[] {
-  let ret: any = []
+export function search(
+  query: { text: string; field: string },
+  publications: IPublication[]
+): IPublication[] {
+  let ret: IPublication[] = []
 
   let ql = query.text.toLowerCase()
 
@@ -57,10 +62,10 @@ export function search(query: any, publications: any[]): any[] {
         found = publication.pmid.toString() === ql
         break
       case 'pmcid':
-        found = publication.pmcid.toString() === ql
+        found = publication.pmcid === ql
         break
       default:
-        found = publication.pmid.toLowerCase().includes(ql)
+        found = publication.pmid.toString().includes(ql)
 
         if (!found && publication.pmcid) {
           // try pmcid
@@ -190,12 +195,8 @@ function results(search: string, page: number, filteredPublications: any[]) {
   }
 }
 
-interface IProps {
-  publications: any[]
-}
-
-export function PublicationsPage({ publications }: IProps) {
-  //const [publications, setPublications] = useState<any[]>([])
+export function PublicationsPage() {
+  const [publications, setPublications] = useState<IPublication[]>([])
 
   const [journals, setJournals] = useState<any[]>([])
 
@@ -224,9 +225,11 @@ export function PublicationsPage({ publications }: IProps) {
     any[]
   >([])
 
-  const [sortedPublications, setSortedPublications] = useState<any[]>([])
+  const [sortedPublications, setSortedPublications] = useState<IPublication[]>(
+    []
+  )
 
-  const [pagePublications, setPagePublications] = useState<any[]>([])
+  //const [pagePublications, setPagePublications] = useState<any[]>([])
 
   const [pageStart, setPageStart] = useState(-1)
   const [pageEnd, setPageEnd] = useState(-1)
@@ -238,25 +241,17 @@ export function PublicationsPage({ publications }: IProps) {
 
   const [recordsPerPage] = useState(SEARCH_RECORDS_PER_PAGE)
 
-  // function fetchData() {
-  //   axios
-  //     .get(PUB_API_URL)
-  //     .then(res => {
-  //       setPublications(res.data)
-  //     })
-  //     .catch(err => {
-  //       // do nothing console.log(err)
-  //     })
-  // }
-
-  // useEffect(() => {
-  //   fetchData()
-  //   //setPublications(allPublications)
-  // }, [])
-
   useEffect(() => {
-    setAuthors(getTopAuthors(publications))
-    setJournals(getTopJournals(publications))
+    async function fetchData() {
+      const publications = await httpFetch.getJson<IPublication[]>(
+        '/api/publications.json'
+      )
+
+      setPublications(publications)
+      setAuthors(getTopAuthors(publications))
+      setJournals(getTopJournals(publications))
+    }
+    fetchData()
   }, [])
 
   useEffect(() => {
@@ -301,25 +296,25 @@ export function PublicationsPage({ publications }: IProps) {
     )
   }, [yearFilteredPublications, sortOrder, descending])
 
-  useEffect(() => {
-    setPages(
-      Math.floor(
-        (sortedPublications.length + recordsPerPage - 1) / recordsPerPage
-      )
-    )
+  // useEffect(() => {
+  //   setPages(
+  //     Math.floor(
+  //       (sortedPublications.length + recordsPerPage - 1) / recordsPerPage
+  //     )
+  //   )
 
-    updatePagePublications()
-  }, [sortedPublications])
+  //   updatePagePublications()
+  // }, [sortedPublications])
 
-  useEffect(() => {
-    updatePagePublications()
-  }, [pageStart, pageEnd])
+  // useEffect(() => {
+  //   updatePagePublications()
+  // }, [pageStart, pageEnd])
 
-  const updatePagePublications = () => {
-    const s1 = pageStart * recordsPerPage
-    const s2 = pageEnd * recordsPerPage
-    setPagePublications(sortedPublications.slice(s1, s2 + recordsPerPage))
-  }
+  // const updatePagePublications = () => {
+  //   const s1 = pageStart * recordsPerPage
+  //   const s2 = pageEnd * recordsPerPage
+  //   setPagePublications(sortedPublications.slice(s1, s2 + recordsPerPage))
+  // }
 
   // useEffect(() => {
   //   setRecordsPerPage(recordsPerPage[recordsPerPageIndex])
@@ -435,12 +430,12 @@ export function PublicationsPage({ publications }: IProps) {
         </VCenterRow>
 
         <Publications
-          publications={pagePublications}
+          publications={sortedPublications}
           showAbstract={showAbstract}
           showCount={true}
           className="mt-8"
-          page={pageStart}
-          pageBreak={recordsPerPage}
+          //page={pageStart}
+          //pageBreak={recordsPerPage}
         />
 
         {pageStart < pages - 1 && (

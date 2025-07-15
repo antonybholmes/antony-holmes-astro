@@ -135,5 +135,18 @@
     },
     "author": "Antony Holmes",
     "date": "2025-07-14T22:40:52.737Z"
+  },
+  {
+    "version": "1.5",
+    "messages": {
+      "Changed": [
+        {
+          "msg": "UI fixes and standardization",
+          "date": "2025-07-15T23:06:01.436Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2025-07-15T23:06:01.436Z"
   }
 ]

@@ -12,6 +12,9 @@ import { remarkReadingTime } from './remark-reading-time.mjs'
 export default defineConfig({
   site: 'https://antonyholmes.dev',
   compressHTML: true,
+  prefetch: {
+    prefetchAll: true,
+  },
   markdown: {
     // Applied to .md and .mdx files
     remarkPlugins: [remarkReadingTime, remarkSectionize],

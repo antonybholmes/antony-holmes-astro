@@ -1,12 +1,10 @@
 import { cn } from '@lib/shadcn-utils'
 import type { IPostProps } from './post-tags'
 
-import { FormattedDate } from '@components/formatted-date'
-import { CompactAvatars } from '@components/people/compact-avatars'
 import { BaseCol } from '@layout/base-col'
 
 import { getPostExcerpt } from '@/lib/post'
-import { PostAuthors } from './hero-post-small'
+import { PostAuthorsAndDate } from './hero-post-small'
 import { PostImage } from './post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
@@ -22,6 +20,7 @@ interface IProps extends IPostProps {
   showAvatarImage?: boolean
   dateBelow?: boolean
   showSectionLinks?: boolean
+  mode?: 'light' | 'dark'
 }
 
 export function PreviewPost({
@@ -37,6 +36,7 @@ export function PreviewPost({
   showAvatarImage = true,
   dateBelow = false,
   showSectionLinks = true,
+  mode = 'light',
 }: IProps) {
   const date = post.data.added
 
@@ -53,29 +53,21 @@ export function PreviewPost({
           {showSectionLinks && (
             <PostSectionLink post={post} textSize="text-xl md:text-base" />
           )}
-          <PostTitleLink post={post} className={headerClassName} />
+          <PostTitleLink post={post} className={headerClassName} mode={mode} />
         </BaseCol>
         {showDescription && (
           <p
-            className={cn('text-gray-500 dark:text-gray-400', contentClassName)}
+            data-mode={mode}
+            className={cn(
+              'text-foreground/50 data-[mode=dark]:text-white/50',
+              contentClassName
+            )}
           >
             {getPostExcerpt(post)}
           </p>
         )}
 
-        {dateBelow ? (
-          <>
-            {showAvatar && (
-              <CompactAvatars
-                people={post.data.authors ?? []}
-                showImages={showAvatarImage}
-              />
-            )}
-            <FormattedDate date={date} />
-          </>
-        ) : (
-          <PostAuthors post={post} showAvatar={showAvatar} />
-        )}
+        <PostAuthorsAndDate post={post} showAvatar={showAvatar} mode={mode} />
       </BaseCol>
     </article>
   )

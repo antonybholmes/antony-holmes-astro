@@ -21,7 +21,7 @@ export const PageTitle = ({
   <header className={cn('flex flex-col gap-y-1', className)}>
     {superTitle && <h3 className="font-normal">{superTitle}</h3>}
 
-    <h1 className="capitalize">{title}</h1>
+    <h1 className="capitalize font-bold text-4xl">{title}</h1>
 
     {subTitle && (
       <h2 className={cn('font-normal', subClassName)}>{subTitle}</h2>

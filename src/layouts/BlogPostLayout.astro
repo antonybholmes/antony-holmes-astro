@@ -8,7 +8,7 @@ import { Image } from 'astro:assets'
 import LatestPosts from '@components/LatestPosts.astro'
 
 import Tags from '@/components/Tags.astro'
-import { Calendar, Dot } from 'lucide-react'
+import { Calendar, Clock, Dot } from 'lucide-react'
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
 
@@ -81,26 +81,33 @@ const hero = post.data.heroImage
           )
         }
 
-        <h1>
+        <h1 class="text-3xl font-bold">
           {post.data.title}
         </h1>
         <VCenterRow
           className="text-foreground/50 justify-between gap-x-2 text-sm"
         >
-          <VCenterRow className="gap-x-2">
-            <Calendar className="stroke-foreground/40 w-5" strokeWidth={1.5} />
-            <FormattedDate date={post.data.added} />
-
+          <VCenterRow className="gap-x-3">
+            <VCenterRow className="gap-x-1">
+              <Calendar
+                className="stroke-foreground/40 w-5"
+                strokeWidth={1.5}
+              />
+              <FormattedDate date={post.data.added} />
+            </VCenterRow>
             <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
             ></span>
-            <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
+            <VCenterRow className="gap-x-1">
+              <Clock className="stroke-foreground/40 w-5" strokeWidth={1.5} />
+              <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
+            ></VCenterRow
           >
 
           {
             post.data.updated &&
               post.data.updated.getTime() !== post.data.added.getTime() && (
                 <span class="text-foreground/50">
-                  Last updated <FormattedDate date={post.data.updated} />
+                  Last updated on <FormattedDate date={post.data.updated} />
                 </span>
               )
           }

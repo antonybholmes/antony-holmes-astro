@@ -9,6 +9,7 @@ import ContentLayout from '@layouts/ContentLayout.astro'
 import { getPostSectionMap, getSortedPosts } from '@lib/astro/post'
 import { getPageCount } from '@lib/paginate'
 import { ArrowLink } from '@/components/link/arrow-link'
+import type { lazy } from 'astro:schema'
 
 const allPosts = await getSortedPosts()
 
@@ -18,6 +19,13 @@ const pages = getPageCount(allPosts)
 
 const news = allPosts.filter(post =>
   post.data.sections?.some(section => section.includes('News'))
+)
+
+console.log(
+  allPosts
+    .map(p => p.data.sections)
+    .flat()
+    .join(', ')
 )
 ---
 
@@ -43,7 +51,7 @@ const news = allPosts.filter(post =>
       <PostSectionCol
         section="All categories"
         postMap={postMap}
-        client:only="react"
+        client:visible
       />
     </section>
 

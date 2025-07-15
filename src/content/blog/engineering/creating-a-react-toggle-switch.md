@@ -6,7 +6,7 @@ type: post
 status: added
 title: Creating a React toggle switch using SVG
 sections:
-  - ['Engineering']
+  - 'Engineering'
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes

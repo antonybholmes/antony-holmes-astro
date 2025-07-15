@@ -1,8 +1,8 @@
 ---
 product: Fidelity
 description: My review of Fidelity.
-categories:
-  - Reviews/Brokerages
+sections:
+  - 'Reviews/Brokerages'
 type: review
 heroCaption: 'This looks cool, but has nothing to do with banking.'
 rating: 4.5

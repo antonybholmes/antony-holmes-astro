@@ -5,7 +5,6 @@ import { BaseCol } from '@layout/base-col'
 
 import { FormattedDate } from '@components/formatted-date'
 import { CompactAvatars } from '@components/people/compact-avatars'
-import { VCenterRow } from '@layout/v-center-row'
 
 import { getPostExcerpt, type IPost } from '@/lib/post'
 import { PostImage } from './post-image'
@@ -14,23 +13,27 @@ import { PostTitleLink } from './post-title-link'
 
 interface IProps extends IPostProps {
   showAvatar?: boolean
+  showAuthors?: boolean
   showDescription?: boolean
   showSectionLinks?: boolean
 }
 
 export function HeroPostSmall({
   post,
-  showAvatar = true,
+  showAvatar = false,
+  showAuthors = false,
   showDescription = true,
   showSectionLinks = true,
+  mode = 'light',
   className,
 }: IProps) {
   const hasImage = Boolean(post.data.heroImage)
 
   return (
     <article
+      data-mode={mode}
       className={cn(
-        'grid grid-cols-1 gap-4 text-sm',
+        'grid grid-cols-1 gap-4 text-sm data-[mode=dark]:text-white',
         hasImage && 'md:grid-cols-4',
         className
       )}
@@ -45,38 +48,64 @@ export function HeroPostSmall({
           {showSectionLinks && (
             <PostSectionLink post={post} textSize="text-xl md:text-base" />
           )}
-          <PostTitleLink post={post} className="text-2xl lg:text-lg" />
+          <PostTitleLink
+            post={post}
+            className="text-2xl lg:text-lg"
+            mode={mode}
+          />
         </BaseCol>
         {/* <CondComp cond={showDescription}>
           <HTML html={post.excerpt} className="text-sm text-gray-600" />
         </CondComp> */}
 
         {showDescription && (
-          <p className="text-gray-500 dark:text-gray-400">
+          <p
+            data-mode={mode}
+            className="text-foreground/50 data-[mode=dark]:text-white/50"
+          >
             {getPostExcerpt(post)}
           </p>
         )}
 
-        <PostAuthors post={post} showAvatar={showAvatar} />
+        <PostAuthorsAndDate
+          post={post}
+          showAuthors={showAuthors}
+          showAvatar={showAvatar}
+          mode={mode}
+        />
       </BaseCol>
     </article>
   )
 }
 
-export function PostAuthors({
+export function PostAuthorsAndDate({
   post,
+  showAuthors = true,
   showAvatar = true,
+  mode = 'light',
 }: {
   post: IPost
+  showAuthors?: boolean
   showAvatar?: boolean
+  mode?: 'light' | 'dark'
 }) {
   return (
-    <VCenterRow className="gap-x-2 mt-1 text-sm">
-      {showAvatar && (
-        <CompactAvatars people={post.data.authors ?? []} showImages={false} />
+    <div className="flex flex-col xl:flex-row gap-x-2 gap-y-1 xl:items-center text-sm">
+      {showAuthors && (
+        <>
+          <CompactAvatars
+            people={post.data.authors ?? []}
+            showImages={showAvatar}
+            mode={mode}
+          />
+          <span
+            data-mode={mode}
+            className="hidden xl:block rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-foreground/30 data-[mode=dark]:bg-white/40"
+          />
+        </>
       )}
-      <span className="rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-foreground/30" />
-      <FormattedDate date={post.data.added} />
-    </VCenterRow>
+
+      <FormattedDate date={post.data.added} mode={mode} />
+    </div>
   )
 }

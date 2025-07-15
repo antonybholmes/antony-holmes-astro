@@ -3,7 +3,7 @@ product: Fidelity Rewards Visa Signature
 description: My review of the Fidelity Rewards Visa Signature credit card.
 readTime: 1 min
 sections:
-  - ['Reviews', 'Credit Cards']
+  - 'Reviews/Credit Cards'
 type: review
 rating: 4.5
 pros:

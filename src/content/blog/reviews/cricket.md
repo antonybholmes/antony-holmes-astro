@@ -1,8 +1,8 @@
 ---
 product: Cricket
 description: Cricket.
-categories:
-  - Reviews/Cell Phones
+sections:
+  - 'Reviews/Cell Phones'
 type: review
 rating: 4
 pros:

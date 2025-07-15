@@ -2,15 +2,11 @@
 import { PublicationsPage } from '@components/pages/publications/publications-page'
 
 import ContentLayout from '@layouts/ContentLayout.astro'
-import { getSelectedPublications } from '@lib/api'
 
-const publications = getSelectedPublications('antony-holmes')
+// const publications =
+//   await httpFetch.getJson<IPublication[]>('publications.json')
 ---
 
 <ContentLayout title="Publications">
-  <PublicationsPage
-    publications={publications}
-    client:only="react"
-    slot="main"
-  />
+  <PublicationsPage client:only="react" slot="main" />
 </ContentLayout>

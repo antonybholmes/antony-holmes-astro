@@ -1,0 +1,36 @@
+---
+import { paginate } from '@lib/paginate'
+import { getSortedPosts } from '@lib/astro/post'
+
+import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts()
+
+  const paths = paginate(posts, '').map(p => ({
+    ...p,
+    props: {
+      ...p.props,
+
+      title: `Latest Posts - Page ${p.props.page + 1} of ${p.props.pages}`,
+      showTitle: true,
+
+      root: '/blog/latest',
+    },
+  }))
+
+  return paths
+}
+
+const { title, page, pages, data } = Astro.props
+---
+
+<BlogPostsLayout
+  title="Latest Posts"
+  pageTitle={title}
+  page={page}
+  pages={pages}
+  data={data}
+  root="/blog/latest"
+  showTitle={true}
+/>

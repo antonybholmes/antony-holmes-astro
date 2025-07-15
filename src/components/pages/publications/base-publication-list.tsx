@@ -78,7 +78,7 @@ export function BasePublicationList({
   })
 
   return (
-    <ul className={cn('flex flex-col gap-y-2', className)}>
+    <ul className={cn('flex flex-col gap-y-2 publications', className)}>
       {pages.map(page => {
         return page
       })}

@@ -4,16 +4,19 @@ import { VCenterRow } from '@layout/v-center-row'
 import type { IClassProps } from '@/interfaces/class-props'
 import { getAuthorBaseUrl } from '@/lib/astro/author'
 import { cn } from '@/lib/shadcn-utils'
+import { Fragment } from 'react/jsx-runtime'
 import { AvatarImage } from './avatar-image'
 
 interface IProps extends IClassProps {
   people: string[]
   showImages?: boolean
+  mode?: 'light' | 'dark'
 }
 
 export function CompactAvatars({
   people,
   showImages = true,
+  mode = 'light',
   className,
 }: IProps) {
   return (
@@ -25,38 +28,35 @@ export function CompactAvatars({
         >
           {people.map((person, index) => (
             <li key={index}>
-              <BaseLink
+              <a
                 href={getAuthorBaseUrl(person)}
                 aria-label={`Click to read more about ${person}`}
                 className={cn('absolute block rounded-full', `ml-${index * 2}`)}
               >
                 <AvatarImage person={person} className="h-10 w-10" />
-              </BaseLink>
+              </a>
             </li>
           ))}
         </ul>
       )}
 
-      <ul className="flex flex-row flex-wrap items-center gap-x-1 text-sm font-bold">
+      <span className="text-sm font-bold">
         {people.map((person, index) => (
-          <li key={index}>
+          <Fragment key={index}>
             <BaseLink
               href={getAuthorBaseUrl(person)}
               aria-label={`Click to read more about ${person}`}
               //data-underline={true}
-              className="hover:underline hover:text-sky-600 decoration-sky-600"
+              data-mode={mode}
+              className="hover:underline underline-offset-2 hover:text-sky-600 decoration-sky-600 data-[mode=dark]:text-white data-[mode=dark]:decoration-white data-[mode=dark]:hover:decoration-sky-400 data-[mode=dark]:hover:text-sky-400"
             >
               {person}
             </BaseLink>
-            {index < people.length - 2 ? <span>,</span> : <></>}
-            {index === people.length - 2 ? (
-              <span className="ml-1">&</span>
-            ) : (
-              <></>
-            )}
-          </li>
+            {index < people.length - 2 ? ',' : ''}
+            {index === people.length - 2 ? ' & ' : ''}
+          </Fragment>
         ))}
-      </ul>
+      </span>
     </VCenterRow>
   )
 }

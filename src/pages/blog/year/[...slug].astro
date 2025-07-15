@@ -1,5 +1,6 @@
 ---
 import { PostsPage } from '@/components/posts/posts-page'
+import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
@@ -53,7 +54,7 @@ export async function getStaticPaths() {
         ...p,
         props: {
           ...p.props,
-          title: `Posts from ${year}`,
+          title: `Posts from ${year} - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
           root: `/blog/year/${slug}`,
         },
@@ -67,12 +68,11 @@ export async function getStaticPaths() {
 const { title, page, root, pages, data } = Astro.props
 ---
 
-<ContentLayout title={title} showTitle={true} tab="Blog">
-  <PostsPage
-    posts={data as IPost[]}
-    page={page}
-    pages={pages}
-    root={root}
-    slot="main"
-  />
-</ContentLayout>
+<BlogPostsLayout
+  title={title}
+  page={page}
+  pages={pages}
+  data={data}
+  root={root}
+  showTitle={true}
+/>

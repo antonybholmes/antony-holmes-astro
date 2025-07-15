@@ -20,14 +20,14 @@ export function PostTwoCol({
 }: IProps) {
   return (
     <PostSection title={title} href={href} headerChildren={children}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
         {posts.slice(0, maxPosts).map((post, index) => {
           return (
             <HeroPostSmall
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}
-              className="pb-8 border-b border-border"
+              className="pb-6 border-b border-border"
             />
           )
         })}
