@@ -1,24 +1,23 @@
-import type { IElementProps } from "@interfaces/element-props"
-
-import { ChevronRightIcon } from "@components/icons/chevron-right-icon"
+import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@components/shadcn/ui/themed/dropdown-menu"
-import { formatSection } from "@lib/post"
+} from '@components/shadcn/ui/themed/dropdown-menu'
+import { formatSection } from '@lib/post'
 
-import { useEffect, useState } from "react"
-import { PostCol } from "./post-col"
+import type { IClassProps } from '@/interfaces/class-props'
+import { useEffect, useState } from 'react'
+import { PostCol } from './post-col'
 
-interface IProps extends IElementProps {
+interface IProps extends IClassProps {
   section: string
   postMap: Map<string, any[]>
 }
 
 export function PostCategoryCol({ section, postMap }: IProps) {
-  const [_section, setSection] = useState("")
+  const [_section, setSection] = useState('')
   const [open, setOpen] = useState(false)
 
   useEffect(() => {

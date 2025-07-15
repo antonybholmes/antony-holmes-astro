@@ -87,3 +87,20 @@ export function uniqueInOrder<T>(values: T[]): T[] {
 
   return ret
 }
+
+/**
+ * Returns all growing subsets of an array.
+ * For example, for [1, 2, 3], it returns:
+ * [ [1], [1, 2], [1, 2, 3], [2]]
+ * @param values
+ * @returns
+ */
+export function growingSubsets<T>(values: T[]): T[][] {
+  const result = []
+
+  for (let i = 1; i <= values.length; i++) {
+    result.push(values.slice(0, i))
+  }
+
+  return result
+}

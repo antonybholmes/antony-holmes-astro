@@ -1,0 +1,23 @@
+---
+import { PostsPage } from "@components/posts/posts-page"
+import { RECORDS_PER_PAGE } from "@consts"
+import ContentLayout from "@layouts/ContentLayout.astro"
+import { getSortedPosts } from "@lib/astro/post"
+import { getPageCount, getPageItems } from "@lib/paginate"
+
+const allPosts = await getSortedPosts()
+
+const pages = getPageCount(allPosts)
+
+const posts = getPageItems(allPosts, 0, RECORDS_PER_PAGE)
+---
+
+<ContentLayout title="Latest" showTitle={false}>
+  <PostsPage
+    posts={posts}
+    page={0}
+    pages={pages}
+    root="/blog/latest"
+    slot="main"
+  />
+</ContentLayout>

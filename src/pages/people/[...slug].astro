@@ -15,10 +15,11 @@ import {
   getSortedPosts,
   sortPostsByDateDesc,
 } from '@lib/astro/post'
-import { getUrlFriendlyTag } from '@lib/urls'
+
 import { type CollectionEntry, getCollection } from 'astro:content'
 import { getAuthorBaseUrl } from '@/lib/astro/author'
 import { PEOPLE_SLUG } from '@/consts'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
 
 export async function getStaticPaths() {
   let paths: any[] = []

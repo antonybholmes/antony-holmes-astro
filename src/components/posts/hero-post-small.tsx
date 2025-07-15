@@ -7,7 +7,7 @@ import { FormattedDate } from '@components/formatted-date'
 import { CompactAvatars } from '@components/people/compact-avatars'
 import { VCenterRow } from '@layout/v-center-row'
 
-import { getPostExcerpt } from '@/lib/astro/post'
+import { getPostExcerpt, type IPost } from '@/lib/post'
 import { PostImage } from './post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
@@ -53,17 +53,26 @@ export function HeroPostSmall({
           </p>
         )}
 
-        <VCenterRow className="gap-x-2 mt-1">
-          {showAvatar && (
-            <CompactAvatars
-              people={post.data.authors ?? []}
-              showImages={false}
-            />
-          )}
-          <span className="rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-gray-400" />
-          <FormattedDate date={post.data.added} />
-        </VCenterRow>
+        <PostAuthors post={post} showAvatar={showAvatar} />
       </BaseCol>
     </article>
+  )
+}
+
+export function PostAuthors({
+  post,
+  showAvatar = true,
+}: {
+  post: IPost
+  showAvatar?: boolean
+}) {
+  return (
+    <VCenterRow className="gap-x-2 mt-1 text-sm">
+      {showAvatar && (
+        <CompactAvatars people={post.data.authors ?? []} showImages={false} />
+      )}
+      <span className="rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-foreground/30" />
+      <FormattedDate date={post.data.added} />
+    </VCenterRow>
   )
 }

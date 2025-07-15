@@ -1,0 +1,27 @@
+---
+import { PostsPage } from '@components/posts/posts-page'
+import ContentLayout from '@layouts/ContentLayout.astro'
+import { paginate } from '@lib/paginate'
+import { getSortedPosts } from '@lib/astro/post'
+import type { IPost } from '@/lib/post'
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts()
+
+  const paths = paginate(posts, '')
+
+  return paths
+}
+
+const { page, pages, data } = Astro.props
+---
+
+<ContentLayout title="Latest" tab="Blog">
+  <PostsPage
+    posts={data as IPost[]}
+    page={page}
+    pages={pages}
+    root="/blog/latest"
+    slot="main"
+  />
+</ContentLayout>

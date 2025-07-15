@@ -1,0 +1,61 @@
+---
+import { getUrlFriendlyTag } from '@/lib/http/urls'
+import type { IPost } from '@/lib/post'
+import { PostsPage } from '@components/posts/posts-page'
+import ContentLayout from '@layouts/ContentLayout.astro'
+import { getSortedPosts, getTagPostMap } from '@lib/astro/post'
+import { paginate } from '@lib/paginate'
+
+import { getTagBaseUrl } from '@lib/urls'
+import type { CollectionEntry } from 'astro:content'
+
+export async function getStaticPaths() {
+  const allPosts = await getSortedPosts()
+
+  const tagMap = getTagPostMap(allPosts)
+
+  let paths: {
+    params: { slug?: string }
+    props: {
+      type: 'posts' | 'post'
+      title: string
+      showTitle?: boolean
+      superTitle?: string
+      root: string
+      page: number
+      pages: number
+      data: CollectionEntry<'blog'>[]
+    }
+  }[] = []
+
+  for (const [tag, posts] of tagMap.entries()) {
+    paths = paths.concat(
+      paginate(posts, getUrlFriendlyTag(tag)).map(p => ({
+        ...p,
+        props: {
+          ...p.props,
+
+          title: tag,
+          showTitle: true,
+          superTitle: 'Tag',
+          root: getTagBaseUrl(tag),
+        },
+      }))
+    )
+  }
+
+  return paths
+}
+
+const { title, showTitle, page, root, pages, data } = Astro.props
+---
+
+<ContentLayout title={title} showTitle={showTitle} tab="Blog">
+  <PostsPage
+    posts={data as IPost[]}
+    page={page}
+    pages={pages}
+    root={root}
+    slot="main"
+  />
+</ContentLayout>

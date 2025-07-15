@@ -6,43 +6,13 @@
 
 import { getCollection, type CollectionEntry } from 'astro:content'
 
-//import { join } from "path"
-
-import { BLOG_SLUG, POST_EXCERPT_MARKER } from '@/consts'
 import { range } from '../math/range'
-import {
-  getSlug,
-  getSlugBaseName,
-  getSlugDir,
-  getSlugSubPaths,
-  getUrlFriendlyTag,
-} from '../urls'
+import { getSlugSubPaths } from '../urls'
 import { getAllMDFiles } from './files'
 
+import { getUrlFriendlyTag } from '../http/urls'
 import { POSTS_DIR, REVIEWS_DIR } from '../post'
-
-export interface IPostFields {
-  index: number
-  title: string
-  type: string
-  description: string
-  hero: string
-  heroCaption: string
-  authors: string[]
-  categories: string[]
-  related: string[]
-  status: string
-  tags: string[]
-  pros: string[]
-  cons: string[]
-  details: string[]
-  rating: number
-}
-
-// export interface IBasePost extends IMarkdownBase {
-//   frontmatter: IPostFields
-//   //stats: IReadingStats
-// }
+import { growingSubsets } from '../utils'
 
 export function getPostPaths() {
   return getAllMDFiles(POSTS_DIR)
@@ -50,87 +20,6 @@ export function getPostPaths() {
 
 export function getReviewPaths() {
   return getAllMDFiles(REVIEWS_DIR)
-}
-
-// export const getPostFrontmatter = (path: string): IPostFields => {
-//   const items: IPostFields = {
-
-//     index: -1,
-//     title: '',
-//     description: '',
-//     //rawContent: '',
-//     //rawExcerpt: '',
-//     hero: '',
-//     heroCaption: '',
-//     authors: [],
-//     categories: [],
-//     tags: [],
-//     type: 'post',
-//     related: [],
-//     status: 'draft',
-//     pros: [],
-//     cons: [],
-//     details: [],
-//     rating: 0,
-//   }
-
-//   getFrontmatter(path, items)
-
-//   return items
-// }
-
-/**
- * Turns a slug into a file path and uses that to read
- * the post data.
- *
- * @param slug a post slug
- * @returns a post with basic frontmatter loaded.
- */
-// export function getPostBySlug(slug: string): IBasePost {
-//   return getPostByPath(`${POSTS_DIR}/${slug}.md`)
-// }
-
-// export function getPostByPath(path: string, index: number = -1): IBasePost {
-//   // const fullPath = join(
-//   //   isPublished ? POSTS_DIR : DRAFTS_DIR,
-//   //   `${slug}.md`
-//   // )
-
-//   const post = {
-//     fields: getFields(index, path),
-//     frontmatter: getPostFrontmatter(path),
-//   }
-
-//   // if (post.data.hero === "") {
-//   //   post.data.hero = `generic${(index % GENERIC_IMAGES) + 1}`
-//   // }
-
-//   return post
-// }
-
-export function getPostExcerpt(post: CollectionEntry<'blog'>): string {
-  // 1. Use description if provided
-  if (post.data.description) {
-    return post.data.description.trim()
-  }
-
-  const markdown = post.body
-
-  if (!markdown) {
-    return ''
-  }
-
-  if (markdown.includes(POST_EXCERPT_MARKER)) {
-    const beforeMore = markdown.split(POST_EXCERPT_MARKER)[0]
-    return beforeMore.trim().replace(/\n/g, ' ')
-  }
-
-  // 3. Fallback to first non-empty paragraph
-  const firstParagraph = markdown
-    .split('\n\n') // Split into paragraphs
-    .find(p => p.trim().length > 0) // Find first non-empty
-
-  return firstParagraph?.replace(/\n/g, ' ').trim() ?? ''
 }
 
 /**
@@ -186,18 +75,6 @@ export async function getSortedPosts(): Promise<CollectionEntry<'blog'>[]> {
   return sortPostsByDateDesc(await getPublishedPosts())
 }
 
-export function getPostUrl(post: CollectionEntry<'blog'>): string {
-  return `${BLOG_SLUG}/${getSlug(post.id)}`
-}
-
-export function getPostSlugDir(post: CollectionEntry<'blog'>): string {
-  return getSlugDir(getSlug(post.id))
-}
-
-export function getPostSection(post: CollectionEntry<'blog'>): string {
-  return getSlugBaseName(post.id)
-}
-
 /**
  * Returns all path combinations from a post.id slug
  * @param post
@@ -215,13 +92,19 @@ export function getPostSectionMap(
 
   for (const post of posts) {
     for (const section of post.data.sections ?? []) {
-      const sectionName = section.join('/') //+ getUrlFriendlyTag(section[0])
+      // for each section, create all growing subsets of url names
+      // e.g. from ["Reviews", "Engineering", "AI"] we get:
+      // [["Reviews"], ["Reviews",Engineering"], ["Reviews","Engineering","AI"]]
+      // so we can map each post to more specific sections
+      for (const sectionNames of growingSubsets(section)) {
+        const sectionName = sectionNames.join('/')
 
-      if (!sectionMap.has(sectionName)) {
-        sectionMap.set(sectionName, [])
-      }
-      if (max === -1 || sectionMap.get(sectionName)!.length < max) {
-        sectionMap.get(sectionName)!.push(post)
+        if (!sectionMap.has(sectionName)) {
+          sectionMap.set(sectionName, [])
+        }
+        if (max === -1 || sectionMap.get(sectionName)!.length < max) {
+          sectionMap.get(sectionName)!.push(post)
+        }
       }
     }
   }

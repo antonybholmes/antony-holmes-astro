@@ -1,15 +1,14 @@
 import { TAG_SLUG } from '@/consts'
+import { getUrlFriendlyTag, PATH_SEP } from './http/urls'
 import { range } from './math/range'
 
-export const PATH_SEP = '/'
-
-export function getUrlFriendlyTag(tag: string): string {
-  return tag
-    .trim()
-    .toLowerCase()
-    .replaceAll('&', 'and')
-    .replaceAll(/[\ \-]+/g, '-')
-}
+// export function getUrlFriendlyTag(tag: string): string {
+//   return tag
+//     .trim()
+//     .toLowerCase()
+//     .replaceAll('&', 'and')
+//     .replaceAll(/[\ \-]+/g, '-')
+// }
 
 export function getUrlFriendlyImg(
   img: string,

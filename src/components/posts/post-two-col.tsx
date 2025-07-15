@@ -1,9 +1,11 @@
-import type { IPostsProps } from "./hero-posts"
+import type { IPostsProps } from './hero-posts'
 
-import { HeroPostSmall } from "./hero-post-small"
-import { PostSection } from "./post-section"
+import type { IChildrenProps } from '@/interfaces/children-props'
+import { HeroPostSmall } from './hero-post-small'
+import { PostSection } from './post-section'
 
-interface IProps extends IPostsProps {
+interface IProps extends IPostsProps, IChildrenProps {
+  title: string
   maxPosts?: number
 }
 

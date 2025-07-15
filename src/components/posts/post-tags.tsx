@@ -1,9 +1,9 @@
 import type { IClassProps } from '@/interfaces/class-props'
-import type { CollectionEntry } from 'astro:content'
+import type { IPost } from '@/lib/post'
 import { PostTagLink } from './post-tag-link'
 
 export interface IPostProps extends IClassProps {
-  post: CollectionEntry<'blog'>
+  post: IPost
 }
 
 export function PostTags({ post }: IPostProps) {

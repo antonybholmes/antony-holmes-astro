@@ -1,11 +1,11 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { type CollectionEntry } from 'astro:content'
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
-import { render } from 'astro:content'
+
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
-import { getPostSectionMap, sortPostsByDateDesc } from '@/lib/astro/post'
+import { getPostSectionMap, getSortedPosts } from '@/lib/astro/post'
 import { paginate, type PaginationType } from '@/lib/paginate'
-import { getUrlFriendlyTag } from '@/lib/urls'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
 
 interface Props {
   type: PaginationType
@@ -17,9 +17,7 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  let posts = await getCollection('blog')
-
-  posts = sortPostsByDateDesc(posts)
+  let posts = await getSortedPosts()
 
   let paths: { params: { slug?: string }; props: Props }[] = []
 
@@ -89,11 +87,6 @@ export async function getStaticPaths() {
 
     paths = paths.concat(pages)
   }
-
-  console.log(
-    'Blog paths:',
-    paths.map(p => p.params.slug)
-  )
 
   return paths
 }

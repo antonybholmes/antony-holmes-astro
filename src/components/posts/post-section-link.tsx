@@ -1,7 +1,8 @@
 import { BLOG_SLUG } from '@/consts'
+import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
 import { BaseLink } from '@components/link/base-link'
 import { VCenterRow } from '@layout/v-center-row'
-import { formatSection, getPostSection, getPostSlugDir } from '@lib/post'
+import { formatSection } from '@lib/post'
 import { cn } from '@lib/shadcn-utils'
 import type { IPostProps } from './post-tags'
 
@@ -12,24 +13,35 @@ interface IProps extends IPostProps {
 export function PostSectionLink({
   post,
   textSize = 'text-2xl md:text-lg',
-
   className,
 }: IProps) {
-  const section = formatSection(getPostSection(post))
+  // pick the first section
+  const section = post.data.sections?.[0] || []
+
+  // convert the section to a name by taking the last part and formatting it
+  const sectionName = formatSection(section[section.length - 1] || 'Section')
+
+  // create a slug from the section
+  const slug = getUrlFriendlyTag(
+    post.data.sections?.[0].join(PATH_SEP) || 'section'
+  )
+
+  // create the href for the post section link
+  const href = `${BLOG_SLUG}/${slug}`
 
   return (
     <VCenterRow>
       <BaseLink
-        href={`${BLOG_SLUG}/${getPostSlugDir(post)}`}
-        aria-label={`Read more ${section} posts`}
-        title={`Read more ${section} posts`}
+        href={href}
+        aria-label={`Read more ${sectionName} posts`}
+        title={`Read more ${sectionName} posts`}
         className={cn(
           'block bg-gradient-to-r from-purple-500 to-rose-600 bg-clip-text font-semibold text-transparent',
           textSize,
           className
         )}
       >
-        {section}
+        {sectionName}
       </BaseLink>
     </VCenterRow>
   )

@@ -3,8 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { getAllFiles } from './files'
 
 import { PEOPLE_SLUG } from '@/consts'
-
-import { getUrlFriendlyTag } from '@lib/urls'
+import { getUrlFriendlyTag } from '../http/urls'
 
 export interface IAuthorMap {
   [key: string]: CollectionEntry<'people'>

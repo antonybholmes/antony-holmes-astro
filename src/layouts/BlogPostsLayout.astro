@@ -1,4 +1,5 @@
 ---
+import type { IPost } from '@/lib/post'
 import { PostsPage } from '@components/posts/posts-page'
 import ContentLayout from '@layouts/ContentLayout.astro'
 
@@ -18,10 +19,14 @@ interface Props {
 }
 
 const { title, page, pages, data, root } = Astro.props
-
-console.log('root', root)
 ---
 
 <ContentLayout title={title} tab="Blog" className="py-8">
-  <PostsPage posts={data} page={page} pages={pages} root={root} slot="main" />
+  <PostsPage
+    posts={data as IPost[]}
+    page={page}
+    pages={pages}
+    root={root}
+    slot="main"
+  />
 </ContentLayout>

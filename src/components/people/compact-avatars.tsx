@@ -37,13 +37,14 @@ export function CompactAvatars({
         </ul>
       )}
 
-      <ul className="flex flex-row flex-wrap items-center gap-x-1 text-sm font-medium">
+      <ul className="flex flex-row flex-wrap items-center gap-x-1 text-sm font-bold">
         {people.map((person, index) => (
           <li key={index}>
             <BaseLink
               href={getAuthorBaseUrl(person)}
               aria-label={`Click to read more about ${person}`}
-              data-underline={true}
+              //data-underline={true}
+              className="hover:underline hover:text-sky-600 decoration-sky-600"
             >
               {person}
             </BaseLink>

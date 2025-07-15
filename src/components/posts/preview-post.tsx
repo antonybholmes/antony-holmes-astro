@@ -4,9 +4,9 @@ import type { IPostProps } from './post-tags'
 import { FormattedDate } from '@components/formatted-date'
 import { CompactAvatars } from '@components/people/compact-avatars'
 import { BaseCol } from '@layout/base-col'
-import { VCenterRow } from '@layout/v-center-row'
 
-import { getPostExcerpt } from '@/lib/astro/post'
+import { getPostExcerpt } from '@/lib/post'
+import { PostAuthors } from './hero-post-small'
 import { PostImage } from './post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
@@ -70,16 +70,7 @@ export function PreviewPost({
             <FormattedDate date={date} />
           </>
         ) : (
-          <VCenterRow className="gap-x-2 text-sm">
-            {showAvatar && (
-              <CompactAvatars
-                people={post.data.authors ?? []}
-                showImages={showAvatarImage}
-              />
-            )}
-            <span className="rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-gray-400" />
-            <FormattedDate date={date} />
-          </VCenterRow>
+          <PostAuthors post={post} showAvatar={showAvatar} />
         )}
       </BaseCol>
     </article>

@@ -2,8 +2,8 @@
 product: Fidelity Rewards Visa Signature
 description: My review of the Fidelity Rewards Visa Signature credit card.
 readTime: 1 min
-categories:
-  - Reviews/Credit Cards
+sections:
+  - ['Reviews', 'Credit Cards']
 type: review
 rating: 4.5
 pros:
@@ -21,10 +21,10 @@ title: Fidelity Rewards Credit Card
 
 hero: /assets/posts/opt/credit-cards-1600x800.avif
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: 2022-10-22
 tags:
-  - Cash Back
+  - 'Cash Back'
 updated: 2022-10-22
 ---
 

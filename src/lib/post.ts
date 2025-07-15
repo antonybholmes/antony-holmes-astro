@@ -2,12 +2,34 @@
 
 //import { join } from "path"
 
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_SLUG, POST_EXCERPT_MARKER } from '@/consts'
 import { capitalCase } from './text/capital-case'
 import { getSlug, getSlugBaseName, getSlugDir, getSlugSubPaths } from './urls'
 
 export const POSTS_DIR = 'src/content/posts'
 export const REVIEWS_DIR = 'src/content/review'
+
+/**
+ * Represents a blog post because we need something independent of astro:content that
+ * works client side.
+ */
+export interface IPost {
+  id: string
+  body?: string
+
+  data: {
+    authors?: string[]
+    description?: string
+    heroImage?: string
+    heroImageAlt?: string
+    title: string
+
+    added: Date
+    updated?: Date
+    sections?: string[][]
+    tags: string[]
+  }
+}
 
 export function formatSection(section: string): string {
   return section
@@ -16,11 +38,6 @@ export function formatSection(section: string): string {
     .split(' ')
     .map(t => capitalCase(t))
     .join(' ')
-}
-
-interface IPost {
-  id: string
-  body?: string | undefined
 }
 
 // export function getPostExcerpt(post: IPost) {
@@ -151,3 +168,107 @@ export function getPostSlugSubPaths(post: IPost): string[] {
 
 //   return categoryMap
 //}
+
+export interface IPostFields {
+  index: number
+  title: string
+  type: string
+  description: string
+  hero: string
+  heroCaption: string
+  authors: string[]
+  categories: string[]
+  related: string[]
+  status: string
+  tags: string[]
+  pros: string[]
+  cons: string[]
+  details: string[]
+  rating: number
+}
+
+// export interface IBasePost extends IMarkdownBase {
+//   frontmatter: IPostFields
+//   //stats: IReadingStats
+// }
+
+// export const getPostFrontmatter = (path: string): IPostFields => {
+//   const items: IPostFields = {
+
+//     index: -1,
+//     title: '',
+//     description: '',
+//     //rawContent: '',
+//     //rawExcerpt: '',
+//     hero: '',
+//     heroCaption: '',
+//     authors: [],
+//     categories: [],
+//     tags: [],
+//     type: 'post',
+//     related: [],
+//     status: 'draft',
+//     pros: [],
+//     cons: [],
+//     details: [],
+//     rating: 0,
+//   }
+
+//   getFrontmatter(path, items)
+
+//   return items
+// }
+
+/**
+ * Turns a slug into a file path and uses that to read
+ * the post data.
+ *
+ * @param slug a post slug
+ * @returns a post with basic frontmatter loaded.
+ */
+// export function getPostBySlug(slug: string): IBasePost {
+//   return getPostByPath(`${POSTS_DIR}/${slug}.md`)
+// }
+
+// export function getPostByPath(path: string, index: number = -1): IBasePost {
+//   // const fullPath = join(
+//   //   isPublished ? POSTS_DIR : DRAFTS_DIR,
+//   //   `${slug}.md`
+//   // )
+
+//   const post = {
+//     fields: getFields(index, path),
+//     frontmatter: getPostFrontmatter(path),
+//   }
+
+//   // if (post.data.hero === "") {
+//   //   post.data.hero = `generic${(index % GENERIC_IMAGES) + 1}`
+//   // }
+
+//   return post
+// }
+
+export function getPostExcerpt(post: IPost): string {
+  // 1. Use description if provided
+  if (post.data.description) {
+    return post.data.description.trim()
+  }
+
+  const markdown = post.body
+
+  if (!markdown) {
+    return ''
+  }
+
+  if (markdown.includes(POST_EXCERPT_MARKER)) {
+    const beforeMore = markdown.split(POST_EXCERPT_MARKER)[0]
+    return beforeMore.trim().replace(/\n/g, ' ')
+  }
+
+  // 3. Fallback to first non-empty paragraph
+  const firstParagraph = markdown
+    .split('\n\n') // Split into paragraphs
+    .find(p => p.trim().length > 0) // Find first non-empty
+
+  return firstParagraph?.replace(/\n/g, ' ').trim() ?? ''
+}

@@ -1,0 +1,65 @@
+---
+import { BaseCol } from '@/components/layout/base-col'
+import type { IPost } from '@/lib/post'
+import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
+import { BaseLink } from '@components/link/base-link'
+import { HeroPosts } from '@components/posts/hero-posts'
+import { PostCategoryCol } from '@components/posts/post-category-col'
+import { PostCol } from '@components/posts/post-col'
+import { PostTwoCol } from '@components/posts/post-two-col'
+import ContentLayout from '@layouts/ContentLayout.astro'
+import { getPostSectionMap, getSortedPosts } from '@lib/astro/post'
+import { getPageCount } from '@lib/paginate'
+
+const allPosts = await getSortedPosts()
+
+const postMap = getPostSectionMap(allPosts, 3)
+
+const pages = getPageCount(allPosts)
+
+const news = allPosts.filter(post => post.id.includes('news'))
+---
+
+<ContentLayout title="Blog" contentClassName="gap-y-16">
+  <BaseCol className="gap-y-8" slot="main">
+    <HeroPosts posts={allPosts as IPost[]} page={0} pages={pages} />
+    <section class="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-12">
+      <PostCol
+        title="Latest"
+        posts={allPosts as IPost[]}
+        page={0}
+        pages={pages}
+      >
+        <BaseLink
+          href="/blog/latest"
+          data-underline={true}
+          className="trans-color group hover:text-primary-color data-[underline=true]:hover:decoration-primary-color inline-flex flex-row gap-x-1 text-xs"
+          ><span>View all</span>
+          <ChevronRightIcon
+            stroke="stroke-[2px] stroke-foreground group-hover:stroke-primary-color"
+          />
+        </BaseLink>
+      </PostCol>
+
+      <PostCategoryCol
+        section="Engineering"
+        postMap={postMap}
+        client:only="react"
+      />
+    </section>
+
+    <PostTwoCol title="News" posts={news as IPost[]} page={0} pages={pages}>
+      <BaseLink
+        href="/blog/news"
+        data-underline={true}
+        className="trans-color group hover:text-primary-color data-[underline=true]:hover:decoration-primary-color inline-flex flex-row gap-x-1 text-xs"
+        ><span>More news</span>
+        <ChevronRightIcon
+          stroke="stroke-[2px] stroke-foreground group-hover:stroke-primary-color"
+        /></BaseLink
+      >
+    </PostTwoCol>
+
+    <!-- <PostsPage posts={posts} page={0} pages={pages} slot="main" /> -->
+  </BaseCol>
+</ContentLayout>

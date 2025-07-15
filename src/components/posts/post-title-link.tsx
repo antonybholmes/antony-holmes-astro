@@ -2,7 +2,7 @@ import { cn } from '@lib/shadcn-utils'
 
 import { BaseLink } from '@components/link/base-link'
 
-import { getPostUrl } from '@/lib/astro/post'
+import { getPostUrl } from '@/lib/post'
 import type { IPostProps } from './post-tags'
 
 export function PostTitleLink({ post, className }: IPostProps) {
@@ -11,8 +11,8 @@ export function PostTitleLink({ post, className }: IPostProps) {
       <BaseLink
         href={getPostUrl(post)}
         aria-label={post.data.title}
-        data-underline={true}
-        className="hover:text-blue-600 data-[underline=true]:hover:decoration-blue-600 trans-color"
+        //data-underline={true}
+        className=" hover:underline underline-offset-4 hover:decoration-blue-600"
       >
         {post.data.title}
       </BaseLink>
