@@ -30,7 +30,7 @@ export async function getStaticPaths() {
     // this is useful for SEO and readability
 
     paths.push({
-      params: { slug: post.id.split('/').pop() || post.id },
+      params: { slug: post.id },
       props: {
         type: 'post',
         title: post.data.title,
@@ -111,6 +111,8 @@ const { type, title, root, page, pages, data } = Astro.props
       pages={pages}
       data={data}
       root={root}
+      showSectionLinks={root === '/blog'}
+      showTitle={root !== '/blog'}
     />
   )
 }

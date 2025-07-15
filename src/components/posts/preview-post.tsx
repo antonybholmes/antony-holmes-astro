@@ -21,6 +21,7 @@ interface IProps extends IPostProps {
   showAvatar?: boolean
   showAvatarImage?: boolean
   dateBelow?: boolean
+  showSectionLinks?: boolean
 }
 
 export function PreviewPost({
@@ -35,6 +36,7 @@ export function PreviewPost({
   showAvatar = true,
   showAvatarImage = true,
   dateBelow = false,
+  showSectionLinks = true,
 }: IProps) {
   const date = post.data.added
 
@@ -48,7 +50,9 @@ export function PreviewPost({
 
       <BaseCol className={cn('gap-y-2', innerClassName)}>
         <BaseCol className="gap-y-1">
-          <PostSectionLink post={post} textSize="text-xl md:text-base" />
+          {showSectionLinks && (
+            <PostSectionLink post={post} textSize="text-xl md:text-base" />
+          )}
           <PostTitleLink post={post} className={headerClassName} />
         </BaseCol>
         {showDescription && (

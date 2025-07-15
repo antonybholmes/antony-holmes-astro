@@ -32,18 +32,22 @@ if (!crumbs) {
 <BaseLayout title={title} tab={tab} className={className}>
   <slot name="head" slot="head" />
   <ContentDiv slot="main" className="mt-8">
-    <BaseCol slot="main" className="gap-y-8">
+    <BaseCol slot="main" className="gap-y-16">
       {
-        showTitle && (
-          <PageTitle
-            title={title}
-            subTitle={subTitle}
-            superTitle={superTitle}
-          />
+        (showTitle || showCrumbs) && (
+          <BaseCol className="gap-y-4">
+            <slot name="header" />
+            {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
+            {showTitle && (
+              <PageTitle
+                title={title}
+                subTitle={subTitle}
+                superTitle={superTitle}
+              />
+            )}
+          </BaseCol>
         )
       }
-      {showCrumbs && <Breadcrumb crumbs={crumbs} />}
-
       <slot name="main" />
     </BaseCol>
   </ContentDiv>

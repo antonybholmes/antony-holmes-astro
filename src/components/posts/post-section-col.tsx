@@ -13,10 +13,11 @@ import { PostCol } from './post-col'
 
 interface IProps extends IClassProps {
   section: string
+  href?: string
   postMap: Map<string, any[]>
 }
 
-export function PostCategoryCol({ section, postMap }: IProps) {
+export function PostSectionCol({ section, href, postMap }: IProps) {
   const [_section, setSection] = useState('')
   const [open, setOpen] = useState(false)
 
@@ -29,9 +30,11 @@ export function PostCategoryCol({ section, postMap }: IProps) {
   return (
     <PostCol
       title={formatSection(_section)}
+      href={href}
       posts={posts ?? []}
       page={0}
       pages={0}
+      showSectionLinks={false}
     >
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className="flex flex-row items-center gap-x-1 text-xs">

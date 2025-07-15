@@ -15,12 +15,14 @@ import { PostTitleLink } from './post-title-link'
 interface IProps extends IPostProps {
   showAvatar?: boolean
   showDescription?: boolean
+  showSectionLinks?: boolean
 }
 
 export function HeroPostSmall({
   post,
   showAvatar = true,
   showDescription = true,
+  showSectionLinks = true,
   className,
 }: IProps) {
   const hasImage = Boolean(post.data.heroImage)
@@ -40,7 +42,9 @@ export function HeroPostSmall({
       )}
       <BaseCol className="col-span-3 gap-y-1">
         <BaseCol>
-          <PostSectionLink post={post} textSize="text-xl md:text-base" />
+          {showSectionLinks && (
+            <PostSectionLink post={post} textSize="text-xl md:text-base" />
+          )}
           <PostTitleLink post={post} className="text-2xl lg:text-lg" />
         </BaseCol>
         {/* <CondComp cond={showDescription}>

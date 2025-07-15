@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added extra links and fixed UI issues.
 - Added headings and breadcrumb support.
 - Added some more quotes.
 - Added more complex blog layours.

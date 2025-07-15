@@ -66,9 +66,31 @@ export function sortPostsByDateDesc(
 // }
 
 export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
-  return await getCollection('blog', ({ data }) => {
-    return import.meta.env.DEV || data.draft !== true
+  let posts = await getCollection('blog')
+
+  // filter out posts that are drafts
+  // this is useful for development so we can see all posts
+  // but in production we only want to show published posts
+  // and not drafts
+  // this is also useful for the blog page where we want to show
+  // all posts but not drafts
+  // so we can use this function to get all posts
+  // and then filter out drafts
+  // in the component that renders the posts
+  // this way we can still see drafts in development
+  // but not in production
+  if (import.meta.env.PROD) {
+    posts = posts.filter(({ data }) => data.draft !== true)
+  }
+
+  // fix id to flatten the path
+  posts = posts.map(post => {
+    // flatten the path to just the slug
+    post.id = post.id.split('/').pop() ?? post.id
+    return post
   })
+
+  return posts
 }
 
 export async function getSortedPosts(): Promise<CollectionEntry<'blog'>[]> {

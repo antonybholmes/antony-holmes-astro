@@ -112,8 +112,8 @@ function Ellipsis() {
 }
 
 interface IProps {
-  page: number
-  pages: number
+  page?: number
+  pages?: number
   root?: string
 }
 
@@ -121,7 +121,7 @@ function getPath(page: number, root: string = ''): string {
   return `${root ? `${root}/` : ''}page/${page + 1}`
 }
 
-export function PagePagination({ page, pages, root }: IProps) {
+export function PagePagination({ page = 0, pages = 1, root }: IProps) {
   page = Math.max(0, Math.min(page, pages - 1))
 
   const pageStart = Math.max(page - 1, 0)

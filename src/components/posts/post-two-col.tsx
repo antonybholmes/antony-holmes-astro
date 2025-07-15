@@ -1,20 +1,36 @@
 import type { IPostsProps } from './hero-posts'
 
 import type { IChildrenProps } from '@/interfaces/children-props'
+import { cn } from '@/lib/shadcn-utils'
 import { HeroPostSmall } from './hero-post-small'
 import { PostSection } from './post-section'
 
 interface IProps extends IPostsProps, IChildrenProps {
   title: string
+  href?: string
   maxPosts?: number
 }
 
-export function PostTwoCol({ title, posts, maxPosts = 9, children }: IProps) {
+export function PostTwoCol({
+  title,
+  href,
+  posts,
+  maxPosts = 9,
+  showSectionLinks = true,
+  children,
+}: IProps) {
   return (
-    <PostSection title={title} headerChildren={children}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <PostSection title={title} href={href} headerChildren={children}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
         {posts.slice(0, maxPosts).map((post, index) => {
-          return <HeroPostSmall post={post} key={index} />
+          return (
+            <HeroPostSmall
+              post={post}
+              key={index}
+              showSectionLinks={showSectionLinks}
+              className={cn(index > 1 && 'pt-8 border-t border-border')}
+            />
+          )
         })}
       </div>
     </PostSection>

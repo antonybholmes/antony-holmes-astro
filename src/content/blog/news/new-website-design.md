@@ -1,8 +1,7 @@
 ---
 description: I've redesigned my website using Gatsby.
-categories:
-  - News
-  - Web Development
+sections:
+  - ['News']
 type: post
 status: added
 title: New website design!

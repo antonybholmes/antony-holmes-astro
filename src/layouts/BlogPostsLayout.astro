@@ -1,32 +1,36 @@
 ---
+import type { IPaginationProps } from '@/lib/paginate'
 import type { IPost } from '@/lib/post'
 import { PostsPage } from '@components/posts/posts-page'
 import ContentLayout from '@layouts/ContentLayout.astro'
 
 import type { CollectionEntry } from 'astro:content'
 
-interface Props {
+interface Props
+  extends Omit<IPaginationProps<CollectionEntry<'blog'>>, 'type'> {
   title: string
-  page: number
-  pages: number
-  data: CollectionEntry<'blog'>[]
+
   // the root without page numbers etc added to it
   // e.g. /blog/tag/javascript/ instead of /blog/tag/javascript/page/2
   // this is used to generate the correct links for pagination
   // and for the "back to section" link
   // this is useful for SEO and readability
   root: string
+  showTitle?: boolean
+  showSectionLinks?: boolean
 }
 
-const { title, page, pages, data, root } = Astro.props
+const { title, showTitle, page, pages, data, root, showSectionLinks } =
+  Astro.props
 ---
 
-<ContentLayout title={title} tab="Blog" className="py-8">
+<ContentLayout title={title} showTitle={showTitle} tab="Blog" showCrumbs={true}>
   <PostsPage
     posts={data as IPost[]}
     page={page}
     pages={pages}
     root={root}
+    showSectionLinks={showSectionLinks}
     slot="main"
   />
 </ContentLayout>

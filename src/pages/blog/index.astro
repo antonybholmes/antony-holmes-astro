@@ -4,7 +4,7 @@ import type { IPost } from '@/lib/post'
 import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
 import { BaseLink } from '@components/link/base-link'
 import { HeroPosts } from '@components/posts/hero-posts'
-import { PostCategoryCol } from '@components/posts/post-category-col'
+import { PostSectionCol } from '@/components/posts/post-section-col'
 import { PostCol } from '@components/posts/post-col'
 import { PostTwoCol } from '@components/posts/post-two-col'
 import ContentLayout from '@layouts/ContentLayout.astro'
@@ -17,11 +17,13 @@ const postMap = getPostSectionMap(allPosts, 3)
 
 const pages = getPageCount(allPosts)
 
-const news = allPosts.filter(post => post.id.includes('news'))
+const news = allPosts.filter(post =>
+  post.data.sections?.some(section => section.includes('News'))
+)
 ---
 
-<ContentLayout title="Blog" contentClassName="gap-y-16">
-  <BaseCol className="gap-y-8" slot="main">
+<ContentLayout title="Blog">
+  <BaseCol className="gap-y-16" slot="main">
     <HeroPosts posts={allPosts as IPost[]} page={0} pages={pages} />
     <section class="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-12">
       <PostCol
@@ -41,14 +43,22 @@ const news = allPosts.filter(post => post.id.includes('news'))
         </BaseLink>
       </PostCol>
 
-      <PostCategoryCol
+      <PostSectionCol
         section="Engineering"
+        href="/blog/engineering"
         postMap={postMap}
         client:only="react"
       />
     </section>
 
-    <PostTwoCol title="News" posts={news as IPost[]} page={0} pages={pages}>
+    <PostTwoCol
+      title="News"
+      href="/blog/news"
+      posts={news as IPost[]}
+      page={0}
+      pages={pages}
+      showSectionLinks={false}
+    >
       <BaseLink
         href="/blog/news"
         data-underline={true}

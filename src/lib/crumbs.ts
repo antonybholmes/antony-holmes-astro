@@ -3,11 +3,14 @@ import { fixName, type UndefStr } from './text/text'
 
 const EXCLUDE = ['Tag', 'Category', 'Section', 'Page']
 
-export type ICrumb = [string, string]
+export type ICrumb = {
+  name: string
+  path: string
+}
 
 export interface ICrumbProps {
   showCrumbs?: boolean
-  crumbs?: [string, string][]
+  crumbs?: ICrumb[]
 }
 
 function _formatName(name: string) {
@@ -28,7 +31,7 @@ export function createCrumbs(url: UndefStr): ICrumb[] {
 
     const path = `/${segments.slice(0, i + 1).join('/')}`
     if (!EXCLUDE.includes(name) && name.search(/^\d+$/) === -1) {
-      crumbs.push([name, path])
+      crumbs.push({ name, path })
     }
   }
 

@@ -11,7 +11,8 @@ export function PostsPage({
   posts,
   page,
   pages,
-  showLatestPosts,
+  showLatestPosts = false,
+  showSectionLinks = true,
   root,
 }: IPostsProps) {
   const heroPosts = posts.slice(0, 4)
@@ -20,18 +21,19 @@ export function PostsPage({
 
   return (
     <BaseCol className="gap-y-16">
-      <HeroPosts posts={heroPosts} page={0} pages={0} />
+      <HeroPosts
+        posts={heroPosts}
+        page={0}
+        pages={0}
+        showSectionLinks={showSectionLinks}
+      />
 
       {/* <HeadPost post={heroPost} /> */}
-      {headPosts.length > 0 && (
-        <HeadPosts posts={headPosts} page={0} pages={0} />
-      )}
+      {headPosts.length > 0 && <HeadPosts posts={headPosts} />}
       {/* <HeroPost post={heroPost} /> */}
       {/* <MorePosts posts={morePosts} /> */}
 
-      {restPosts.length > 0 && (
-        <RestPosts posts={restPosts} page={0} pages={0} />
-      )}
+      {restPosts.length > 0 && <RestPosts posts={restPosts} />}
 
       {/* <Pagination page={page} pages={pages} /> */}
 
@@ -39,7 +41,7 @@ export function PostsPage({
         <PagePagination page={page} pages={pages} root={root} />
       </HCenterRow>
 
-      {showLatestPosts && <LatestPosts posts={posts} page={0} pages={0} />}
+      {showLatestPosts && <LatestPosts posts={posts} />}
 
       {/* {sectionMap && (
         <>
