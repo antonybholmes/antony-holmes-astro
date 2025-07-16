@@ -1,0 +1,14 @@
+---
+import { MarkdownContent } from "@components/markdown-content"
+import ContentLayout from "./ContentLayout.astro"
+
+const { content } = Astro.props
+---
+
+<ContentLayout
+  title={content.title}
+  subTitle={content.subtitle}
+  showTitle={true}
+>
+  <MarkdownContent slot="main" className="mt-8"><slot /></MarkdownContent>
+</ContentLayout>

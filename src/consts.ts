@@ -105,16 +105,21 @@ export const SITE_URL = 'https://antonyholmes.dev'
 
 export const TARGET_BLANK = '_blank'
 
-export const MENU_ITEMS = [
+export const MENU_ITEMS: {
+  label: string
+  path: string
+  icon: string
+  ariaLabel: string
+}[] = [
   {
     label: TEXT_HOME,
-    href: '/',
+    path: '/',
     icon: 'home',
     ariaLabel: 'Home',
   },
   {
     label: 'Blog',
-    href: '/blog',
+    path: '/blog',
     icon: 'blog',
     ariaLabel: 'Blog',
   },
@@ -126,13 +131,13 @@ export const MENU_ITEMS = [
   // },
   {
     label: 'Resume',
-    href: '/resume',
+    path: '/resume',
     icon: 'resume',
     ariaLabel: 'Resume',
   },
   {
     label: 'Publications',
-    href: '/publications',
+    path: '/publications',
     icon: 'publications',
     ariaLabel: 'Publications',
   },
@@ -170,6 +175,10 @@ export const FOOTER_ITEMS = [
       {
         label: 'About This Site',
         href: '/about',
+      },
+      {
+        label: 'Contact',
+        href: '/contact',
       },
     ],
   },

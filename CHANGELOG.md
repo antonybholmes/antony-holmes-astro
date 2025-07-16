@@ -2,6 +2,10 @@
 
 ## 1.6 (Jul, 2025)
 
+### Added
+
+- Added whimsy.
+
 ### Fixed
 
 - Bug fixes and updates.
