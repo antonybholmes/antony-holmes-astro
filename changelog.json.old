@@ -150,6 +150,12 @@
           "msg": "Bug fixes and updates.",
           "date": "2025-07-15T23:07:57.249Z"
         }
+      ],
+      "Added": [
+        {
+          "msg": "Added support for obsidian templates and optional hero rather than mandatory",
+          "date": "2025-07-16T02:36:23.247Z"
+        }
       ]
     },
     "author": "Antony Holmes",

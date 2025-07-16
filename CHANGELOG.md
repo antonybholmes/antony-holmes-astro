@@ -8,6 +8,7 @@
 
 ### Changed
 
+- UI fixes.
 - UI fixes and standardization.
 
 ### Fixed
