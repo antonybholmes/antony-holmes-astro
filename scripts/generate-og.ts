@@ -4,6 +4,7 @@ import fs from 'fs'
 import { globby } from 'globby'
 import matter from 'gray-matter'
 import path from 'path'
+import sharp from 'sharp'
 
 const OUTPUT_DIR = 'public/img/og'
 
@@ -46,19 +47,24 @@ async function main() {
       fitTo: { mode: 'width', value: 1200 },
     })
 
-    const rawBuffer = resvg.render().asPng()
+    const pngBuffer = resvg.render().asPng()
 
-    const png = new Uint8Array(
-      rawBuffer.buffer,
-      rawBuffer.byteOffset,
-      rawBuffer.byteLength
+    const webpBuffer = await sharp(pngBuffer)
+      .webp({ quality: 90 }) // adjust quality
+      .toBuffer()
+
+    const buffer = new Uint8Array(
+      webpBuffer.buffer,
+      webpBuffer.byteOffset,
+      webpBuffer.byteLength
     )
 
     const slug = data.slug || path.basename(file, '.md')
-    const outputPath = path.join(OUTPUT_DIR, `${slug}.png`)
+    //const outputPath = path.join(OUTPUT_DIR, `${slug}.png`)
+    const outputPath = path.join(OUTPUT_DIR, `${slug}.webp`)
 
     if (!fs.existsSync(outputPath)) {
-      await fs.writeFileSync(outputPath, png)
+      await fs.writeFileSync(outputPath, buffer)
       console.log(`✅ Generated OG image for ${slug}`)
     } else {
       console.log(`⚠️ OG image for ${slug} already exists, skipping`)

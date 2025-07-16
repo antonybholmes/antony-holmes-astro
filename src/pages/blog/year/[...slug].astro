@@ -1,18 +1,8 @@
 ---
-import { PostsPage } from '@/components/posts/posts-page'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
-import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { paginate, type IPaginationProps } from '@/lib/paginate'
-import type { IPost } from '@/lib/post'
-
-import { getCollection, type CollectionEntry } from 'astro:content'
-
-interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
-  title: string
-  root: string
-}
+import { paginate } from '@/lib/paginate'
+import type { CollectionEntry } from 'astro:content'
 
 // 1. Generate all unique tags for static paths
 export async function getStaticPaths() {
@@ -34,7 +24,15 @@ export async function getStaticPaths() {
 
   let paths: {
     params: { slug?: string }
-    props: Props
+    props: {
+      title: string
+      pageTitle: string
+      showTitle: boolean
+      root: string
+      page: number
+      pages: number
+      data: CollectionEntry<'blog'>[]
+    }
   }[] = []
 
   for (const year of yearSet) {
@@ -54,7 +52,8 @@ export async function getStaticPaths() {
         ...p,
         props: {
           ...p.props,
-          title: `Posts from ${year} - Page ${p.props.page + 1} of ${p.props.pages}`,
+          title: `Posts from ${year}`,
+          pageTitle: `Posts from ${year} - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
           root: `/blog/year/${slug}`,
         },
@@ -65,11 +64,12 @@ export async function getStaticPaths() {
   return paths
 }
 
-const { title, page, root, pages, data } = Astro.props
+const { title, pageTitle, page, root, pages, data } = Astro.props
 ---
 
 <BlogPostsLayout
   title={title}
+  pageTitle={pageTitle}
   page={page}
   pages={pages}
   posts={data}

@@ -47,7 +47,7 @@ const tags = (await getUniqueTags()).slice(0, 10)
               {
                 tags.map(t => (
                   <li>
-                    <BaseLink href={`/tag/${getUrlFriendlyTag(t.tag)}`}>
+                    <BaseLink href={`/blog/tag/${getUrlFriendlyTag(t.tag)}`}>
                       #{t.tag} ({t.count})
                     </BaseLink>
                   </li>

@@ -1,20 +1,19 @@
 ---
-import type { IPageProps, IPaginationProps } from '@/lib/paginate'
+import type { IPageProps } from '@/lib/paginate'
 import type { IPost } from '@/lib/post'
-import { PostsPage } from '@components/posts/posts-page'
 
+import { Breadcrumb } from '@/components/breadcrumb'
+import { BaseCol } from '@/components/layout/base-col'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
+import { PagePagination } from '@/components/page-pagination'
+import { PageTitle } from '@/components/page-title'
+import { FeaturedPosts } from '@/components/posts/featured-posts'
+import { HeroPosts } from '@/components/posts/hero-posts'
+import { RestPosts } from '@/components/posts/rest-posts'
+import type { ColorMode } from '@/interfaces/color-mode'
+import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from './BaseLayout.astro'
-import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
-import ContentDiv from '@/components/layout/ContentDiv.astro'
-import { Breadcrumb } from '@/components/breadcrumb'
-import { PageTitle } from '@/components/page-title'
-import { BaseCol } from '@/components/layout/base-col'
-import type { ColorMode } from '@/interfaces/color-mode'
-import { HeroPosts } from '@/components/posts/hero-posts'
-import { PagePagination } from '@/components/page-pagination'
-import { RestPosts } from '@/components/posts/rest-posts'
-import { FeaturedPosts } from '@/components/posts/featured-posts'
 
 interface Props extends IPageProps, ICrumbProps {
   title: string
@@ -37,7 +36,7 @@ let {
   pageTitle,
   showTitle,
   crumbs,
-  showCrumbs = true,
+
   posts,
   featuredPosts = [],
   page,
@@ -57,10 +56,10 @@ if (!crumbs) {
   <Fragment slot="main">
     <>
       {
-        (showTitle || showCrumbs) && (
+        (showTitle || crumbs) && (
           <ContentDiv className="py-8 mb-8 data-[mode=dark]:bg-gradient-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
             <BaseCol className="gap-y-4" slot="main">
-              {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
+              {crumbs && <Breadcrumb crumbs={crumbs} />}
               {showTitle && <PageTitle title={title} />}
             </BaseCol>
           </ContentDiv>

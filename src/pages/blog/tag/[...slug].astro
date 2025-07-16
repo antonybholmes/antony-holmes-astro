@@ -1,20 +1,12 @@
 ---
+import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getTagPostMap } from '@/lib/astro/tags'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
-import type { IPost } from '@/lib/post'
-import { PostsPage } from '@components/posts/posts-page'
-import ContentLayout from '@layouts/ContentLayout.astro'
 import { getSortedPosts } from '@lib/astro/post'
-import { paginate, type IPaginationProps } from '@lib/paginate'
+import { paginate } from '@lib/paginate'
 
 import { getTagBaseUrl } from '@lib/urls'
 import type { CollectionEntry } from 'astro:content'
-
-interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
-  title: string
-  showTitle?: boolean
-  root: string
-}
 
 export async function getStaticPaths() {
   const allPosts = await getSortedPosts()
@@ -23,7 +15,15 @@ export async function getStaticPaths() {
 
   let paths: {
     params: { slug?: string }
-    props: Props
+    props: {
+      title: string
+      pageTitle: string
+      showTitle: boolean
+      root: string
+      page: number
+      pages: number
+      data: CollectionEntry<'blog'>[]
+    }
   }[] = []
 
   for (const [tag, posts] of tagMap.entries()) {
@@ -32,8 +32,8 @@ export async function getStaticPaths() {
         ...p,
         props: {
           ...p.props,
-
-          title: `${tag}  - Page ${p.props.page + 1} of ${p.props.pages}`,
+          title: tag,
+          pageTitle: `${tag}  - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
 
           root: getTagBaseUrl(tag),
@@ -45,15 +45,15 @@ export async function getStaticPaths() {
   return paths
 }
 
-const { title, showTitle, page, root, pages, data } = Astro.props
+const { title, pageTitle, page, root, pages, data } = Astro.props
 ---
 
-<ContentLayout title={title} showTitle={showTitle} tab="Blog">
-  <PostsPage
-    posts={data as IPost[]}
-    page={page}
-    pages={pages}
-    root={root}
-    slot="main"
-  />
-</ContentLayout>
+<BlogPostsLayout
+  title={title}
+  pageTitle={pageTitle}
+  page={page}
+  pages={pages}
+  posts={data}
+  root={root}
+  showTitle={true}
+/>

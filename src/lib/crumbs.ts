@@ -4,12 +4,12 @@ import { fixName, type UndefStr } from './text/text'
 const EXCLUDE = ['Tag', 'Category', 'Section', 'Page']
 
 export type ICrumb = {
-  name: string
+  label: string
   path: string
 }
 
 export interface ICrumbProps {
-  showCrumbs?: boolean
+  //showCrumbs?: boolean
   crumbs?: ICrumb[]
 }
 
@@ -27,11 +27,11 @@ export function createCrumbs(url: UndefStr): ICrumb[] {
     // strip date from slug then attempt to convert
     // to more readable form by capitalizing and
     // changing dashes to spaces.
-    const name = _formatName(segments[i])
+    const label = _formatName(segments[i])
 
     const path = `/${segments.slice(0, i + 1).join('/')}`
-    if (!EXCLUDE.includes(name) && name.search(/^\d+$/) === -1) {
-      crumbs.push({ name, path })
+    if (!EXCLUDE.includes(label) && label.search(/^\d+$/) === -1) {
+      crumbs.push({ label, path })
     }
   }
 

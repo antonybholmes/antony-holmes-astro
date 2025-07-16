@@ -70,11 +70,11 @@ export function Breadcrumb({
       <li key={`crumb-${i}`}>
         <BaseLink
           href={crumb.path}
-          aria-label={`Goto ${crumb.name}`}
+          aria-label={`Goto ${crumb.label}`}
           data-mode={mode}
           className="data-[mode=dark]:text-white"
         >
-          {crumb.name}
+          {crumb.label}
         </BaseLink>
       </li>
     )
