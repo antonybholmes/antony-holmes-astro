@@ -18,7 +18,7 @@ function escapeXML(str: string): string {
   })
 }
 
-const files = await globby('src/content/blog/**/*.md')
+const files = await globby('src/content/blog/**/{*.md,*.mdx}')
 
 const index = new Document({
   tokenize: 'forward',

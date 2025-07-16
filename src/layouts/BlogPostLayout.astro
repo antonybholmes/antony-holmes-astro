@@ -50,9 +50,9 @@ const { Content, remarkPluginFrontmatter, headings } = await render(post)
 
 const ogImage = `/img/og/${slug}.png`
 
-const hero = post.data.heroImage
-  ? post.data.heroImage
-  : `/img/blog/${slug}.webp`
+// const hero = post.data.heroImage
+//   ? post.data.heroImage
+//   : `/img/blog/${slug}.webp`
 ---
 
 <ContentLayout
@@ -69,10 +69,10 @@ const hero = post.data.heroImage
     <article slot="main" class="flex flex-col gap-y-8">
       <header class="flex flex-col gap-y-4">
         {
-          hero && (
+          post.data.heroImage && (
             <div class="h-64 w-full overflow-hidden">
               <img
-                src={hero}
+                src={post.data.heroImage}
                 alt={post.data.heroAlt || post.data.title}
                 class="w-full object-cover object-center"
                 style="height: 100%;"

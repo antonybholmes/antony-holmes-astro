@@ -2,7 +2,6 @@ import { BaseCol } from '@layout/base-col'
 
 import { PagePagination } from '@components/page-pagination'
 import { ContentDiv } from '../layout/content-div'
-import { HeadPosts } from './head-posts'
 import { HeroPosts, type IPostsProps } from './hero-posts'
 import { LatestPosts } from './latest-posts'
 import { RestPosts } from './rest-posts'
@@ -16,8 +15,8 @@ export function PostsPage({
   root,
 }: IPostsProps) {
   const heroPosts = posts.slice(0, 4)
-  const headPosts = posts.slice(4, 8)
-  const restPosts = posts.slice(8)
+  //const headPosts = posts.slice(4, 8)
+  const restPosts = posts.slice(4) //8)
 
   return (
     <BaseCol className="gap-y-24">
@@ -31,21 +30,21 @@ export function PostsPage({
         />
       </ContentDiv>
       {/* <HeadPost post={heroPost} /> */}
-      {headPosts.length > 0 && (
-        <ContentDiv>
-          {/* <MenuSeparator /> */}
-          <HeadPosts posts={headPosts} />
-        </ContentDiv>
-      )}
-      {/* <HeroPost post={heroPost} /> */}
-      {/* <MorePosts posts={morePosts} /> */}
-
       {restPosts.length > 0 && (
         <ContentDiv>
           {/* <MenuSeparator /> */}
           <RestPosts posts={restPosts} />
         </ContentDiv>
       )}
+      {/* <HeroPost post={heroPost} /> */}
+      {/* <MorePosts posts={morePosts} /> */}
+
+      {/* {restPosts.length > 0 && (
+        <ContentDiv>
+          
+          <RestPosts posts={restPosts} />
+        </ContentDiv>
+      )} */}
 
       {/* <Pagination page={page} pages={pages} /> */}
 

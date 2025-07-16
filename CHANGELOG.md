@@ -2,6 +2,10 @@
 
 ## 1.5 (Jul, 2025)
 
+### Added
+
+- Added support for obsidian templates and optional hero rather than mandatory.
+
 ### Changed
 
 - UI fixes and standardization.

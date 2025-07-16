@@ -21,7 +21,7 @@ function escapeXML(str: string): string {
 }
 
 async function main() {
-  const files = await globby('src/content/blog/**/*.md')
+  const files = await globby('src/content/blog/**/{*.md,*.mdx}')
   const template = await fs.readFileSync('src/assets/og-template.svg', 'utf8')
 
   await fs.mkdirSync(OUTPUT_DIR, { recursive: true })
