@@ -24,11 +24,12 @@ export interface IPost {
     heroImage?: string
     heroImageAlt?: string
     title: string
-
     added: Date
     updated?: Date
     sections?: string[]
     tags: string[]
+    featured?: boolean
+    draft?: boolean
   }
 }
 

@@ -1,8 +1,8 @@
 import type { IClassProps } from '@/interfaces/class-props'
 
 import type { IPost } from '@/lib/post'
+import { HeroPost } from './hero-post'
 import { BasePostCol } from './post-col'
-import { PreviewPost } from './preview-post'
 
 export interface IPostsProps extends IClassProps {
   posts: IPost[]
@@ -15,19 +15,25 @@ export interface IPostsProps extends IClassProps {
 }
 
 export function HeroPosts({ posts, showSectionLinks, mode }: IPostsProps) {
+  if (!posts || posts.length === 0) {
+    return null
+  }
+
   const topPost = posts[0]
   const topPosts = posts.slice(1, 4)
 
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-12">
-      <PreviewPost
+    <section
+      id="hero-posts"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-12 mb-16"
+    >
+      <HeroPost
         post={topPost}
         showSectionLinks={showSectionLinks}
         mode={mode}
       />
 
       <BasePostCol
-        title={''}
         posts={topPosts}
         showTopSectionSeparator={false}
         showAvatar={false}

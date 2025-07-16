@@ -1,8 +1,7 @@
 ---
-import type { IPaginationProps } from '@/lib/paginate'
+import type { IPageProps, IPaginationProps } from '@/lib/paginate'
 import type { IPost } from '@/lib/post'
 import { PostsPage } from '@components/posts/posts-page'
-import ContentLayout from '@layouts/ContentLayout.astro'
 
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from './BaseLayout.astro'
@@ -11,13 +10,18 @@ import ContentDiv from '@/components/layout/ContentDiv.astro'
 import { Breadcrumb } from '@/components/breadcrumb'
 import { PageTitle } from '@/components/page-title'
 import { BaseCol } from '@/components/layout/base-col'
+import type { ColorMode } from '@/interfaces/color-mode'
+import { HeroPosts } from '@/components/posts/hero-posts'
+import { PagePagination } from '@/components/page-pagination'
+import { RestPosts } from '@/components/posts/rest-posts'
+import { FeaturedPosts } from '@/components/posts/featured-posts'
 
-interface Props
-  extends Omit<IPaginationProps<CollectionEntry<'blog'>>, 'type'>,
-    ICrumbProps {
+interface Props extends IPageProps, ICrumbProps {
   title: string
   pageTitle?: string
-
+  mode?: ColorMode
+  posts: CollectionEntry<'blog'>[]
+  featuredPosts?: CollectionEntry<'blog'>[]
   // the root without page numbers etc added to it
   // e.g. /blog/tag/javascript/ instead of /blog/tag/javascript/page/2
   // this is used to generate the correct links for pagination
@@ -34,16 +38,21 @@ let {
   showTitle,
   crumbs,
   showCrumbs = true,
+  posts,
+  featuredPosts = [],
   page,
   pages,
-  data,
+
   root,
   showSectionLinks = false,
+  mode = 'dark',
 } = Astro.props
 
 if (!crumbs) {
   crumbs = createCrumbs(Astro.url.pathname)
 }
+
+const restPosts = posts.slice(4)
 ---
 
 <BaseLayout title={pageTitle ?? title} tab="Blog">
@@ -51,24 +60,60 @@ if (!crumbs) {
     <>
       {
         (showTitle || showCrumbs) && (
-          <ContentDiv className="pt-8 pb-16">
-            <BaseCol className="gap-y-4" slot="main">
-              {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
-              {showTitle && <PageTitle title={title} />}
+          <ContentDiv className="py-16 mb-16 data-[mode=dark]:bg-gradient-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
+            <BaseCol className="gap-y-16" slot="main">
+              <BaseCol className="gap-y-4">
+                {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
+                {showTitle && <PageTitle title={title} />}
+              </BaseCol>
             </BaseCol>
           </ContentDiv>
         )
       }
     </>
-    <slot name="main" />
-  </Fragment>
+    <ContentDiv>
+      <main slot="main">
+        {
+          featuredPosts.length > 0 && (
+            <section id="featured" class="mb-16">
+              <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
+                Featured
+              </h2>
 
-  <PostsPage
-    posts={data as IPost[]}
-    page={page}
-    pages={pages}
-    root={root}
-    showSectionLinks={showSectionLinks}
-    slot="main"
-  />
+              <FeaturedPosts
+                posts={featuredPosts as IPost[]}
+                showSectionLinks={showSectionLinks}
+              />
+            </section>
+          )
+        }
+
+        <section id="latest">
+          <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
+            {title === 'Latest' ? 'Posts' : 'Latest'}
+          </h2>
+
+          <HeroPosts
+            posts={posts as IPost[]}
+            showSectionLinks={showSectionLinks}
+          />
+
+          <RestPosts
+            posts={restPosts as IPost[]}
+            showSectionLinks={showSectionLinks}
+          />
+
+          <PagePagination page={page} pages={pages} root={root} />
+        </section>
+      </main>
+    </ContentDiv>
+
+    <!-- <PostsPage
+      posts={data as IPost[]}
+      page={page}
+      pages={pages}
+      root={root}
+      showSectionLinks={showSectionLinks}
+    /> -->
+  </Fragment>
 </BaseLayout>

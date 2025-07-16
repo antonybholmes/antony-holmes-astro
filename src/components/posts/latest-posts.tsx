@@ -1,6 +1,6 @@
 import type { IPostsProps } from './hero-posts'
 
-import { PreviewPost } from './preview-post'
+import { HeroPost } from './hero-post'
 
 export function LatestPosts({ posts }: IPostsProps) {
   return (
@@ -9,7 +9,7 @@ export function LatestPosts({ posts }: IPostsProps) {
 
       <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-4">
         {posts.slice(0, 4).map((post, index) => {
-          return <PreviewPost post={post} key={index} />
+          return <HeroPost post={post} key={index} />
         })}
       </div>
     </section>

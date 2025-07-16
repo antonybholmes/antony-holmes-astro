@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 
 import type { IClassProps } from '@/interfaces/class-props'
+import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
 import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
 import type { ICrumb } from '@lib/crumbs'
@@ -11,11 +12,13 @@ const LINK_CLS = 'trans-color text-primary-color/60 hover:text-primary-color'
 interface BreadcrumbProps extends IClassProps {
   crumbs: ICrumb[]
   showHome?: boolean
+  mode?: ColorMode
 }
 
 export function Breadcrumb({
   crumbs,
   showHome = false,
+  mode = 'light',
   className,
 }: BreadcrumbProps) {
   if (!crumbs) {
@@ -34,7 +37,12 @@ export function Breadcrumb({
       >
         <HomeIcon w="w-4" />
       </BaseLink> */}
-        <BaseLink href="/" aria-label="Home" className={LINK_CLS}>
+        <BaseLink
+          href="/"
+          aria-label="Home"
+          data-mode={mode}
+          className="data-[mode=dark]:text-white"
+        >
           Home
         </BaseLink>
       </li>
@@ -50,6 +58,8 @@ export function Breadcrumb({
         <li key={`divider-${i}`}>
           <ChevronRightIcon
             w="w-3"
+            data-mode={mode}
+            stroke="stroke-foreground data-[mode=dark]:stroke-white"
             //className="trans-300 transition-all stroke-primary-color/60 group-hover:translate-x-0.5 group-hover:stroke-primary-color dark:group-hover:stroke-white"
           />
         </li>
@@ -61,7 +71,8 @@ export function Breadcrumb({
         <BaseLink
           href={crumb.path}
           aria-label={`Goto ${crumb.name}`}
-          className={LINK_CLS}
+          data-mode={mode}
+          className="data-[mode=dark]:text-white"
         >
           {crumb.name}
         </BaseLink>

@@ -23,7 +23,7 @@ interface IProps extends IPostProps {
   mode?: 'light' | 'dark'
 }
 
-export function PreviewPost({
+export function HeroPost({
   post,
   className,
   imgClassName = 'rounded-lg h-72',

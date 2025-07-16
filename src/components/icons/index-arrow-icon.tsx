@@ -1,5 +1,7 @@
 import { ICON_CLS, type IIconProps } from '@interfaces/icon-props'
 import { cn } from '@lib/shadcn-utils'
+import { gsap } from 'gsap'
+import { useEffect, useRef } from 'react'
 
 const Y2 = 12
 const Y1 = Y2 - 6
@@ -8,33 +10,46 @@ const Y3 = Y2 + 6
 export function IndexArrowIcon({
   w = 'w-4 h-4',
   stroke = 'stroke-white',
-  strokeWidth = 2,
+  strokeWidth = 2.5,
+  hover,
   className,
 }: IIconProps) {
-  //const lineRef = useRef(null)
-  //const arrowRef = useRef(null)
+  const lineRef = useRef<SVGLineElement>(null)
+  const arrowRef = useRef<SVGPathElement>(null)
+  const animationRef = useRef<gsap.core.Timeline>(null)
 
-  // useEffect(() => {
-  //   gsap
-  //     .timeline()
-  //     .to(
-  //       arrowRef.current,
-  //       {
-  //         x: selected ? "2px" : 0,
-  //         duration: DURATION,
-  //       },
-  //       0
-  //     )
-  //     .to(
-  //       lineRef.current,
-  //       {
-  //         scaleX: selected ? 1 : 0,
-  //         opacity: selected ? 1 : 0,
-  //         duration: DURATION,
-  //       },
-  //       0
-  //     )
-  // }, [selected])
+  useEffect(() => {
+    if (lineRef.current && arrowRef.current) {
+      animationRef.current = gsap
+        .timeline()
+        .to(lineRef.current, {
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+        })
+        .to(
+          arrowRef.current,
+          {
+            x: '6px',
+            duration: 0.5,
+            ease: 'elastic.out',
+          },
+          '<'
+        )
+
+        .pause()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (hover === 'on') {
+      animationRef.current?.play()
+    } else if (hover === 'off') {
+      animationRef.current?.reverse()
+    } else {
+      animationRef.current?.pause()
+    }
+  }, [hover])
 
   return (
     <svg
@@ -45,15 +60,17 @@ export function IndexArrowIcon({
       strokeWidth={strokeWidth}
     >
       <line
+        ref={lineRef}
         x1={7}
         y1={Y2}
-        x2={18.5}
+        x2={18}
         y2={Y2}
-        className="trans-opacity opacity-0 group-hover:opacity-100"
+        className="opacity-0"
       />
       <path
-        d={`M 12,${Y1} L 18,${Y2} L 12,${Y3}`}
-        className="trans-transform group-hover:translate-x-[3px]"
+        ref={arrowRef}
+        d={`M 9,${Y1} L 15,${Y2} L 9,${Y3}`}
+        //className="trans-transform group-hover:translate-x-[3px]"
       />
     </svg>
   )

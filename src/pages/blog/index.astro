@@ -21,11 +21,8 @@ const news = allPosts.filter(post =>
   post.data.sections?.some(section => section.includes('News'))
 )
 
-console.log(
-  allPosts
-    .map(p => p.data.sections)
-    .flat()
-    .join(', ')
+const engineering = allPosts.filter(post =>
+  post.data.sections?.some(section => section.includes('Engineering'))
 )
 ---
 
@@ -44,7 +41,7 @@ console.log(
           href="/blog/latest"
           className="hover:text-theme trans-color text-sm"
           stroke="stroke-foreground group-hover:stroke-theme"
-          >View all</ArrowLink
+          client:visible>View all</ArrowLink
         >
       </PostCol>
 
@@ -54,6 +51,22 @@ console.log(
         client:visible
       />
     </section>
+
+    <PostTwoCol
+      title="Engineering"
+      href="/blog/engineering"
+      posts={engineering as IPost[]}
+      page={0}
+      pages={pages}
+      showSectionLinks={false}
+    >
+      <ArrowLink
+        href="/blog/engineering"
+        className="hover:text-theme trans-color text-sm"
+        stroke="stroke-foreground group-hover:stroke-theme"
+        >More engineering</ArrowLink
+      >
+    </PostTwoCol>
 
     <PostTwoCol
       title="News"

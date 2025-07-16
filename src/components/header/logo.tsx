@@ -1,24 +1,49 @@
-import { cn } from '@/lib/shadcn-utils'
-import { useState } from 'react'
+import { gsap } from 'gsap'
+import { useEffect, useRef } from 'react'
 import { HCenterRow } from '../layout/h-center-row'
 
 export function Logo() {
-  const [hover, setHover] = useState<null | boolean>(null)
-  //const [down, setDown] = useState(false)
+  const ref = useRef<HTMLAnchorElement>(null)
+  const animationRef = useRef<gsap.core.Timeline>(null)
+
+  useEffect(() => {
+    if (ref.current) {
+      animationRef.current = gsap
+        .timeline()
+        .to(ref.current, {
+          duration: 0.5,
+          borderRadius: '2rem',
+          ease: 'power2.in',
+        })
+        .to(ref.current, {
+          duration: 0.25,
+          width: '3rem',
+          height: '3rem',
+
+          ease: 'power2.out',
+        })
+        .pause()
+    }
+  }, [])
+
+  const handleMouseEnter = () => {
+    animationRef.current?.play()
+  }
+
+  const handleMouseLeave = () => {
+    animationRef.current?.reverse()
+  }
 
   return (
     <HCenterRow
       className="items-center w-12 h-12"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       <a
+        ref={ref}
         href="/"
-        className={cn(
-          'flex w-10 h-10 aspect-square rounded-[1rem] bg-gradient-to-br from-cyan-400 to-blue-500 flex-row items-center justify-center font-semibold text-lg text-white trans-all',
-          hover === true && 'animate-round-then-scale',
-          hover === false && 'animate-scale-then-round'
-        )}
+        className="flex w-10 h-10 aspect-square rounded-[1rem] bg-gradient-to-br from-cyan-400 to-blue-500 flex-row items-center justify-center font-semibold text-lg text-white"
         aria-label="Home"
       >
         ah

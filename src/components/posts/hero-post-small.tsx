@@ -23,7 +23,7 @@ export function HeroPostSmall({
   showAvatar = false,
   showAuthors = false,
   showDescription = true,
-  showSectionLinks = true,
+  showSectionLinks = false,
   mode = 'light',
   className,
 }: IProps) {

@@ -4,10 +4,13 @@ export type AstroPage = { props: any; params: any }
 
 export type PaginationType = 'posts' | 'post'
 
-export interface IPaginationProps<T> {
-  type: PaginationType
+export interface IPageProps {
   page: number
   pages: number
+}
+
+export interface IPaginationProps<T> extends IPageProps {
+  type: PaginationType
   data: T[]
 }
 

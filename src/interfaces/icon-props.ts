@@ -10,6 +10,6 @@ export interface IIconProps extends ISVGProps {
   accentStroke?: string
   accentFill?: string
   selected?: boolean
-  hover?: boolean
+  hover?: 'initial' | 'on' | 'off'
   iconMode?: 'default' | 'colorful' | 'bw'
 }

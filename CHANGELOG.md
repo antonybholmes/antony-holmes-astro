@@ -9,6 +9,7 @@
 
 ### Changed
 
+- Added pinned feature posts and adjust layout of pages.
 - UI fixes.
 - UI fixes and standardization.
 

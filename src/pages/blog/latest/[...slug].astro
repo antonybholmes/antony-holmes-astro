@@ -7,14 +7,17 @@ import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 export async function getStaticPaths() {
   const posts = await getSortedPosts()
 
-  const paths = paginate(posts, '').map(p => ({
+  const featuredPosts = posts.filter(post => post.data.featured)
+  const otherPosts = posts.filter(post => !post.data.featured)
+
+  const paths = paginate(otherPosts, '').map(p => ({
     ...p,
     props: {
       ...p.props,
-
-      title: `Latest Posts - Page ${p.props.page + 1} of ${p.props.pages}`,
+      title: 'Latest',
+      pageTitle: `Latest posts - Page ${p.props.page + 1} of ${p.props.pages}`,
       showTitle: true,
-
+      featuredPosts: p.props.page === 0 ? featuredPosts : [],
       root: '/blog/latest',
     },
   }))
@@ -22,15 +25,17 @@ export async function getStaticPaths() {
   return paths
 }
 
-const { title, page, pages, data } = Astro.props
+const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
 ---
 
 <BlogPostsLayout
-  title="Latest Posts"
-  pageTitle={title}
+  title={title}
+  pageTitle={pageTitle}
   page={page}
   pages={pages}
-  data={data}
+  featuredPosts={featuredPosts}
+  posts={data}
   root="/blog/latest"
   showTitle={true}
+  showSectionLinks={true}
 />

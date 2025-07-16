@@ -17,10 +17,9 @@ export function BasePostCol({
   posts,
   maxPosts = 3,
   showSectionLinks = true,
-  showTopSectionSeparator = true,
   showAvatar = false,
   mode = 'light',
-}: IProps) {
+}: Omit<IProps, 'title'>) {
   return (
     <ul className="flex flex-col gap-y-6">
       {posts.slice(0, maxPosts).map((post, index) => {
@@ -31,8 +30,8 @@ export function BasePostCol({
               key={index}
               showSectionLinks={showSectionLinks}
               className={cn(
-                'pb-6 border-b border-border data-[mode=dark]:border-white/50',
-                showTopSectionSeparator && index === 0 && 'pt-6 border-t'
+                'border-border data-[mode=dark]:border-white/50',
+                index > 0 && 'pt-6 border-t'
               )}
               showAvatar={showAvatar}
               mode={mode}
@@ -56,7 +55,6 @@ export function PostCol({
   return (
     <PostSection title={title} href={href} headerChildren={children}>
       <BasePostCol
-        title={title}
         posts={posts}
         maxPosts={maxPosts}
         showSectionLinks={showSectionLinks}

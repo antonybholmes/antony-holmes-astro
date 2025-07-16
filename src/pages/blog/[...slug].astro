@@ -11,17 +11,31 @@ import {
 } from '@/lib/paginate'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 
-interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
-  title: string
-  root: string
-}
+// interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
+//   title: string
+//   root: string
+// }
 
 export async function getStaticPaths() {
   let posts = await getSortedPosts()
 
-  let paths: { params: { slug?: string }; props: Props }[] = []
+  const featuredPosts = posts.filter(post => post.data.featured)
+  const otherPosts = posts.filter(post => !post.data.featured)
 
-  for (const post of posts) {
+  let paths: {
+    params: { slug?: string }
+    props: {
+      type: PaginationType
+      title: string
+      root: string
+      page: number
+      pages: number
+      data: CollectionEntry<'blog'>[]
+      featuredPosts?: CollectionEntry<'blog'>[]
+    }
+  }[] = []
+
+  for (const post of otherPosts) {
     if (post.data.draft) continue // Skip draft posts
 
     // If the post has sections, create a path for each section
@@ -42,21 +56,24 @@ export async function getStaticPaths() {
     })
   }
 
-  const pages = paginate(posts, '').map(p => ({
-    ...p,
-    props: {
-      ...p.props,
-      type: 'posts' as PaginationType,
-      title: 'Blog',
-      root: `/blog`,
-    },
-  }))
+  // const pages = paginate(otherPosts, '').map(p => ({
+  //   ...p,
+  //   props: {
+  //     ...p.props,
+  //     type: 'posts' as PaginationType,
+  //     title: 'Blog',
+  //     root: `/blog`,
+  //   },
+  // }))
 
-  paths = paths.concat(pages)
+  // paths = paths.concat(pages)
 
   const sectionMap = getPostSectionMap(posts)
 
   for (const [section, posts] of sectionMap.entries()) {
+    const featuredPosts = posts.filter(post => post.data.featured)
+    const otherPosts = posts.filter(post => !post.data.featured)
+
     // create a path for each section
     // e.g. /blog/engineering/page/2/
     // paths.push({
@@ -75,15 +92,18 @@ export async function getStaticPaths() {
     const slug = getUrlFriendlyTag(section)
     const root = `/blog/${slug}`
 
-    const pages = paginate(posts, slug).map(p => ({
+    const pages = paginate(otherPosts, slug).map(p => ({
       ...p,
       props: {
         ...p.props,
         type: 'posts' as PaginationType,
         title,
         root,
+        featuredPosts: p.props.page === 0 ? featuredPosts : [],
       },
     }))
+
+    console.log(pages)
 
     paths = paths.concat(pages)
   }
@@ -98,7 +118,7 @@ export async function getStaticPaths() {
 //const { post } = Astro.props
 //const { slug } = Astro.params
 
-const { type, title, root, page, pages, data } = Astro.props
+const { type, title, root, page, pages, data, featuredPosts } = Astro.props
 ---
 
 {type === 'post' && <BlogPostLayout post={data[0]} />}
@@ -109,7 +129,8 @@ const { type, title, root, page, pages, data } = Astro.props
       title={title}
       page={page}
       pages={pages}
-      data={data}
+      posts={data}
+      featuredPosts={featuredPosts}
       root={root}
       showSectionLinks={root === '/blog'}
       showTitle={root !== '/blog'}
