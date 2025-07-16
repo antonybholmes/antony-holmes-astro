@@ -10,11 +10,11 @@ import { Rss } from 'lucide-react'
 import { MENU_ITEMS } from '@/consts'
 ---
 
-<header class="bg-background/60 sticky top-0 z-20 py-4 backdrop-blur-lg">
+<header class="bg-background/60 sticky top-0 z-20 py-3 backdrop-blur-lg">
   <nav>
     <ContentDiv>
       <ContentDiv slot="main" className="items-center">
-        <Logo slot="left" />
+        <Logo slot="left" client:visible />
 
         <ul class="flex flex-row justify-center gap-x-8" slot="main">
           {
