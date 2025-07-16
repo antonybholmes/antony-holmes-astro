@@ -1,23 +1,23 @@
 ---
 import {
-  SITE_TITLE,
+  RECORDS_PER_PAGE,
   SITE_DESCRIPTION,
   SITE_SUBTITLE,
-  RECORDS_PER_PAGE,
+  SITE_TITLE,
 } from '../consts'
 
 import { ThemeLink } from '@/components/link/theme-link'
 
-import { VCenterRow } from '@/components/layout/v-center-row'
 import { BaseCol } from '@/components/layout/base-col'
+import { VCenterRow } from '@/components/layout/v-center-row'
 
 import { RoundedImage } from '@/components/rounded-image'
 
-import { getPageItems } from '@/lib/paginate'
-import { getSortedPosts } from '@/lib/astro/post'
-import type { IPost } from '@/lib/post'
-import BaseLayout from '@/layouts/BaseLayout.astro'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getSortedPosts } from '@/lib/astro/post'
+import { getPageItems } from '@/lib/paginate'
+import type { IPost } from '@/lib/post'
 
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
@@ -53,10 +53,10 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           <p class="mb-4 text-2xl font-bold">Hi there! I'm Antony.</p>
 
           <p>
-            I'm a researcher and sofware engineer in New York City who's learned
-            how to do a few cool things with Java, Python, C++, Go, React,
-            Next.js, and Astro, some of which were used to make the very site
-            you're looking at right now.
+            I'm a researcher and software engineer in New York City who's
+            learned how to do a few cool things with Java, Python, C++, Go,
+            React, Next.js, and Astro, some of which were used to make the very
+            site you're looking at right now.
           </p>
 
           <p>

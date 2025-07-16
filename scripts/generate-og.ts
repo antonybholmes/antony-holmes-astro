@@ -59,7 +59,7 @@ async function main() {
       webpBuffer.byteLength
     )
 
-    const slug = data.slug || path.basename(file, '.md')
+    const slug = data.slug || path.basename(file).replace(/\.(md|mdx)$/, '')
     //const outputPath = path.join(OUTPUT_DIR, `${slug}.png`)
     const outputPath = path.join(OUTPUT_DIR, `${slug}.webp`)
 

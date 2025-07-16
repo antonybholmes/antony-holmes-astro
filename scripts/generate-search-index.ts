@@ -39,7 +39,7 @@ for (const file of files) {
   const author = escapeXML(data.author || 'Anonymous')
   const rawDate = data.added ? new Date(data.added) : new Date()
   const formattedDate = escapeXML(format(rawDate, 'MMM dd, yyyy'))
-  const slug = path.basename(file, '.md')
+  const slug = path.basename(file).replace(/\.(md|mdx)$/, '')
   const doc = {
     id: slug,
     title,
