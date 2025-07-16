@@ -1,0 +1,27 @@
+---
+import { ThemeLink } from './link/theme-link'
+
+type Props = { tags?: string[] }
+
+const { tags } = Astro.props
+
+// Optional: Filter out anything deeper than h3
+const sortedTags =
+  tags?.sort().map(t => t.toLowerCase().replace(/\s+/g, '-')) || [] // Convert to slug format
+---
+
+<ul class="flex flex-row flex-wrap items-center gap-2">
+  {
+    sortedTags.map(tag => (
+      <li class="border-border rounded-full border px-4 py-1.5 text-sm">
+        <ThemeLink
+          startingColor="text-foreground"
+          endingColor="text-theme"
+          href={`/blog/tag/${tag}`}
+        >
+          #{tag}
+        </ThemeLink>
+      </li>
+    ))
+  }
+</ul>

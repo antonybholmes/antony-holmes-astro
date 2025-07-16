@@ -1,20 +1,16 @@
 ---
 import { render, type CollectionEntry } from 'astro:content'
 
-import Footer from '../components/Footer.astro'
-import BaseLayout from './BaseLayout.astro'
 import FormattedDate from '../components/FormattedDate.astro'
-import { Image } from 'astro:assets'
-import LatestPosts from '@components/LatestPosts.astro'
 
-import Tags from '@/components/Tags.astro'
-import { Calendar, Clock, Dot } from 'lucide-react'
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
+import { Calendar, Clock } from 'lucide-react'
 
-import ContentLayout from './ContentLayout.astro'
-import SidebarDiv from '@/components/layout/SidebarDiv.astro'
 import { BaseCol } from '@/components/layout/base-col'
+import SidebarDiv from '@/components/layout/SidebarDiv.astro'
+import SideTags from '@/components/SideTags.astro'
+import ContentLayout from './ContentLayout.astro'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
 //   slug: string
@@ -113,17 +109,17 @@ const ogImage = `/img/og/${slug}.png`
           }
         </VCenterRow>
 
-        {post.data.tags && <Tags tags={post.data.tags} />}
+        <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
       </header>
       <section class="markdown">
         <Content />
       </section>
     </article>
 
-    <BaseCol className="sticky top-20 gap-8" slot="side">
-      <!-- <Toc headings={Astro.props.headings} /> -->
+    <BaseCol className="sticky top-20 gap-12" slot="side">
+      <SideTags tags={post.data.tags} />
       <TableOfContents client:only="react" />
-      <LatestPosts />
+      <!--  <LatestPosts /> -->
     </BaseCol>
   </SidebarDiv>
 </ContentLayout>

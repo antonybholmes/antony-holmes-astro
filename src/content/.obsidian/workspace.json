@@ -15,7 +15,7 @@
               "state": {
                 "file": "templates/post.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "post"

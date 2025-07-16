@@ -1,13 +1,14 @@
 ---
 import HeaderLink from './HeaderLink.astro'
 
-import ThemeToggle from '../ThemeToggle.astro'
 import { VCenterRow } from '@components/layout/v-center-row'
+import ThemeToggle from '../ThemeToggle.astro'
 
-import { Logo } from './logo'
+import { MENU_ITEMS } from '@/consts'
 import ContentDiv from '@components/layout/ContentDiv.astro'
 import { Rss } from 'lucide-react'
-import { MENU_ITEMS } from '@/consts'
+import { BaseLink } from '../link/base-link'
+import { Logo } from './logo'
 ---
 
 <header class="bg-background/60 sticky top-0 z-20 py-3 backdrop-blur-lg">
@@ -59,7 +60,9 @@ import { MENU_ITEMS } from '@/consts'
 
         <VCenterRow slot="right" className="justify-end gap-x-2">
           <ThemeToggle />
-          <a href="/rss.xml"><Rss className="h-5 w-5" /></a>
+          <BaseLink href="/rss.xml" title="Subscribe to RSS feed"
+            ><Rss className="h-5 w-5" /></BaseLink
+          >
         </VCenterRow>
       </ContentDiv>
     </ContentDiv>

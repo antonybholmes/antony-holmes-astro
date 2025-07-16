@@ -20,7 +20,9 @@ then
 	branch="dev"
 fi
 
+pnpm update-version
 tsx scripts/update-changelog.ts "${msg}" "${type}"
 pnpm make-changelog-markdown
+
 
 ./base_commit.sh -t "${type}" -m "${msg}" -b "${branch}"

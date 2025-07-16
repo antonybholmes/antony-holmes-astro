@@ -1,9 +1,10 @@
 ---
+import { getTagPostMap } from '@/lib/astro/tags'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import type { IPost } from '@/lib/post'
 import { PostsPage } from '@components/posts/posts-page'
 import ContentLayout from '@layouts/ContentLayout.astro'
-import { getSortedPosts, getTagPostMap } from '@lib/astro/post'
+import { getSortedPosts } from '@lib/astro/post'
 import { paginate, type IPaginationProps } from '@lib/paginate'
 
 import { getTagBaseUrl } from '@lib/urls'

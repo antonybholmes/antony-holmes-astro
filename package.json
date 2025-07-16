@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "generate:og": "tsx scripts/generate-og.ts",
     "generate:hero": "tsx scripts/generate-hero.ts",
-    "prebuild": "pnpm generate:og && pnpm update-version",
+    "prebuild": "pnpm update-version",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

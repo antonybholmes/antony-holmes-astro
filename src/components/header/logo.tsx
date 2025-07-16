@@ -16,11 +16,10 @@ export function Logo() {
           ease: 'power2.in',
         })
         .to(ref.current, {
-          duration: 0.25,
+          duration: 1,
           width: '3rem',
           height: '3rem',
-
-          ease: 'power2.out',
+          ease: 'elastic.out(1, 0.4)',
         })
         .pause()
     }

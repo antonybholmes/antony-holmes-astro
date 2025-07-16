@@ -84,7 +84,7 @@ If you are using a framework such as Astro/Next/Gatsby, you will probably have a
 }
 ```
 
-# Tailwind
+## Tailwind
 
 You need to modify your Tailwind config and extend the theme to add a custom translate property for the toggle.
 

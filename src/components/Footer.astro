@@ -1,30 +1,31 @@
 ---
 import { FOOTER_ITEMS, GITHUB_URL, SITE_AUTHOR, TARGET_BLANK } from '@/consts'
 
-import { VCenterRow } from './layout/v-center-row'
-import { BaseCol } from './layout/base-col'
-import ContentDiv from './layout/ContentDiv.astro'
+import { getUniqueSections } from '@/lib/astro/sections'
+import { getUniqueTags } from '@/lib/astro/tags'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { Rss } from 'lucide-react'
 import { GitHubIcon } from './icons/github-icon'
-import ThemeToggle from './ThemeToggle.astro'
-import { RandomQuote } from './random-quote'
+import { BaseCol } from './layout/base-col'
+import ContentDiv from './layout/ContentDiv.astro'
+import { VCenterRow } from './layout/v-center-row'
 import { BaseLink } from './link/base-link'
-import { getPostSectionMap, getSortedPosts } from '@/lib/astro/post'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
+import { RandomQuote } from './random-quote'
+import ThemeToggle from './ThemeToggle.astro'
 
 const today = new Date()
 
-const posts = await getSortedPosts()
-const sectionMap = getPostSectionMap(posts, 3)
-const sections = [...sectionMap.keys()]
-  .sort((a, b) => a.localeCompare(b))
-  .filter(section => section !== 'All categories' && !section.includes('/'))
+const sections = (await getUniqueSections()).filter(
+  section => section !== 'All categories' && !section.includes('/')
+)
+
+const tags = (await getUniqueTags()).slice(0, 10)
 ---
 
 <footer class="mt-32 mb-8 text-sm">
   <ContentDiv>
     <BaseCol slot="main" className="gap-y-16">
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <div class="grid grid-cols-1 gap-16 md:grid-cols-3">
         <BaseCol className="text-foreground/50 gap-y-1">
           <span class="text-foreground/80 text-base font-bold"
             >{SITE_AUTHOR}</span
@@ -37,7 +38,24 @@ const sections = [...sectionMap.keys()]
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div class="flex flex-col justify-end gap-16 text-sky-600 md:flex-row">
+        <div
+          class="col-span-2 flex flex-col justify-end gap-8 text-sky-600 md:flex-row"
+        >
+          <BaseCol className="gap-y-2">
+            <span class="font-bold uppercase">Browse By Tag</span>
+            <ul class="mt-2 grid grid-cols-1 gap-2">
+              {
+                tags.map(t => (
+                  <li>
+                    <BaseLink href={`/tag/${getUrlFriendlyTag(t.tag)}`}>
+                      #{t.tag} ({t.count})
+                    </BaseLink>
+                  </li>
+                ))
+              }
+            </ul>
+          </BaseCol>
+
           <BaseCol className="gap-y-2">
             <span class="font-bold uppercase">Browse By Category</span>
             <ul class="mt-2 flex flex-col gap-y-2">
@@ -86,7 +104,9 @@ const sections = [...sectionMap.keys()]
             <GitHubIcon />
           </a>
           <ThemeToggle />
-          <a href="/rss.xml"><Rss className="h-5 w-5" /></a>
+          <BaseLink href="/rss.xml" title="Subscribe to RSS feed">
+            <Rss className="h-5 w-5" />
+          </BaseLink>
         </VCenterRow>
       </VCenterRow>
     </BaseCol>

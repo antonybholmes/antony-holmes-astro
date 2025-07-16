@@ -3,14 +3,27 @@ import { FOCUS_RING_CLS } from '@/theme'
 import { type ILinkProps } from '@interfaces/link-props'
 import { BaseLink } from './base-link'
 
-export const BASE_THEME_LINK_CLS = cn(FOCUS_RING_CLS, 'text-theme inline-block')
+export const BASE_THEME_LINK_CLS = FOCUS_RING_CLS
 
-export function ThemeLink({ ref, className, children, ...props }: ILinkProps) {
+interface IThemeLinkProps extends ILinkProps {
+  startingColor?: string
+  endingColor?: string
+}
+
+export function ThemeLink({
+  ref,
+  startingColor = 'text-foreground',
+  endingColor = 'text-theme',
+  className,
+  children,
+  ...props
+}: IThemeLinkProps) {
   return (
     <BaseLink
       ref={ref}
+      startingColor={startingColor}
+      endingColor={endingColor}
       className={cn(BASE_THEME_LINK_CLS, className)}
-      data-underline={'hover'}
       {...props}
     >
       {children}

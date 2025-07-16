@@ -34,6 +34,8 @@ echo ${branch}
 
 # pnpm update-version
 
+pnpm generate:og
+
 ./base_commit.sh -t "${type}" -m "${msg}" -b dev
 
 git switch main

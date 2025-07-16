@@ -14,12 +14,23 @@ export function BaseLink({
   ref,
   title,
   href = '',
+  startingColor,
+  endingColor,
   selected = false,
+  underline = 'hover',
   target,
   className,
   children,
   ...props
 }: ILinkProps) {
+  if (!endingColor) {
+    endingColor = startingColor
+  }
+
+  if (endingColor) {
+    endingColor = `hover:${endingColor}`
+  }
+
   if (!props['aria-label']) {
     if (title) {
       props['aria-label'] = title
@@ -41,7 +52,8 @@ export function BaseLink({
       href={href}
       title={title}
       data-checked={selected}
-      className={cn(LINK_CLS, className)}
+      data-underline={underline}
+      className={cn(LINK_CLS, startingColor, endingColor, className)}
       target={target}
       {...props}
     >

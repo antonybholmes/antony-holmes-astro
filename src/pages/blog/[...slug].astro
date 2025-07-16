@@ -3,13 +3,10 @@ import { type CollectionEntry } from 'astro:content'
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
 
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
-import { getPostSectionMap, getSortedPosts } from '@/lib/astro/post'
-import {
-  paginate,
-  type IPaginationProps,
-  type PaginationType,
-} from '@/lib/paginate'
+import { getSortedPosts } from '@/lib/astro/post'
+import { getPostSectionMap } from '@/lib/astro/sections'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
+import { paginate, type PaginationType } from '@/lib/paginate'
 
 // interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
 //   title: string
@@ -35,7 +32,8 @@ export async function getStaticPaths() {
     }
   }[] = []
 
-  for (const post of otherPosts) {
+  // create a page for every post
+  for (const post of posts) {
     if (post.data.draft) continue // Skip draft posts
 
     // If the post has sections, create a path for each section

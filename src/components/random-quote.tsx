@@ -26,17 +26,13 @@ export function RandomQuote() {
   }, [])
 
   if (!quote) {
-    return <span id="random-quote">Loading...</span>
+    return <span id="random-quote">Loading something stupid...</span>
   }
 
   return (
     <span id="random-quote">
       {quote.url ? (
-        <BaseLink
-          href={quote.url}
-          target={TARGET_BLANK}
-          className="hover:underline"
-        >
+        <BaseLink href={quote.url} target={TARGET_BLANK}>
           {`"${quote.quote}"`}
         </BaseLink>
       ) : (

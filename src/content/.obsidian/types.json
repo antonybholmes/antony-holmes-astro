@@ -3,6 +3,7 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "sections": "multitext"
+    "sections": "multitext",
+    "featured": "checkbox"
   }
 }

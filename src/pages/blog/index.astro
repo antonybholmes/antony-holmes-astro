@@ -1,15 +1,15 @@
 ---
 import { BaseCol } from '@/components/layout/base-col'
+import { ArrowLink } from '@/components/link/arrow-link'
+import { PostSectionCol } from '@/components/posts/post-section-col'
+import { getPostSectionMap } from '@/lib/astro/sections'
 import type { IPost } from '@/lib/post'
 import { HeroPosts } from '@components/posts/hero-posts'
-import { PostSectionCol } from '@/components/posts/post-section-col'
 import { PostCol } from '@components/posts/post-col'
 import { PostTwoCol } from '@components/posts/post-two-col'
 import ContentLayout from '@layouts/ContentLayout.astro'
-import { getPostSectionMap, getSortedPosts } from '@lib/astro/post'
+import { getSortedPosts } from '@lib/astro/post'
 import { getPageCount } from '@lib/paginate'
-import { ArrowLink } from '@/components/link/arrow-link'
-import type { lazy } from 'astro:schema'
 
 const allPosts = await getSortedPosts()
 

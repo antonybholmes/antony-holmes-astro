@@ -31,6 +31,7 @@ done
 echo "${type}: ${msg}"
 echo ${branch}
 
+#pnpm generate:og
 
 # commit
 git add -A .

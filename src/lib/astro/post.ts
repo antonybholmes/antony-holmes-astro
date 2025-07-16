@@ -11,8 +11,7 @@ import { getSlugSubPaths } from '../urls'
 import { getAllMDFiles } from './files'
 
 import { getUrlFriendlyTag } from '../http/urls'
-import { POSTS_DIR, REVIEWS_DIR, sectionToParts } from '../post'
-import { growingSubsets } from '../utils'
+import { POSTS_DIR, REVIEWS_DIR } from '../post'
 
 export function getPostPaths() {
   return getAllMDFiles(POSTS_DIR)
@@ -104,39 +103,6 @@ export async function getSortedPosts(): Promise<CollectionEntry<'blog'>[]> {
  */
 export function getPostSlugSubPaths(post: CollectionEntry<'blog'>): string[] {
   return getSlugSubPaths(post.id)
-}
-
-export function getPostSectionMap(
-  posts: CollectionEntry<'blog'>[],
-  max: number = -1
-): Map<string, CollectionEntry<'blog'>[]> {
-  const sectionMap = new Map<string, CollectionEntry<'blog'>[]>()
-
-  //sectionMap.set('All', posts)
-  sectionMap.set('All categories', max === -1 ? posts : posts.slice(0, max))
-
-  for (const post of posts) {
-    for (const section of post.data.sections ?? []) {
-      // for each section, create all growing subsets of url names
-      // e.g. from ["Reviews", "Engineering", "AI"] we get:
-      // [["Reviews"], ["Reviews",Engineering"], ["Reviews","Engineering","AI"]]
-      // so we can map each post to more specific sections
-      for (const sectionNames of growingSubsets(sectionToParts(section))) {
-        const sectionName = sectionNames.join('/')
-
-        if (!sectionMap.has(sectionName)) {
-          sectionMap.set(sectionName, [])
-        }
-
-        // if max is -1 or the section has less than max posts, add the post
-        if (max === -1 || sectionMap.get(sectionName)!.length < max) {
-          sectionMap.get(sectionName)!.push(post)
-        }
-      }
-    }
-  }
-
-  return sectionMap
 }
 
 // export function getAllPosts(authorMap: IAuthorMap): IAuthorPost[] {
@@ -246,30 +212,6 @@ export function getTagPaths(tag: string): string[] {
   )
 
   return ret
-}
-
-export function getTagPostMap(
-  posts: CollectionEntry<'blog'>[],
-  max: number = -1
-): Map<string, CollectionEntry<'blog'>[]> {
-  const tagMap = new Map<string, CollectionEntry<'blog'>[]>()
-
-  posts
-    .filter(post => post.data.tags && post.data.tags.length > 0)
-    .forEach(post => {
-      post.data.tags!.forEach((tag: string) => {
-        if (!tagMap.has(tag)) {
-          tagMap.set(tag, [])
-        }
-
-        if (max === -1 || tagMap.get(tag)!.length < max) {
-          tagMap.get(tag)!.push(post)
-        }
-      })
-      //})
-    })
-
-  return tagMap
 }
 
 export function getAuthorPostMap(
