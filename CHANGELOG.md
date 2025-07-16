@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added animation to logo.
 - Added support for obsidian templates and optional hero rather than mandatory.
 
 ### Changed

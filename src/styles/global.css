@@ -137,6 +137,46 @@
   --stroke-width-4: 4px; */
 
   --text-xxs: 0.6rem;
+
+  --animate-round-then-scale: round-then-scale 1s ease-in-out forwards;
+
+  --animate-scale-then-round: scale-then-round 1s ease-in-out forwards;
+
+  @keyframes round-then-scale {
+    0% {
+      border-radius: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    75% {
+      border-radius: 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    100% {
+      border-radius: 2.5rem;
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  @keyframes scale-then-round {
+    0% {
+      border-radius: 2.5rem;
+      width: 3rem;
+      height: 3rem;
+    }
+    25% {
+      border-radius: 2.5rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    100% {
+      border-radius: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
 }
 
 /*
