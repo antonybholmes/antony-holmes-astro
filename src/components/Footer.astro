@@ -25,7 +25,10 @@ const sections = [...sectionMap.keys()]
   <ContentDiv>
     <BaseCol slot="main" className="gap-y-16">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <BaseCol>
+        <BaseCol className="text-foreground/50 gap-y-1">
+          <span class="text-foreground/80 text-base font-bold"
+            >{SITE_AUTHOR}</span
+          >
           <!-- <span
             class="bg-gradient-to-br from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent"
           >
@@ -34,7 +37,7 @@ const sections = [...sectionMap.keys()]
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div class="flex flex-col justify-end gap-16 md:flex-row">
+        <div class="flex flex-col justify-end gap-16 text-sky-600 md:flex-row">
           <BaseCol className="gap-y-2">
             <span class="font-bold uppercase">Browse By Category</span>
             <ul class="mt-2 flex flex-col gap-y-2">
