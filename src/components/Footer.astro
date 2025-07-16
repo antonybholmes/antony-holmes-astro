@@ -1,5 +1,5 @@
 ---
-import { GITHUB_URL, SITE_AUTHOR, TARGET_BLANK } from '@/consts'
+import { FOOTER_ITEMS, GITHUB_URL, SITE_AUTHOR, TARGET_BLANK } from '@/consts'
 
 import { VCenterRow } from './layout/v-center-row'
 import { BaseCol } from './layout/base-col'
@@ -8,13 +8,22 @@ import { Rss } from 'lucide-react'
 import { GitHubIcon } from './icons/github-icon'
 import ThemeToggle from './ThemeToggle.astro'
 import { RandomQuote } from './random-quote'
+import { BaseLink } from './link/base-link'
+import { getPostSectionMap, getSortedPosts } from '@/lib/astro/post'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
 
 const today = new Date()
+
+const posts = await getSortedPosts()
+const sectionMap = getPostSectionMap(posts, 3)
+const sections = [...sectionMap.keys()]
+  .sort((a, b) => a.localeCompare(b))
+  .filter(section => section !== 'All categories' && !section.includes('/'))
 ---
 
 <footer class="mt-32 mb-8 text-sm">
   <ContentDiv>
-    <BaseCol slot="main" className="gap-y-8">
+    <BaseCol slot="main" className="gap-y-16">
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         <BaseCol>
           <!-- <span
@@ -25,7 +34,42 @@ const today = new Date()
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div></div>
+        <div class="flex flex-col justify-end gap-16 md:flex-row">
+          <BaseCol className="gap-y-2">
+            <span class="font-bold uppercase">Browse By Category</span>
+            <ul class="mt-2 flex flex-col gap-y-2">
+              {
+                sections.map(section => (
+                  <li>
+                    <BaseLink
+                      href={`/blog/${getUrlFriendlyTag(section)}`}
+                      className="hover:underline"
+                    >
+                      {section}
+                    </BaseLink>
+                  </li>
+                ))
+              }
+            </ul>
+          </BaseCol>
+
+          {
+            FOOTER_ITEMS.map(item => (
+              <BaseCol className="gap-y-2">
+                <span class="font-bold uppercase">{item.label}</span>
+                <ul class="mt-2 flex flex-col gap-y-2">
+                  {item.items.map(link => (
+                    <li>
+                      <BaseLink href={link.href} className="hover:underline">
+                        {link.label}
+                      </BaseLink>
+                    </li>
+                  ))}
+                </ul>
+              </BaseCol>
+            ))
+          }
+        </div>
       </div>
 
       <VCenterRow className="justify-between text-xs">

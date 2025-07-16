@@ -2,7 +2,7 @@ import { cn } from '@/lib/shadcn-utils'
 import { HeroPostSmall } from './hero-post-small'
 import type { IPostsProps } from './hero-posts'
 
-export function BaseRestPosts({ posts, showSectionLinks }: IPostsProps) {
+export function RestPosts({ posts, showSectionLinks = true }: IPostsProps) {
   return (
     <ul className="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
       {posts.map((post, index) => (
@@ -15,13 +15,5 @@ export function BaseRestPosts({ posts, showSectionLinks }: IPostsProps) {
         </li>
       ))}
     </ul>
-  )
-}
-
-export function RestPosts({ posts, showSectionLinks }: IPostsProps) {
-  return (
-    <section id="rest-posts" className="mb-24">
-      <BaseRestPosts posts={posts} showSectionLinks={showSectionLinks} />
-    </section>
   )
 }

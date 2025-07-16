@@ -14,7 +14,11 @@ export interface IPostsProps extends IClassProps {
   mode?: 'light' | 'dark'
 }
 
-export function HeroPosts({ posts, showSectionLinks, mode }: IPostsProps) {
+export function HeroPosts({
+  posts,
+  showSectionLinks = true,
+  mode = 'light',
+}: IPostsProps) {
   if (!posts || posts.length === 0) {
     return null
   }
@@ -25,7 +29,7 @@ export function HeroPosts({ posts, showSectionLinks, mode }: IPostsProps) {
   return (
     <section
       id="hero-posts"
-      className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-12 mb-16"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-12 "
     >
       <HeroPost
         post={topPost}

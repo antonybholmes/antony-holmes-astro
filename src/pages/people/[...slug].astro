@@ -22,6 +22,9 @@ import { PEOPLE_SLUG } from '@/consts'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import type { IPost } from '@/lib/post'
 import { MenuSeparator } from '@/components/shadcn/ui/themed/dropdown-menu'
+import { HeroPosts } from '@/components/posts/hero-posts'
+import { RestPosts } from '@/components/posts/rest-posts'
+import { PagePagination } from '@/components/page-pagination'
 
 export async function getStaticPaths() {
   let paths: any[] = []
@@ -57,9 +60,10 @@ interface Props {
   data: CollectionEntry<'blog'>[]
   page: number
   pages: number
+  root: string
 }
 
-const { person, data, page, pages } = Astro.props
+const { person, data, page, pages, root } = Astro.props
 
 const { Content } = await render(person)
 ---
@@ -88,13 +92,16 @@ const { Content } = await render(person)
       />
     </BaseRow>
 
-    <MenuSeparator />
+    <section id="latest" class="flex flex-col gap-y-8">
+      <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
 
-    <PostsPage
-      posts={data as IPost[]}
-      page={page}
-      pages={pages}
-      root={`${PEOPLE_SLUG}/${person.id}`}
-    />
+      <BaseCol className="gap-y-24">
+        {page === 0 && <HeroPosts posts={data as IPost[]} />}
+
+        <RestPosts posts={(page === 0 ? data.slice(4) : data) as IPost[]} />
+
+        <PagePagination page={page} pages={pages} root={root} />
+      </BaseCol>
+    </section>
   </BaseCol>
 </ContentLayout>

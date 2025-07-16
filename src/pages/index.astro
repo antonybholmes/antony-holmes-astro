@@ -10,26 +10,25 @@ import { ThemeLink } from '@/components/link/theme-link'
 
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { BaseCol } from '@/components/layout/base-col'
-import ContentLayout from '@/layouts/ContentLayout.astro'
+
 import { RoundedImage } from '@/components/rounded-image'
-import PostSection from '@/components/posts/PostSection.astro'
-import { ChevronRightIcon } from '@/components/icons/chevron-right-icon'
-import { BaseLink } from '@/components/link/base-link'
-import { PostsPage } from '@/components/posts/posts-page'
+
 import { getPageItems } from '@/lib/paginate'
 import { getSortedPosts } from '@/lib/astro/post'
 import type { IPost } from '@/lib/post'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
-import { Content } from '@radix-ui/react-dropdown-menu'
+
+import { HeroPosts } from '@/components/posts/hero-posts'
+import { RestPosts } from '@/components/posts/rest-posts'
 
 const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <BaseCol className="gap-y-16" slot="main">
-    <ContentDiv>
-      <BaseCol className="gap-y-8" slot="main">
+  <ContentDiv slot="main">
+    <BaseCol className="gap-y-16" slot="main">
+      <BaseCol className="gap-y-8">
         <VCenterRow className="justify-between">
           <BaseCol className="gap-y-2">
             <h1 class="text-5xl font-bold">
@@ -50,13 +49,14 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           />
         </VCenterRow>
 
-        <section class="flex flex-col gap-y-4">
+        <section class="flex flex-col gap-y-3">
+          <p class="mb-4 text-2xl font-bold">Hi there! I'm Antony.</p>
+
           <p>
-            Hi there! I'm Antony and I like making software. I'm a researcher
-            and sofware engineer in New York City who's learned how to do a few
-            nifty things with Java, Python, C++, Go, React, Next.js, and Astro,
-            some of which were used to make the very site you're looking at
-            right now.
+            I'm a researcher and sofware engineer in New York City who's learned
+            how to do a few cool things with Java, Python, C++, Go, React,
+            Next.js, and Astro, some of which were used to make the very site
+            you're looking at right now.
           </p>
 
           <p>
@@ -90,14 +90,21 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           </p>
         </section>
       </BaseCol>
-    </ContentDiv>
 
-    <ContentDiv>
-      <BaseCol className="border-border gap-y-8 border-b pb-4" slot="main">
-        <h2 class="text-2xl font-bold">Posts by this author</h2>
-      </BaseCol>
-    </ContentDiv>
-    <!-- <PostSection title="Latest posts">
+      <section id="latest" class="flex flex-col gap-y-8">
+        <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
+
+        <BaseCol className="gap-y-24">
+          <HeroPosts posts={posts as IPost[]} />
+
+          <RestPosts posts={posts.slice(4) as IPost[]} />
+
+          <!-- <PagePagination page={0} pages={pages} root={root} /> -->
+        </BaseCol>
+      </section>
+    </BaseCol>
+  </ContentDiv>
+  <!-- <PostSection title="Latest posts">
       <BaseLink
         href="/blog/latest"
         data-underline={true}
@@ -109,7 +116,4 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
         />
       </BaseLink>
     </PostSection> -->
-
-    <PostsPage posts={posts as IPost[]} page={0} pages={1} />
-  </BaseCol>
 </BaseLayout>

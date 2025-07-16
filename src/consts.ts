@@ -137,3 +137,40 @@ export const MENU_ITEMS = [
     ariaLabel: 'Publications',
   },
 ]
+
+export const FOOTER_ITEMS = [
+  // {
+  //   label: 'Browse By Category',
+  //   items: [
+  //     {
+  //       label: 'Blog',
+  //       href: '/blog',
+  //     },
+  //     {
+  //       label: 'Publications',
+  //       href: '/publications',
+  //     },
+  //     {
+  //       label: 'Projects',
+  //       href: '/projects',
+  //     },
+  //     {
+  //       label: 'People',
+  //       href: '/people',
+  //     },
+  //   ],
+  // },
+  {
+    label: 'General',
+    items: [
+      {
+        label: 'About Antony',
+        href: '/people/antony-holmes',
+      },
+      {
+        label: 'About This Site',
+        href: '/about',
+      },
+    ],
+  },
+]

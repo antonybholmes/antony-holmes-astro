@@ -51,8 +51,6 @@ let {
 if (!crumbs) {
   crumbs = createCrumbs(Astro.url.pathname)
 }
-
-const restPosts = posts.slice(4)
 ---
 
 <BaseLayout title={pageTitle ?? title} tab="Blog">
@@ -60,22 +58,20 @@ const restPosts = posts.slice(4)
     <>
       {
         (showTitle || showCrumbs) && (
-          <ContentDiv className="py-16 mb-16 data-[mode=dark]:bg-gradient-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
-            <BaseCol className="gap-y-16" slot="main">
-              <BaseCol className="gap-y-4">
-                {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
-                {showTitle && <PageTitle title={title} />}
-              </BaseCol>
+          <ContentDiv className="py-8 mb-8 data-[mode=dark]:bg-gradient-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
+            <BaseCol className="gap-y-4" slot="main">
+              {showCrumbs && crumbs && <Breadcrumb crumbs={crumbs} />}
+              {showTitle && <PageTitle title={title} />}
             </BaseCol>
           </ContentDiv>
         )
       }
     </>
     <ContentDiv>
-      <main slot="main">
+      <main slot="main" class="flex flex-col gap-y-16">
         {
           featuredPosts.length > 0 && (
-            <section id="featured" class="mb-16">
+            <section id="featured">
               <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
                 Featured
               </h2>
@@ -88,22 +84,28 @@ const restPosts = posts.slice(4)
           )
         }
 
-        <section id="latest">
-          <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
+        <section id="latest" class="flex flex-col gap-y-8">
+          <h2 class="border-border border-b py-2 text-2xl font-bold">
             {title === 'Latest' ? 'Posts' : 'Latest'}
           </h2>
 
-          <HeroPosts
-            posts={posts as IPost[]}
-            showSectionLinks={showSectionLinks}
-          />
+          <BaseCol className="gap-y-24">
+            {
+              page === 0 && (
+                <HeroPosts
+                  posts={posts as IPost[]}
+                  showSectionLinks={showSectionLinks}
+                />
+              )
+            }
 
-          <RestPosts
-            posts={restPosts as IPost[]}
-            showSectionLinks={showSectionLinks}
-          />
+            <RestPosts
+              posts={(page === 0 ? posts.slice(4) : posts) as IPost[]}
+              showSectionLinks={showSectionLinks}
+            />
 
-          <PagePagination page={page} pages={pages} root={root} />
+            <PagePagination page={page} pages={pages} root={root} />
+          </BaseCol>
         </section>
       </main>
     </ContentDiv>

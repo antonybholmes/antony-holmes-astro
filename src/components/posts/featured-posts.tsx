@@ -1,7 +1,7 @@
 import { BaseCol } from '../layout/base-col'
 import { FeaturedPost } from './featured-post'
 import type { IPostsProps } from './hero-posts'
-import { BaseRestPosts } from './rest-posts'
+import { RestPosts } from './rest-posts'
 
 export function FeaturedPosts({ posts, showSectionLinks, mode }: IPostsProps) {
   const topPost = posts[0]
@@ -15,7 +15,7 @@ export function FeaturedPosts({ posts, showSectionLinks, mode }: IPostsProps) {
         mode={mode}
       />
 
-      <BaseRestPosts
+      <RestPosts
         posts={topPosts}
         showSectionLinks={showSectionLinks}
         mode={mode}
