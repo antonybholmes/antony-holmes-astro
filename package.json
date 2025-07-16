@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "generate:og": "tsx scripts/generate-og.ts",
     "generate:hero": "tsx scripts/generate-hero.ts",
-    "prebuild": "pnpm generate:og && pnpm generate:hero && pnpm update-version",
+    "prebuild": "pnpm generate:og && pnpm update-version",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -79,6 +79,7 @@
     "rehype-slug": "^6.0.0",
     "remark-sectionize": "^2.1.0",
     "sharp": "^0.34.3",
-     "unist-util-visit": "^5.0.0"
+    "tsx": "^4.20.3",
+    "unist-util-visit": "^5.0.0"
   }
 }
