@@ -12,7 +12,7 @@ interface IProps extends IPostProps {
 
 export function PostSectionLink({
   post,
-  textSize = 'text-2xl md:text-lg',
+  textSize = 'text-sm',
   className,
 }: IProps) {
   // pick the first section
@@ -34,7 +34,7 @@ export function PostSectionLink({
         aria-label={`Read more ${sectionName} posts`}
         title={`Read more ${sectionName} posts`}
         className={cn(
-          'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-semibold text-transparent',
+          'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-semibold text-transparent tracking-wide',
           textSize,
           className
         )}

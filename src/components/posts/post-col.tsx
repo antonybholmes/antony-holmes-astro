@@ -30,8 +30,8 @@ export function BasePostCol({
               key={index}
               showSectionLinks={showSectionLinks}
               className={cn(
-                'border-border data-[mode=dark]:border-white/50',
-                index > 0 && 'pt-6 border-t'
+                'data-[mode=dark]:border-white/50',
+                index > 0 && 'pt-6 border-border border-t'
               )}
               showAvatar={showAvatar}
               mode={mode}

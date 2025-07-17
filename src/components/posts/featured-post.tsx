@@ -47,7 +47,7 @@ export function FeaturedPost({
       <BaseCol className={cn('gap-y-2', innerClassName)}>
         <BaseCol className="gap-y-1">
           {showSectionLinks && (
-            <PostSectionLink post={post} textSize="text-xl md:text-base" />
+            <PostSectionLink post={post} textSize="text-base md:text-sm" />
           )}
           <PostTitleLink post={post} className={headerClassName} mode={mode} />
         </BaseCol>

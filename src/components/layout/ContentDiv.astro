@@ -12,8 +12,11 @@ interface Props extends IClassProps {
 const { mode = 'light', className } = Astro.props
 ---
 
-<div data-mode={mode} class={cn('grid grid-cols-1 md:grid-cols-5', className)}>
-  <BaseCol className="hidden md:flex"><slot name="left" /></BaseCol>
+<div
+  data-mode={mode}
+  class={cn('grid grid-cols-1 lg:grid-cols-5 px-4 lg:px-0', className)}
+>
+  <BaseCol className="hidden lg:flex"><slot name="left" /></BaseCol>
   <BaseCol className="col-span-3"><slot name="main" /></BaseCol>
-  <BaseCol className="hidden md:flex"><slot name="right" /></BaseCol>
+  <BaseCol className="hidden lg:flex"><slot name="right" /></BaseCol>
 </div>

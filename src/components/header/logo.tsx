@@ -19,7 +19,7 @@ export function Logo() {
           duration: 1,
           width: '3rem',
           height: '3rem',
-          ease: 'elastic.out(1, 0.4)',
+          ease: 'elastic.out',
         })
         .pause()
     }

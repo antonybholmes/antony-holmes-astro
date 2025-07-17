@@ -15,10 +15,7 @@ export function HeadPosts({ posts, showAvatar = false }: IProps) {
             <HeroPostSmall
               post={post}
               showAvatar={showAvatar}
-              className={cn(
-                'pb-6 border-b border-border',
-                index < 2 && 'pt-6 border-t border-border'
-              )}
+              className={cn(index < 2 && 'pt-6 border-t border-border')}
             />
           </li>
         ))}

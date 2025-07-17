@@ -46,7 +46,7 @@ export function HeroPostSmall({
       <BaseCol className="col-span-3 gap-y-1">
         <BaseCol>
           {showSectionLinks && (
-            <PostSectionLink post={post} textSize="text-xl md:text-base" />
+            <PostSectionLink post={post} textSize="text-base md:text-sm" />
           )}
           <PostTitleLink
             post={post}

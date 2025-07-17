@@ -30,11 +30,8 @@ export function HeroPost({
   headerClassName = 'text-2xl md:text-3xl',
   innerClassName,
   contentClassName = 'text-base',
-
   showDescription = true,
   showAvatar = true,
-  showAvatarImage = true,
-  dateBelow = false,
   showSectionLinks = true,
   mode = 'light',
 }: IProps) {
@@ -43,7 +40,12 @@ export function HeroPost({
   //{post.data.description}
 
   return (
-    <article className={cn('flex flex-col gap-y-4 group', className)}>
+    <article
+      className={cn(
+        'flex flex-col gap-y-4 group pb-6 border-b border-border lg:pb-0 lg:border-none',
+        className
+      )}
+    >
       {post.data.heroImage && (
         <PostImage post={post} className={imgClassName} />
       )}
@@ -51,7 +53,7 @@ export function HeroPost({
       <BaseCol className={cn('gap-y-2', innerClassName)}>
         <BaseCol className="gap-y-1">
           {showSectionLinks && (
-            <PostSectionLink post={post} textSize="text-xl md:text-base" />
+            <PostSectionLink post={post} textSize="text-base md:text-sm" />
           )}
           <PostTitleLink post={post} className={headerClassName} mode={mode} />
         </BaseCol>
