@@ -6,6 +6,10 @@
 
 - Added more animation flourishes and quote component.
 
+### Changed
+
+- Fixed publications.
+
 ### Fixed
 
 - UI tweaks.

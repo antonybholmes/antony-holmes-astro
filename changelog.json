@@ -210,6 +210,12 @@
           "msg": "UI tweaks",
           "date": "2025-07-17T21:14:13.242Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Fixed publications",
+          "date": "2025-07-17T22:15:16.529Z"
+        }
       ]
     },
     "author": "Antony Holmes",

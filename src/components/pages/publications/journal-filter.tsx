@@ -1,6 +1,25 @@
 import { Checkbox } from '@components/shadcn/ui/themed/check-box'
 import { VCenterRow } from '@layout/v-center-row'
 
+const NAME_MAP: Record<string, string> = {
+  bioinformatics: 'Bioinformatics',
+  'bmc-bioinformatics': 'BMC Bioinformatics',
+  'bmc-genomics': 'BMC Genomics',
+  'bmc-microbiology': 'BMC Microbiology',
+  'bmc-plant-biology': 'BMC Plant Biology',
+  'bmc-systems-biology': 'BMC Systems Biology',
+  'frontiers-in-plant-science': 'Frontiers in Plant Science',
+  'genes-genomes-genetics': 'Genes, Genomes, Genetics',
+  'international-journal-of-molecular-sciences':
+    'International Journal of Molecular Sciences',
+  'molecular-plant-pathology': 'Molecular Plant Pathology',
+  plants: 'Plants',
+  'Proc Natl Acad Sci USA': 'PNAS',
+  'Proceedings of the National Academy of Sciences': 'PNAS',
+  'Journal of Experimental Medicine': 'JEM',
+  'The Journal of experimental medicine': 'JEM',
+}
+
 interface JournalProps {
   index: number
   journal: [string, number]
@@ -18,12 +37,7 @@ export function Journal({ index, journal, isSelected, onClick }: JournalProps) {
         aria-label={`Show ${journal[1]} articles`}
       >
         <VCenterRow className=" justify-between">
-          <span className="3xl:hidden">
-            {journal[0]} ({journal[1]})
-          </span>
-          <span className="hidden 3xl:block">
-            {journal[0]} ({journal[1]})
-          </span>
+          {NAME_MAP[journal[0]] || journal[0]} ({journal[1]})
         </VCenterRow>
       </Checkbox>
 

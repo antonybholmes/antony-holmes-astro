@@ -34,7 +34,9 @@ with open("medline.txt", "r") as f:
             case "TI":
                 buffer = ""
                 bufferMode = "title"
-            case "JT":
+            # case "JT":
+            #    pub["journal"] = replaceMap.get(data, data)
+            case "TA":
                 pub["journal"] = replaceMap.get(data, data)
             case "AU":
                 pub["authorList"].append(data)

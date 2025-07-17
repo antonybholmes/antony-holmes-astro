@@ -48,7 +48,7 @@
     "volume": "2865",
     "title": "Single-Cell Transcriptomic Analysis of Normal and Malignant B Cells",
     "abstract": "In the past decade, single-cell (sc) transcriptomics has overcome the limitations of bulk analysis by measuring gene expression in individual cells, not just a population average. This can identify diverse cell types and states within a sample with high resolution, even without prior purification. Various technologies exist, each with its own capture, barcoding, and library preparation methods. This chapter focuses on the analysis of normal and malignant mature B cells using the 10x Genomics 5' sc-gene expression in parallel with B cell immune repertoire profiling. By integrating the gene expression data from similar cells, the complete transcriptome for each population can be reconstructed, while the identification of the expressed immunoglobulin genes allows investigating clonotype evolution and the detection of tumor clones that share the same clonally rearranged B cell receptor sequence. Researchers are guided through both the experimental protocols and data analysis with a comprehensive, step-by-step walkthrough of how to use some of the more popular single-cell software tools.",
-    "journal": "Methods in molecular biology (Clifton, N.J.)",
+    "journal": "Methods Mol Biol",
     "doi": "10.1007/978-1-0716-4188-0_15",
     "authors": "Holmes AB, Corinaldesi C, Basso K"
   },
@@ -115,7 +115,7 @@
     "volume": "15",
     "title": "MEF2B C-terminal mutations enhance transcriptional activity and stability to drive B cell lymphomagenesis",
     "abstract": "The myocyte enhancer factor 2B (MEF2B) transcription factor is frequently mutated in germinal center (GC)-derived B-cell lymphomas. Its ammino (N)-terminal mutations drive lymphomagenesis by escaping interaction with transcriptional repressors, while the function of carboxy (C)-terminal mutations remains to be elucidated. Here, we show that MEF2B C-tail is physiologically phosphorylated at specific residues and phosphorylation at serine (S)324 is impaired by lymphoma-associated mutations. Lack of phosphorylation at S324 enhances the interaction of MEF2B with the SWI/SNF chromatin remodeling complex, leading to higher transcriptional activity. In addition, these mutants show an increased protein stability due to impaired interaction with the CUL3/KLHL12 ubiquitin complex. Mice expressing a phosphorylation-deficient lymphoma-associated MEF2B mutant display GC enlargement and develop GC-derived lymphomas, when crossed with Bcl2 transgenic mice. These results unveil converging mechanisms of action for a diverse spectrum of MEF2B mutations, all leading to its dysregulation and GC B-cell lymphomagenesis.",
-    "journal": "Nature communications",
+    "journal": "Nat Commun",
     "pmcid": "PMC11343756",
     "doi": "10.1038/s41467-024-51644-8",
     "authors": "Yu C, Shen Q, Holmes AB, Mo T, Tosato A, Soni RK, Corinaldesi C, Koul S, Pasqualucci L, Hussein S, Forouhar F, Dalla-Favera R, Basso K"
@@ -143,7 +143,7 @@
     "volume": "120",
     "title": "KMT2D acetylation by CREBBP reveals a cooperative functional interaction at enhancers in normal and malignant germinal center B cells",
     "abstract": "Heterozygous inactivating mutations of the KMT2D methyltransferase and the CREBBP acetyltransferase are among the most common genetic alterations in B cell lymphoma and co-occur in 40 to 60% of follicular lymphoma (FL) and 30% of EZB/C3 diffuse large B cell lymphoma (DLBCL) cases, suggesting they may be coselected. Here, we show that combined germinal center (GC)-specific haploinsufficiency of Crebbp and Kmt2d synergizes in vivo to promote the expansion of abnormally polarized GCs, a common preneoplastic event. These enzymes form a biochemical complex on select enhancers/superenhancers that are critical for the delivery of immune signals in the GC light zone and are only corrupted upon dual Crebbp/Kmt2d loss, both in mouse GC B cells and in human DLBCL. Moreover, CREBBP directly acetylates KMT2D in GC-derived B cells, and, consistently, its inactivation by FL/DLBCL-associated mutations abrogates its ability to catalyze KMT2D acetylation. Genetic and pharmacologic loss of CREBBP and the consequent decrease in KMT2D acetylation lead to reduced levels of H3K4me1, supporting a role for this posttranslational modification in modulating KMT2D activity. Our data identify a direct biochemical and functional interaction between CREBBP and KMT2D in the GC, with implications for their role as tumor suppressors in FL/DLBCL and for the development of precision medicine approaches targeting enhancer defects induced by their combined loss.",
-    "journal": "Proceedings of the National Academy of Sciences",
+    "journal": "Proc Natl Acad Sci U S A",
     "pmcid": "PMC10089214",
     "doi": "10.1073/pnas.2218330120",
     "authors": "Vlasevska S, Garcia-Ibanez L, Duval R, Holmes AB, Jahan R, Cai B, Kim A, Mo T, Basso K, Soni RK, Bhagat G, Dalla-Favera R, Pasqualucci L"
@@ -196,7 +196,7 @@
     "volume": "12",
     "title": "Tracking Immunoglobulin Repertoire and Transcriptomic Changes in Germinal Center B Cells by Single-Cell Analysis",
     "abstract": "In response to T-cell-dependent antigens, mature B cells in the secondary lymphoid organs are stimulated to form germinal centers (GCs), which are histological structures deputed to antibody affinity maturation, a process associated with immunoglobulin gene editing by somatic hypermutation (SHM) and class switch recombination (CSR). GC B cells are heterogeneous and transition across multiple stages before being eliminated by apoptosis or committing to post-GC differentiation as memory B cells or plasma cells. In order to explore the dynamics of SHM and CSR during the GC reaction, we identified GC subpopulations by single-cell (sc) transcriptomics and analyzed the load of immunoglobulin variable (V) region mutations as well as the isotype class distribution in each subpopulation. The results showed that the large majority of GC B cells display a quantitatively similar mutational load in the V regions and analogous IGH isotype class distribution, except for the precursors of memory B cells (PreM) and plasma cells (PBL). PreM showed a bimodal pattern with about half of the cells displaying high V region germline identity and enrichment for unswitched IGH, while the rest of the cells carried a mutational load similar to the bulk of GC B cells and showed a switched isotype. PBL displayed a bias toward expression of IGHG and higher V region germline identity compared to the bulk of GC B cells. Genes implicated in SHM and CSR were significantly induced in specific GC subpopulations, consistent with the occurrence of SHM in dark zone cells and suggesting that CSR can occur within the GC.",
-    "journal": "Frontiers in immunology",
+    "journal": "Front Immunol",
     "pmcid": "PMC8789751",
     "doi": "10.3389/fimmu.2021.818758",
     "authors": "Corinaldesi C, Holmes AB, Shen Q, Grunstein E, Pasqualucci L, Dalla-Favera R, Basso K"
@@ -274,7 +274,7 @@
     "volume": "217",
     "title": "Single-cell analysis of germinal-center B cells informs on lymphoma cell of origin and outcome",
     "abstract": "In response to T cell-dependent antigens, mature B cells are stimulated to form germinal centers (GCs), the sites of B cell affinity maturation and the cell of origin (COO) of most B cell lymphomas. To explore the dynamics of GC B cell development beyond the known dark zone and light zone compartments, we performed single-cell (sc) transcriptomic analysis on human GC B cells and identified multiple functionally linked subpopulations, including the distinct precursors of memory B cells and plasma cells. The gene expression signatures associated with these GC subpopulations were effective in providing a sc-COO for approximately 80% of diffuse large B cell lymphomas (DLBCLs) and identified novel prognostic subgroups of DLBCL.",
-    "journal": "The Journal of experimental medicine",
+    "journal": "J Exp Med",
     "pmcid": "PMC7537389",
     "doi": "10.1084/jem.20200483",
     "authors": "Holmes AB, Corinaldesi C, Shen Q, Kumar R, Compagno N, Wang Z, Nitzan M, Grunstein E, Pasqualucci L, Dalla-Favera R, Basso K"
@@ -326,7 +326,7 @@
     "volume": "34",
     "title": "MEF2B Instructs Germinal Center Development and Acts as an Oncogene in B Cell Lymphomagenesis",
     "abstract": "The gene encoding the MEF2B transcription factor is mutated in germinal center (GC)-derived B cell lymphomas, but its role in GC development and lymphomagenesis is unknown. We demonstrate that Mef2b deletion reduces GC formation in mice and identify MEF2B transcriptional targets in GC, with roles in cell proliferation, apoptosis, GC confinement, and differentiation. The most common lymphoma-associated MEF2B mutant (MEF2B(D83V)) is hypomorphic, yet escapes binding and negative regulation by components of the HUCA complex and class IIa HDACs. Mef2b(D83V) expression in mice leads to GC enlargement and lymphoma development, a phenotype that becomes fully penetrant in combination with BCL2 de- regulation, an event associated with human MEF2B mutations. These results identify MEF2B as a critical GC regulator and a driver oncogene in lymphomagenesis.",
-    "journal": "Cancer cell",
+    "journal": "Cancer Cell",
     "pmcid": "PMC6223119",
     "doi": "10.1016/j.ccell.2018.08.006",
     "authors": "Brescia P, Schneider C, Holmes AB, Shen Q, Hussein S, Pasqualucci L, Basso K, Dalla-Favera R"
@@ -354,7 +354,7 @@
     "volume": "114",
     "title": "Common nonmutational NOTCH1 activation in chronic lymphocytic leukemia",
     "abstract": "Activating mutations of NOTCH1 (a well-known oncogene in T-cell acute lymphoblastic leukemia) are present in approximately 4-13% of chronic lymphocytic leukemia (CLL) cases, where they are associated with disease progression and chemorefractoriness. However, the specific role of NOTCH1 in leukemogenesis remains to be established. Here, we report that the active intracellular portion of NOTCH1 (ICN1) is detectable in approximately 50% of peripheral blood CLL cases lacking gene mutations. We identify a \"NOTCH1 gene-expression signature\" in CLL cells, and show that this signature is significantly enriched in primary CLL cases expressing ICN1, independent of NOTCH1 mutation. NOTCH1 target genes include key regulators of B-cell proliferation, survival, and signal transduction. In particular, we show that NOTCH1 transactivates MYC via binding to B-cell-specific regulatory elements, thus implicating this oncogene in CLL development. These results significantly extend the role of NOTCH1 in CLL pathogenesis, and have direct implications for specific therapeutic targeting.",
-    "journal": "Proceedings of the National Academy of Sciences",
+    "journal": "Proc Natl Acad Sci U S A",
     "pmcid": "PMC5389283",
     "doi": "10.1073/pnas.1702564114",
     "authors": "Fabbri G, Holmes AB, Viganotti M, Scuoppo C, Belver L, Herranz D, Yan XJ, Kieso Y, Rossi D, Gaidano G, Chiorazzi N, Ferrando AA, Dalla-Favera R"
@@ -382,7 +382,7 @@
     "volume": "7",
     "title": "The CREBBP Acetyltransferase Is a Haploinsufficient Tumor Suppressor in B-cell Lymphoma",
     "abstract": "Inactivating mutations of the CREBBP acetyltransferase are highly frequent in diffuse large B-cell lymphoma (DLBCL) and follicular lymphoma (FL), the two most common germinal center (GC)-derived cancers. However, the role of CREBBP inactivation in lymphomagenesis remains unclear. Here, we show that CREBBP regulates enhancer/super-enhancer networks with central roles in GC/post-GC cell fate decisions, including genes involved in signal transduction by the B-cell receptor and CD40 receptor, transcriptional control of GC and plasma cell development, and antigen presentation. Consistently, Crebbp-deficient B cells exhibit enhanced response to mitogenic stimuli and perturbed plasma cell differentiation. Although GC-specific loss of Crebbp was insufficient to initiate malignant transformation, compound Crebbp- haploinsufficient/BCL2-transgenic mice, mimicking the genetics of FL and DLBCL, develop clonal lymphomas recapitulating the features of the human diseases. These findings establish CREBBP as a haploinsufficient tumor- suppressor gene in GC B cells and provide insights into the mechanisms by which its loss contributes to lymphomagenesis.Significance: Loss-of- function mutations of CREBBP are common and early lesions in FL and DLBCL, suggesting a prominent role in lymphoma initiation. Our studies identify the cellular program by which reduced CREBBP dosage facilitates malignant transformation, and have direct implications for targeted lymphoma therapy based on drugs affecting CREBBP-mediated chromatin acetylation. Cancer Discov; 7(3); 322-37. (c)2017 AACR.This article is highlighted in the In This Issue feature, p. 235.",
-    "journal": "Cancer discovery",
+    "journal": "Cancer Discov",
     "pmcid": "PMC5386396",
     "doi": "10.1158/2159-8290.CD-16-1417",
     "authors": "Zhang J, Vlasevska S, Wells VA, Nataraj S, Holmes AB, Duval R, Meyer SN, Mo T, Basso K, Brindle PK, Hussein S, Dalla-Favera R, Pasqualucci L"
@@ -512,7 +512,7 @@
     "volume": "21",
     "title": "Disruption of KMT2D perturbs germinal center B cell development and promotes lymphomagenesis",
     "abstract": "Mutations in the gene encoding the KMT2D (or MLL2) methyltransferase are highly recurrent and occur early during tumorigenesis in diffuse large B cell lymphoma (DLBCL) and follicular lymphoma (FL). However, the functional consequences of these mutations and their role in lymphomagenesis are unknown. Here we show that FL- and DLBCL-associated KMT2D mutations impair KMT2D enzymatic activity, leading to diminished global H3K4 methylation in germinal-center (GC) B cells and DLBCL cells. Conditional deletion of Kmt2d early during B cell development, but not after initiation of the GC reaction, results in an increase in GC B cells and enhances B cell proliferation in mice. Moreover, genetic ablation of Kmt2d in mice overexpressing Bcl2 increases the incidence of GC-derived lymphomas resembling human tumors. These findings suggest that KMT2D acts as a tumor suppressor gene whose early loss facilitates lymphomagenesis by remodeling the epigenetic landscape of the cancer precursor cells. Eradication of KMT2D-deficient cells may thus represent a rational therapeutic approach for targeting early tumorigenic events.",
-    "journal": "Nature medicine",
+    "journal": "Nat Med",
     "pmcid": "PMC5145002",
     "doi": "10.1038/nm.3940",
     "authors": "Zhang J, Dominguez-Sola D, Hussein S, Lee JE, Holmes AB, Bansal M, Vlasevska S, Mo T, Tang H, Basso K, Ge K, Dalla-Favera R, Pasqualucci L"
@@ -529,7 +529,7 @@
     "volume": "15",
     "title": "Germinal centres and B cell lymphomagenesis",
     "abstract": "Germinal centres (GCs) are involved in the selection of B cells secreting high-affinity antibodies and are also the origin of most human B cell lymphomas. Recent progress has been made in identifying the functionally relevant stages of the GC and the complex trafficking mechanisms of B cells within the GC. These studies have identified transcription factors and signalling pathways that regulate distinct phases of GC development. Notably, these factors and pathways are hijacked during tumorigenesis, as revealed by analyses of the genetic lesions associated with various types of B cell lymphomas. This Review focuses on recent insights into the mechanisms that regulate GC development and that are relevant for human B cell lymphomagenesis.",
-    "journal": "Nature reviews. Immunology",
+    "journal": "Nat Rev Immunol",
     "doi": "10.1038/nri3814",
     "authors": "Basso K, Dalla-Favera R"
   },
@@ -574,7 +574,7 @@
     "volume": "111",
     "title": "MicroRNA 28 controls cell proliferation and is down-regulated in B-cell lymphomas",
     "abstract": "Burkitt lymphoma (BL) is a highly aggressive B-cell non-Hodgkin lymphoma (B-NHL), which originates from germinal center (GC) B cells and harbors translocations deregulating v-myc avian myelocytomatosis viral oncogene homolog (MYC). A comparative analysis of microRNAs expressed in normal and malignant GC B cells identified microRNA 28 (miR-28) as significantly down-regulated in BL, as well as in other GC-derived B-NHL. We show that reexpression of miR-28 impairs cell proliferation and clonogenic properties of BL cells by modulating several targets including MAD2 mitotic arrest deficient-like 1, MAD2L1, a component of the spindle checkpoint whose down-regulation is essential in mediating miR-28-induced proliferation arrest, and BCL2-associated athanogene, BAG1, an activator of the ERK pathway. We identify the oncogene MYC as a negative regulator of miR-28 expression, suggesting that its deregulation by chromosomal translocation in BL leads to miR-28 suppression. In addition, we show that miR-28 can inhibit MYC-induced transformation by directly targeting genes up-regulated by MYC. Overall, our data suggest that miR-28 acts as a tumor suppressor in BL and that its repression by MYC contributes to B-cell lymphomagenesis.",
-    "journal": "Proceedings of the National Academy of Sciences",
+    "journal": "Proc Natl Acad Sci U S A",
     "pmcid": "PMC4050621",
     "doi": "10.1073/pnas.1322466111",
     "authors": "Schneider C, Setty M, Holmes AB, Maute RL, Leslie CS, Mussolin L, Rosolen A, Dalla-Favera R, Basso K"
@@ -641,7 +641,7 @@
     "volume": "6",
     "title": "Genetics of follicular lymphoma transformation",
     "abstract": "Follicular lymphoma (FL) is an indolent disease, but 30%-40% of cases undergo histologic transformation to an aggressive malignancy, typically represented by diffuse large B cell lymphoma (DLBCL). The pathogenesis of this process remains largely unknown. Using whole-exome sequencing and copy-number analysis, we show here that the dominant clone of FL and transformed FL (tFL) arise by divergent evolution from a common mutated precursor through the acquisition of distinct genetic events. Mutations in epigenetic modifiers and antiapoptotic genes are introduced early in the common precursor, whereas tFL is specifically associated with alterations deregulating cell-cycle progression and DNA damage responses (CDKN2A/B, MYC, and TP53) as well as aberrant somatic hypermutation. The genomic profile of tFL shares similarities with that of germinal center B cell-type de novo DLBCL but also displays unique combinations of altered genes with diagnostic and therapeutic implications.",
-    "journal": "Cell reports",
+    "journal": "Cell Rep",
     "pmcid": "PMC4100800",
     "doi": "10.1016/j.celrep.2013.12.027",
     "authors": "Pasqualucci L, Khiabanian H, Fangazio M, Vasishtha M, Messina M, Holmes AB, Ouillette P, Trifonov V, Rossi D, Tabbo F, Ponzoni M, Chadburn A, Murty VV, Bhagat G, Gaidano G, Inghirami G, Malek SN, Rabadan R, Dalla-Favera R"
@@ -665,7 +665,7 @@
     "volume": "210",
     "title": "Genetic lesions associated with chronic lymphocytic leukemia transformation to Richter syndrome",
     "abstract": "Richter syndrome (RS) derives from the rare transformation of chronic lymphocytic leukemia (CLL) into an aggressive lymphoma, most commonly of the diffuse large B cell lymphoma (DLBCL) type. The molecular pathogenesis of RS is only partially understood. By combining whole-exome sequencing and copy-number analysis of 9 CLL-RS pairs and of an extended panel of 43 RS cases, we show that this aggressive disease typically arises from the predominant CLL clone by acquiring an average of approximately 20 genetic lesions/case. RS lesions are heterogeneous in terms of load and spectrum among patients, and include those involved in CLL progression and chemorefractoriness (TP53 disruption and NOTCH1 activation) as well as some not previously implicated in CLL or RS pathogenesis. In particular, disruption of the CDKN2A/B cell cycle regulator is associated with approximately 30% of RS cases. Finally, we report that the genomic landscape of RS is significantly different from that of de novo DLBCL, suggesting that they represent distinct disease entities. These results provide insights into RS pathogenesis, and identify dysregulated pathways of potential diagnostic and therapeutic relevance.",
-    "journal": "The Journal of experimental medicine",
+    "journal": "J Exp Med",
     "pmcid": "PMC3804949",
     "doi": "10.1084/jem.20131448",
     "authors": "Fabbri G, Khiabanian H, Holmes AB, Wang J, Messina M, Mullighan CG, Pasqualucci L, Rabadan R, Dalla-Favera R"
@@ -687,7 +687,7 @@
     "volume": "110",
     "title": "tRNA-derived microRNA modulates proliferation and the DNA damage response and is down-regulated in B cell lymphoma",
     "abstract": "Sequencing studies from several model systems have suggested that diverse and abundant small RNAs may be derived from tRNA, but the function of these molecules remains undefined. Here, we demonstrate that one such tRNA-derived fragment, cloned from human mature B cells and designated CU1276, in fact possesses the functional characteristics of a microRNA, including a DICER1-dependent biogenesis, physical association with Argonaute proteins, and the ability to repress mRNA transcripts in a sequence-specific manner. Expression of CU1276 is abundant in normal germinal center B cells but absent in germinal center-derived lymphomas, suggesting a role in the pathogenesis of this disease. Furthermore, CU1276 represses endogenous RPA1, an essential gene involved in many aspects of DNA dynamics, and consequently, expression of this tRNA- derived microRNA in a lymphoma cell line suppresses proliferation and modulates the molecular response to DNA damage. These results establish that functionally active microRNAs can be derived from tRNA, thus defining a class of genetic entities with potentially important biological roles.",
-    "journal": "Proceedings of the National Academy of Sciences",
+    "journal": "Proc Natl Acad Sci U S A",
     "pmcid": "PMC3557069",
     "doi": "10.1073/pnas.1206761110",
     "authors": "Maute RL, Schneider C, Sumazin P, Holmes A, Califano A, Basso K, Dalla-Favera R"
@@ -709,7 +709,7 @@
     "volume": "209",
     "title": "BCL6 positively regulates AID and germinal center gene expression via repression of miR-155",
     "abstract": "The BCL6 proto-oncogene encodes a transcriptional repressor that is required for germinal center (GC) formation and whose de-regulation is involved in lymphomagenesis. Although substantial evidence indicates that BCL6 exerts its function by repressing the transcription of hundreds of protein-coding genes, its potential role in regulating gene expression via microRNAs (miRNAs) is not known. We have identified a core of 15 miRNAs that show binding of BCL6 in their genomic loci and are down- regulated in GC B cells. Among BCL6 validated targets, miR-155 and miR-361 directly modulate AID expression, indicating that via repression of these miRNAs, BCL6 up-regulates AID. Similarly, the expression of additional genes relevant for the GC phenotype, including SPI1, IRF8, and MYB, appears to be sustained via BCL6-mediated repression of miR-155. These findings identify a novel mechanism by which BCL6, in addition to repressing protein coding genes, promotes the expression of important GC functions by repressing specific miRNAs.",
-    "journal": "The Journal of experimental medicine",
+    "journal": "J Exp Med",
     "pmcid": "PMC3526356",
     "doi": "10.1084/jem.20121387",
     "authors": "Basso K, Schneider C, Shen Q, Holmes AB, Setty M, Leslie C, Dalla-Favera R"
@@ -754,7 +754,7 @@
     "volume": "20",
     "title": "Combined genetic inactivation of beta2-Microglobulin and CD58 reveals frequent escape from immune recognition in diffuse large B cell lymphoma",
     "abstract": "We report that diffuse large B cell lymphoma (DLBCL) commonly fails to express cell-surface molecules necessary for the recognition of tumor cells by immune-effector cells. In 29% of cases, mutations and deletions inactivate the beta2-Microglobulin gene, thus preventing the cell-surface expression of the HLA class-I (HLA-I) complex that is necessary for recognition by CD8(+) cytotoxic T cells. In 21% of cases, analogous lesions involve the CD58 gene, which encodes a molecule involved in T and natural killer cell-mediated responses. In addition to gene inactivation, alternative mechanisms lead to aberrant expression of HLA-I and CD58 in >60% of DLBCL. These two events are significantly associated in this disease, suggesting that they are coselected during lymphomagenesis for their combined role in escape from immune-surveillance.",
-    "journal": "Cancer cell",
+    "journal": "Cancer Cell",
     "pmcid": "PMC3660995",
     "doi": "10.1016/j.ccr.2011.11.006",
     "authors": "Challa-Malladi M, Lieu YK, Califano O, Holmes AB, Bhagat G, Murty VV, Dominguez-Sola D, Pasqualucci L, Dalla-Favera R"
@@ -829,7 +829,7 @@
     "volume": "28",
     "title": "Discovery of cyanophage genomes which contain mitochondrial DNA polymerase",
     "abstract": "DNA polymerase gamma is a family A DNA polymerase responsible for the replication of mitochondrial DNA in eukaryotes. The origins of DNA polymerase gamma have remained elusive because it is not present in any known bacterium, though it has been hypothesized that mitochondria may have inherited the enzyme by phage-mediated nonorthologous displacement. Here, we present an analysis of two full-length homologues of this gene, which were found in the genomes of two bacteriophages, which infect the chlorophyll-d containing cyanobacterium Acaryochloris marina. Phylogenetic analyses of these phage DNA polymerase gamma proteins show that they branch deeply within the DNA polymerase gamma clade and therefore share a common origin with their eukaryotic homologues. We also found homologues of these phage polymerases in the environmental Community Cyberinfrastructure for Advanced Microbial Ecology Research and Analysis (CAMERA) database, which fell in the same clade. An analysis of the CAMERA assemblies containing the environmental homologues together with the filter fraction metadata indicated some of these assemblies may be of bacterial origin. We also show that the phage-encoded DNA polymerase gamma is highly transcribed as the phage genomes are replicated. These findings provide data that may assist in reconstructing the evolution of mitochondria.",
-    "journal": "Molecular biology and evolution",
+    "journal": "Mol Biol Evol",
     "doi": "10.1093/molbev/msr041",
     "authors": "Chan YW, Mohr R, Millard AD, Holmes AB, Larkum AW, Whitworth AL, Mann NH, Scanlan DJ, Hess WR, Clokie MR"
   },
@@ -849,7 +849,7 @@
     "volume": "6",
     "title": "Discovering disease associations by integrating electronic clinical data and medical literature",
     "abstract": "Electronic health record (EHR) systems offer an exceptional opportunity for studying many diseases and their associated medical conditions within a population. The increasing number of clinical record entries that have become available electronically provides access to rich, large sets of patients' longitudinal medical information. By integrating and comparing relations found in the EHRs with those already reported in the literature, we are able to verify existing and to identify rare or novel associations. Of particular interest is the identification of rare disease co-morbidities, where the small numbers of diagnosed patients make robust statistical analysis difficult. Here, we introduce ADAMS, an Application for Discovering Disease Associations using Multiple Sources, which contains various statistical and language processing operations. We apply ADAMS to the New York-Presbyterian Hospital's EHR to combine the information from the relational diagnosis tables and textual discharge summaries with those from PubMed and Wikipedia in order to investigate the co-morbidities of the rare diseases Kaposi sarcoma, toxoplasmosis, and Kawasaki disease. In addition to finding well-known characteristics of diseases, ADAMS can identify rare or previously unreported associations. In particular, we report a statistically significant association between Kawasaki disease and diagnosis of autistic disorder.",
-    "journal": "PloS one",
+    "journal": "PLoS One",
     "pmcid": "PMC3121722",
     "doi": "10.1371/journal.pone.0021132",
     "authors": "Holmes AB, Hawson A, Liu F, Friedman C, Khiabanian H, Rabadan R"
@@ -900,7 +900,7 @@
     "volume": "364",
     "title": "BRAF mutations in hairy-cell leukemia",
     "abstract": "BACKGROUND: Hairy-cell leukemia (HCL) is a well-defined clinicopathological entity whose underlying genetic lesion is still obscure. METHODS: We searched for HCL-associated mutations by performing massively parallel sequencing of the whole exome of leukemic and matched normal cells purified from the peripheral blood of an index patient with HCL. Findings were validated by Sanger sequencing in 47 additional patients with HCL. RESULTS: Whole-exome sequencing identified five missense somatic clonal mutations that were confirmed on Sanger sequencing, including a heterozygous mutation in BRAF that results in the BRAF V600E variant protein. Since BRAF V600E is oncogenic in other tumors, further analyses were focused on this genetic lesion. The same BRAF mutation was noted in all the other 47 patients with HCL who were evaluated by means of Sanger sequencing. None of the 195 patients with other peripheral B-cell lymphomas or leukemias who were evaluated carried the BRAF V600E variant, including 38 patients with splenic marginal-zone lymphomas or unclassifiable splenic lymphomas or leukemias. In immunohistologic and Western blot studies, HCL cells expressed phosphorylated MEK and ERK (the downstream targets of the BRAF kinase), indicating a constitutive activation of the RAF-MEK-ERK mitogen-activated protein kinase pathway in HCL. In vitro incubation of BRAF-mutated primary leukemic hairy cells from 5 patients with PLX-4720, a specific inhibitor of active BRAF, led to a marked decrease in phosphorylated ERK and MEK. CONCLUSIONS; The BRAF V600E mutation was present in all patients with HCL who were evaluated. This finding may have implications for the pathogenesis, diagnosis, and targeted therapy of HCL. (Funded by Associazione Italiana per la Ricerca sul Cancro and others.).",
-    "journal": "The New England journal of medicine",
+    "journal": "N Engl J Med",
     "pmcid": "PMC3689585",
     "doi": "10.1056/NEJMoa1014209",
     "authors": "Tiacci E, Trifonov V, Schiavoni G, Holmes A, Kern W, Martelli MP, Pucciarini A, Bigerna B, Pacini R, Wells VA, Sportoletti P, Pettirossi V, Mannucci R, Elliott O, Liso A, Ambrosetti A, Pulsoni A, Forconi F, Trentin L, Semenzato G, Inghirami G, Capponi M, Di Raimondo F, Patti C, Arcaini L, Musto P, Pileri S, Haferlach C, Schnittger S, Pizzolo G, Foa R, Farinelli L, Haferlach T, Pasqualucci L, Rabadan R, Falini B"
@@ -918,7 +918,7 @@
     "volume": "6",
     "title": "Network analysis of global influenza spread",
     "abstract": "Although vaccines pose the best means of preventing influenza infection, strain selection and optimal implementation remain difficult due to antigenic drift and a lack of understanding global spread. Detecting viral movement by sequence analysis is complicated by skewed geographic and seasonal distributions in viral isolates. We propose a probabilistic method that accounts for sampling bias through spatiotemporal clustering and modeling regional and seasonal transmission as a binomial process. Analysis of H3N2 not only confirmed East-Southeast Asia as a source of new seasonal variants, but also increased the resolution of observed transmission to a country level. H1N1 data revealed similar viral spread from the tropics. Network analysis suggested China and Hong Kong as the origins of new seasonal H3N2 strains and the United States as a region where increased vaccination would maximally disrupt global spread of the virus. These techniques provide a promising methodology for the analysis of any seasonal virus, as well as for the continued surveillance of influenza.",
-    "journal": "PLoS computational biology",
+    "journal": "PLoS Comput Biol",
     "pmcid": "PMC2987833",
     "doi": "10.1371/journal.pcbi.1001005",
     "authors": "Chan J, Holmes A, Rabadan R"
@@ -939,7 +939,7 @@
     "volume": "5",
     "title": "Signs of the 2009 influenza pandemic in the New York-Presbyterian Hospital electronic health records",
     "abstract": "BACKGROUND: In June of 2009, the World Health Organization declared the first influenza pandemic of the 21(st) century, and by July, New York City's New York-Presbyterian Hospital (NYPH) experienced a heavy burden of cases, attributable to a novel strain of the virus (H1N1pdm). METHODS AND RESULTS: We present the signs in the NYPH electronic health records (EHR) that distinguished the 2009 pandemic from previous seasonal influenza outbreaks via various statistical analyses. These signs include (1) an increase in the number of patients diagnosed with influenza, (2) a preponderance of influenza diagnoses outside of the normal flu season, and (3) marked vaccine failure. The NYPH EHR also reveals distinct age distributions of patients affected by seasonal influenza and the pandemic strain, and via available longitudinal data, suggests that the two may be associated with distinct sets of comorbid conditions as well. In particular, we find significantly more pandemic flu patients with diagnoses associated with asthma and underlying lung disease. We further observe that the NYPH EHR is capable of tracking diseases at a resolution as high as particular zip codes in New York City. CONCLUSION: The NYPH EHR permits early detection of pandemic influenza and hypothesis generation via identification of those significantly associated illnesses. As data standards develop and databases expand, EHRs will contribute more and more to disease detection and the discovery of novel disease associations.",
-    "journal": "PloS one",
+    "journal": "PLoS One",
     "pmcid": "PMC2936568",
     "doi": "10.1371/journal.pone.0012658",
     "authors": "Khiabanian H, Holmes AB, Kelly BJ, Gururaj M, Hripcsak G, Rabadan R"
@@ -957,7 +957,7 @@
     "volume": "6",
     "title": "Spatial simulations of myxobacterial development",
     "abstract": "Many bacteria exhibit multicellular behaviour, with individuals within a colony coordinating their actions for communal benefit. One example of complex multicellular phenotypes is myxobacterial fruiting body formation, where thousands of cells aggregate into large three- dimensional structures, within which sporulation occurs. Here we describe a novel theoretical model, which uses Monte Carlo dynamics to simulate and explain multicellular development. The model captures multiple behaviours observed during fruiting, including the spontaneous formation of aggregation centres and the formation and dissolution of fruiting bodies. We show that a small number of physical properties in the model is sufficient to explain the most frequently documented population-level behaviours observed during development in Myxococcus xanthus.",
-    "journal": "PLoS computational biology",
+    "journal": "PLoS Comput Biol",
     "pmcid": "PMC2829040",
     "doi": "10.1371/journal.pcbi.1000686",
     "authors": "Holmes AB, Kalvala S, Whitworth DE"
@@ -1029,7 +1029,7 @@
     "volume": "190",
     "title": "Phosphate acquisition components of the Myxococcus xanthus Pho regulon are regulated by both phosphate availability and development",
     "abstract": "In many organisms, phosphatase expression and phosphate (P) uptake are coordinately regulated by the Pho regulon. In Myxococcus xanthus P limitation initiates multicellular development, a process associated with changes in phosphatase expression. We sought here to characterize the link between P acquisition and development in this bacterium, an organism capable of preying upon other microorganisms as a sole nutrient source. M. xanthus seems to possess no significant internal P stores, as reducing the P concentration to less than 10 microM retarded growth within one doubling time. Pyrophosphate, polyphosphate, and glyceraldehyde-3-phosphate could support growth as sole P sources, although many other P-containing biomolecules could not (including nucleic acids and phospholipids). Several Pho regulon promoters were found to be highly active during vegetative growth, and P limitation specifically induced pstSCAB, AcPA1, and pho3 promoter activity and repressed pit expression. Enhanced pstSCAB and pho3 promoter activities in a phoP4 mutant (in the presence of high and low concentrations of P) suggested that PhoP4 acts as a repressor of these genes. However, in a phoP4 background, the activities of pstSCAB remained P regulated, suggesting that there is additional regulation by a P-sensitive factor. Initiation of multicellular development caused immediate down-regulation of Pho regulon genes and caused pstSCAB and pho3 promoter activities to become P insensitive. Hence, P acquisition components of the M. xanthus Pho regulon are regulated by both P availability and development, with developmental down-regulation overriding up-regulation by P limitation. These observations suggest that when development is initiated, subsequent changes in P availability become irrelevant to the population, which presumably has sufficient intrinsic P to ensure completion of the developmental program.",
-    "journal": "Journal of bacteriology",
+    "journal": "J Bacteriol",
     "pmcid": "PMC2258891",
     "doi": "10.1128/JB.01781-07",
     "authors": "Whitworth DE, Holmes AB, Irvine AG, Hodgson DA, Scanlan DJ"
@@ -1050,7 +1050,7 @@
     "volume": "37",
     "title": "Reverse engineering of regulatory networks in human B cells",
     "abstract": "Cellular phenotypes are determined by the differential activity of networks linking coregulated genes. Available methods for the reverse engineering of such networks from genome-wide expression profiles have been successful only in the analysis of lower eukaryotes with simple genomes. Using a new method called ARACNe (algorithm for the reconstruction of accurate cellular networks), we report the reconstruction of regulatory networks from expression profiles of human B cells. The results are suggestive a hierarchical, scale-free network, where a few highly interconnected genes (hubs) account for most of the interactions. Validation of the network against available data led to the identification of MYC as a major hub, which controls a network comprising known target genes as well as new ones, which were biochemically validated. The newly identified MYC targets include some major hubs. This approach can be generally useful for the analysis of normal and pathologic networks in mammalian cells.",
-    "journal": "Nature genetics",
+    "journal": "Nat Genet",
     "doi": "10.1038/ng1532",
     "authors": "Basso K, Margolin AA, Stolovitzky G, Klein U, Dalla-Favera R, Califano A"
   }

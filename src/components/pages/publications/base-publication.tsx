@@ -151,7 +151,7 @@ export function BasePublication({
         </button>
       </HCenterCol>
 
-      <div className="grow">
+      <div className="grow group">
         <BaseRow className="gap-x-2">
           <div className="grow">
             {/* <ul className="m-0 flex flex-row flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
@@ -162,7 +162,8 @@ export function BasePublication({
                 <ThemeLink
                   aria-label="View article"
                   href={url}
-                  data-underline={true}
+                  //data-underline={true}
+                  className="group-hover:underline group-hover:text-theme"
                 >
                   {title}
                 </ThemeLink>
