@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added poppins and some politeinvestor style choices.
 - Added more animation flourishes and quote component.
 
 ### Changed

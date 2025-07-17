@@ -137,7 +137,7 @@ export function PagePagination({ page = 0, pages = 1, root }: IProps) {
 
   return (
     <HCenterRow>
-      <ul className="flex flex-row items-center gap-x-2 font-bold">
+      <ul className="flex flex-row items-center gap-x-2 font-semibold">
         <li>
           <PrevButton href={getPath(prevPage, root)} />
         </li>

@@ -50,7 +50,7 @@ export function HeroPostSmall({
           )}
           <PostTitleLink
             post={post}
-            className="text-2xl lg:text-lg"
+            className="text-2xl lg:text-xl"
             mode={mode}
           />
         </BaseCol>

@@ -4,7 +4,7 @@
 
 @theme {
   --font-*: initial;
-  --font-sans: Geist, Inter, Figtree, Helvetica, Arial;
+  --font-sans: Inter, Geist, Figtree, Helvetica, Arial;
 
   --spacing-header: 3rem;
 
@@ -281,14 +281,14 @@
   line-height: 1.7;
 } */
 
-/* h1,
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  @apply m-0;
-} */
+  font-family: Poppins, Inter, sans-serif;
+}
 
 strong,
 b {

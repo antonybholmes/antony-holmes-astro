@@ -8,6 +8,7 @@ import ContentDiv from '@/components/layout/ContentDiv.astro'
 import { PagePagination } from '@/components/page-pagination'
 import { PageTitle } from '@/components/page-title'
 import { FeaturedPosts } from '@/components/posts/featured-posts'
+import { HeadPosts } from '@/components/posts/head-posts'
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
 import type { ColorMode } from '@/interfaces/color-mode'
@@ -50,6 +51,8 @@ let {
 if (!crumbs) {
   crumbs = createCrumbs(Astro.url.pathname)
 }
+
+const headPostStart = page === 0 ? 4 : 0
 ---
 
 <BaseLayout title={pageTitle ?? title} tab="Blog">
@@ -98,8 +101,13 @@ if (!crumbs) {
               )
             }
 
+            <HeadPosts
+              posts={posts.slice(headPostStart, headPostStart + 2) as IPost[]}
+              showSectionLinks={showSectionLinks}
+            />
+
             <RestPosts
-              posts={(page === 0 ? posts.slice(4) : posts) as IPost[]}
+              posts={posts.slice(headPostStart + 2) as IPost[]}
               showSectionLinks={showSectionLinks}
             />
 

@@ -34,7 +34,7 @@ export function PostSectionLink({
         aria-label={`Read more ${sectionName} posts`}
         title={`Read more ${sectionName} posts`}
         className={cn(
-          'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-medium text-transparent',
+          'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-semibold text-transparent',
           textSize,
           className
         )}
