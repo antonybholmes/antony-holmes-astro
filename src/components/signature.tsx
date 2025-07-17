@@ -48,7 +48,7 @@ export function Signature() {
         .to(
           antonyRef.current,
           {
-            x: '-0.3rem',
+            x: '-0.4rem',
 
             duration: 1,
             ease: 'elastic.out',
@@ -60,7 +60,7 @@ export function Signature() {
         .to(
           holmesRef.current,
           {
-            x: '0.3rem',
+            x: '0.4rem',
             duration: 1,
             ease: 'elastic.out',
             //yoyo: true,
@@ -95,6 +95,7 @@ export function Signature() {
       className="relative text-2xl font-semibold h-8 w-48"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={{ fontFamily: 'Poppins' }}
     >
       <span
         ref={antonyRef}
@@ -104,20 +105,20 @@ export function Signature() {
       </span>
 
       <span
-        className="absolute left-20 -top-5 -rotate-30  text-sky-700 pointer-events-none"
+        className="absolute left-21 -top-5 -rotate-30  text-sky-700 pointer-events-none"
         style={{ fontFamily: 'Dancing Script' }}
         ref={spanBRef}
       >
         B
       </span>
       <ChevronUp
-        className="text-foreground/40 absolute scale-y-150 top-5 h-4 w-4 left-[4.9rem] pointer-events-none"
+        className="text-foreground/40 absolute scale-y-150 top-5 h-4 w-4 left-[5.2rem] pointer-events-none"
         ref={insertRef}
       />
 
       <span
         ref={holmesRef}
-        className="absolute left-23 pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+        className="absolute left-24 pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
       >
         Holmes
       </span>
