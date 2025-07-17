@@ -100,7 +100,7 @@ export function PostAuthorsAndDate({
           />
           <span
             data-mode={mode}
-            className="hidden xl:block rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-foreground/30 data-[mode=dark]:bg-white/40"
+            className="hidden xl:block rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-foreground/40 data-[mode=dark]:bg-white/40"
           />
         </>
       )}

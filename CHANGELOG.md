@@ -6,6 +6,10 @@
 
 - Added more animation flourishes and quote component.
 
+### Fixed
+
+- UI tweaks.
+
 
 ## 1.6 (Jul, 2025)
 

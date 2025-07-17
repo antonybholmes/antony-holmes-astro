@@ -20,10 +20,13 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.4.1
         version: 3.4.1
-      '@fontsource/alex-brush':
+      '@fontsource/dancing-script':
         specifier: ^5.2.6
         version: 5.2.6
       '@fontsource/geist':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/inter':
         specifier: ^5.2.6
         version: 5.2.6
       '@radix-ui/react-accordion':
@@ -518,11 +521,14 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@fontsource/alex-brush@5.2.6':
-    resolution: {integrity: sha512-5X+VbERKrEMel4JmZJoJLBCcgwKbIQv+j/pUvaeoAaynXmCZfuwXSbPBewVaxvdM1D4xb/eeoRgmqm3ZYr+khA==}
+  '@fontsource/dancing-script@5.2.6':
+    resolution: {integrity: sha512-W6hAg34v1AyX10ijrBKMf0jg6V641RpylfBi1oXG1pzKgi+z2cpl0N9UDKDHoedpWnajjMuT6MgoaJvFxVAW5w==}
 
   '@fontsource/geist@5.2.6':
     resolution: {integrity: sha512-HKRFUn4fApQr9iGaVLUWG5vs+QYFqhKa5X7AFpT6Gey0Kx0ibvpFceMbMDDdlzzqPiGkvCuvYRUN55rvqXgibg==}
+
+  '@fontsource/inter@5.2.6':
+    resolution: {integrity: sha512-CZs9S1CrjD0jPwsNy9W6j0BhsmRSQrgwlTNkgQXTsAeDRM42LBRLo3eo9gCzfH4GvV7zpyf78Ozfl773826csw==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -4617,9 +4623,11 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@fontsource/alex-brush@5.2.6': {}
+  '@fontsource/dancing-script@5.2.6': {}
 
   '@fontsource/geist@5.2.6': {}
+
+  '@fontsource/inter@5.2.6': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:

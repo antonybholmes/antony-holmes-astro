@@ -204,6 +204,12 @@
           "msg": "Added more animation flourishes and quote component",
           "date": "2025-07-17T17:59:30.184Z"
         }
+      ],
+      "Fixed": [
+        {
+          "msg": "UI tweaks",
+          "date": "2025-07-17T21:14:13.242Z"
+        }
       ]
     },
     "author": "Antony Holmes",

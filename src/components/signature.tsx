@@ -24,7 +24,8 @@ export function Signature() {
         .to(
           spanBRef.current,
           {
-            y: '0.75rem',
+            y: '1.25rem',
+            //x: '0.25rem',
             duration: 1,
             ease: 'elastic.out',
             //yoyo: true,
@@ -47,10 +48,10 @@ export function Signature() {
         .to(
           antonyRef.current,
           {
-            x: '-0.25rem',
+            x: '-0.3rem',
 
-            duration: 0.3,
-            ease: 'power1.inOut',
+            duration: 1,
+            ease: 'elastic.out',
             //yoyo: true,
             //repeat: -1,
           },
@@ -59,10 +60,9 @@ export function Signature() {
         .to(
           holmesRef.current,
           {
-            x: '0.25rem',
-
-            duration: 0.3,
-            ease: 'power1.inOut',
+            x: '0.3rem',
+            duration: 1,
+            ease: 'elastic.out',
             //yoyo: true,
             //repeat: -1,
           },
@@ -92,32 +92,32 @@ export function Signature() {
 
   return (
     <VCenterRow
-      className="text-foreground/80 relative text-2xl font-semibold items-stretch"
+      className="relative text-2xl font-semibold h-8 w-48"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <span
         ref={antonyRef}
-        className="pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+        className="absolute pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent left-0"
       >
         Antony
       </span>
-      <span className="relative flex grow w-3 flex-row items-center justify-center pointer-events-none">
-        <span
-          className="absolute -top-4 -rotate-25 text-sky-700 pointer-events-none"
-          ref={spanBRef}
-        >
-          B
-        </span>
-        <ChevronUp
-          className="text-foreground/40 absolute top-4 h-4 w-4 pointer-events-none"
-          ref={insertRef}
-        />
+
+      <span
+        className="absolute left-20 -top-5 -rotate-30  text-sky-700 pointer-events-none"
+        style={{ fontFamily: 'Dancing Script' }}
+        ref={spanBRef}
+      >
+        B
       </span>
+      <ChevronUp
+        className="text-foreground/40 absolute scale-y-150 top-5 h-4 w-4 left-[4.9rem] pointer-events-none"
+        ref={insertRef}
+      />
 
       <span
         ref={holmesRef}
-        className="pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+        className="absolute left-23 pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
       >
         Holmes
       </span>

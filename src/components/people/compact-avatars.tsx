@@ -40,7 +40,7 @@ export function CompactAvatars({
         </ul>
       )}
 
-      <span className="text-sm font-bold">
+      <span className="text-sm font-semibold">
         {people.map((person, index) => (
           <Fragment key={index}>
             <BaseLink

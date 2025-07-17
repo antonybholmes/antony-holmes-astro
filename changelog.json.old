@@ -195,5 +195,18 @@
     },
     "author": "Antony Holmes",
     "date": "2025-07-16T21:23:10.579Z"
+  },
+  {
+    "version": "1.7",
+    "messages": {
+      "Added": [
+        {
+          "msg": "Added more animation flourishes and quote component",
+          "date": "2025-07-17T17:59:30.184Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2025-07-17T17:59:30.184Z"
   }
 ]
