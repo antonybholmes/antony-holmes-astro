@@ -33,7 +33,7 @@ export function HeroPostSmall({
     <article
       data-mode={mode}
       className={cn(
-        'group grid grid-cols-1 gap-4 text-sm data-[mode=dark]:text-white',
+        'group grid grid-cols-1 gap-4  data-[mode=dark]:text-white',
         hasImage && 'md:grid-cols-4',
         className
       )}

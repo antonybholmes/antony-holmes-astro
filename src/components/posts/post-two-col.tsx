@@ -30,7 +30,7 @@ export function PostTwoCol({
               showSectionLinks={showSectionLinks}
               className={cn(
                 'data-[mode=dark]:border-white/50',
-                index > 0 && 'pt-6 border-border border-t'
+                index > 1 && 'pt-6 border-border border-t'
               )}
             />
           )

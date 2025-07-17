@@ -203,6 +203,10 @@
         {
           "msg": "Added more animation flourishes and quote component",
           "date": "2025-07-17T17:59:30.184Z"
+        },
+        {
+          "msg": "Added poppins and some politeinvestor style choices",
+          "date": "2025-07-17T22:39:48.061Z"
         }
       ],
       "Fixed": [

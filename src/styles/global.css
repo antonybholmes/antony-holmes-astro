@@ -4,7 +4,7 @@
 
 @theme {
   --font-*: initial;
-  --font-sans: Inter, Geist, Figtree, Helvetica, Arial;
+  --font-sans: Geist, Inter, Figtree, Helvetica, Arial;
 
   --spacing-header: 3rem;
 

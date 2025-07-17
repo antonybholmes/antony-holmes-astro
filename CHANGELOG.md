@@ -9,6 +9,7 @@
 
 ### Changed
 
+- UI fixes.
 - Fixed publications.
 
 ### Fixed
