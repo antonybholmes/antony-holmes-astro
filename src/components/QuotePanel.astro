@@ -1,0 +1,38 @@
+---
+import { Quote } from 'lucide-react'
+---
+
+<blockquote class="bg-theme/5 quote-panel relative rounded-sm">
+  <span
+    id="quote-panel-indicator"
+    class="bg-theme absolute top-0 left-0 h-full w-0.75 rounded-sm"></span>
+  <Quote className="stroke-theme rotate-180" strokeWidth={1.5} />
+  <div class="quote-content">
+    <slot />
+  </div>
+</blockquote>
+
+<style>
+  .quote-panel {
+    position: relative;
+    padding: 2rem;
+    margin: 2rem 0;
+  }
+
+  .quote-mark {
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+    font-size: 4rem;
+    color: #e5e7eb; /* Very light gray */
+    line-height: 1;
+    font-family: serif;
+  }
+
+  .quote-content {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-size: large;
+    font-style: italic;
+  }
+</style>

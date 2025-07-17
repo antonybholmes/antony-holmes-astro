@@ -15,7 +15,7 @@
     "quote": "You should not drink and bake.",
     "url": "https://en.wikipedia.org/wiki/Raw_Deal_(1986_film)"
   },
-  { "quote": "Don't you wish there were more stupid quotes?", "url": "" },
+  { "quote": "Don't you wish there were more stupid quotes here?", "url": "" },
   {
     "quote": "I don't know what to say, except it's Christmas and we're all in misery.",
     "url": "https://en.wikipedia.org/wiki/National_Lampoon%27s_Christmas_Vacation"
@@ -23,5 +23,9 @@
   {
     "quote": "I've got it! His real name is Arty-Morti!",
     "url": "https://en.wikipedia.org/wiki/Without_a_Clue"
+  },
+  {
+    "quote": "'Assonance', I said to them, 'Assonance means getting the rhyme wrong...'",
+    "url": "https://en.wikipedia.org/wiki/Educating_Rita_(film)"
   }
 ]

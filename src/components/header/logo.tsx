@@ -16,7 +16,7 @@ export function Logo() {
           ease: 'power2.in',
         })
         .to(ref.current, {
-          duration: 1,
+          duration: 0.5,
           width: '3rem',
           height: '3rem',
           ease: 'elastic.out',

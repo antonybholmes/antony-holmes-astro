@@ -12,7 +12,7 @@ const CLS = cn(
 
 export function PostTitleLink({ post, mode = 'light', className }: IPostProps) {
   return (
-    <h2 className={cn('font-bold capitalize', className)}>
+    <h2 className={cn('font-semibold capitalize', className)}>
       <BaseLink
         href={getPostUrl(post)}
         aria-label={post.data.title}

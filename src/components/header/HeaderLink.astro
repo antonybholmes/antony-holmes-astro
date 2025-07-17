@@ -14,7 +14,7 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '')
   href={href}
   data-state={isActive ? 'active' : 'inactive'}
   class={cn(
-    'block data-[state=active]:font-bold data-[state=active]:text-theme boldable-text-tab  py-2',
+    'block data-[state=active]:font-semibold data-[state=active]:text-theme boldable-text-tab  py-2',
     ' trans-color border-b-2 border-transparent data-[state=inactive]:hover:border-theme/75',
     className
   )}

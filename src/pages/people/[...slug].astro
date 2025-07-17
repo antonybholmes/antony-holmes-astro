@@ -1,30 +1,27 @@
 ---
-import { BaseCol } from '@layout/base-col'
-import { BaseRow } from '@layout/base-row'
-import { HCenterRow } from '@layout/h-center-row'
 import { MarkdownContent } from '@components/markdown-content'
 import { PageTitle } from '@components/page-title'
 import { AvatarImage } from '@components/people/avatar-image'
-import { PostsPage } from '@components/posts/posts-page'
-import { render } from 'astro:content'
+import { BaseCol } from '@layout/base-col'
+import { BaseRow } from '@layout/base-row'
+import { HCenterRow } from '@layout/h-center-row'
 import ContentLayout from '@layouts/ContentLayout.astro'
+import { render } from 'astro:content'
 
-import { paginate } from '@lib/paginate'
 import {
   getAuthorPostMap,
   getSortedPosts,
   sortPostsByDateDesc,
 } from '@lib/astro/post'
+import { paginate } from '@lib/paginate'
 
-import { type CollectionEntry, getCollection } from 'astro:content'
-import { getAuthorBaseUrl } from '@/lib/astro/author'
-import { PEOPLE_SLUG } from '@/consts'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
-import type { IPost } from '@/lib/post'
-import { MenuSeparator } from '@/components/shadcn/ui/themed/dropdown-menu'
+import { PagePagination } from '@/components/page-pagination'
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
-import { PagePagination } from '@/components/page-pagination'
+import { getAuthorBaseUrl } from '@/lib/astro/author'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
+import type { IPost } from '@/lib/post'
+import { type CollectionEntry, getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
   let paths: any[] = []
@@ -74,11 +71,7 @@ const { Content } = await render(person)
       <div class="w-full">
         <HCenterRow className="mb-8 lg:hidden">
           <div>
-            <AvatarImage
-              person={person.data.name}
-              className="h-64 w-64"
-              client:visible
-            />
+            <AvatarImage person={person.data.name} className="h-64 w-64" />
           </div>
         </HCenterRow>
         <PageTitle title={person.data.name} subTitle={person.data.title} />
@@ -88,7 +81,6 @@ const { Content } = await render(person)
       <AvatarImage
         person={person.data.name}
         className="hidden aspect-square h-64 w-64 shrink-0 lg:block"
-        client:visible
       />
     </BaseRow>
 

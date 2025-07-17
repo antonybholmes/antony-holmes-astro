@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.7 (Jul, 2025)
+
+### Added
+
+- Added more animation flourishes and quote component.
+
+
 ## 1.6 (Jul, 2025)
 
 ### Added

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@astrojs/mdx':
-        specifier: ^4.3.0
-        version: 4.3.0(astro@5.11.2(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3))
+        specifier: ^4.3.1
+        version: 4.3.1(astro@5.12.0(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3))
       '@astrojs/react':
         specifier: ^4.3.0
         version: 4.3.0(@types/node@24.0.13)(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(jiti@2.4.2)(lightningcss@1.30.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(tsx@4.20.3)
@@ -20,9 +20,12 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.4.1
         version: 3.4.1
-      '@fontsource/geist-sans':
-        specifier: ^5.2.5
-        version: 5.2.5
+      '@fontsource/alex-brush':
+        specifier: ^5.2.6
+        version: 5.2.6
+      '@fontsource/geist':
+        specifier: ^5.2.6
+        version: 5.2.6
       '@radix-ui/react-accordion':
         specifier: ^1.2.11
         version: 1.2.11(@types/react-dom@19.1.6(@types/react@19.1.8))(@types/react@19.1.8)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -99,8 +102,8 @@ importers:
         specifier: ^19.1.6
         version: 19.1.6(@types/react@19.1.8)
       astro:
-        specifier: ^5.11.2
-        version: 5.11.2(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3)
+        specifier: ^5.12.0
+        version: 5.12.0(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3)
       axios:
         specifier: ^1.10.0
         version: 1.10.0
@@ -214,11 +217,11 @@ packages:
   '@astrojs/internal-helpers@0.6.1':
     resolution: {integrity: sha512-l5Pqf6uZu31aG+3Lv8nl/3s4DbUzdlxTWDof4pEpto6GUJNhhCbelVi9dEyurOVyqaelwmS9oSyOWOENSfgo9A==}
 
-  '@astrojs/markdown-remark@6.3.2':
-    resolution: {integrity: sha512-bO35JbWpVvyKRl7cmSJD822e8YA8ThR/YbUsciWNA7yTcqpIAL2hJDToWP5KcZBWxGT6IOdOkHSXARSNZc4l/Q==}
+  '@astrojs/markdown-remark@6.3.3':
+    resolution: {integrity: sha512-DDRtD1sPvAuA7ms2btc9A7/7DApKqgLMNrE6kh5tmkfy8utD0Z738gqd3p5aViYYdUtHIyEJ1X4mCMxfCfu15w==}
 
-  '@astrojs/mdx@4.3.0':
-    resolution: {integrity: sha512-OGX2KvPeBzjSSKhkCqrUoDMyzFcjKt5nTE5SFw3RdoLf0nrhyCXBQcCyclzWy1+P+XpOamn+p+hm1EhpCRyPxw==}
+  '@astrojs/mdx@4.3.1':
+    resolution: {integrity: sha512-0ynzkFd5p2IFDLPAfAcGizg44WyS0qUr43nP2vQkvrPlpoPEMeeoi1xWiWsVqQNaZ0FOmNqfUviUn52nm9mLag==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0}
     peerDependencies:
       astro: ^5.0.0
@@ -515,8 +518,11 @@ packages:
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
 
-  '@fontsource/geist-sans@5.2.5':
-    resolution: {integrity: sha512-anllOHyJbElRs9fV15TeDRqAeb1IKm4bSknPl6ZMoyPTx1BBy7logudcUwpNjmQLkzn4Q0JGQLRCUKJYoyST6A==}
+  '@fontsource/alex-brush@5.2.6':
+    resolution: {integrity: sha512-5X+VbERKrEMel4JmZJoJLBCcgwKbIQv+j/pUvaeoAaynXmCZfuwXSbPBewVaxvdM1D4xb/eeoRgmqm3ZYr+khA==}
+
+  '@fontsource/geist@5.2.6':
+    resolution: {integrity: sha512-HKRFUn4fApQr9iGaVLUWG5vs+QYFqhKa5X7AFpT6Gey0Kx0ibvpFceMbMDDdlzzqPiGkvCuvYRUN55rvqXgibg==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -1783,8 +1789,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro@5.11.2:
-    resolution: {integrity: sha512-jKJCqp0PMZ1ZpP2xySghsJ1xK7ZNh/ISTRNBf/7khY3iEGq/zup49ZMhNZXK5Cd/dFWP/pdBNHD91SByA42IvQ==}
+  astro@5.12.0:
+    resolution: {integrity: sha512-Oov5JsMFHuUmuO+Nx6plfv3nQNK1Xl/8CgLvR8lBhZTjYnraxhuPX5COVAzbom+YLgwaDfK7KBd8zOEopRf9mg==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -4284,7 +4290,7 @@ snapshots:
 
   '@astrojs/internal-helpers@0.6.1': {}
 
-  '@astrojs/markdown-remark@6.3.2':
+  '@astrojs/markdown-remark@6.3.3':
     dependencies:
       '@astrojs/internal-helpers': 0.6.1
       '@astrojs/prism': 3.3.0
@@ -4310,12 +4316,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.0(astro@5.11.2(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3))':
+  '@astrojs/mdx@4.3.1(astro@5.12.0(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3))':
     dependencies:
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/markdown-remark': 6.3.3
       '@mdx-js/mdx': 3.1.0(acorn@8.15.0)
       acorn: 8.15.0
-      astro: 5.11.2(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3)
+      astro: 5.12.0(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4611,7 +4617,9 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@fontsource/geist-sans@5.2.5': {}
+  '@fontsource/alex-brush@5.2.6': {}
+
+  '@fontsource/geist@5.2.6': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
@@ -5825,11 +5833,11 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@5.11.2(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3):
+  astro@5.12.0(@types/node@24.0.13)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.45.0)(tsx@4.20.3)(typescript@5.8.3):
     dependencies:
       '@astrojs/compiler': 2.12.2
       '@astrojs/internal-helpers': 0.6.1
-      '@astrojs/markdown-remark': 6.3.2
+      '@astrojs/markdown-remark': 6.3.3
       '@astrojs/telemetry': 3.3.0
       '@capsizecss/unpack': 2.4.0
       '@oslojs/encoding': 1.1.0
@@ -5872,6 +5880,7 @@ snapshots:
       rehype: 13.0.2
       semver: 7.7.2
       shiki: 3.7.0
+      smol-toml: 1.4.1
       tinyexec: 0.3.2
       tinyglobby: 0.2.14
       tsconfck: 3.1.6(typescript@5.8.3)

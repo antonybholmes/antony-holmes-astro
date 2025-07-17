@@ -15,7 +15,7 @@ import { Logo } from './logo'
   <nav>
     <ContentDiv>
       <ContentDiv slot="main" className="items-center">
-        <Logo slot="left" client:visible />
+        <Logo slot="left" client:idle />
 
         <ul class="flex flex-row justify-center gap-x-8" slot="main">
           {
@@ -60,8 +60,11 @@ import { Logo } from './logo'
 
         <VCenterRow slot="right" className="justify-end gap-x-2">
           <ThemeToggle />
-          <BaseLink href="/rss.xml" title="Subscribe to RSS feed"
-            ><Rss className="h-5 w-5" /></BaseLink
+          <BaseLink
+            href="/rss.xml"
+            title="Subscribe to RSS feed"
+            className="stroke-foreground trans-color hover:stroke-orange-600"
+            ><Rss className="h-5 w-5" stroke="" /></BaseLink
           >
         </VCenterRow>
       </ContentDiv>

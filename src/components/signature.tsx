@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react'
 import { VCenterRow } from './layout/v-center-row'
 
 export function Signature() {
+  const antonyRef = useRef<HTMLSpanElement>(null)
+  const holmesRef = useRef<HTMLSpanElement>(null)
   const spanBRef = useRef<HTMLSpanElement>(null)
   const insertRef = useRef<SVGSVGElement>(null)
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
@@ -13,20 +15,56 @@ export function Signature() {
       timelineRef.current = gsap
         .timeline()
         .to(spanBRef.current, {
-          y: -6,
-          duration: 0.3,
-          ease: 'power1.inOut',
-          yoyo: true,
-          repeat: -1,
+          rotate: 0,
+          duration: 1,
+          ease: 'elastic.out',
+          //yoyo: true,
+          //repeat: -1,
         })
+        .to(
+          spanBRef.current,
+          {
+            y: '0.75rem',
+            duration: 1,
+            ease: 'elastic.out',
+            //yoyo: true,
+            //repeat: -1,
+          },
+          '<'
+        )
         .to(
           insertRef.current,
           {
-            y: 4,
+            y: 3,
+            opacity: 0,
             duration: 0.3,
             ease: 'power1.inOut',
-            yoyo: true,
-            repeat: -1,
+            //yoyo: true,
+            //repeat: -1,
+          },
+          '<'
+        )
+        .to(
+          antonyRef.current,
+          {
+            x: '-0.25rem',
+
+            duration: 0.3,
+            ease: 'power1.inOut',
+            //yoyo: true,
+            //repeat: -1,
+          },
+          '<'
+        )
+        .to(
+          holmesRef.current,
+          {
+            x: '0.25rem',
+
+            duration: 0.3,
+            ease: 'power1.inOut',
+            //yoyo: true,
+            //repeat: -1,
           },
           '<'
         )
@@ -45,35 +83,44 @@ export function Signature() {
   }
 
   const handleMouseLeave = () => {
-    timelineRef.current?.pause()
+    timelineRef.current?.reverse()
 
-    gsap
-      .timeline()
-      .to(spanBRef.current, { y: 0, duration: 0.2 })
-      .to(insertRef.current, { y: 0, duration: 0.2 }, '<') // reset position
+    //gsap.timeline().reverse()
+    //.to(spanBRef.current, { rotate: -25, duration: 0.2 })
+    //.to(insertRef.current, { y: 0, duration: 0.2 }, '<') // reset position
   }
 
   return (
-    <VCenterRow className="text-foreground/80 relative text-base font-bold">
-      <span>Antony</span>
+    <VCenterRow
+      className="text-foreground/80 relative text-2xl font-semibold items-stretch"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <span
-        className="relative flex h-full w-4 flex-row items-center justify-center"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        ref={antonyRef}
+        className="pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
       >
+        Antony
+      </span>
+      <span className="relative flex grow w-3 flex-row items-center justify-center pointer-events-none">
         <span
-          className="absolute -top-2 -rotate-25 text-sky-700"
+          className="absolute -top-4 -rotate-25 text-sky-700 pointer-events-none"
           ref={spanBRef}
         >
           B
         </span>
         <ChevronUp
-          className="text-foreground/40 absolute top-3 h-4 w-4"
+          className="text-foreground/40 absolute top-4 h-4 w-4 pointer-events-none"
           ref={insertRef}
         />
       </span>
 
-      <span>Holmes</span>
+      <span
+        ref={holmesRef}
+        className="pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+      >
+        Holmes
+      </span>
     </VCenterRow>
   )
 }

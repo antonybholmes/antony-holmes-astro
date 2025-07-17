@@ -4,7 +4,7 @@ import { FOOTER_ITEMS, GITHUB_URL, SITE_AUTHOR, TARGET_BLANK } from '@/consts'
 import { getUniqueSections } from '@/lib/astro/sections'
 import { getUniqueTags } from '@/lib/astro/tags'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { ChevronUp, Rss } from 'lucide-react'
+import { Rss } from 'lucide-react'
 import { GitHubIcon } from './icons/github-icon'
 import { BaseCol } from './layout/base-col'
 import { BaseRow } from './layout/base-row'
@@ -12,8 +12,8 @@ import ContentDiv from './layout/ContentDiv.astro'
 import { VCenterRow } from './layout/v-center-row'
 import { BaseLink } from './link/base-link'
 import { RandomQuote } from './random-quote'
-import ThemeToggle from './ThemeToggle.astro'
 import { Signature } from './signature'
+import ThemeToggle from './ThemeToggle.astro'
 
 const today = new Date()
 
@@ -28,8 +28,9 @@ const tags = (await getUniqueTags()).slice(0, 10)
   <ContentDiv>
     <BaseCol slot="main" className="gap-y-16">
       <div class="grid grid-cols-1 gap-16 xl:grid-cols-5">
-        <BaseCol className="text-foreground/50 col-span-2 gap-y-1">
-          <Signature client:visible />
+        <BaseCol className="text-foreground/50 col-span-2 gap-y-2">
+          <VCenterRow><Signature client:visible /></VCenterRow>
+
           <!-- <span
             class="bg-gradient-to-br from-cyan-400 to-blue-600 bg-clip-text text-2xl font-bold text-transparent"
           >
@@ -38,12 +39,12 @@ const tags = (await getUniqueTags()).slice(0, 10)
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div
-          class="col-span-3 flex flex-col gap-8 text-sky-500 md:flex-row xl:justify-end"
-        >
+        <div class="col-span-3 flex flex-col gap-8 md:flex-row xl:justify-end">
           <BaseCol className="gap-y-2">
-            <span class="font-bold uppercase">Browse By Tag</span>
-            <ul class="mt-2 grid grid-cols-1 gap-1.5">
+            <span class="font-semibold tracking-wide uppercase"
+              >Browse By Tag</span
+            >
+            <ul class="grid grid-cols-1 gap-1.5">
               {
                 tags.map(t => (
                   <li>
@@ -57,8 +58,10 @@ const tags = (await getUniqueTags()).slice(0, 10)
           </BaseCol>
 
           <BaseCol className="gap-y-2">
-            <span class="font-bold uppercase">Browse By Category</span>
-            <ul class="mt-2 flex flex-col gap-y-1.5">
+            <span class="font-semibold tracking-wide uppercase"
+              >Browse By Category</span
+            >
+            <ul class="flex flex-col gap-y-1.5">
               {
                 sections.map(section => (
                   <li>
@@ -77,8 +80,10 @@ const tags = (await getUniqueTags()).slice(0, 10)
           {
             FOOTER_ITEMS.map(item => (
               <BaseCol className="gap-y-2">
-                <span class="font-bold uppercase">{item.label}</span>
-                <ul class="mt-2 flex flex-col gap-y-1.5">
+                <span class="font-semibold tracking-wide uppercase">
+                  {item.label}
+                </span>
+                <ul class="flex flex-col gap-y-1.5">
                   {item.items.map(link => (
                     <li>
                       <BaseLink href={link.href} className="hover:underline">
@@ -94,8 +99,8 @@ const tags = (await getUniqueTags()).slice(0, 10)
       </div>
 
       <BaseRow className="items-start justify-between text-xs">
-        <BaseCol className="gap-y-3">
-          <span class="font-bold">
+        <BaseCol className="gap-y-2">
+          <span class="font-medium">
             &copy; {today.getFullYear()}
             {SITE_AUTHOR}. All rights reserved.
           </span>
@@ -132,8 +137,12 @@ const tags = (await getUniqueTags()).slice(0, 10)
             <GitHubIcon />
           </a>
           <ThemeToggle />
-          <BaseLink href="/rss.xml" title="Subscribe to RSS feed">
-            <Rss className="h-5 w-5" />
+          <BaseLink
+            href="/rss.xml"
+            title="Subscribe to RSS feed"
+            className="stroke-foreground trans-color hover:stroke-orange-600"
+          >
+            <Rss className="h-5 w-5" stroke="" />
           </BaseLink>
         </VCenterRow>
       </BaseRow>
