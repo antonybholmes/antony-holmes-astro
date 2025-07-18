@@ -6,6 +6,10 @@
 
 - Changed date to string to stop parsing errors and added animations to header.
 
+### Fixed
+
+- Added more generic images and UI tweaks.
+
 
 ## 1.7 (Jul, 2025)
 

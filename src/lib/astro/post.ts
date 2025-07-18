@@ -33,6 +33,12 @@ const FALLBACK_FILM_IMAGES = ['/img/blog/generic-film-1.webp']
 
 const FALLBACK_FINANCE_IMAGES = ['/img/blog/generic-finance-1.webp']
 
+const FALLBACK_PHONE_IMAGES = ['/img/blog/generic-phone-1.webp']
+
+const FALLBACK_BANK_IMAGES = ['/img/blog/generic-bank-1.webp']
+
+const FALLBACK_NEWS_IMAGES = ['/img/blog/generic-news-1.webp']
+
 /**
  * Sort post in descending order by date added. If there is a date tie,
  * then order by title.
@@ -144,6 +150,20 @@ export function getHeroImage(entry: CollectionEntry<'blog'>): string {
     )
   ) {
     return FALLBACK_FINANCE_IMAGES[hash % FALLBACK_FINANCE_IMAGES.length]
+  }
+
+  if (entry.data.sections?.some(s => s.includes('Phone'))) {
+    return FALLBACK_PHONE_IMAGES[hash % FALLBACK_PHONE_IMAGES.length]
+  }
+
+  if (
+    entry.data.sections?.some(s => s.includes('Bank') || s.includes('Credit'))
+  ) {
+    return FALLBACK_BANK_IMAGES[hash % FALLBACK_BANK_IMAGES.length]
+  }
+
+  if (entry.data.sections?.some(s => s.includes('News'))) {
+    return FALLBACK_NEWS_IMAGES[hash % FALLBACK_NEWS_IMAGES.length]
   }
 
   return FALLBACK_IMAGES[hash % FALLBACK_IMAGES.length]

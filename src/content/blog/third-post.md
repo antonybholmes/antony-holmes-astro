@@ -1,7 +1,7 @@
 ---
 title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
-added: '2022-7-22'
+added: '2022-07-22'
 # hero: '../../assets/blog-placeholder-2.jpg'
 ---
 

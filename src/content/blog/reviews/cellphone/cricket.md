@@ -18,15 +18,12 @@ details:
 url: 'https://www.cricketwireless.com'
 status: draft
 title: Cricket
-slug: cricket
-hero: /assets/posts/opt/phone-1600x800.avif
 authors:
   - Antony Holmes
 added: '2022-08-20'
 tags:
   - Low Cost
   - MNVO
-updated: '2022-08-20'
 ---
 
 Mint Mobile is a great low cost wireless provider

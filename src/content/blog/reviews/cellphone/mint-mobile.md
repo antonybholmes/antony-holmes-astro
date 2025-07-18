@@ -15,15 +15,12 @@ details:
 url: 'https://www.mintmobile.com'
 status: added
 title: Mint Mobile
-slug: mint-mobile
-hero: /assets/posts/opt/phone-1600x800.avif
 authors:
   - Antony Holmes
 added: '2022-07-25'
 tags:
   - Low Cost
   - MNVO
-updated: '2022-07-25'
 ---
 
 Mint Mobile is a great low cost wireless provider.

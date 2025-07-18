@@ -35,9 +35,9 @@ export const HeaderLink = ({
         .to(
           ref.current,
           {
-            x: 5,
+            x: 8,
             delay: 0.2,
-            duration: 0.5,
+            duration: 0.3,
             ease: 'back.out ',
           },
           0
@@ -135,7 +135,7 @@ export const HeaderLink = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <span className="flex flex-row items-center justify-center h-16 relative">
+      <span className="flex flex-row items-center justify-center h-14 relative">
         {children}
         <span
           ref={ref}

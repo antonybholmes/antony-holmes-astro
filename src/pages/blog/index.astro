@@ -8,10 +8,10 @@ import { HeroPosts } from '@components/posts/hero-posts'
 import { PostCol } from '@components/posts/post-col'
 import { PostTwoCol } from '@components/posts/post-two-col'
 import ContentLayout from '@layouts/ContentLayout.astro'
-import { getSortedPosts } from '@lib/astro/post'
+import { getSortedPosts, type PostWithHero } from '@lib/astro/post'
 import { getPageCount } from '@lib/paginate'
 
-const allPosts = await getSortedPosts()
+const allPosts: PostWithHero[] = await getSortedPosts()
 
 const postMap = getPostSectionMap(allPosts, 3)
 

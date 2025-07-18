@@ -1,9 +1,8 @@
 ---
-import { type CollectionEntry } from 'astro:content'
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
 
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
-import { getSortedPosts } from '@/lib/astro/post'
+import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { getPostSectionMap } from '@/lib/astro/sections'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { paginate, type PaginationType } from '@/lib/paginate'
@@ -16,9 +15,6 @@ import { paginate, type PaginationType } from '@/lib/paginate'
 export async function getStaticPaths() {
   let posts = await getSortedPosts()
 
-  const featuredPosts = posts.filter(post => post.data.featured)
-  const otherPosts = posts.filter(post => !post.data.featured)
-
   let paths: {
     params: { slug?: string }
     props: {
@@ -27,15 +23,13 @@ export async function getStaticPaths() {
       root: string
       page: number
       pages: number
-      data: CollectionEntry<'blog'>[]
-      featuredPosts?: CollectionEntry<'blog'>[]
+      data: PostWithHero[]
+      featuredPosts?: PostWithHero[]
     }
   }[] = []
 
   // create a page for every post
   for (const post of posts) {
-    if (post.data.draft) continue // Skip draft posts
-
     // If the post has sections, create a path for each section
     // flatten slug to the last part of the path
     // e.g. /test/my-post/ becomes /my-post/
@@ -117,7 +111,7 @@ export async function getStaticPaths() {
 const { type, title, root, page, pages, data, featuredPosts } = Astro.props
 ---
 
-{type === 'post' && <BlogPostLayout post={data[0]} />}
+{type === 'post' && <BlogPostLayout post={data[0]!} />}
 
 {
   type === 'posts' && (

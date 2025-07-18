@@ -3,9 +3,9 @@ import type { ReactNode } from 'react'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
-import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
 import type { ICrumb } from '@lib/crumbs'
 import { BaseLink } from './link/base-link'
+import { ThemeLink } from './link/theme-link'
 
 const LINK_CLS = 'trans-color text-primary-color/60 hover:text-primary-color'
 
@@ -56,26 +56,21 @@ export function Breadcrumb({
     if (showHome || i > 0) {
       ret.push(
         <li key={`divider-${i}`}>
-          <ChevronRightIcon
-            w="w-3"
-            data-mode={mode}
-            stroke="stroke-foreground data-[mode=dark]:stroke-white"
-            //className="trans-300 transition-all stroke-primary-color/60 group-hover:translate-x-0.5 group-hover:stroke-primary-color dark:group-hover:stroke-white"
-          />
+          <span className="text-foreground/50 mx-2">/</span>
         </li>
       )
     }
 
     ret.push(
       <li key={`crumb-${i}`}>
-        <BaseLink
+        <ThemeLink
           href={crumb.path}
           aria-label={`Goto ${crumb.label}`}
           data-mode={mode}
           className="data-[mode=dark]:text-white"
         >
           {crumb.label}
-        </BaseLink>
+        </ThemeLink>
       </li>
     )
   }
@@ -83,7 +78,7 @@ export function Breadcrumb({
   return (
     <ul
       className={cn(
-        'flex flex-row flex-nowrap items-center gap-x-1 text-xs',
+        'flex flex-row flex-nowrap items-center gap-x-1 text-sm',
         className
       )}
     >

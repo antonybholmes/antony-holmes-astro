@@ -1,12 +1,13 @@
-import { getCollection, type CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import { sectionToParts } from '../post'
 import { growingSubsets } from '../utils'
+import type { PostWithHero } from './post'
 
 export function getPostSectionMap(
-  posts: CollectionEntry<'blog'>[],
+  posts: PostWithHero[],
   max: number = -1
-): Map<string, CollectionEntry<'blog'>[]> {
-  const sectionMap = new Map<string, CollectionEntry<'blog'>[]>()
+): Map<string, PostWithHero[]> {
+  const sectionMap = new Map<string, PostWithHero[]>()
 
   //sectionMap.set('All', posts)
   sectionMap.set('All categories', max === -1 ? posts : posts.slice(0, max))

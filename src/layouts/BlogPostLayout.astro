@@ -98,6 +98,10 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
   <SidebarDiv slot="main">
     <article slot="main" class="flex flex-col gap-y-8">
       <header class="flex flex-col gap-y-4">
+        <h1 class="text-3xl font-bold">
+          {post.data.title}
+        </h1>
+
         {
           post.data.resolvedHero && (
             <div class="h-72 w-full overflow-hidden rounded-xl">
@@ -112,9 +116,6 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
           )
         }
 
-        <h1 class="text-3xl font-bold">
-          {post.data.title}
-        </h1>
         <VCenterRow
           className="text-foreground/50 justify-between gap-x-2 text-sm"
         >
