@@ -25,12 +25,12 @@ slug: hi-fidelity
 hero: /assets/posts/opt/bank-1600x800.avif
 authors:
   - Antony Holmes
-added: 2022-07-18
+added: '2022-07-18'
 tags:
   - Low Cost
   - Banking
   - Investing
-updated: 2022-07-18
+updated: '2022-07-18'
 ---
 
 Fidelity is a great one-stop-shop for all your banking and investing needs. I currently use them as my primary bank. Maybe you should too after reading this.

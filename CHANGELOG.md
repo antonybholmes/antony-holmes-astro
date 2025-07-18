@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.8 (Jul, 2025)
+
+### Added
+
+- Changed date to string to stop parsing errors and added animations to header.
+
+
 ## 1.7 (Jul, 2025)
 
 ### Added

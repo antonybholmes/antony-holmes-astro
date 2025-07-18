@@ -1,15 +1,15 @@
 ---
 title:
-  "{ title }": 
-slug: 
-heroImage: 
+  '{ title }':
+slug:
+hero:
 added:
-  "{ date:YYYY-MM-DD }": 
+  '{ date:YYYY-MM-DD }':
 updated:
-  "{ date:YYYY-MM-DD }": 
-description: 
-authors: 
-sections: 
-tags: 
+  '{ date:YYYY-MM-DD }':
+description:
+authors:
+sections:
+tags:
 featured:
 ---

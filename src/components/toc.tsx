@@ -46,7 +46,7 @@ export function TableOfContents() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  if (headings.length === 0) {
+  if (headings.length < 2) {
     return null
   }
 

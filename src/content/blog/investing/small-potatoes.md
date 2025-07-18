@@ -11,11 +11,11 @@ slug: small-potatoes
 hero: /assets/posts/opt/potatoes-1600x800.avif
 authors:
   - Antony Holmes
-added: 2022-02-07
+added: '2022-02-07'
 tags:
   - Investing
   - Lifestyle
-updated: 2022-02-07
+updated: '2022-02-07'
 ---
 
 Small changes can lead to big outcomes with a little bit of disipline.

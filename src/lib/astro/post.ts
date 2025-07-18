@@ -40,8 +40,8 @@ export function sortPostsByDateDesc(
     // sort posts by date in descending order
     .sort((a, b) => {
       let d =
-        (b.data.updated ?? b.data.added).getTime() -
-        (a.data.updated ?? a.data.added).getTime()
+        new Date(b.data.updated ?? b.data.added).getTime() -
+        new Date(a.data.updated ?? a.data.added).getTime()
 
       if (d !== 0) {
         return d

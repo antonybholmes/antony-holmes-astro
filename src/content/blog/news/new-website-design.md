@@ -8,12 +8,12 @@ title: New website design!
 # hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
-added: 2021-07-05
+added: '2021-07-05'
 tags:
   - Website
   - Gatsby
   - react
-updated: 2021-07-05
+updated: '2021-07-05'
 ---
 
 I have redesigned my website using React and Astro.

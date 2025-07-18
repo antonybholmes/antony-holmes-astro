@@ -21,11 +21,11 @@ export interface IPost {
   data: {
     authors?: string[]
     description?: string
-    heroImage?: string
-    heroImageAlt?: string
+    hero?: string
+    heroAlt?: string
     title: string
-    added: Date
-    updated?: Date
+    added: string
+    updated?: string
     sections?: string[]
     tags: string[]
     featured?: boolean

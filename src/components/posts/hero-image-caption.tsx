@@ -9,7 +9,7 @@ export function HeroImageCaption({ post, className }: IPostProps) {
         className
       )}
     >
-      {post.data.heroImageAlt || post.data.title}
+      {post.data.heroAlt || post.data.title}
     </div>
   )
 }

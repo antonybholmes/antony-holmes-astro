@@ -228,5 +228,18 @@
     },
     "author": "Antony Holmes",
     "date": "2025-07-17T17:59:30.184Z"
+  },
+  {
+    "version": "1.8",
+    "messages": {
+      "Added": [
+        {
+          "msg": "Changed date to string to stop parsing errors and added animations to header",
+          "date": "2025-07-18T18:18:52.493Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2025-07-18T18:18:52.493Z"
   }
 ]

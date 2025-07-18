@@ -9,8 +9,8 @@ title: Experiments with Astro
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
-added: 2022-08-15
-updated: 2022-08-15
+added: '2022-08-15'
+updated: '2022-08-15'
 tags:
   - Website
   - Astro

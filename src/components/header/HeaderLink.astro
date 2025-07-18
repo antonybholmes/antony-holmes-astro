@@ -6,19 +6,22 @@ type Props = HTMLAttributes<'a'>
 
 const { href, class: className, ...props } = Astro.props
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '')
-const subpath = pathname.match(/[^\/]+/g)
-const isActive = href === pathname || href === '/' + (subpath?.[0] || '')
+const subpath = pathname.split('/')[0]
+const isActive = href === '/' + subpath
 ---
 
 <a
   href={href}
   data-state={isActive ? 'active' : 'inactive'}
   class={cn(
-    'block data-[state=active]:font-semibold data-[state=active]:text-theme boldable-text-tab  py-2',
+    'block data-[state=active]:font-semibold data-[state=active]:text-theme boldable-text-tab py-2',
     ' trans-color border-b-2 border-transparent data-[state=inactive]:hover:border-theme/75',
     className
   )}
   {...props}
 >
   <slot />
+
+  {pathname}
+  {href}
 </a>

@@ -10,12 +10,12 @@ sections:
 hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
-added: 2023-01-01
+added: '2023-01-01'
 tags:
   - Typescript
   - Tailwind
   - Tutorials
-updated: 2023-01-01
+updated: '2023-01-01'
 ---
 
 Simplify class name strings without external libraries.

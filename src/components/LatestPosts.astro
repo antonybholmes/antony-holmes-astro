@@ -1,13 +1,17 @@
 ---
 // src/components/LatestPosts.astro
 import { getCollection } from 'astro:content'
+import { parseISO } from 'date-fns'
 import FormattedDate from './FormattedDate.astro'
 
 const posts = await getCollection('blog')
 
 // Sort posts by date descending and take latest 5
 const latestPosts = posts
-  .sort((a, b) => b.data.added.getTime() - a.data.added.getTime())
+  .sort(
+    (a, b) =>
+      parseISO(b.data.added).getTime() - parseISO(a.data.added).getTime()
+  )
   .slice(0, 5)
 ---
 
@@ -20,7 +24,7 @@ const latestPosts = posts
           <a href={`/blog/${post.id}`}>{post.data.title}</a>
           <br />
           <small>
-            <FormattedDate date={post.data.added} />
+            <FormattedDate date={parseISO(post.data.added)} />
           </small>
         </li>
       ))

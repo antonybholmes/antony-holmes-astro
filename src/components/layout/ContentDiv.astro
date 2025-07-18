@@ -1,9 +1,9 @@
 ---
 import { cn } from '@/lib/shadcn-utils'
 
-import { BaseCol } from './base-col'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { ColorMode } from '@/interfaces/color-mode'
+import { BaseCol } from './base-col'
 
 interface Props extends IClassProps {
   mode?: ColorMode
@@ -14,9 +14,13 @@ const { mode = 'light', className } = Astro.props
 
 <div
   data-mode={mode}
-  class={cn('grid grid-cols-1 lg:grid-cols-5 px-4 lg:px-0', className)}
+  class={cn(
+    'grid grid-cols-1 lg:grid-cols-5 px-4 lg:px-0 grow h-full',
+    className
+  )}
 >
-  <BaseCol className="hidden lg:flex"><slot name="left" /></BaseCol>
-  <BaseCol className="col-span-3"><slot name="main" /></BaseCol>
-  <BaseCol className="hidden lg:flex"><slot name="right" /></BaseCol>
+  <BaseCol className="hidden h-full grow lg:flex"><slot name="left" /></BaseCol>
+  <BaseCol className="col-span-3 h-full grow"><slot name="main" /></BaseCol>
+  <BaseCol className="hidden h-full grow lg:flex"><slot name="right" /></BaseCol
+  >
 </div>

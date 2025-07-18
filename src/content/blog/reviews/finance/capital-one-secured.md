@@ -21,8 +21,8 @@ status: added
 title: Capital One Secured Mastercard Credit Card
 slug: capital-one-secured
 hero: /assets/posts/opt/bank-1600x800.avif
-added: 2022-04-22
-updated: 2022-04-22
+added: '2022-04-22'
+updated: '2022-04-22'
 tags:
   - cheese
   - Secured

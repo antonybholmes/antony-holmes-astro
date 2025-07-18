@@ -7,6 +7,7 @@ import { FormattedDate } from '@components/formatted-date'
 import { CompactAvatars } from '@components/people/compact-avatars'
 
 import { getPostExcerpt, type IPost } from '@/lib/post'
+import { parseISO } from 'date-fns'
 import { PostImage } from './post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
@@ -27,7 +28,7 @@ export function HeroPostSmall({
   mode = 'light',
   className,
 }: IProps) {
-  const hasImage = Boolean(post.data.heroImage)
+  const hasImage = Boolean(post.data.hero)
 
   return (
     <article
@@ -38,7 +39,7 @@ export function HeroPostSmall({
         className
       )}
     >
-      {post.data.heroImage && (
+      {post.data.hero && (
         <div className="col-span-1">
           <PostImage post={post} className="h-48 w-full md:h-32 rounded-md" />
         </div>
@@ -89,6 +90,7 @@ export function PostAuthorsAndDate({
   showAvatar?: boolean
   mode?: 'light' | 'dark'
 }) {
+  const dataAdded = parseISO(post.data.added)
   return (
     <div className="flex flex-col xl:flex-row gap-x-2 gap-y-1 xl:items-center text-sm">
       {showAuthors && (
@@ -105,7 +107,7 @@ export function PostAuthorsAndDate({
         </>
       )}
 
-      <FormattedDate date={post.data.added} mode={mode} />
+      <FormattedDate date={dataAdded} mode={mode} />
     </div>
   )
 }

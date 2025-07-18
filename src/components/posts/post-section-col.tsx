@@ -45,15 +45,18 @@ export function PostSectionCol({ section, href, postMap }: IProps) {
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          {[...postMap.keys()].sort().map((s, si) => (
-            <DropdownMenuCheckboxItem
-              checked={s === _section}
-              onCheckedChange={() => setSection(s)}
-              key={si}
-            >
-              {formatSection(s)}
-            </DropdownMenuCheckboxItem>
-          ))}
+          {[...postMap.keys()]
+            .sort()
+            .filter(s => !s.includes('/'))
+            .map((s, si) => (
+              <DropdownMenuCheckboxItem
+                checked={s === _section}
+                onCheckedChange={() => setSection(s)}
+                key={si}
+              >
+                {formatSection(s)}
+              </DropdownMenuCheckboxItem>
+            ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </PostCol>

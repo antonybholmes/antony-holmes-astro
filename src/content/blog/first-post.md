@@ -1,8 +1,8 @@
 ---
 title: 'First post'
 description: 'Lorem ipsum dolor sit amet'
-added: 'Jul 08 2022'
-heroImage: '../../assets/blog-placeholder-3.jpg'
+added: '2022-07-08'
+hero: '../../assets/blog-placeholder-3.jpg'
 tags:
   - 'cheese'
   - 'beef'

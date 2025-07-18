@@ -23,12 +23,12 @@ slug: should-you-talk-to-chuck
 hero: /assets/posts/opt/bank-1600x800.avif
 authors:
   - Antony Holmes
-added: 2022-08-22
+added: '2022-08-22'
 tags:
   - Low Cost
   - Banking
   - Investing
-updated: 2022-08-22
+updated: '2022-08-22'
 ---
 
 Schwab is a great one-stop-shop for all your banking and investing needs. Let's see why.

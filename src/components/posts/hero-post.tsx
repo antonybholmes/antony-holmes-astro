@@ -46,9 +46,7 @@ export function HeroPost({
         className
       )}
     >
-      {post.data.heroImage && (
-        <PostImage post={post} className={imgClassName} />
-      )}
+      {post.data.hero && <PostImage post={post} className={imgClassName} />}
 
       <BaseCol className={cn('gap-y-2', innerClassName)}>
         <BaseCol className="gap-y-1">

@@ -22,10 +22,10 @@ title: Fidelity Rewards Credit Card
 hero: /assets/posts/opt/credit-cards-1600x800.avif
 authors:
   - 'Antony Holmes'
-added: 2022-10-22
+added: '2022-10-22'
 tags:
   - 'Cash Back'
-updated: 2022-10-22
+updated: '2022-10-22'
 ---
 
 Fidelity's credit card is a solid 2% cash back card that works exactly as expected.

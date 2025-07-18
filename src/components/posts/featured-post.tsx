@@ -66,9 +66,7 @@ export function FeaturedPost({
         <PostAuthorsAndDate post={post} showAvatar={showAvatar} mode={mode} />
       </BaseCol>
 
-      {post.data.heroImage && (
-        <PostImage post={post} className={imgClassName} />
-      )}
+      {post.data.hero && <PostImage post={post} className={imgClassName} />}
     </article>
   )
 }

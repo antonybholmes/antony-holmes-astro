@@ -349,8 +349,20 @@ input[type='search']::-webkit-search-cancel-button {
   }
 
   ol {
-    @apply list-decimal;
+    @apply ml-8 list-decimal;
   }
+}
+
+.post table {
+  @apply my-4 w-full bg-amber-100 text-base;
+}
+
+.post th {
+  @apply bg-amber-400 py-1 text-white;
+}
+
+.post tr td {
+  @apply px-2 py-1;
 }
 
 .publications {

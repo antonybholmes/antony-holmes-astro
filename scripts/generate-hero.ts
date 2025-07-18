@@ -1,5 +1,5 @@
 import { Resvg } from '@resvg/resvg-js'
-import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
 import fs from 'fs'
 import { globby } from 'globby'
 import matter from 'gray-matter'
@@ -32,7 +32,7 @@ async function main() {
     const { data } = matter(content)
     const title = escapeXML(data.title || 'Untitled')
     const authors = data.authors
-    const rawDate = data.added ? new Date(data.added) : new Date()
+    const rawDate = data.added ? parseISO(data.added) : new Date()
     const formattedDate = escapeXML(format(rawDate, 'MMM dd, yyyy'))
 
     const svg = template

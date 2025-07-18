@@ -1,7 +1,7 @@
 ---
 title: Hudson Hawk
-added: 2025-07-15
-updated: 2025-07-15
+added: '2025-07-15'
+updated: '2025-07-15'
 description: What a classic
 featured: true
 authors: [Antony Holmes]

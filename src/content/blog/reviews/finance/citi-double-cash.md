@@ -21,10 +21,10 @@ title: Citi Double Cash Card
 hero: /assets/posts/opt/credit-cards-1600x800.avif
 authors:
   - Antony Holmes
-added: 2022-05-22
+added: '2022-05-22'
 tags:
   - Cash Back
-updated: 2022-05-22
+updated: '2022-05-22'
 ---
 
 Citi offers a compelling card to get 2% cash back.

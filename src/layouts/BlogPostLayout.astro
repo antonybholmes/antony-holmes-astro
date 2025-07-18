@@ -14,6 +14,7 @@ import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { sectionToParts } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
+import { parseISO } from 'date-fns'
 import ContentLayout from './ContentLayout.astro'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
@@ -36,7 +37,7 @@ interface Props {
 //   description,
 //   added,
 //   updated,
-//   heroImage,
+//   hero,
 //   slug,
 //   minutesRead,
 //   tags,
@@ -50,8 +51,8 @@ const { Content, remarkPluginFrontmatter } = await render(post)
 
 const ogImage = `/img/og/${slug}.webp` //png
 
-// const hero = post.data.heroImage
-//   ? post.data.heroImage
+// const hero = post.data.hero
+//   ? post.data.hero
 //   : `/img/blog/${slug}.webp`
 
 const crumbs: ICrumb[] = [
@@ -79,6 +80,9 @@ if (section) {
     })
   }
 }
+
+const dateAdded = parseISO(post.data.added)
+const dateUpdated = post.data.updated ? parseISO(post.data.updated) : dateAdded
 ---
 
 <ContentLayout
@@ -96,10 +100,10 @@ if (section) {
     <article slot="main" class="flex flex-col gap-y-8">
       <header class="flex flex-col gap-y-4">
         {
-          post.data.heroImage && (
+          post.data.hero && (
             <div class="h-64 w-full overflow-hidden">
               <img
-                src={post.data.heroImage}
+                src={post.data.hero}
                 alt={post.data.heroAlt || post.data.title}
                 class="w-full object-cover object-center"
                 style="height: 100%;"
@@ -120,7 +124,7 @@ if (section) {
                 className="stroke-foreground/40 w-5"
                 strokeWidth={1.5}
               />
-              <FormattedDate date={post.data.added} />
+              <FormattedDate date={dateAdded} />
             </VCenterRow>
             <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
             ></span>
@@ -131,18 +135,17 @@ if (section) {
           >
 
           {
-            post.data.updated &&
-              post.data.updated.getTime() !== post.data.added.getTime() && (
-                <span class="text-foreground/50">
-                  Last updated on <FormattedDate date={post.data.updated} />
-                </span>
-              )
+            dateUpdated.getTime() !== dateAdded.getTime() && (
+              <span class="text-foreground/50">
+                Last updated on <FormattedDate date={dateUpdated} />
+              </span>
+            )
           }
         </VCenterRow>
 
         <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
       </header>
-      <section class="markdown">
+      <section class="markdown post">
         <Content />
       </section>
     </article>
