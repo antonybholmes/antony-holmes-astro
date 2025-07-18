@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9 (Jul, 2025)
+
+### Added
+
+- Added description to post.
+
+
 ## 1.8 (Jul, 2025)
 
 ### Added

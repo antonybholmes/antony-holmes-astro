@@ -236,6 +236,10 @@
         {
           "msg": "Changed date to string to stop parsing errors and added animations to header",
           "date": "2025-07-18T18:18:52.493Z"
+        },
+        {
+          "msg": "Added header animations",
+          "date": "2025-07-18T21:48:25.085Z"
         }
       ],
       "added": [
