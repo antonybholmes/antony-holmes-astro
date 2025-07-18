@@ -1,18 +1,12 @@
 ---
 // src/components/LatestPosts.astro
-import { getCollection } from 'astro:content'
-import { parseISO } from 'date-fns'
+import { getSortedPosts } from '@/lib/astro/post'
 import FormattedDate from './FormattedDate.astro'
 
-const posts = await getCollection('blog')
+const posts = await getSortedPosts()
 
 // Sort posts by date descending and take latest 5
-const latestPosts = posts
-  .sort(
-    (a, b) =>
-      parseISO(b.data.added).getTime() - parseISO(a.data.added).getTime()
-  )
-  .slice(0, 5)
+const latestPosts = posts.slice(0, 5)
 ---
 
 <aside class="latest-posts-sidebar">
@@ -24,7 +18,7 @@ const latestPosts = posts
           <a href={`/blog/${post.id}`}>{post.data.title}</a>
           <br />
           <small>
-            <FormattedDate date={parseISO(post.data.added)} />
+            <FormattedDate date={post.data.added} />
           </small>
         </li>
       ))

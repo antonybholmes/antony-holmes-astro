@@ -7,11 +7,9 @@ status: added
 title: Creating a React toggle switch using SVG
 sections:
   - 'Engineering'
-hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
 added: '2023-01-03'
-updated: '2023-01-03'
 tags:
   - Typescript
   - React

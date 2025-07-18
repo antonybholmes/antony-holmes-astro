@@ -9,26 +9,22 @@ pros:
   - No cost investing.
   - Early deposit of direct deposits.
   - Cashback automatically deposited into cgecking account.
-cons:
-  - Promotes funds with higher expense ratios over cheaper index versions.
-  - App and website are a bit outdated.
-  - Holds on money transfered in can be up to 4 days.
+cons: -'Promotes funds with higher expense ratios over cheaper index versions.'
+  - 'App and website are a bit outdated.'
+  - 'Holds on money transfered in can be up to 4 days.'
 details:
-  - Basically no account fees.
-  - Unlimited 1.5% cash back credit card.
+  - 'Basically no account fees.'
+  - 'Unlimited 1.5% cash back credit card.'
 url: 'https://www.fidelity.com'
 status: added
-title: Should you talk to chuck? Yes
-slug: should-you-talk-to-chuck
-hero: /assets/posts/opt/bank-1600x800.avif
+title: 'Should you talk to chuck?'
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2022-08-22'
 tags:
   - Low Cost
   - Banking
   - Investing
-updated: '2022-08-22'
 ---
 
 Schwab is a great one-stop-shop for all your banking and investing needs. Let's see why.

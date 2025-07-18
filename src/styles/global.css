@@ -305,11 +305,7 @@ input {
 table {
   width: 100%;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
+
 code {
   padding: 2px 5px;
   background-color: rgb(var(--gray-light));
@@ -353,16 +349,18 @@ input[type='search']::-webkit-search-cancel-button {
   }
 }
 
-.post table {
-  @apply my-4 w-full bg-amber-100 text-base;
-}
+.post {
+  table {
+    @apply my-4 w-full bg-amber-100 text-base;
+  }
 
-.post th {
-  @apply bg-amber-400 py-1 text-white;
-}
+  th {
+    @apply bg-amber-400 py-1 text-white;
+  }
 
-.post tr td {
-  @apply px-2 py-1;
+  tr td {
+    @apply px-2 py-1;
+  }
 }
 
 .publications {

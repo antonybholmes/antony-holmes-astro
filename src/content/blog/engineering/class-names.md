@@ -7,7 +7,6 @@ status: added
 title: Simplifying class name strings
 sections:
   - 'Engineering'
-hero: /assets/posts/opt/code-1600x800.avif
 authors:
   - Antony Holmes
 added: '2023-01-01'

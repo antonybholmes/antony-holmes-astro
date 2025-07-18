@@ -1,7 +1,6 @@
 ---
 product: Citi Double Cash
 description: My review of the Citi Double Cash credit card.
-readTime: 1 min
 sections:
   - 'Reviews/Credit Cards'
 type: review

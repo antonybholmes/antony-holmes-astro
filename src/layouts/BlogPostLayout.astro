@@ -1,5 +1,5 @@
 ---
-import { render, type CollectionEntry } from 'astro:content'
+import { render } from 'astro:content'
 
 import FormattedDate from '../components/FormattedDate.astro'
 
@@ -10,11 +10,11 @@ import { Calendar, Clock } from 'lucide-react'
 import { BaseCol } from '@/components/layout/base-col'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
 import SideTags from '@/components/SideTags.astro'
+import type { PostWithHero } from '@/lib/astro/post'
 import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { sectionToParts } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
-import { parseISO } from 'date-fns'
 import ContentLayout from './ContentLayout.astro'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
@@ -29,7 +29,7 @@ import ContentLayout from './ContentLayout.astro'
 // }
 
 interface Props {
-  post: CollectionEntry<'blog'>
+  post: PostWithHero
 }
 
 // const {
@@ -81,8 +81,7 @@ if (section) {
   }
 }
 
-const dateAdded = parseISO(post.data.added)
-const dateUpdated = post.data.updated ? parseISO(post.data.updated) : dateAdded
+const dataUpdated = post.data.updated ? post.data.updated : post.data.added
 ---
 
 <ContentLayout
@@ -100,13 +99,14 @@ const dateUpdated = post.data.updated ? parseISO(post.data.updated) : dateAdded
     <article slot="main" class="flex flex-col gap-y-8">
       <header class="flex flex-col gap-y-4">
         {
-          post.data.hero && (
-            <div class="h-64 w-full overflow-hidden">
+          post.data.resolvedHero && (
+            <div class="h-72 w-full overflow-hidden rounded-xl">
               <img
-                src={post.data.hero}
+                src={post.data.resolvedHero}
                 alt={post.data.heroAlt || post.data.title}
                 class="w-full object-cover object-center"
                 style="height: 100%;"
+                loading="lazy"
               />
             </div>
           )
@@ -124,7 +124,7 @@ const dateUpdated = post.data.updated ? parseISO(post.data.updated) : dateAdded
                 className="stroke-foreground/40 w-5"
                 strokeWidth={1.5}
               />
-              <FormattedDate date={dateAdded} />
+              <FormattedDate date={post.data.added} />
             </VCenterRow>
             <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
             ></span>
@@ -135,9 +135,9 @@ const dateUpdated = post.data.updated ? parseISO(post.data.updated) : dateAdded
           >
 
           {
-            dateUpdated.getTime() !== dateAdded.getTime() && (
+            dataUpdated.getTime() !== post.data.added.getTime() && (
               <span class="text-foreground/50">
-                Last updated on <FormattedDate date={dateUpdated} />
+                Last updated on <FormattedDate date={dataUpdated} />
               </span>
             )
           }

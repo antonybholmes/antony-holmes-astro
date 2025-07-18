@@ -237,6 +237,12 @@
           "msg": "Changed date to string to stop parsing errors and added animations to header",
           "date": "2025-07-18T18:18:52.493Z"
         }
+      ],
+      "added": [
+        {
+          "msg": "Support for generic placeholder images",
+          "date": "2025-07-18T20:39:26.790Z"
+        }
       ]
     },
     "author": "Antony Holmes",

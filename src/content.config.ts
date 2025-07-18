@@ -1,5 +1,6 @@
 import { glob } from 'astro/loaders'
 import { defineCollection, z } from 'astro:content'
+import { parseISO } from 'date-fns'
 
 const blog = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
@@ -12,8 +13,11 @@ const blog = defineCollection({
       description: z.string().optional(),
       authors: z.array(z.string()).optional(),
       // Transform string to Date object
-      added: z.string(),
-      updated: z.string().optional(),
+      added: z.string().transform<Date>(str => parseISO(str)),
+      updated: z
+        .string()
+        .transform<Date>(str => parseISO(str))
+        .optional(),
       //updatedDate: z.coerce.date().optional(),
       hero: z.string().optional(), //image().optional(),
       //heroCaption: z.string().optional(),
@@ -35,7 +39,7 @@ const notes = defineCollection({
       description: z.string().optional(),
       authors: z.array(z.string()).optional(),
       // Transform string to Date object
-      added: z.string(),
+      added: z.string().transform<Date>(str => parseISO(str)),
       //updatedDate: z.coerce.date().optional(),
       //hero: image().optional(),
       tags: z.array(z.string()).optional(),

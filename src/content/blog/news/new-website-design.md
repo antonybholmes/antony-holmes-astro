@@ -13,7 +13,6 @@ tags:
   - Website
   - Gatsby
   - react
-updated: '2021-07-05'
 ---
 
 I have redesigned my website using React and Astro.

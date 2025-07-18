@@ -3,18 +3,15 @@ description: Redesigning the website using Astro.
 sections:
   - 'News'
 type: post
-status: draft
-title: Experiments with Astro
-
-hero: /assets/posts/opt/code-1600x800.avif
+draft: true
+title: 'Experiments with Astro'
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2022-08-15'
-updated: '2022-08-15'
 tags:
-  - Website
-  - Astro
-  - React
+  - 'Website'
+  - 'Astro'
+  - 'React'
 ---
 
 If you're a developer and you are interested in how this site was made, read on.

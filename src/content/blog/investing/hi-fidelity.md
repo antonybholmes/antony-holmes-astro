@@ -22,7 +22,6 @@ url: 'https://www.fidelity.com'
 status: added
 title: 'Hi, Fidelity'
 slug: hi-fidelity
-hero: /assets/posts/opt/bank-1600x800.avif
 authors:
   - Antony Holmes
 added: '2022-07-18'

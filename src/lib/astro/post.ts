@@ -21,6 +21,18 @@ export function getReviewPaths() {
   return getAllMDFiles(REVIEWS_DIR)
 }
 
+const FALLBACK_IMAGES = ['/img/blog/generic-1.webp', '/img/blog/generic-2.webp']
+
+const FALLBACK_ENGINEERING_IMAGES = [
+  '/img/blog/generic-engineering-1.webp',
+  '/img/blog/generic-engineering-2.webp',
+  '/img/blog/generic-engineering-3.webp',
+]
+
+const FALLBACK_FILM_IMAGES = ['/img/blog/generic-film-1.webp']
+
+const FALLBACK_FINANCE_IMAGES = ['/img/blog/generic-finance-1.webp']
+
 /**
  * Sort post in descending order by date added. If there is a date tie,
  * then order by title.
@@ -40,8 +52,8 @@ export function sortPostsByDateDesc(
     // sort posts by date in descending order
     .sort((a, b) => {
       let d =
-        new Date(b.data.updated ?? b.data.added).getTime() -
-        new Date(a.data.updated ?? a.data.added).getTime()
+        (b.data.updated ?? b.data.added).getTime() -
+        (a.data.updated ?? a.data.added).getTime()
 
       if (d !== 0) {
         return d
@@ -92,8 +104,75 @@ export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
   return posts
 }
 
-export async function getSortedPosts(): Promise<CollectionEntry<'blog'>[]> {
-  return sortPostsByDateDesc(await getPublishedPosts())
+export async function getSortedPosts(): Promise<PostWithHero[]> {
+  return addHeroToPosts(sortPostsByDateDesc(await getPublishedPosts()))
+}
+
+export type PostWithHero = CollectionEntry<'blog'> & {
+  data: CollectionEntry<'blog'>['data'] & {
+    resolvedHero: string
+  }
+}
+
+export function getHeroImage(entry: CollectionEntry<'blog'>): string {
+  if (entry.data.hero) {
+    return entry.data.hero
+  }
+
+  const hash = hashSlug(entry.id)
+
+  if (entry.data.sections?.some(s => s.includes('Engineering'))) {
+    return FALLBACK_ENGINEERING_IMAGES[
+      hash % FALLBACK_ENGINEERING_IMAGES.length
+    ]
+  }
+
+  if (entry.data.sections?.some(s => s.includes('Film'))) {
+    return FALLBACK_FILM_IMAGES[hash % FALLBACK_FILM_IMAGES.length]
+  }
+
+  if (
+    entry.data.sections?.some(
+      s =>
+        s.includes('Finance') ||
+        s.includes('Economics') ||
+        s.includes('Business') ||
+        s.includes('Brokerages') ||
+        s.includes('Investing') ||
+        s.includes('Trading') ||
+        s.includes('Retirement')
+    )
+  ) {
+    return FALLBACK_FINANCE_IMAGES[hash % FALLBACK_FINANCE_IMAGES.length]
+  }
+
+  return FALLBACK_IMAGES[hash % FALLBACK_IMAGES.length]
+}
+
+// Simple hash for consistent fallback selection
+function hashSlug(str: string): number {
+  let hash = 0
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i)
+    hash |= 0 // Convert to 32bit int
+  }
+  return Math.abs(hash)
+}
+
+export function addHeroToPost(entry: CollectionEntry<'blog'>): PostWithHero {
+  return {
+    ...entry,
+    data: {
+      ...entry.data,
+      resolvedHero: getHeroImage(entry),
+    },
+  }
+}
+
+export function addHeroToPosts(
+  posts: CollectionEntry<'blog'>[]
+): PostWithHero[] {
+  return posts.map(addHeroToPost)
 }
 
 /**
