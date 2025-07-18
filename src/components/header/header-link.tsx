@@ -27,40 +27,33 @@ export const HeaderLink = ({
     if (ref.current) {
       animationRef.current = gsap
         .timeline()
-        .to(ref.current, {
-          width: '100%',
-          duration: 0.5,
-          ease: 'power3.out',
-        })
         .to(
           ref.current,
           {
-            x: 8,
-            delay: 0.2,
-            duration: 0.3,
-            ease: 'back.out ',
-          },
-          0
-        )
-        .to(
-          ref.current,
-          {
-            x: 0,
+            scale: 1,
+            opacity: 1,
+            transformOrigin: 'center',
             duration: 0.5,
-            delay: 0.4,
-            ease: 'power3.out',
+            ease: 'power2.out',
           },
           0
         )
+
         .pause()
 
       backRef.current = gsap
         .timeline()
-        .to(ref.current, {
-          width: 0,
-          duration: 0.5,
-          ease: 'power3.inOut',
-        })
+        .to(
+          ref.current,
+          {
+            scale: 0,
+            opacity: 0,
+            transformOrigin: 'center',
+            duration: 0.5,
+            ease: 'power2.out',
+          },
+          0
+        )
         .pause()
     }
   }, [])
@@ -130,7 +123,7 @@ export const HeaderLink = ({
     <a
       href={href}
       data-state={isActive ? 'active' : 'inactive'}
-      className="flex flex-col justify-center items-center relative data-[state=active]:font-semibold data-[state=active]:text-theme boldable-text-tab px-4 h-16"
+      className="flex flex-col justify-center items-center relative data-[state=active]:font-semibold data-[state=inactive]:hover:text-foreground/90 data-[state=active]:text-theme boldable-text-tab px-4 h-16"
       {...props}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -139,7 +132,7 @@ export const HeaderLink = ({
         {children}
         <span
           ref={ref}
-          className="absolute w-0 left-0 bottom-0 bg-theme"
+          className="absolute w-full opacity-0 scale-0 left-0 bottom-0 bg-theme rounded-full"
           style={{ height: BAR_WIDTH }}
         />
       </span>

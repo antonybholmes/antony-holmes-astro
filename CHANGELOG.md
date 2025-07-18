@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added header animations.
 - Changed date to string to stop parsing errors and added animations to header.
 
 ### Fixed

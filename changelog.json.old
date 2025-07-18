@@ -243,6 +243,12 @@
           "msg": "Support for generic placeholder images",
           "date": "2025-07-18T20:39:26.790Z"
         }
+      ],
+      "Fixed": [
+        {
+          "msg": "Added more generic images and UI tweaks",
+          "date": "2025-07-18T21:18:45.695Z"
+        }
       ]
     },
     "author": "Antony Holmes",

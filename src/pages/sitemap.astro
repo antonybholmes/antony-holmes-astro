@@ -7,7 +7,7 @@ import ContentLayout from '../layouts/ContentLayout.astro'
 <ContentLayout title="Site Map" showTitle={true}>
   <div class="mt-8 mb-64 grid grid-cols-1 gap-8 md:grid-cols-4" slot="main">
     <section>
-      <h3 class="mt-4 font-bold">Learn More</h3>
+      <h3 class="mt-4 font-semibold">Learn More</h3>
       <ul class="mt-4 flex flex-col gap-y-4">
         {
           MENU_ITEMS.map((link: any) => {
@@ -24,7 +24,7 @@ import ContentLayout from '../layouts/ContentLayout.astro'
     </section>
 
     <section>
-      <h3 class="mt-4 font-bold">Help</h3>
+      <h3 class="mt-4 font-semibold">Help</h3>
       <ul class="mt-4 flex flex-col gap-y-4">
         <li>
           <ThemeLink href="/about" aria-label="View help information">
