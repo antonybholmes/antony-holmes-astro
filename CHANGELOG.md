@@ -6,6 +6,10 @@
 
 - Added description to post.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 1.8 (Jul, 2025)
 
