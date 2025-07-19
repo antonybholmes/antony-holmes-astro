@@ -20,7 +20,7 @@ const blog = defineCollection({
         .optional(),
       //updatedDate: z.coerce.date().optional(),
       hero: z.string().optional(), //image().optional(),
-      //heroCaption: z.string().optional(),
+      //heroAlt: z.string().optional(),
       heroAlt: z.string().optional(),
       tags: z.array(z.string()).optional(),
       sections: z.array(z.string()).optional(),

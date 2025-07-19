@@ -3,7 +3,7 @@ description: Welcome to my personal website.
 sections:
   - 'News'
 type: post
-heroCaption: This post is more technologically advanced than a stamp.
+heroAlt: This post is more technologically advanced than a stamp.
 status: added
 title: First Post! Welcome
 authors:

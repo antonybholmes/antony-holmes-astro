@@ -4,7 +4,7 @@ description: My review of Fidelity.
 sections:
   - 'Reviews/Brokerages'
 type: review
-heroCaption: 'This looks cool, but has nothing to do with banking.'
+heroAlt: 'This looks cool, but has nothing to do with banking.'
 rating: 4.5
 pros:
   - Buy any share/ETF in fractional amounts.

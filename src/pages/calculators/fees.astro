@@ -1,0 +1,10 @@
+---
+import { FeesPage } from '@/components/pages/calculators/fees'
+import ContentLayout from '@/layouts/ContentLayout.astro'
+
+//client:only="react"
+---
+
+<ContentLayout title="Fee Calculator" tab="Calculators">
+  <FeesPage slot="main" client:only="react" />
+</ContentLayout>

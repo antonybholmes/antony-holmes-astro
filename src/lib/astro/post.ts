@@ -29,7 +29,10 @@ const FALLBACK_ENGINEERING_IMAGES = [
   '/img/blog/generic-engineering-3.webp',
 ]
 
-const FALLBACK_FILM_IMAGES = ['/img/blog/generic-film-1.webp']
+const FALLBACK_FILM_IMAGES = [
+  '/img/blog/generic-film-1.webp',
+  '/img/blog/generic-film-2.webp',
+]
 
 const FALLBACK_FINANCE_IMAGES = ['/img/blog/generic-finance-1.webp']
 
@@ -122,7 +125,12 @@ export type PostWithHero = CollectionEntry<'blog'> & {
 
 export function getHeroImage(entry: CollectionEntry<'blog'>): string {
   if (entry.data.hero) {
-    return entry.data.hero
+    // dont need to bother with path
+    if (!entry.data.hero.startsWith('/')) {
+      return `/img/blog/${entry.data.hero}`
+    } else {
+      return entry.data.hero
+    }
   }
 
   const hash = hashSlug(entry.id)

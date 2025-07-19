@@ -265,6 +265,10 @@
         {
           "msg": "Added description to post",
           "date": "2025-07-18T21:58:59.818Z"
+        },
+        {
+          "msg": "Added fees calculator",
+          "date": "2025-07-19T05:14:55.317Z"
         }
       ],
       "Fixed": [

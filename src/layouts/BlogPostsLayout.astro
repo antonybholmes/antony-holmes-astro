@@ -15,6 +15,7 @@ import type { ColorMode } from '@/interfaces/color-mode'
 import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from './BaseLayout.astro'
+import { FeaturedPost } from '@/components/posts/featured-post'
 
 interface Props extends IPageProps, ICrumbProps {
   title: string
@@ -45,7 +46,7 @@ let {
 
   root,
   showSectionLinks = false,
-  mode = 'dark',
+  mode = 'light',
 } = Astro.props
 
 if (!crumbs) {
@@ -74,13 +75,19 @@ const headPostStart = page === 0 ? 4 : 0
         {
           featuredPosts.length > 0 && (
             <section id="featured">
-              <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
+              {/* <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
                 Featured
-              </h2>
+              </h2> */}
 
-              <FeaturedPosts
+              {/* <FeaturedPosts
                 posts={featuredPosts as IPost[]}
                 showSectionLinks={showSectionLinks}
+              /> */}
+
+              <FeaturedPost
+                post={featuredPosts[0]! as IPost}
+                showSectionLinks={showSectionLinks}
+                mode={mode}
               />
             </section>
           )

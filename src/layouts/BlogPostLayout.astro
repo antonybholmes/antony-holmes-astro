@@ -13,9 +13,10 @@ import SideTags from '@/components/SideTags.astro'
 import type { PostWithHero } from '@/lib/astro/post'
 import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { sectionToParts } from '@/lib/post'
+import { sectionToParts, type IPost } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
 import ContentLayout from './ContentLayout.astro'
+import { HeroImageCaption } from '@/components/posts/hero-image-caption'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
 //   slug: string
@@ -94,73 +95,83 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
     <meta property="og:image" content={ogImage} />
   </Fragment>
 
-  <!-- <Header slot="header" /> -->
-  <SidebarDiv slot="main">
-    <article slot="main" class="flex flex-col gap-y-8">
-      <header class="flex flex-col gap-y-5">
-        <h1 class="text-3xl font-bold">
-          {post.data.title}
-        </h1>
-
-        {
-          post.data.description && (
-            <p class="text-foreground/70">{post.data.description}</p>
-          )
-        }
-
-        {
-          post.data.resolvedHero && (
-            <div class="h-72 w-full overflow-hidden rounded-xl">
-              <img
-                src={post.data.resolvedHero}
-                alt={post.data.heroAlt || post.data.title}
-                class="w-full object-cover object-center"
-                style="height: 100%;"
-                loading="lazy"
-              />
-            </div>
-          )
-        }
-
-        <VCenterRow
-          className="text-foreground/50 justify-between gap-x-2 text-sm"
-        >
-          <VCenterRow className="gap-x-3">
-            <VCenterRow className="gap-x-1">
-              <Calendar
-                className="stroke-foreground/40 w-5"
-                strokeWidth={1.5}
-              />
-              <FormattedDate date={post.data.added} />
-            </VCenterRow>
-            <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
-            ></span>
-            <VCenterRow className="gap-x-1">
-              <Clock className="stroke-foreground/40 w-5" strokeWidth={1.5} />
-              <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
-            ></VCenterRow
-          >
+  <article slot="main" class="flex flex-col gap-y-8">
+    <Fragment slot="main">
+      <SidebarDiv>
+        <header class="flex flex-col gap-y-4" slot="main">
+          <h1 class="text-3xl font-bold">
+            {post.data.title}
+          </h1>
 
           {
-            dataUpdated.getTime() !== post.data.added.getTime() && (
-              <span class="text-foreground/50">
-                Last updated on <FormattedDate date={dataUpdated} />
-              </span>
+            post.data.description && (
+              <p class="text-foreground/70">{post.data.description}</p>
             )
           }
-        </VCenterRow>
+        </header>
+      </SidebarDiv>
+      <SidebarDiv mainCls="gap-y-8">
+        <Fragment slot="main">
+          {
+            post.data.resolvedHero && (
+              <div class="group relative aspect-16/9 w-full overflow-hidden rounded-2xl">
+                <img
+                  src={post.data.resolvedHero}
+                  alt={post.data.heroAlt || post.data.title}
+                  class="w-full scale-102 object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105"
+                  loading="lazy"
+                />
 
-        <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
-      </header>
-      <section class="markdown post">
-        <Content />
-      </section>
-    </article>
+                {post.data.heroAlt && (
+                  <HeroImageCaption
+                    post={post as IPost}
+                    className="duration-500 opacity-0 transition-opacity group-hover:opacity-100"
+                  />
+                )}
+              </div>
+            )
+          }
 
-    <BaseCol className="sticky top-20 gap-12" slot="side">
-      <SideTags tags={post.data.tags} />
-      <TableOfContents client:only="react" />
-      <!--  <LatestPosts /> -->
-    </BaseCol>
-  </SidebarDiv>
+          <VCenterRow
+            className="text-foreground/50 border-theme/75 justify-between gap-x-2 border-b-2 pb-4 text-sm"
+          >
+            <VCenterRow className="gap-x-4">
+              <VCenterRow className="gap-x-1">
+                <Calendar
+                  className="stroke-foreground/40 w-5"
+                  strokeWidth={1.5}
+                />
+                <FormattedDate date={post.data.added} />
+              </VCenterRow>
+              <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
+              ></span>
+              <VCenterRow className="gap-x-1">
+                <Clock className="stroke-foreground/40 w-5" strokeWidth={1.5} />
+                <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
+              >
+            </VCenterRow>
+
+            {
+              dataUpdated.getTime() !== post.data.added.getTime() && (
+                <span class="text-foreground/50">
+                  Last updated on <FormattedDate date={dataUpdated} />
+                </span>
+              )
+            }
+          </VCenterRow>
+
+          <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
+
+          <section class="markdown post">
+            <Content />
+          </section>
+        </Fragment>
+        <BaseCol className="sticky top-20 gap-12" slot="side">
+          <SideTags tags={post.data.tags} />
+          <TableOfContents client:only="react" />
+          <!--  <LatestPosts /> -->
+        </BaseCol>
+      </SidebarDiv>
+    </Fragment>
+  </article>
 </ContentLayout>

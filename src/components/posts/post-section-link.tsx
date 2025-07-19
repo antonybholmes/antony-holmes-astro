@@ -1,9 +1,8 @@
 import { BLOG_SLUG } from '@/consts'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { BaseLink } from '@components/link/base-link'
-import { VCenterRow } from '@layout/v-center-row'
 import { formatSection, sectionToParts } from '@lib/post'
 import { cn } from '@lib/shadcn-utils'
+import { VCenterRow } from '../layout/v-center-row'
 import type { IPostProps } from './post-tags'
 
 interface IProps extends IPostProps {
@@ -29,18 +28,20 @@ export function PostSectionLink({
 
   return (
     <VCenterRow>
-      <BaseLink
-        href={href}
-        aria-label={`Read more ${sectionName} posts`}
-        title={`Read more ${sectionName} posts`}
-        className={cn(
-          'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-semibold text-transparent',
-          textSize,
-          className
-        )}
-      >
-        {sectionName}
-      </BaseLink>
+      <h3>
+        <a
+          href={href}
+          aria-label={`Read more ${sectionName} posts`}
+          title={`Read more ${sectionName} posts`}
+          className={cn(
+            'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-semibold text-transparent',
+            textSize,
+            className
+          )}
+        >
+          {sectionName}
+        </a>
+      </h3>
     </VCenterRow>
   )
 }

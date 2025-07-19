@@ -129,17 +129,18 @@ export const MENU_ITEMS: {
   //   icon: 'projects',
   //   ariaLabel: 'Projects',
   // },
-  {
-    label: 'Resume',
-    path: '/resume',
-    icon: 'resume',
-    ariaLabel: 'Resume',
-  },
+
   {
     label: 'Publications',
     path: '/publications',
     icon: 'publications',
     ariaLabel: 'Publications',
+  },
+  {
+    label: 'Resume',
+    path: '/resume',
+    icon: 'resume',
+    ariaLabel: 'Resume',
   },
 ]
 

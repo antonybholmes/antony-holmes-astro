@@ -4,13 +4,17 @@ import { cn } from '@/lib/shadcn-utils'
 import type { IClassProps } from '@/interfaces/class-props'
 import { BaseCol } from './base-col'
 
-interface Props extends IClassProps {}
+interface Props extends IClassProps {
+  mainCls?: string
+}
 
-const { className } = Astro.props
+const { mainCls, className } = Astro.props
 ---
 
 <div class={cn('grid grid-cols-1 md:grid-cols-10 grow gap-8', className)}>
-  <main class="col-span-7 flex flex-col"><slot name="main" /></main>
+  <main class={cn('col-span-7 flex flex-col', mainCls)}>
+    <slot name="main" />
+  </main>
   <BaseCol className="col-span-3 hidden gap-y-8 md:flex"
     ><slot name="side" /></BaseCol
   >

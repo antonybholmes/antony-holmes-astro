@@ -26,7 +26,7 @@ interface IProps extends IPostProps {
 export function HeroPost({
   post,
   className,
-  imgClassName = 'rounded-lg h-72',
+  imgClassName = 'rounded-2xl aspect-16/9',
   headerClassName = 'text-2xl md:text-3xl',
   innerClassName,
   contentClassName = 'text-base',

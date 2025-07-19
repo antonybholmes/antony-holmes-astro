@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added fees calculator.
 - Added description to post.
 
 ### Fixed

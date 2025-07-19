@@ -3,12 +3,10 @@ description: You get what you don't pay for.
 categories:
   - Investing
 type: post
-heroCaption: "If you don't eat your cake, you can't have any pudding!"
+hero: 'vanilla-cake.webp'
+heroAlt: "If you don't eat your cake, you can't have any pudding!"
 status: added
-related: []
 title: The Vanilla Investor
-slug: the-vanilla-investor
-hero: /assets/posts/opt/vanilla-1600x800.avif
 authors:
   - Antony Holmes
 added: '2021-12-09'

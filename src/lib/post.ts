@@ -190,7 +190,7 @@ export interface IPostFields {
   type: string
   description: string
   hero: string
-  heroCaption: string
+  heroAlt: string
   authors: string[]
   categories: string[]
   related: string[]
@@ -216,7 +216,7 @@ export interface IPostFields {
 //     //rawContent: '',
 //     //rawExcerpt: '',
 //     hero: '',
-//     heroCaption: '',
+//     heroAlt: '',
 //     authors: [],
 //     categories: [],
 //     tags: [],

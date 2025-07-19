@@ -18,7 +18,7 @@ interface IProps extends IPostProps {
   showSectionLinks?: boolean
 }
 
-export function HeroPostSmall({
+export function RestPost({
   post,
   showAvatar = false,
   showAuthors = false,
@@ -33,17 +33,15 @@ export function HeroPostSmall({
     <article
       data-mode={mode}
       className={cn(
-        'group grid grid-cols-1 gap-4 data-[mode=dark]:text-white',
-        hasImage && 'md:grid-cols-3',
+        'group flex flex-col gap-y-4 data-[mode=dark]:text-white',
+
         className
       )}
     >
       {post.data.resolvedHero && (
-        <div className="col-span-1">
-          <PostImage post={post} className="aspect-4/3 w-full rounded-xl" />
-        </div>
+        <PostImage post={post} className="aspect-16/9 w-full rounded-xl" />
       )}
-      <BaseCol className="col-span-2 gap-y-1">
+      <BaseCol className="gap-y-1">
         <BaseCol>
           {showSectionLinks && (
             <PostSectionLink post={post} textSize="text-base md:text-sm" />
@@ -61,7 +59,7 @@ export function HeroPostSmall({
         {showDescription && (
           <p
             data-mode={mode}
-            className="text-foreground/50 data-[mode=dark]:text-white/50"
+            className="text-foreground/70 data-[mode=dark]:text-white/50"
           >
             {getPostExcerpt(post)}
           </p>

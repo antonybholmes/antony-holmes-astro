@@ -4,7 +4,7 @@ categories:
   - Opinions
   - Investing
 type: post
-heroCaption: 'With enough small potatoes, we could reach the moon.'
+heroAlt: 'With enough small potatoes, we could reach the moon.'
 status: added
 title: Small Potatoes
 slug: small-potatoes

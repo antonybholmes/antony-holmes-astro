@@ -26,15 +26,12 @@ interface IProps extends IPostProps {
 export function FeaturedPost({
   post,
   className,
-  imgClassName = 'rounded-lg h-72',
+  imgClassName = 'rounded-2xl aspect-16/9 col-span-3',
   headerClassName = 'text-2xl md:text-3xl',
   innerClassName,
   contentClassName = 'text-base',
-
   showDescription = true,
   showAvatar = true,
-  showAvatarImage = true,
-  dateBelow = false,
   showSectionLinks = true,
   mode = 'light',
 }: IProps) {
@@ -43,8 +40,8 @@ export function FeaturedPost({
   //{post.data.description}
 
   return (
-    <article className={cn('grid grid-cols-2 gap-4 group', className)}>
-      <BaseCol className={cn('gap-y-2', innerClassName)}>
+    <article className={cn('grid grid-cols-5 gap-4 group', className)}>
+      <BaseCol className={cn('gap-y-2 col-span-2', innerClassName)}>
         <BaseCol className="gap-y-1">
           {showSectionLinks && (
             <PostSectionLink post={post} textSize="text-base md:text-sm" />
@@ -66,7 +63,9 @@ export function FeaturedPost({
         <PostAuthorsAndDate post={post} showAvatar={showAvatar} mode={mode} />
       </BaseCol>
 
-      {post.data.hero && <PostImage post={post} className={imgClassName} />}
+      {post.data.resolvedHero && (
+        <PostImage post={post} className={imgClassName} />
+      )}
     </article>
   )
 }

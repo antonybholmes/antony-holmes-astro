@@ -8,7 +8,7 @@ export function FeaturedPosts({ posts, showSectionLinks, mode }: IPostsProps) {
   const topPosts = posts.slice(1)
 
   return (
-    <BaseCol className=" gap-y-4 ">
+    <BaseCol className="gap-y-4">
       <FeaturedPost
         post={topPost}
         showSectionLinks={showSectionLinks}
