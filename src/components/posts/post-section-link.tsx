@@ -1,8 +1,7 @@
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_SLUG, HEADING_FONT } from '@/consts'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { formatSection, sectionToParts } from '@lib/post'
 import { cn } from '@lib/shadcn-utils'
-import { VCenterRow } from '../layout/v-center-row'
 import type { IPostProps } from './post-tags'
 
 interface IProps extends IPostProps {
@@ -11,7 +10,7 @@ interface IProps extends IPostProps {
 
 export function PostSectionLink({
   post,
-  textSize = 'text-sm',
+  textSize = 'text-base',
   className,
 }: IProps) {
   // pick the first section
@@ -27,21 +26,18 @@ export function PostSectionLink({
   const href = `${BLOG_SLUG}/${slug}`
 
   return (
-    <VCenterRow>
-      <h3>
-        <a
-          href={href}
-          aria-label={`Read more ${sectionName} posts`}
-          title={`Read more ${sectionName} posts`}
-          className={cn(
-            'block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-semibold text-transparent',
-            textSize,
-            className
-          )}
-        >
-          {sectionName}
-        </a>
-      </h3>
-    </VCenterRow>
+    <a
+      href={href}
+      aria-label={`Read more ${sectionName} posts`}
+      title={`Read more ${sectionName} posts`}
+      className={cn(
+        'inline-block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-medium text-transparent self-start',
+        textSize,
+        className
+      )}
+      style={{ fontFamily: HEADING_FONT }}
+    >
+      {sectionName}
+    </a>
   )
 }

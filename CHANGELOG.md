@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added star ratings.
 - Added fees calculator.
 - Added description to post.
 

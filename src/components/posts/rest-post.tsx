@@ -43,9 +43,7 @@ export function RestPost({
       )}
       <BaseCol className="gap-y-1">
         <BaseCol>
-          {showSectionLinks && (
-            <PostSectionLink post={post} textSize="text-base md:text-sm" />
-          )}
+          {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink
             post={post}
             className="text-2xl lg:text-xl"

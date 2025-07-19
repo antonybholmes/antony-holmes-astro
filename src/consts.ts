@@ -105,6 +105,8 @@ export const SITE_URL = 'https://antonyholmes.dev'
 
 export const TARGET_BLANK = '_blank'
 
+export const HEADING_FONT = 'var(--font-heading)'
+
 export const MENU_ITEMS: {
   label: string
   path: string

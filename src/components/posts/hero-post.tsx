@@ -27,7 +27,7 @@ export function HeroPost({
   post,
   className,
   imgClassName = 'rounded-2xl aspect-16/9',
-  headerClassName = 'text-2xl md:text-3xl',
+  headerClassName = 'text-2xl md:text-3xl font-bold',
   innerClassName,
   contentClassName = 'text-base',
   showDescription = true,
@@ -51,10 +51,8 @@ export function HeroPost({
       )}
 
       <BaseCol className={cn('gap-y-2', innerClassName)}>
-        <BaseCol className="gap-y-1">
-          {showSectionLinks && (
-            <PostSectionLink post={post} textSize="text-base md:text-sm" />
-          )}
+        <BaseCol>
+          {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink post={post} className={headerClassName} mode={mode} />
         </BaseCol>
         {showDescription && (

@@ -23,6 +23,9 @@ importers:
       '@fontsource/dancing-script':
         specifier: ^5.2.6
         version: 5.2.6
+      '@fontsource/figtree':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/geist':
         specifier: ^5.2.6
         version: 5.2.6
@@ -532,6 +535,9 @@ packages:
 
   '@fontsource/dancing-script@5.2.6':
     resolution: {integrity: sha512-W6hAg34v1AyX10ijrBKMf0jg6V641RpylfBi1oXG1pzKgi+z2cpl0N9UDKDHoedpWnajjMuT6MgoaJvFxVAW5w==}
+
+  '@fontsource/figtree@5.2.8':
+    resolution: {integrity: sha512-FC+t9RSdZDUK402+h+D7kKBXEo1L5xw/ff8SpTo9ZO0xHzqFJ0u78PmNyAju5D77oXPsR3wfs+rjZvWPx4diSA==}
 
   '@fontsource/geist@5.2.6':
     resolution: {integrity: sha512-HKRFUn4fApQr9iGaVLUWG5vs+QYFqhKa5X7AFpT6Gey0Kx0ibvpFceMbMDDdlzzqPiGkvCuvYRUN55rvqXgibg==}
@@ -4649,6 +4655,8 @@ snapshots:
   '@floating-ui/utils@0.2.10': {}
 
   '@fontsource/dancing-script@5.2.6': {}
+
+  '@fontsource/figtree@5.2.8': {}
 
   '@fontsource/geist@5.2.6': {}
 

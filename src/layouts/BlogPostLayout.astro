@@ -17,6 +17,7 @@ import { sectionToParts, type IPost } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
 import ContentLayout from './ContentLayout.astro'
 import { HeroImageCaption } from '@/components/posts/hero-image-caption'
+import { StarRating } from '@/components/posts/star-rating'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
 //   slug: string
@@ -103,6 +104,8 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
             {post.data.title}
           </h1>
 
+          {post.data.rating && <StarRating rating={post.data.rating} />}
+
           {
             post.data.description && (
               <p class="text-foreground/70">{post.data.description}</p>
@@ -132,10 +135,10 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
             )
           }
 
-          <VCenterRow
-            className="text-foreground/50 border-theme/75 justify-between gap-x-2 border-b-2 pb-4 text-sm"
+          <BaseCol
+            className="text-foreground/50 border-theme/75 justify-between gap-2 border-b-2 pb-4 text-sm"
           >
-            <VCenterRow className="gap-x-4">
+            <VCenterRow className="gap-x-3">
               <VCenterRow className="gap-x-1">
                 <Calendar
                   className="stroke-foreground/40 w-5"
@@ -153,12 +156,12 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
 
             {
               dataUpdated.getTime() !== post.data.added.getTime() && (
-                <span class="text-foreground/50">
+                <span class="text-foreground/50 italic">
                   Last updated on <FormattedDate date={dataUpdated} />
                 </span>
               )
             }
-          </VCenterRow>
+          </BaseCol>
 
           <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
 

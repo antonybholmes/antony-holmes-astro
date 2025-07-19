@@ -26,6 +26,7 @@ const blog = defineCollection({
       sections: z.array(z.string()).optional(),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
+      rating: z.number().min(0).max(5).optional(),
     }),
 })
 
