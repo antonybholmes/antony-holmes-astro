@@ -34,7 +34,10 @@ const FALLBACK_FILM_IMAGES = [
   '/img/blog/generic-film-2.webp',
 ]
 
-const FALLBACK_FINANCE_IMAGES = ['/img/blog/generic-finance-1.webp']
+const FALLBACK_FINANCE_IMAGES = [
+  '/img/blog/generic-finance-1.webp',
+  '/img/blog/generic-finance-2.webp',
+]
 
 const FALLBACK_PHONE_IMAGES = ['/img/blog/generic-phone-1.webp']
 

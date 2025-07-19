@@ -46,7 +46,7 @@ export function RestPost({
           {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink
             post={post}
-            className="text-2xl lg:text-xl"
+            className="text-2xl lg:text-xl font-semibold"
             mode={mode}
           />
         </BaseCol>

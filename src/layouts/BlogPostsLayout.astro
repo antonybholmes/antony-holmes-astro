@@ -108,13 +108,13 @@ const headPostStart = page === 0 ? 4 : 0
               )
             }
 
-            <HeadPosts
+            <!-- <HeadPosts
               posts={posts.slice(headPostStart, headPostStart + 2) as IPost[]}
               showSectionLinks={showSectionLinks}
-            />
+            /> -->
 
             <RestPosts
-              posts={posts.slice(headPostStart + 2) as IPost[]}
+              posts={posts.slice(headPostStart) as IPost[]}
               showSectionLinks={showSectionLinks}
             />
 

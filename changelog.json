@@ -280,6 +280,12 @@
           "msg": "Bug fixes and updates.",
           "date": "2025-07-18T22:42:41.506Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Updated images",
+          "date": "2025-07-19T18:10:42.635Z"
+        }
       ]
     },
     "author": "Antony Holmes",

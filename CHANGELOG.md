@@ -8,6 +8,10 @@
 - Added fees calculator.
 - Added description to post.
 
+### Changed
+
+- Updated images.
+
 ### Fixed
 
 - Bug fixes and updates.

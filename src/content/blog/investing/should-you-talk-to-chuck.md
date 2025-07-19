@@ -31,13 +31,13 @@ Schwab is a great one-stop-shop for all your banking and investing needs. Let's 
 
 <!-- more -->
 
-# Investing
+## Investing
 
 Schwab lets you buy basically any stock and ETF available, certainly all of the key total stock and total bonds you should be [using](/blog/2021-12-09-the-vanilla-investor) in your portfolio.
 
 It's just a pity you can't buy fractional shares except for some stocks in the S\&P 500, which seems like an artificial limit to me. Fidelity offers fractional shares on pretty much everything, so why can't Schwab?
 
-# Banking
+## Banking
 
 Schwab has a banking division that offers a checking account that with a debit card and is functionally equialent to a checking account.
 
@@ -50,7 +50,7 @@ It offers amongst other things:
 - Free transfers between accounts at other institutions.
 - Early deposit of direct deposits. Get your paycheck a day early.
 
-# Credit Card
+## Credit Card
 
 Schwab offers an unlimited 1.5% cash back credit card through American Express. It's a fine card, but doesn't offer much over a normal American Express card. They also offer a branded version of the Platinum American Express card, but it has the mostly the same fees and rewards structure as the regular Platinum card.
 
