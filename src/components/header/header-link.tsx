@@ -1,8 +1,7 @@
 import type { ILinkProps } from '@/interfaces/link-props'
 import { gsap } from 'gsap'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
-const DURATION = 0.4
 const BAR_WIDTH = '3px'
 export const LINK_CLS =
   'block relative whitespace-nowrap font-semibold tracking-tight py-2 animate-button'
@@ -23,87 +22,40 @@ export const HeaderLink = ({
   const animationRef = useRef<gsap.core.Timeline>(null)
   const backRef = useRef<gsap.core.Timeline>(null)
 
-  useEffect(() => {
-    if (ref.current) {
-      animationRef.current = gsap
-        .timeline()
-        .to(
-          ref.current,
-          {
-            scale: 1,
-            opacity: 1,
-            transformOrigin: 'center',
-            duration: 0.5,
-            ease: 'power2.out',
-          },
-          0
-        )
-
-        .pause()
-
-      backRef.current = gsap
-        .timeline()
-        .to(
-          ref.current,
-          {
-            scale: 0,
-            opacity: 0,
-            transformOrigin: 'center',
-            duration: 0.5,
-            ease: 'power2.out',
-          },
-          0
-        )
-        .pause()
-    }
-  }, [])
-
   // useEffect(() => {
-  //   let t1 = gsap.timeline()
+  //   if (ref.current) {
+  //     animationRef.current = gsap
+  //       .timeline()
+  //       .to(
+  //         ref.current,
+  //         {
+  //           scale: 1,
+  //           opacity: 1,
+  //           transformOrigin: 'center',
+  //           duration: 0.5,
+  //           ease: 'power2.out',
+  //         },
+  //         0
+  //       )
 
-  //   if (hover) {
-  //     t1.to(
-  //       ref.current,
-  //       {
-  //         width: "100%",
-  //         duration: DURATION,
-  //         ease: "power3.out",
-  //       },
-  //       0
-  //     )
+  //       .pause()
+
+  //     backRef.current = gsap
+  //       .timeline()
   //       .to(
   //         ref.current,
   //         {
-  //           x: 10,
-  //           delay: 0.2,
-  //           duration: DURATION,
-  //           ease: "back.out(1)",
+  //           scale: 0,
+  //           opacity: 0,
+  //           transformOrigin: 'center',
+  //           duration: 0.5,
+  //           ease: 'power2.out',
   //         },
   //         0
   //       )
-  //       .to(
-  //         ref.current,
-  //         {
-  //           x: 0,
-  //           duration: DURATION,
-  //           delay: 0.4,
-  //           ease: "power3.out",
-  //         },
-  //         0
-  //       )
-  //       .play()
-  //   } else {
-  //     t1.to(
-  //       ref.current,
-  //       {
-  //         width: 0,
-  //         duration: DURATION,
-  //         ease: "power3.out",
-  //       },
-  //       0
-  //     ).play()
+  //       .pause()
   //   }
-  // }, [hover])
+  // }, [])
 
   const handleMouseEnter = () => {
     if (!isActive) {
@@ -123,7 +75,7 @@ export const HeaderLink = ({
     <a
       href={href}
       data-state={isActive ? 'active' : 'inactive'}
-      className="flex flex-col justify-center items-center relative data-[state=active]:font-semibold data-[state=inactive]:hover:text-foreground/90 data-[state=active]:text-theme boldable-text-tab px-4 h-16"
+      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[state=inactive]:hover:text-foreground/90 data-[state=active]:text-theme boldable-text-tab px-4 h-16"
       {...props}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -132,7 +84,7 @@ export const HeaderLink = ({
         {children}
         <span
           ref={ref}
-          className="absolute w-full opacity-0 scale-0 left-0 bottom-0 bg-theme rounded-full"
+          className="absolute w-full opacity-0 scale-0 left-0 bottom-0 bg-theme rounded-full group-hover:scale-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
           style={{ height: BAR_WIDTH }}
         />
       </span>
