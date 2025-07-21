@@ -7,19 +7,21 @@ import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
 import { Calendar, Clock, Minus, Plus } from 'lucide-react'
 
+import { Breadcrumb } from '@/components/breadcrumb'
 import { BaseCol } from '@/components/layout/base-col'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
+import { ThemeIndexLink } from '@/components/link/theme-index-link'
+import { HeroImageCaption } from '@/components/posts/hero-image-caption'
+import { StarRating } from '@/components/posts/star-rating'
 import SideTags from '@/components/SideTags.astro'
+import { TARGET_BLANK } from '@/consts'
 import type { PostWithHero } from '@/lib/astro/post'
 import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { sectionToParts, type IPost } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
-import ContentLayout from './ContentLayout.astro'
-import { HeroImageCaption } from '@/components/posts/hero-image-caption'
-import { StarRating } from '@/components/posts/star-rating'
-import { ThemeLink } from '@/components/link/theme-link'
-import { TARGET_BLANK } from '@/consts'
+import BaseLayout from './BaseLayout.astro'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
 //   slug: string
@@ -88,25 +90,31 @@ if (section) {
 const dataUpdated = post.data.updated ? post.data.updated : post.data.added
 ---
 
-<ContentLayout
+<BaseLayout
   title={post.data.title}
   description={post.data.description}
-  crumbs={crumbs}
   tab="Blog"
+  mode="light"
 >
   <Fragment slot="head">
     <meta property="og:image" content={ogImage} />
   </Fragment>
 
-  <article slot="main" class="flex flex-col gap-y-8">
-    <Fragment slot="main">
-      <SidebarDiv>
-        <header class="flex flex-col gap-y-4" slot="main">
-          <BaseCol className="text-foreground/50 justify-between gap-2 text-sm">
-            <VCenterRow className="gap-x-5">
+  <article slot="main" class="mt-8 flex flex-col gap-y-16">
+    <header>
+      <ContentDiv slot="main" mainCls="gap-y-8">
+        <Fragment slot="main">
+          <Breadcrumb crumbs={crumbs} mode="light" />
+
+          <VCenterRow
+            data-mode="light"
+            className="text-foreground/50 mt-8 justify-between gap-2 text-sm data-[mode=dark]:text-white"
+          >
+            <VCenterRow className="gap-x-6">
               <VCenterRow className="gap-x-1">
                 <Calendar
-                  className="stroke-foreground/40 w-5"
+                  data-mode="light"
+                  className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
                   strokeWidth={1.5}
                 />
                 <FormattedDate date={post.data.added} />
@@ -115,56 +123,55 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
                 class="bg-foreground/25 aspect-square h-1.5 w-1.5 rounded-full"
               ></span> -->
               <VCenterRow className="gap-x-1">
-                <Clock className="stroke-foreground/40 w-5" strokeWidth={1.5} />
+                <Clock
+                  data-mode="light"
+                  className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
+                  strokeWidth={1.5}
+                />
                 <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
               >
             </VCenterRow>
 
             {
-              dataUpdated.getTime() !== post.data.added.getTime() && (
-                <span class="text-foreground/50 italic">
-                  Last updated on <FormattedDate date={dataUpdated} />
-                </span>
-              )
-            }
-          </BaseCol>
-
-          <h1 class="text-3xl font-bold">
-            {post.data.title}
-          </h1>
-
-          <VCenterRow className="justify-between gap-x-4">
-            {post.data.rating && <StarRating rating={post.data.rating} />}
-
-            {
               post.data.links && (
                 <VCenterRow className="gap-x-2">
                   {post.data.links.map(link => (
-                    <ThemeLink
+                    <ThemeIndexLink
                       href={link.url}
                       target={TARGET_BLANK}
                       startingColor="text-theme"
                     >
                       {link.title}
-                    </ThemeLink>
+                    </ThemeIndexLink>
                   ))}
                 </VCenterRow>
               )
             }
           </VCenterRow>
 
-          {
-            post.data.description && (
-              <p class="text-foreground/70">{post.data.description}</p>
-            )
-          }
-        </header>
-      </SidebarDiv>
-      <SidebarDiv mainCls="gap-y-8">
-        <Fragment slot="main">
+          <BaseCol className="gap-y-2">
+            <h1
+              class="text-3xl font-bold data-[mode=dark]:text-white"
+              data-mode="light"
+            >
+              {post.data.title}
+            </h1>
+
+            {
+              post.data.description && (
+                <p
+                  class="text-foreground/70 data-[mode=dark]:text-white/50"
+                  data-mode="light"
+                >
+                  {post.data.description}
+                </p>
+              )
+            }
+          </BaseCol>
+
           {
             post.data.resolvedHero && (
-              <div class="group relative aspect-16/9 w-full overflow-hidden rounded-2xl">
+              <div class="group relative aspect-2/1 w-full overflow-hidden rounded-2xl">
                 <img
                   src={post.data.resolvedHero}
                   alt={post.data.heroAlt || post.data.title}
@@ -181,8 +188,20 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
               </div>
             )
           }
+        </Fragment>
+      </ContentDiv>
+    </header>
 
-          <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
+    <ContentDiv slot="main" mainCls="gap-y-8">
+      <SidebarDiv mainCls="gap-y-8" slot="main">
+        <Fragment slot="main">
+          {
+            post.data.rating && (
+              <VCenterRow className="justify-end gap-x-4">
+                {post.data.rating && <StarRating rating={post.data.rating} />}
+              </VCenterRow>
+            )
+          }
 
           {
             post.data.pros && (
@@ -232,6 +251,6 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
           <!--  <LatestPosts /> -->
         </BaseCol>
       </SidebarDiv>
-    </Fragment>
+    </ContentDiv>
   </article>
-</ContentLayout>
+</BaseLayout>

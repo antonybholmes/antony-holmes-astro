@@ -126,14 +126,27 @@ export type PostWithHero = CollectionEntry<'blog'> & {
   }
 }
 
+/**
+ * Tries to resolve the hero image for a post. If the post has a hero image set, it will return that.
+ * If not, it will return a fallback image based on the post's sections.
+ * If no sections match, it will return a generic fallback image.
+ * @param entry
+ * @returns
+ */
 export function getHeroImage(entry: CollectionEntry<'blog'>): string {
   if (entry.data.hero) {
+    let hero = entry.data.hero
+
     // dont need to bother with path
-    if (!entry.data.hero.startsWith('/')) {
-      return `/img/blog/${entry.data.hero}`
-    } else {
-      return entry.data.hero
+    if (!hero.includes('/')) {
+      hero = `/img/blog/${entry.data.hero}`
     }
+
+    if (!hero.endsWith('.webp')) {
+      hero += '.webp'
+    }
+
+    return hero
   }
 
   const hash = hashSlug(entry.id)

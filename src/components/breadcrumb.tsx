@@ -56,7 +56,12 @@ export function Breadcrumb({
     if (showHome || i > 0) {
       ret.push(
         <li key={`divider-${i}`}>
-          <span className="text-foreground/50 mx-2">/</span>
+          <span
+            className="text-foreground/50 data-[mode=dark]:text-white mx-2"
+            data-mode={mode}
+          >
+            /
+          </span>
         </li>
       )
     }

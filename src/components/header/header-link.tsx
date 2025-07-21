@@ -1,3 +1,4 @@
+import type { ColorMode } from '@/interfaces/color-mode'
 import type { ILinkProps } from '@/interfaces/link-props'
 import { useRef, useState } from 'react'
 
@@ -7,11 +8,13 @@ export const LINK_CLS =
 
 interface IHeaderLinkProps extends ILinkProps {
   isActive?: boolean
+  mode?: ColorMode
 }
 
 export const HeaderLink = ({
   href,
   isActive,
+  mode = 'light',
   children,
   ...props
 }: IHeaderLinkProps) => {
@@ -74,7 +77,8 @@ export const HeaderLink = ({
     <a
       href={href}
       data-state={isActive ? 'active' : 'inactive'}
-      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[state=inactive]:hover:text-foreground/90 data-[state=active]:text-theme boldable-text-tab px-4 h-16"
+      data-mode={mode}
+      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[mode=dark]:text-white data-[state=active]:text-theme boldable-text-tab px-4 h-16"
       {...props}
       //onMouseEnter={handleMouseEnter}
       //onMouseLeave={handleMouseLeave}
@@ -83,7 +87,8 @@ export const HeaderLink = ({
         {children}
         <span
           ref={ref}
-          className="absolute w-full opacity-0 scale-x-80 left-0 bottom-0 bg-theme rounded-full group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
+          data-mode={mode}
+          className="absolute w-full opacity-0 scale-x-80 left-0 bottom-0 bg-theme data-[mode=dark]:bg-white rounded-full group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
           style={{ height: BAR_WIDTH }}
         />
       </span>

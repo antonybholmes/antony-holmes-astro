@@ -12,7 +12,7 @@ interface ICardContainerProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardContainer = forwardRef<HTMLDivElement, ICardContainerProps>(
   ({ className, gap = 'gap-y-4', children }, ref) => (
-    <ContentDiv className="py-8" ref={ref}>
+    <ContentDiv ref={ref}>
       <BaseCol className={cn(gap, className)}>{children}</BaseCol>
     </ContentDiv>
   )

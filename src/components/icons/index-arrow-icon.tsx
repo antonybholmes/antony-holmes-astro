@@ -1,7 +1,5 @@
 import { ICON_CLS, type IIconProps } from '@interfaces/icon-props'
 import { cn } from '@lib/shadcn-utils'
-import { gsap } from 'gsap'
-import { useEffect, useRef } from 'react'
 
 const Y2 = 12
 const Y1 = Y2 - 6
@@ -14,42 +12,42 @@ export function IndexArrowIcon({
   hover,
   className,
 }: IIconProps) {
-  const lineRef = useRef<SVGLineElement>(null)
-  const arrowRef = useRef<SVGPathElement>(null)
-  const animationRef = useRef<gsap.core.Timeline>(null)
+  // const lineRef = useRef<SVGLineElement>(null)
+  // const arrowRef = useRef<SVGPathElement>(null)
+  // const animationRef = useRef<gsap.core.Timeline>(null)
 
-  useEffect(() => {
-    if (lineRef.current && arrowRef.current) {
-      animationRef.current = gsap
-        .timeline()
-        .to(lineRef.current, {
-          opacity: 1,
-          duration: 0.5,
-          ease: 'power2.out',
-        })
-        .to(
-          arrowRef.current,
-          {
-            x: '6px',
-            duration: 0.5,
-            ease: 'elastic.out',
-          },
-          '<'
-        )
+  // useEffect(() => {
+  //   if (lineRef.current && arrowRef.current) {
+  //     animationRef.current = gsap
+  //       .timeline()
+  //       .to(lineRef.current, {
+  //         opacity: 1,
+  //         duration: 0.5,
+  //         ease: 'power2.out',
+  //       })
+  //       .to(
+  //         arrowRef.current,
+  //         {
+  //           x: '6px',
+  //           duration: 0.5,
+  //           ease: 'elastic.out',
+  //         },
+  //         '<'
+  //       )
 
-        .pause()
-    }
-  }, [])
+  //       .pause()
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    if (hover === 'on') {
-      animationRef.current?.play()
-    } else if (hover === 'off') {
-      animationRef.current?.reverse()
-    } else {
-      animationRef.current?.pause()
-    }
-  }, [hover])
+  // useEffect(() => {
+  //   if (hover === 'on') {
+  //     animationRef.current?.play()
+  //   } else if (hover === 'off') {
+  //     animationRef.current?.reverse()
+  //   } else {
+  //     animationRef.current?.pause()
+  //   }
+  // }, [hover])
 
   return (
     <svg
@@ -60,17 +58,17 @@ export function IndexArrowIcon({
       strokeWidth={strokeWidth}
     >
       <line
-        ref={lineRef}
+        //ref={lineRef}
         x1={7}
         y1={Y2}
         x2={18}
         y2={Y2}
-        className="opacity-0"
+        className="scale-x-0 duration-400 group-hover:scale-x-100 transition-transform origin-center"
       />
       <path
-        ref={arrowRef}
+        //ref={arrowRef}
         d={`M 9,${Y1} L 15,${Y2} L 9,${Y3}`}
-        //className="trans-transform group-hover:translate-x-[3px]"
+        className="transition-transform duration-500 ease-in-out group-hover:translate-x-[6px]"
       />
     </svg>
   )

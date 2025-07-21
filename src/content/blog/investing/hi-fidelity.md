@@ -36,7 +36,7 @@ Fidelity is a great one-stop-shop for all your banking and investing needs. I cu
 
 <!-- more -->
 
-# Investing
+## Investing
 
 Fidelity lets you buy basically any stock and ETF available, certainly all of the key total stock and total bonds you should be [using](/blog/2021-12-09-the-vanilla-investor) in your portfolio.
 
@@ -44,7 +44,7 @@ They were the first major brokerage to switch to fractional share trading on bas
 
 Fractional shares also mean you can ditch mutual funds and replace them with ETFs, but maintain the best of both. ETFs are usually tax efficient and portable between brokerages and since you can buy in dollar amounts you have essentially the same features of a mutual fund, which the added advantage of being able to trade them whenever you like instead of the end of the day.
 
-# Banking
+## Banking
 
 Fidelity offers a Cash Management account that comes with a debit card and is functionally equialent to a checking account.
 
@@ -59,7 +59,7 @@ It offers amongst other things:
 
 I've been a Fidelity convert for several years. It surprises me more people aren't given the nickel and diming and inconvenience of the most of the brick and mortar banks.
 
-# Credit Card
+## Credit Card
 
 Fidelity offers an unlimited 2% cash back credit card. It doesn't seem to get a lot of advertising so I'm not sure how prevalent it is (I've never seen anyone else with the card), but if you have a good/great credit score, it is an excellent card to have if you have a Fidelity account. The only criticism I have is the rather basic and not very user friendly website you have to use to manage the card, but this is more a fault of US Bank that Fidelity uses to manage the card.
 
@@ -72,4 +72,4 @@ Fidelity offers an unlimited 2% cash back credit card. It doesn't seem to get a 
 </ol>
 </div> -->
 
-_Do you have a Fidelity account? What were your experiences?_
+_Do you have a Fidelity account? What are your experiences?_

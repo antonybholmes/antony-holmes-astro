@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- UI fixes to headers and posts.
 - Cleaned up UI.
 
 

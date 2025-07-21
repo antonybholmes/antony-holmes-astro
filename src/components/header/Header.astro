@@ -5,6 +5,8 @@ import { VCenterRow } from '@components/layout/v-center-row'
 import ThemeToggle from '../ThemeToggle.astro'
 
 import { MENU_ITEMS } from '@/consts'
+import type { ColorMode } from '@/interfaces/color-mode'
+import { cn } from '@/lib/shadcn-utils'
 import ContentDiv from '@components/layout/ContentDiv.astro'
 import { Rss } from 'lucide-react'
 import { BaseLink } from '../link/base-link'
@@ -13,10 +15,20 @@ import { Logo } from './logo'
 
 const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '')
 const subpath = '/' + pathname.split('/')[0]
+
+interface Props {
+  tab?: string
+  mode?: ColorMode
+}
+
+const { tab = 'Home', mode = 'light' } = Astro.props
 ---
 
 <header
-  class="bg-background/75 sticky top-0 z-20 flex h-16 flex-col justify-center backdrop-blur-md"
+  data-mode={mode}
+  class={cn(
+    'sticky top-0 z-20 flex h-16 flex-col justify-center backdrop-blur-md bg-background/75'
+  )}
 >
   <nav class="flex grow flex-col justify-center">
     <ContentDiv className="grow items-center">
@@ -37,6 +49,7 @@ const subpath = '/' + pathname.split('/')[0]
                   aria-label={item.label}
                   href={item.path}
                   isActive={item.path === subpath}
+                  mode={mode}
                 >
                   {item.label}
                 </HeaderLink>

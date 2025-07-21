@@ -7,9 +7,10 @@ import { BaseCol } from './base-col'
 
 interface Props extends IClassProps {
   mode?: ColorMode
+  mainCls?: string
 }
 
-const { mode = 'light', className } = Astro.props
+const { mode = 'light', mainCls, className } = Astro.props
 ---
 
 <div
@@ -20,7 +21,9 @@ const { mode = 'light', className } = Astro.props
   )}
 >
   <BaseCol className="hidden h-full grow lg:flex"><slot name="left" /></BaseCol>
-  <BaseCol className="col-span-3 h-full grow"><slot name="main" /></BaseCol>
+  <BaseCol className={cn('col-span-3 h-full grow', mainCls)}
+    ><slot name="main" /></BaseCol
+  >
   <BaseCol className="hidden h-full grow lg:flex"><slot name="right" /></BaseCol
   >
 </div>

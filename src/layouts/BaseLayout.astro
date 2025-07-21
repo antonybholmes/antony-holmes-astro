@@ -1,12 +1,15 @@
 ---
+import type { ColorMode } from '@/interfaces/color-mode'
+import { cn } from '@/lib/shadcn-utils'
+import BaseHead from '@components/BaseHead.astro'
 import Footer from '@components/Footer.astro'
 import Header from '@components/header/Header.astro'
-import BaseHead from '@components/BaseHead.astro'
 import { type ILayoutProps } from '@interfaces/layout-props'
-import { cn } from '@/lib/shadcn-utils'
-import { BaseCol } from '@/components/layout/base-col'
 
-interface Props extends ILayoutProps {}
+interface Props extends ILayoutProps {
+  headerBg?: string
+  mode?: ColorMode
+}
 
 const BODY_CLS = 'margin-0 min-h-screen text-foreground flex flex-col grow'
 
@@ -18,6 +21,8 @@ const {
   className,
 } = Astro.props
 const cls = cn(BODY_CLS, bg)
+
+const { mode = 'light' } = Astro.props
 ---
 
 <html lang="en" class={cls}>
@@ -27,9 +32,9 @@ const cls = cn(BODY_CLS, bg)
   </head>
 
   <body class={cn(cls, className)}>
-    <Header tab={tab} />
+    <Header tab={tab} mode={mode} />
 
-    <BaseCol className="flex grow flex-col"><slot name="main" /></BaseCol>
+    <slot name="main" />
     <!-- <slot name="footer" /> -->
 
     <Footer />
