@@ -309,6 +309,12 @@
           "msg": "Updated fees calculator with sliders",
           "date": "2025-07-21T17:03:45.891Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Removed react from logo",
+          "date": "2025-07-21T17:13:33.714Z"
+        }
       ]
     },
     "author": "Antony Holmes",

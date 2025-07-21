@@ -303,6 +303,12 @@
           "msg": "UI fixes to headers and posts",
           "date": "2025-07-21T16:50:23.818Z"
         }
+      ],
+      "Added": [
+        {
+          "msg": "Updated fees calculator with sliders",
+          "date": "2025-07-21T17:03:45.891Z"
+        }
       ]
     },
     "author": "Antony Holmes",

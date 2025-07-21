@@ -35,14 +35,14 @@ export function Logo() {
 
   return (
     <HCenterRow
-      className="items-center w-12 h-12"
+      className="items-center w-12 h-12 group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <a
         ref={ref}
         href="/"
-        className="flex w-10 h-10 aspect-square rounded-[1rem] bg-gradient-to-br from-cyan-400 to-blue-500 flex-row items-center justify-center font-semibold text-lg text-white"
+        className="flex w-10 h-10 aspect-square rounded-[1rem] bg-gradient-to-br from-cyan-400 to-blue-500 flex-row items-center justify-center font-semibold text-lg text-white group-hover:rounded-[3rem] transition-rounded duration-500 ease-in-out"
         aria-label="Home"
       >
         ah

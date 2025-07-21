@@ -6,6 +6,10 @@
 
 - Updated fees calculator with sliders.
 
+### Changed
+
+- Removed react from logo.
+
 ### Fixed
 
 - UI fixes to headers and posts.
