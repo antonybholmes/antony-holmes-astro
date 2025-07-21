@@ -1,5 +1,4 @@
 import type { ILinkProps } from '@/interfaces/link-props'
-import { gsap } from 'gsap'
 import { useRef, useState } from 'react'
 
 const BAR_WIDTH = '3px'
@@ -57,19 +56,19 @@ export const HeaderLink = ({
   //   }
   // }, [])
 
-  const handleMouseEnter = () => {
-    if (!isActive) {
-      backRef.current?.pause()
-      animationRef.current?.restart()
-    }
-  }
+  // const handleMouseEnter = () => {
+  //   if (!isActive) {
+  //     backRef.current?.pause()
+  //     animationRef.current?.restart()
+  //   }
+  // }
 
-  const handleMouseLeave = () => {
-    if (!isActive) {
-      animationRef.current?.pause()
-      backRef.current?.restart()
-    }
-  }
+  // const handleMouseLeave = () => {
+  //   if (!isActive) {
+  //     animationRef.current?.pause()
+  //     backRef.current?.restart()
+  //   }
+  // }
 
   return (
     <a
@@ -77,14 +76,14 @@ export const HeaderLink = ({
       data-state={isActive ? 'active' : 'inactive'}
       className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[state=inactive]:hover:text-foreground/90 data-[state=active]:text-theme boldable-text-tab px-4 h-16"
       {...props}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      //onMouseEnter={handleMouseEnter}
+      //onMouseLeave={handleMouseLeave}
     >
       <span className="flex flex-row items-center justify-center h-14 relative">
         {children}
         <span
           ref={ref}
-          className="absolute w-full opacity-0 scale-0 left-0 bottom-0 bg-theme rounded-full group-hover:scale-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
+          className="absolute w-full opacity-0 scale-x-80 left-0 bottom-0 bg-theme rounded-full group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
           style={{ height: BAR_WIDTH }}
         />
       </span>

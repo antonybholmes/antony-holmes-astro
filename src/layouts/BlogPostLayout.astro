@@ -5,7 +5,7 @@ import FormattedDate from '../components/FormattedDate.astro'
 
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
-import { Calendar, Clock } from 'lucide-react'
+import { Calendar, Clock, Minus, Plus } from 'lucide-react'
 
 import { BaseCol } from '@/components/layout/base-col'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
@@ -18,6 +18,8 @@ import { growingSubsets } from '@/lib/utils'
 import ContentLayout from './ContentLayout.astro'
 import { HeroImageCaption } from '@/components/posts/hero-image-caption'
 import { StarRating } from '@/components/posts/star-rating'
+import { ThemeLink } from '@/components/link/theme-link'
+import { TARGET_BLANK } from '@/consts'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
 //   slug: string
@@ -100,11 +102,56 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
     <Fragment slot="main">
       <SidebarDiv>
         <header class="flex flex-col gap-y-4" slot="main">
+          <BaseCol className="text-foreground/50 justify-between gap-2 text-sm">
+            <VCenterRow className="gap-x-5">
+              <VCenterRow className="gap-x-1">
+                <Calendar
+                  className="stroke-foreground/40 w-5"
+                  strokeWidth={1.5}
+                />
+                <FormattedDate date={post.data.added} />
+              </VCenterRow>
+              <!-- <span
+                class="bg-foreground/25 aspect-square h-1.5 w-1.5 rounded-full"
+              ></span> -->
+              <VCenterRow className="gap-x-1">
+                <Clock className="stroke-foreground/40 w-5" strokeWidth={1.5} />
+                <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
+              >
+            </VCenterRow>
+
+            {
+              dataUpdated.getTime() !== post.data.added.getTime() && (
+                <span class="text-foreground/50 italic">
+                  Last updated on <FormattedDate date={dataUpdated} />
+                </span>
+              )
+            }
+          </BaseCol>
+
           <h1 class="text-3xl font-bold">
             {post.data.title}
           </h1>
 
-          {post.data.rating && <StarRating rating={post.data.rating} />}
+          <VCenterRow className="justify-between gap-x-4">
+            {post.data.rating && <StarRating rating={post.data.rating} />}
+
+            {
+              post.data.links && (
+                <VCenterRow className="gap-x-2">
+                  {post.data.links.map(link => (
+                    <ThemeLink
+                      href={link.url}
+                      target={TARGET_BLANK}
+                      startingColor="text-theme"
+                    >
+                      {link.title}
+                    </ThemeLink>
+                  ))}
+                </VCenterRow>
+              )
+            }
+          </VCenterRow>
 
           {
             post.data.description && (
@@ -135,35 +182,45 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
             )
           }
 
-          <BaseCol
-            className="text-foreground/50 border-theme/75 justify-between gap-2 border-b-2 pb-4 text-sm"
-          >
-            <VCenterRow className="gap-x-3">
-              <VCenterRow className="gap-x-1">
-                <Calendar
-                  className="stroke-foreground/40 w-5"
-                  strokeWidth={1.5}
-                />
-                <FormattedDate date={post.data.added} />
-              </VCenterRow>
-              <span class="bg-foreground/20 aspect-square h-2 w-2 rounded-full"
-              ></span>
-              <VCenterRow className="gap-x-1">
-                <Clock className="stroke-foreground/40 w-5" strokeWidth={1.5} />
-                <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
-              >
-            </VCenterRow>
-
-            {
-              dataUpdated.getTime() !== post.data.added.getTime() && (
-                <span class="text-foreground/50 italic">
-                  Last updated on <FormattedDate date={dataUpdated} />
-                </span>
-              )
-            }
-          </BaseCol>
-
           <!-- {post.data.tags && <Tags tags={post.data.tags} />} -->
+
+          {
+            post.data.pros && (
+              <section
+                id="pros-and-cons"
+                class="grid grid-cols-1 gap-6 text-sm lg:grid-cols-2"
+              >
+                <BaseCol className="gap-2 bg-emerald-50 p-6 rounded-2xl">
+                  <h3 class="text-lg font-semibold">Pros</h3>
+                  <ul class="flex flex-col gap-2">
+                    {post.data.pros.map(p => (
+                      <li class="flex flex-row items-center gap-x-2">
+                        <VCenterRow className="justify-center shrink-0 bg-emerald-400 rounded-full w-4.5 h-4.5 aspect-square">
+                          <Plus stroke="white" className="w-5 h-5" />
+                        </VCenterRow>
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </BaseCol>
+                {post.data.cons && (
+                  <BaseCol className="gap-2 bg-red-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold">Cons</h3>
+                    <ul class="flex flex-col gap-2">
+                      {post.data.cons.map(p => (
+                        <li class="flex flex-row items-center gap-x-2">
+                          <VCenterRow className="justify-center shrink-0 bg-red-400 rounded-full w-4.5 h-4.5 aspect-square">
+                            <Minus stroke="white" className="w-5 h-5" />
+                          </VCenterRow>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </BaseCol>
+                )}
+              </section>
+            )
+          }
 
           <section class="markdown post">
             <Content />

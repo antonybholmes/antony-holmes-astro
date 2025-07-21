@@ -31,6 +31,9 @@ export interface IPost {
     tags: string[]
     featured?: boolean
     draft?: boolean
+    pros?: string[]
+    cons?: string[]
+    links?: { title: string; url: string }[]
   }
 }
 

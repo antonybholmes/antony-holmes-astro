@@ -6,15 +6,17 @@ sections:
 type: review
 rating: 4.5
 pros:
-  - Unlimited 2% cash back.
-  - Cashback can be deposited into to any bank account.
+  - 'Unlimited 2% cash back.'
+  - 'Cashback can be deposited into to any bank account.'
 cons:
-  - Requires a Fidelity Cash Management or brokerage account.
-  - No special categories for cash back.
-  - The payment website has a terrible user interface.
+  - 'Requires a Fidelity Cash Management or brokerage account.'
+  - 'No special categories for cash back.'
+  - 'The payment website has a terrible user interface.'
 details:
   - Straightforward 2% cash back card.
-url: 'https://www.fidelity.com'
+links:
+  - title: 'Visit website'
+    url: 'https://www.fidelity.com'
 status: added
 title: Fidelity Rewards Credit Card
 

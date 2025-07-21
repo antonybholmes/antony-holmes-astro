@@ -9,9 +9,10 @@ pros:
   - No cost investing.
   - Early deposit of direct deposits.
   - Cashback automatically deposited into cgecking account.
-cons: -'Promotes funds with higher expense ratios over cheaper index versions.'
-  - 'App and website are a bit outdated.'
-  - 'Holds on money transfered in can be up to 4 days.'
+cons:
+  - Promotes funds with higher expense ratios over cheaper index versions.
+  - App and website are a bit outdated.
+  - Holds on money transfered in can be up to 4 days.
 details:
   - 'Basically no account fees.'
   - 'Unlimited 1.5% cash back credit card.'

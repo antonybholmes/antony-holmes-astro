@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0 (Jul, 2025)
+
+### Fixed
+
+- Cleaned up UI.
+
+
 ## 1.9 (Jul, 2025)
 
 ### Added
