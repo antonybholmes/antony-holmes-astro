@@ -12,6 +12,7 @@
 
 ### Fixed
 
+- Bug fixes and updates.
 - UI fixes to headers and posts.
 - Cleaned up UI.
 

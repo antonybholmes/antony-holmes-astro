@@ -197,7 +197,7 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
         <Fragment slot="main">
           {
             post.data.rating && (
-              <VCenterRow className="justify-end gap-x-4">
+              <VCenterRow className="gap-x-4">
                 {post.data.rating && <StarRating rating={post.data.rating} />}
               </VCenterRow>
             )
