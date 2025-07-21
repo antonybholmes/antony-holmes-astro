@@ -2,6 +2,10 @@
 
 ## 2.0 (Jul, 2025)
 
+### Added
+
+- Updated fees calculator with sliders.
+
 ### Fixed
 
 - UI fixes to headers and posts.

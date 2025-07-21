@@ -16,7 +16,7 @@ const UPDATE_INTERVAL_MS = 100
 
 export interface INumericalInputProps extends IInputProps {
   limit?: [number, number]
-  inc?: number
+  step?: number
   dp?: number
   /**
    * Callback that is run as you type. The returned number is
@@ -32,8 +32,8 @@ export interface INumericalInputProps extends IInputProps {
 
 export function NumericalInput({
   value = 0,
-  limit,
-  inc = 1,
+  limit = [0, 100],
+  step = 1,
   dp = 0,
   placeholder,
   onNumChange,
@@ -146,7 +146,6 @@ export function NumericalInput({
       w={w}
       className={className}
       inputCls="text-right"
-      step={inc}
       onKeyDown={e => {
         //console.log(e)
         if (e.key === 'Enter') {
@@ -166,11 +165,11 @@ export function NumericalInput({
             switch (e.key) {
               case 'ArrowUp':
               case 'ArrowRight':
-                _onNumChanged(_value + inc)
+                _onNumChanged(_value + step)
                 break
               case 'ArrowDown':
               case 'ArrowLeft':
-                _onNumChanged(_value - inc)
+                _onNumChanged(_value - step)
                 break
               default:
                 break
@@ -194,12 +193,12 @@ export function NumericalInput({
             data-enabled={!disabled}
             className={BUTTON_CLS}
             // onClick={() => {
-            //   _onNumChanged(_value.current + inc)
+            //   _onNumChanged(_value.current + step)
             // }}
-            onMouseDown={() => startUpdating(inc)}
+            onMouseDown={() => startUpdating(step)}
             onMouseUp={stopUpdating}
             onMouseLeave={stopUpdating}
-            onKeyDown={e => handleKeyDown(e, inc)}
+            onKeyDown={e => handleKeyDown(e, step)}
             onKeyUp={handleKeyUp}
           >
             <TriangleRightIcon
@@ -215,16 +214,16 @@ export function NumericalInput({
             data-enabled={!disabled}
             className={BUTTON_CLS}
             // onClick={() => {
-            //   _onNumChanged(_numValue - inc)
+            //   _onNumChanged(_numValue - step)
             // }}
 
             // onClick={() => {
-            //   _onNumChanged(_value.current - inc)
+            //   _onNumChanged(_value.current - step)
             // }}
-            onMouseDown={() => startUpdating(-inc)}
+            onMouseDown={() => startUpdating(-step)}
             onMouseUp={stopUpdating}
             onMouseLeave={stopUpdating}
-            onKeyDown={e => handleKeyDown(e, -inc)}
+            onKeyDown={e => handleKeyDown(e, -step)}
             onKeyUp={handleKeyUp}
           >
             <TriangleRightIcon

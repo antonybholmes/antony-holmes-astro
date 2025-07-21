@@ -3,6 +3,7 @@ import SidebarHeading from '@/components/graph/sidebar-heading'
 import { BaseCol } from '@/components/layout/base-col'
 import { SidebarDiv } from '@/components/layout/sidebar-div'
 import { NumericalInput } from '@/components/shadcn/ui/themed/numerical-input'
+import { Slider } from '@/components/shadcn/ui/themed/slider'
 import { useEffect, useState } from 'react'
 
 export function FeesPage() {
@@ -53,7 +54,7 @@ export function FeesPage() {
   }, [arr, er, startingBalance, frontLoad, savings, years])
 
   return (
-    <SidebarDiv>
+    <SidebarDiv className="mt-8">
       <div>
         <FeeGraph data1={data1} data2={data2} />
 
@@ -86,11 +87,11 @@ export function FeesPage() {
                   onChange={(v: number) => setARR(v)}
                   className="mt-4"
                 /> */}
-          {/* <Slider
-              value={arr}
-              onChange={(v: number) => setARR(v)}
-              className="mt-2"
-            /> */}
+          <Slider
+            value={[arr]}
+            onValueChange={(v: number[]) => setARR(v[0]!)}
+            className="mt-2"
+          />
         </div>
         <div>
           <SidebarHeading
@@ -98,13 +99,11 @@ export function FeesPage() {
             tooltip="Yearly cost to own fund as % of assets."
           />
           <NumericalInput value={er} onNumChange={setER} prefix="%" />
-          {/* <Slider
-              min={0}
-              max={100}
-              value={er}
-              onChange={(v: number) => setER(v)}
-              className="mt-2"
-            /> */}
+          <Slider
+            value={[er]}
+            onValueChange={(v: number[]) => setER(v[0]!)}
+            className="mt-2"
+          />
         </div>
         <div>
           <SidebarHeading
@@ -116,11 +115,11 @@ export function FeesPage() {
             prefix="%"
             onNumChange={setFrontLoad}
           />
-          {/* <Slider
-              value={frontLoad}
-              onChange={(v: number) => setFrontLoad(v)}
-              className="mt-2"
-            /> */}
+          <Slider
+            value={[frontLoad]}
+            onValueChange={(v: number[]) => setFrontLoad(v[0]!)}
+            className="mt-2"
+          />
         </div>
         <div>
           <SidebarHeading
@@ -129,46 +128,59 @@ export function FeesPage() {
           />
           <NumericalInput
             value={startingBalance}
+            limit={[1, 1000000]}
+            step={10000}
             prefix="$"
             onNumChange={setStartingBalance}
           />
-          {/* <Slider
-              value={startingBalance}
-              min={10000}
-              max={1000000}
-              step={10000}
-              onChange={(v: number) => setStartingBalance(v)}
-              className="mt-2"
-            /> */}
+          <Slider
+            value={[startingBalance]}
+            min={1}
+            max={1000000}
+            step={10000}
+            onValueChange={(v: number[]) => setStartingBalance(v[0]!)}
+            className="mt-2"
+          />
         </div>
         <div>
           <SidebarHeading
             title="Savings Per Month"
             tooltip="How much you save a month."
           />
-          <NumericalInput value={savings} prefix="$" onNumChange={setSavings} />
-          {/* <Slider
-              value={savings}
-              min={0}
-              max={100000}
-              step={1000}
-              onChange={(v: number) => setSavings(v)}
-              className="mt-2"
-            /> */}
+          <NumericalInput
+            value={savings}
+            limit={[0, 1000000]}
+            step={10000}
+            prefix="$"
+            onNumChange={setSavings}
+          />
+          <Slider
+            value={[savings]}
+            min={0}
+            max={100000}
+            step={1000}
+            onValueChange={(v: number[]) => setSavings(v[0]!)}
+            className="mt-2"
+          />
         </div>
         <div>
           <SidebarHeading
             title="Years"
             tooltip="How many years you want to invest for."
           />
-          <NumericalInput value={years} prefix="years" onNumChange={setYears} />
-          {/* <Slider
-              value={years}
-              min={1}
-              max={100}
-              onChange={(v: number) => setYears(v)}
-              className="mt-2"
-            /> */}
+          <NumericalInput
+            value={years}
+            limit={[1, 100]}
+            prefix="years"
+            onNumChange={setYears}
+          />
+          <Slider
+            value={[years]}
+            min={1}
+            max={100}
+            onValueChange={(v: number[]) => setYears(v[0]!)}
+            className="mt-2"
+          />
         </div>
       </BaseCol>
     </SidebarDiv>
