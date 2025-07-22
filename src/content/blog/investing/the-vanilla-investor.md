@@ -3,7 +3,7 @@ description: You get what you don't pay for.
 categories:
   - Investing
 type: post
-hero: 'vanilla-cake.webp'
+hero: 'vanilla-cake'
 heroAlt: "If you don't eat your cake, you can't have any pudding!"
 status: added
 title: The Vanilla Investor
@@ -16,8 +16,6 @@ tags:
 ---
 
 There's an old adage in financial circles that **you get what you don't pay for**.
-
-<!-- more -->
 
 Just like with vanilla ice cream, sometimes the simpliest, plainest option
 turns out to be the most financially delicious.
