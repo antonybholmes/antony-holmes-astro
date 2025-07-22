@@ -1,0 +1,10 @@
+---
+import { PortfolioPage, type IPortfolio } from '@/components/pages/portfolios'
+import ContentLayout from '../layouts/ContentLayout.astro'
+
+import portfolios from '../../public/api/portfolios.json'
+---
+
+<ContentLayout title="Portfolios">
+  <PortfolioPage portfolios={portfolios as IPortfolio[]} slot="main" />
+</ContentLayout>

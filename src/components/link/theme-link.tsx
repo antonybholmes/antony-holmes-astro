@@ -12,7 +12,7 @@ interface IThemeLinkProps extends ILinkProps {
 
 export function ThemeLink({
   ref,
-  startingColor = 'text-foreground',
+  startingColor = 'text-theme',
   endingColor = 'text-theme',
   className,
   children,

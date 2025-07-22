@@ -2,6 +2,10 @@
 
 ## 2.1 (Jul, 2025)
 
+### Added
+
+- Added portfolios page.
+
 ### Fixed
 
 - Bug fixes and updates.
