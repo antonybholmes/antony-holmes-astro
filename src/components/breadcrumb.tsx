@@ -72,6 +72,7 @@ export function Breadcrumb({
           href={crumb.path}
           aria-label={`Goto ${crumb.label}`}
           data-mode={mode}
+          startingColor="text-foreground"
           className="data-[mode=dark]:text-white"
         >
           {crumb.label}
