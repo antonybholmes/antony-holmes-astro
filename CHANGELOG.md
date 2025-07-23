@@ -6,6 +6,10 @@
 
 - Added portfolios page.
 
+### Changed
+
+- Reduced image size to 1600.
+
 ### Fixed
 
 - Bug fixes and updates.
