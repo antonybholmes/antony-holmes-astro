@@ -1,0 +1,43 @@
+---
+import { ThemeLink } from '@/components/link/theme-link'
+import ContentLayout from '@/layouts/ContentLayout.astro'
+import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
+import { numSort } from '@/lib/math/math'
+
+const posts = await getSortedPosts()
+
+// Extract tags from all posts
+const tagMap = new Map<number, PostWithHero[]>()
+
+for (const post of posts) {
+  const year = post.data.added.getFullYear()
+
+  if (!tagMap.has(year)) {
+    tagMap.set(year, [])
+  }
+
+  tagMap.get(year)!.push(post)
+}
+
+const tags = numSort([...tagMap.keys()])
+---
+
+<ContentLayout
+  title="Years"
+  description="This page lists all years used in the blog posts."
+>
+  <main slot="main" class="flex flex-col gap-y-8">
+    <h1 class="text-2xl font-bold">Years</h1>
+    <ul>
+      {
+        tags.map(tag => (
+          <li>
+            <ThemeLink href={`/blog/year/${tag}/`}>
+              {tag} ({tagMap.get(tag)!.length})
+            </ThemeLink>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</ContentLayout>

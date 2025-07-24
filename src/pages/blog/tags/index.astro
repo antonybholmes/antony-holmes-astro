@@ -1,18 +1,23 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
 import ContentLayout from '@/layouts/ContentLayout.astro'
+import { getSortedPosts } from '@/lib/astro/post'
 
-import { getCollection } from 'astro:content'
-
-const posts = await getCollection('blog')
+const posts = await getSortedPosts()
 
 // Extract tags from all posts
 const tagMap = new Map()
 
 for (const post of posts) {
-  if (!post.data.tags) continue
+  if (!post.data.tags) {
+    continue
+  }
+
   for (const tag of post.data.tags) {
-    if (!tagMap.has(tag)) tagMap.set(tag, [])
+    if (!tagMap.has(tag)) {
+      tagMap.set(tag, [])
+    }
+
     tagMap.get(tag).push(post)
   }
 }

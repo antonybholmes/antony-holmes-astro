@@ -21,7 +21,7 @@ export function BasePostCol({
   mode = 'light',
 }: Omit<IProps, 'title'>) {
   return (
-    <ul className="flex flex-col gap-y-6">
+    <ul className="flex flex-col gap-y-12">
       {posts.slice(0, maxPosts).map((post, index) => {
         return (
           <li key={index}>
@@ -30,8 +30,8 @@ export function BasePostCol({
               key={index}
               showSectionLinks={showSectionLinks}
               className={cn(
-                'data-[mode=dark]:border-white/50',
-                index > 0 && 'pt-6 border-border border-t'
+                'data-[mode=dark]:border-white/50'
+                //index > 0 && 'pt-6 border-border border-t'
               )}
               showAvatar={showAvatar}
               mode={mode}

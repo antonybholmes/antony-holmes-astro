@@ -8,6 +8,7 @@
 
 ### Changed
 
+- UI fixes.
 - Reduced image size to 1600.
 
 ### Fixed

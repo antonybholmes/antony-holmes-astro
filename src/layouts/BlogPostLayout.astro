@@ -102,13 +102,13 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
 
   <article slot="main" class="mt-8 flex flex-col gap-y-16">
     <header>
-      <ContentDiv slot="main" mainCls="gap-y-8">
+      <ContentDiv slot="main" mainCls="gap-y-12">
         <Fragment slot="main">
           <Breadcrumb crumbs={crumbs} mode="light" />
 
           <VCenterRow
             data-mode="light"
-            className="text-foreground/50 mt-8 justify-between gap-2 text-sm data-[mode=dark]:text-white"
+            className="text-foreground/50 justify-between gap-2 text-sm data-[mode=dark]:text-white"
           >
             <VCenterRow className="gap-x-6">
               <VCenterRow className="gap-x-1">
@@ -151,7 +151,7 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
 
           <BaseCol className="gap-y-2">
             <h1
-              class="text-3xl font-bold data-[mode=dark]:text-white"
+              class="text-4xl font-bold data-[mode=dark]:text-white"
               data-mode="light"
             >
               {post.data.title}

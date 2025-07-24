@@ -63,12 +63,12 @@ export function IndexArrowIcon({
         y1={Y2}
         x2={18}
         y2={Y2}
-        className="scale-x-0 duration-400 group-hover:scale-x-100 transition-transform origin-center"
+        className="scale-x-0 duration-300 group-hover:scale-x-100 transition-transform origin-center"
       />
       <path
         //ref={arrowRef}
         d={`M 9,${Y1} L 15,${Y2} L 9,${Y3}`}
-        className="transition-transform duration-500 ease-in-out group-hover:translate-x-[6px]"
+        className="transition-transform duration-300 ease-in-out group-hover:translate-x-[6px]"
       />
     </svg>
   )

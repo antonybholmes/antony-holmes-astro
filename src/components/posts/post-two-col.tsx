@@ -21,7 +21,7 @@ export function PostTwoCol({
 }: IProps) {
   return (
     <PostSection title={title} href={href} headerChildren={children}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {posts.slice(0, maxPosts).map((post, index) => {
           return (
             <HeroPostSmall
@@ -29,8 +29,8 @@ export function PostTwoCol({
               key={index}
               showSectionLinks={showSectionLinks}
               className={cn(
-                'data-[mode=dark]:border-white/50',
-                index > 1 && 'pt-6 border-border border-t'
+                'data-[mode=dark]:border-white/50'
+                //index > 1 && 'pt-6 border-border border-t'
               )}
             />
           )
