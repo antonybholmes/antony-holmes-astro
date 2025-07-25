@@ -51,16 +51,16 @@ export function TableOfContents() {
   }
 
   return (
-    <nav className="text-sm">
+    <nav>
       <h2 className="mb-4 text-base font-semibold border-b border-border/50 pb-2">
         Table of Contents
       </h2>
-      <ul className="font-medium">
+      <ul className="text-sm">
         {headings.map(({ id, text, level }) => (
           <li key={id} data-active={activeId === id} className="">
             <button
               data-active={activeId === id}
-              className="w-full text-left text-foreground hover:text-theme hover:underline   data-[active=true]:text-theme data-[active=true]:bg-theme/10 rounded-theme py-2"
+              className="w-full text-left text-foreground hover:text-theme hover:underline data-[active=true]:font-semibold data-[active=true]:text-theme data-[active=true]:bg-theme/10 rounded-theme py-2"
               onClick={() =>
                 document
                   .getElementById(id)

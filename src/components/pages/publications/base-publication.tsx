@@ -57,7 +57,6 @@ export function BasePublication({
   publication,
   showAbstract = false,
   showCount = false,
-
   className,
 }: BasePublicationProps) {
   const [isExpanded, setExpanded] = useState(false)
@@ -154,9 +153,6 @@ export function BasePublication({
       <div className="grow group">
         <BaseRow className="gap-x-2">
           <div className="grow">
-            {/* <ul className="m-0 flex flex-row flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
-          {links.map(link => link)}
-        </ul> */}
             <h2>
               {url !== '' ? (
                 <ThemeLink

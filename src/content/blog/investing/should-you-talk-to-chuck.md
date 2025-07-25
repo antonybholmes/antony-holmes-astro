@@ -4,7 +4,7 @@ description: My review of Schwab.
 sections:
   - Reviews/Brokerages
 type: review
-rating: 4
+rating: 4.2
 pros:
   - No cost investing.
   - Early deposit of direct deposits.

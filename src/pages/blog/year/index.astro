@@ -19,7 +19,7 @@ for (const post of posts) {
   tagMap.get(year)!.push(post)
 }
 
-const tags = numSort([...tagMap.keys()])
+const tags = numSort([...tagMap.keys()]).reverse() // Sort years in descending order
 ---
 
 <ContentLayout
