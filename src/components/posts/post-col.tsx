@@ -1,7 +1,6 @@
 import type { IPostsProps } from './hero-posts'
 
 import type { IChildrenProps } from '@/interfaces/children-props'
-import { cn } from '@/lib/shadcn-utils'
 import { HeroPostSmall } from './hero-post-small'
 import { PostSection } from './post-section'
 
@@ -29,10 +28,7 @@ export function BasePostCol({
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}
-              className={cn(
-                'data-[mode=dark]:border-white/50'
-                //index > 0 && 'pt-6 border-border border-t'
-              )}
+              className="border border-border/50 shadow-lg rounded-xl overflow-hidden"
               showAvatar={showAvatar}
               mode={mode}
             />

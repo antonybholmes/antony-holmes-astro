@@ -1,0 +1,26 @@
+---
+title: "Blog Homage Example"
+author: "Your Name"
+date: "2025-07-28"
+excerpt: "A beautiful homage to blog posts using Astro and Tailwind CSS."
+image: "/public/img/blog-placeholder-1.jpg"
+---
+
+<article class="max-w-2xl mx-auto bg-white dark:bg-zinc-900 rounded-2xl shadow-lg overflow-hidden border border-zinc-200 dark:border-zinc-800">
+  <img src={frontmatter.image} alt={frontmatter.title} class="w-full h-64 object-cover" />
+  <div class="p-8">
+    <h1 class="text-3xl font-bold text-zinc-900 dark:text-white mb-2">{frontmatter.title}</h1>
+    <p class="text-zinc-500 dark:text-zinc-400 mb-4">{frontmatter.excerpt}</p>
+    <div class="flex items-center gap-x-4 mb-6">
+      <img src="/public/img/people/author.jpg" alt={frontmatter.author} class="w-10 h-10 rounded-full border border-zinc-300 dark:border-zinc-700" />
+      <div>
+        <p class="text-sm font-medium text-zinc-700 dark:text-zinc-300">{frontmatter.author}</p>
+        <p class="text-xs text-zinc-400 dark:text-zinc-500">{frontmatter.date}</p>
+      </div>
+    </div>
+    <slot />
+    <div class="mt-8 flex justify-end">
+      <a href="/blog" class="inline-block px-6 py-2 rounded-full bg-amber-400 text-zinc-900 font-semibold shadow hover:bg-amber-500 transition">Back to Blog</a>
+    </div>
+  </div>
+</article>
