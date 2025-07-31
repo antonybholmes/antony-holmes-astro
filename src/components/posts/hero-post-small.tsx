@@ -39,9 +39,9 @@ export function HeroPostSmall({
       )}
     >
       {post.data.resolvedHero && (
-        <PostImage post={post} className="h-full grow col-span-1" />
+        <PostImage post={post} className="col-span-1 aspect-4/3 rounded-xl" />
       )}
-      <BaseCol className="col-span-2 gap-y-1 py-4">
+      <BaseCol className="col-span-2 gap-y-1">
         <BaseCol>
           {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink

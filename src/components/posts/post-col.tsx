@@ -28,7 +28,7 @@ export function BasePostCol({
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}
-              className="border border-border/50 shadow-lg rounded-xl overflow-hidden"
+              //className="border border-border/50 shadow-lg rounded-xl overflow-hidden"
               showAvatar={showAvatar}
               mode={mode}
             />
