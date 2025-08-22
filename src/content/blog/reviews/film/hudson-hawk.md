@@ -4,6 +4,7 @@ added: '2025-07-15'
 updated: '2025-07-19'
 description: What a classic
 featured: true
+draft: true
 authors:
   - 'Antony Holmes'
 sections:
