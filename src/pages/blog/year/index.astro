@@ -1,5 +1,6 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
+import { BLOG_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { numSort } from '@/lib/math/math'
@@ -32,7 +33,7 @@ const tags = numSort([...tagMap.keys()]).reverse() // Sort years in descending o
       {
         tags.map(tag => (
           <li>
-            <ThemeLink href={`/blog/year/${tag}/`}>
+            <ThemeLink href={`${BLOG_SLUG}/year/${tag}/`}>
               {tag} ({tagMap.get(tag)!.length})
             </ThemeLink>
           </li>

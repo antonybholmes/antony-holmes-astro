@@ -1,4 +1,5 @@
 ---
+import { BLOG_SLUG } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
 import { format } from 'date-fns'
 
@@ -14,7 +15,7 @@ const formattedYear = format(date, 'yyyy')
 
 <time datetime={date.toISOString()} class={className}>
   {formattedDate}, <a
-    href={`/blog/year/${formattedYear}`}
+    href={`${BLOG_SLUG}/year/${formattedYear}`}
     class="hover:underline">{formattedYear}</a
   >
 </time>

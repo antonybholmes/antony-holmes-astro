@@ -1,5 +1,6 @@
 ---
 // src/components/LatestPosts.astro
+import { BLOG_SLUG } from '@/consts'
 import { getSortedPosts } from '@/lib/astro/post'
 import FormattedDate from './FormattedDate.astro'
 
@@ -15,7 +16,7 @@ const latestPosts = posts.slice(0, 5)
     {
       latestPosts.map(post => (
         <li>
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <a href={`${BLOG_SLUG}/${post.id}`}>{post.data.title}</a>
           <br />
           <small>
             <FormattedDate date={post.data.added} />

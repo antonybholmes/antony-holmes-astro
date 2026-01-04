@@ -121,7 +121,7 @@ export const MENU_ITEMS: {
   },
   {
     label: 'Blog',
-    path: '/blog',
+    path: BLOG_SLUG,
     icon: 'blog',
     ariaLabel: 'Blog',
   },

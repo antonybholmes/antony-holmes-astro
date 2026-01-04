@@ -1,4 +1,5 @@
 ---
+import { BLOG_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { paginate } from '@/lib/paginate'
@@ -55,7 +56,7 @@ export async function getStaticPaths() {
           title: `Posts from ${year}`,
           pageTitle: `Posts from ${year} - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
-          root: `/blog/year/${slug}`,
+          root: `${BLOG_SLUG}/year/${slug}`,
         },
       }))
     )

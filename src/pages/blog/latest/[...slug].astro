@@ -1,7 +1,8 @@
 ---
-import { paginate } from '@lib/paginate'
 import { getSortedPosts } from '@lib/astro/post'
+import { paginate } from '@lib/paginate'
 
+import { BLOG_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 
 export async function getStaticPaths() {
@@ -15,10 +16,10 @@ export async function getStaticPaths() {
     props: {
       ...p.props,
       title: 'Latest',
-      pageTitle: `Latest posts - Page ${p.props.page + 1} of ${p.props.pages}`,
+      pageTitle: `Latest Posts - Page ${p.props.page + 1} of ${p.props.pages}`,
       showTitle: true,
       featuredPosts: p.props.page === 0 ? featuredPosts : [],
-      root: '/blog/latest',
+      root: `${BLOG_SLUG}/latest`,
     },
   }))
 
@@ -35,7 +36,7 @@ const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root="/blog/latest"
+  root=`${BLOG_SLUG}/latest`
   showTitle={true}
   showSectionLinks={true}
 />

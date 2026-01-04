@@ -15,7 +15,7 @@ import { ThemeIndexLink } from '@/components/link/theme-index-link'
 import { HeroImageCaption } from '@/components/posts/hero-image-caption'
 import { StarRating } from '@/components/posts/star-rating'
 import SideTags from '@/components/SideTags.astro'
-import { TARGET_BLANK } from '@/consts'
+import { BLOG_SLUG, TARGET_BLANK } from '@/consts'
 import type { PostWithHero } from '@/lib/astro/post'
 import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
@@ -64,7 +64,7 @@ const ogImage = `/img/og/${slug}.webp` //png
 const crumbs: ICrumb[] = [
   {
     label: 'Blog',
-    path: '/blog',
+    path: BLOG_SLUG,
   },
 ]
 
@@ -82,7 +82,7 @@ if (section) {
     const name = part[part.length - 1]! // last part is the full section name
     crumbs.push({
       label: name,
-      path: `/blog/${getUrlFriendlyTag(part.join('/'))}`,
+      path: `${BLOG_SLUG}/${getUrlFriendlyTag(part.join('/'))}`,
     })
   }
 }

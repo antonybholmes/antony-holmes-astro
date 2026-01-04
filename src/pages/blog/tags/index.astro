@@ -1,5 +1,6 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
+import { BLOG_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 
@@ -35,7 +36,7 @@ const tags = [...tagMap.keys()].sort()
       {
         tags.map(tag => (
           <li>
-            <ThemeLink href={`/blog/tag/${tag.toLowerCase()}/`}>
+            <ThemeLink href={`${BLOG_SLUG}/tag/${tag.toLowerCase()}/`}>
               {tag} ({tagMap.get(tag).length})
             </ThemeLink>
           </li>

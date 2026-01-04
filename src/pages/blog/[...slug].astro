@@ -1,4 +1,5 @@
 ---
+import { BLOG_SLUG } from '@/consts'
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
 
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
@@ -6,6 +7,7 @@ import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { getPostSectionMap } from '@/lib/astro/sections'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { paginate, type PaginationType } from '@/lib/paginate'
+import { getPostSlugs } from '@/lib/post'
 
 // interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
 //   title: string
@@ -36,13 +38,12 @@ export async function getStaticPaths() {
     // this is useful for SEO and readability
 
     // url friendly last part of the id
-    const id = post.id.split('/').pop()
+    const slugs = getPostSlugs(post)
 
-    for (const section of post.data.sections) {
+    for (const slug of slugs) {
       // we decouple the file storage structure from the URL structure
       // by flattening the slug to only use the last part of the path
       // and combining it with the section
-      const slug = `${getUrlFriendlyTag(section)}/${id}`
 
       // path for a post is the flattened slug without sections
       paths.push({
@@ -93,7 +94,7 @@ export async function getStaticPaths() {
     const sectionParts = section.split('/').map(part => part.trim())
     const title = sectionParts.pop()!
     const slug = getUrlFriendlyTag(section)
-    const root = `/blog/${slug}`
+    const root = `${BLOG_SLUG}/${slug}`
 
     const pages = paginate(otherPosts, slug).map(p => ({
       ...p,
@@ -133,8 +134,8 @@ const { type, title, root, page, pages, data, featuredPosts } = Astro.props
       posts={data}
       featuredPosts={featuredPosts}
       root={root}
-      showSectionLinks={root === '/blog'}
-      showTitle={root !== '/blog'}
+      showSectionLinks={root === BLOG_SLUG}
+      showTitle={root !== BLOG_SLUG}
     />
   )
 }

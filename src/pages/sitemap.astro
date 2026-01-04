@@ -1,5 +1,6 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
+import { BLOG_SLUG } from '@/consts'
 import { capitalCase } from '@/lib/text/capital-case'
 import { getCollection } from 'astro:content'
 import fs from 'fs'
@@ -15,7 +16,7 @@ const staticRoutes = [
 // 2. Dynamic routes from content collection (e.g. blog)
 const blogPosts = await getCollection('blog')
 const blogRoutes = blogPosts.map(post => ({
-  url: `/blog/${post.id}`,
+  url: `${BLOG_SLUG}/${post.id}`,
   title: post.data.title || post.id,
 }))
 

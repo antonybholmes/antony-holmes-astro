@@ -1,6 +1,6 @@
 ---
+import { BLOG_SLUG } from '@/consts'
 import { Tag } from 'lucide-react'
-import { VCenterRow } from './layout/v-center-row'
 
 type Props = { tags?: string[] }
 
@@ -15,8 +15,8 @@ const sortedTags =
   <li><Tag className="stroke-foreground/40 h-5 w-5" strokeWidth={1.5} /></li>
   {
     sortedTags.map(tag => (
-      <li class="bg-theme/75 hover:bg-theme/100 trans-color rounded-theme px-3 py-1 text-sm font-bold text-white">
-        <a href={`/blog/tag/${tag}`}>#{tag}</a>
+      <li class="bg-theme/75 hover:bg-theme trans-color rounded-theme px-3 py-1 text-sm font-bold text-white">
+        <a href={`${BLOG_SLUG}/tag/${tag}`}>#{tag}</a>
       </li>
     ))
   }

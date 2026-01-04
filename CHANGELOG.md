@@ -6,6 +6,10 @@
 
 - Slugs now decoupled from file system.
 
+### Fixed
+
+- Fixed links using hard code /blog to using variable.
+
 
 ## 2.2 (Jul, 2025)
 

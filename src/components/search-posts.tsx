@@ -1,3 +1,4 @@
+import { BLOG_SLUG } from '@/consts'
 import { httpFetch } from '@/lib/http/http-fetch'
 import { Document } from 'flexsearch'
 import { useEffect, useRef, useState } from 'react'
@@ -122,7 +123,7 @@ export default function SearchReact() {
         {results.map(result => (
           <li key={result.id} className="w-full">
             <a
-              href={`/blog/${result.id}`}
+              href={`${BLOG_SLUG}/${result.id}`}
               className="hover:bg-muted/50 p-1.5 w-full block"
             >
               {result.title}
