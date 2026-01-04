@@ -29,7 +29,7 @@ export const CenteredCardContainer = forwardRef<
 ))
 CenteredCardContainer.displayName = 'CenteredCardContainer'
 
-export const variants = cva('border border-border/50', {
+export const variants = cva('border border-border/25', {
   variants: {
     variant: {
       default: 'bg-background p-6',

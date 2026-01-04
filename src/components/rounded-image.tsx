@@ -2,6 +2,10 @@ import { cn } from '@/lib/shadcn-utils'
 import type { ComponentProps } from 'react'
 
 export function RoundedImage({ className, ...props }: ComponentProps<'img'>) {
+  if (!props.alt) {
+    props.alt = props.title
+  }
+
   return (
     <div
       className={cn(

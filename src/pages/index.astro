@@ -26,77 +26,79 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <ContentDiv slot="main">
-    <BaseCol className="gap-y-16" slot="main">
-      <BaseCol className="gap-y-8">
-        <VCenterRow className="justify-between">
-          <BaseCol className="gap-y-2">
-            <h1 class="text-5xl font-semibold">
-              <a
-                href="/"
-                class="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-              >
-                {SITE_TITLE}
-              </a>
-            </h1>
+  <BaseCol className="gap-y-16 pt-4" slot="main">
+    <ContentDiv>
+      <VCenterRow className="justify-between" slot="main">
+        <BaseCol className="gap-y-2">
+          <h1 class="text-5xl font-semibold">
+            <a
+              href="/"
+              class="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+            >
+              >{SITE_TITLE}
+            </a>
+          </h1>
 
-            <h2 class="text-foreground/75 text-2xl font-medium">
-              {SITE_SUBTITLE}
-            </h2>
-          </BaseCol>
+          <h2 class="text-foreground/75 text-2xl font-medium">
+            {SITE_SUBTITLE}
+          </h2>
+        </BaseCol>
 
-          <RoundedImage
-            className="mr-8 -mb-16 h-50 w-50"
-            src="/img/people/antony-holmes.webp"
-            alt="Antony Holmes Logo"
-          />
-        </VCenterRow>
+        <RoundedImage
+          className="mr-8 -mb-28 aspect-square h-54 w-54 shadow-lg"
+          src="/img/people/antony-holmes.webp"
+          title="That's me by the Hudson River"
+        />
+      </VCenterRow>
+    </ContentDiv>
 
-        <section
-          class="from-theme/5 to-theme/10 flex flex-col gap-y-3 rounded-3xl bg-linear-to-br p-10"
-        >
-          <p class="mb-4 text-3xl font-bold">Hi there! I'm Antony.</p>
+    <ContentDiv
+      className="gap-y-4 bg-linear-to-r from-blue-950 via-blue-800 to-indigo-950 py-24 text-white/90"
+    >
+      <section class="flex flex-col gap-y-3" slot="main">
+        <p class="mb-4 text-3xl font-bold">Hi there! I'm Antony.</p>
 
-          <p>
-            I'm a researcher and software engineer who's learned how to do a few
-            cool things with Java, Python, C++, Go, React, Next.js, and Astro,
-            some of which were used to make the very site you're looking at
-            right now.
-          </p>
+        <p>
+          I'm a researcher and software engineer who's learned how to do a few
+          cool things with Java, Python, C++, Go, React, Next.js, and Astro,
+          some of which were used to make the very site you're looking at right
+          now.
+        </p>
 
-          <p>
-            That's me posing by the mighty Hudson River for no particular
-            reason, except maybe to look cool wearing Risky Business sunglasses.
-          </p>
+        <p>
+          That's me posing by the mighty Hudson River for no particular reason,
+          except maybe to look cool wearing Risky Business sunglasses.
+        </p>
 
-          <p>
-            I made this site with love and to try and get high{' '}
-            <ThemeLink
-              href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
-              >Lighthouse</ThemeLink
-            >{' '}
-            scores. I think I mostly succeeded.
-          </p>
+        <p>
+          I made this site with love and to try and get high{' '}
+          <ThemeLink
+            href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
+            >Lighthouse</ThemeLink
+          >{' '}
+          scores. I think I mostly succeeded.
+        </p>
 
-          <p>
-            My blog covers an assortment of topics, mostly on tech, finance and
-            whatever else takes my fancy.
-          </p>
+        <p>
+          My blog covers an assortment of topics, mostly on tech, finance and
+          whatever else takes my fancy.
+        </p>
 
-          <p>
-            I have an aptly named publications page where you can view all of
-            the scientific literature I have written, primarily focused on
-            cancer genetics.
-          </p>
+        <p>
+          I have an aptly named publications page where you can view all of the
+          scientific literature I have written, primarily focused on cancer
+          genetics.
+        </p>
 
-          <p>
-            My life story probably won't be optioned, but if it is, I hope the
-            movie contains the music of Kraftwerk.
-          </p>
-        </section>
-      </BaseCol>
+        <p>
+          My life story probably won't be optioned, but if it is, I hope the
+          movie contains the music of Kraftwerk.
+        </p>
+      </section>
+    </ContentDiv>
 
-      <section id="latest" class="flex flex-col gap-y-8">
+    <ContentDiv className="gap-y-4">
+      <section id="latest" class="flex flex-col gap-y-8" slot="main">
         <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
 
         <BaseCol className="gap-y-24">
@@ -107,9 +109,11 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           <!-- <PagePagination page={0} pages={pages} root={root} /> -->
         </BaseCol>
       </section>
-    </BaseCol>
-  </ContentDiv>
-  <!-- <PostSection title="Latest posts">
+    </ContentDiv>
+  </BaseCol>
+</BaseLayout>
+
+<!-- <PostSection title="Latest posts">
       <BaseLink
         href="/blog/latest"
         data-underline={true}
@@ -121,4 +125,3 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
         />
       </BaseLink>
     </PostSection> -->
-</BaseLayout>

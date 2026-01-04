@@ -30,7 +30,7 @@ export function AboutPage({ children }: IChildrenProps) {
   return (
     <CenterCol>
       <Card
-        className="text-sm shadow-sm w-128"
+        className="text-sm shadow-md w-lg"
         style={{ paddingLeft: 0, paddingRight: 0 }}
       >
         <VCenterRow className="gap-x-4 py-2 px-6">
@@ -75,7 +75,7 @@ export function AboutPage({ children }: IChildrenProps) {
           </ThemeLink>
         </VCenterRow>
       </Card>
-      <Card className="text-sm shadow-sm w-128 mt-8">
+      <Card className="text-sm shadow-md w-lg mt-8">
         <BaseCol className="gap-y-1">
           <p>{APP_NAME}</p>
           <p>
