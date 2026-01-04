@@ -10,7 +10,7 @@ export function getPostSectionMap(
   const sectionMap = new Map<string, PostWithHero[]>()
 
   //sectionMap.set('All', posts)
-  sectionMap.set('All categories', max === -1 ? posts : posts.slice(0, max))
+  sectionMap.set('All', max === -1 ? posts : posts.slice(0, max))
 
   for (const post of posts) {
     for (const section of post.data.sections ?? []) {
@@ -36,10 +36,10 @@ export function getPostSectionMap(
   return sectionMap
 }
 
-let cachedSections: string[] | null = null
+//let cachedSections: string[] | null = null
 
 export async function getUniqueSections(): Promise<string[]> {
-  if (cachedSections) return cachedSections
+  //if (cachedSections) return cachedSections
 
   const posts = await getCollection('blog')
 
@@ -54,7 +54,7 @@ export async function getUniqueSections(): Promise<string[]> {
     }
   }
 
-  cachedSections = [...sections].sort()
+  const cachedSections = [...sections].sort()
 
   return cachedSections
 }

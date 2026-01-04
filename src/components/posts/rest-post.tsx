@@ -34,12 +34,11 @@ export function RestPost({
       data-mode={mode}
       className={cn(
         'group flex flex-col gap-y-4 data-[mode=dark]:text-white',
-
         className
       )}
     >
       {post.data.resolvedHero && (
-        <PostImage post={post} className="aspect-16/9 w-full rounded-xl" />
+        <PostImage post={post} className="aspect-video w-full rounded-xl" />
       )}
       <BaseCol className="gap-y-1">
         <BaseCol>

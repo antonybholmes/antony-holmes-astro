@@ -34,14 +34,14 @@ export function PostSectionCol({ section, href, postMap }: IProps) {
       posts={posts ?? []}
       page={0}
       pages={0}
-      showSectionLinks={_section === 'All categories'}
+      showSectionLinks={_section === 'All'}
     >
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger className="flex flex-row items-center gap-x-1 text-sm">
           <span>{formatSection(_section)}</span>
           <ChevronRightIcon
             data-open={open}
-            className="data-[open=false]:rotate-90 data-[open=true]:-rotate-90 transition-all trans-500"
+            className="data-[open=false]:rotate-90 data-[open=true]:-rotate-90 transition-transform duration-500"
           />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">

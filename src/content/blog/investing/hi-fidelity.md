@@ -21,7 +21,7 @@ details:
 url: 'https://www.fidelity.com'
 status: added
 title: 'Hi, Fidelity'
-slug: hi-fidelity
+
 authors:
   - Antony Holmes
 added: '2022-07-18'

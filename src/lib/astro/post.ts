@@ -55,6 +55,7 @@ export function sortPostsByDateDesc(
   posts: CollectionEntry<'blog'>[]
 ): CollectionEntry<'blog'>[] {
   const ret = posts
+    .filter(post => !post.id.endsWith('_index.md'))
     // .filter(post => {
     //   return (
     //     process.env.NODE_ENV === "development" ||
@@ -78,16 +79,6 @@ export function sortPostsByDateDesc(
   return ret
 }
 
-// export function getPostExcerpt(post: CollectionEntry<'blog'>) {
-//   const sentences = (post.body ?? '').split('\n').filter(x => x.length > 0)
-
-//   if (sentences.length > 0) {
-//     return sentences[0]
-//   } else {
-//     return ''
-//   }
-// }
-
 export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
   let posts = await getCollection('blog')
 
@@ -106,12 +97,54 @@ export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
     posts = posts.filter(({ data }) => data.draft !== true)
   }
 
+  // remove index posts
+  posts = posts.filter(post => !post.id.endsWith('_index.md'))
+
   // fix id to flatten the path
-  posts = posts.map(post => {
-    // flatten the path to just the slug
-    post.id = post.id.split('/').pop() ?? post.id
-    return post
-  })
+  // posts = posts.map(post => {
+  //   // flatten the path to just the slug
+  //   post.id = post.id.split('/').pop() ?? post.id
+  //   return post
+  // })
+
+  return posts
+}
+
+export async function getOrderedSections(): Promise<CollectionEntry<'blog'>[]> {
+  let posts = await getCollection('blog')
+
+  // filter out posts that are drafts
+  // this is useful for development so we can see all posts
+  // but in production we only want to show published posts
+  // and not drafts
+  // this is also useful for the blog page where we want to show
+  // all posts but not drafts
+  // so we can use this function to get all posts
+  // and then filter out drafts
+  // in the component that renders the posts
+  // this way we can still see drafts in development
+  // but not in production
+
+  // keep index posts
+  posts = posts
+    .filter(post => post.id.endsWith('_index.md'))
+    .sort((a, b) => {
+      let d = (a.data.order ?? 0) - (b.data.order ?? 0)
+
+      if (d !== 0) {
+        return d
+      }
+
+      // dates equal so compare names
+      return a.data.title.localeCompare(b.data.title)
+    })
+
+  // fix id to flatten the path
+  // posts = posts.map(post => {
+  //   // flatten the path to just the slug
+  //   post.id = post.id.split('/').pop() ?? post.id
+  //   return post
+  // })
 
   return posts
 }

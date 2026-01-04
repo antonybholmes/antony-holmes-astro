@@ -11,6 +11,7 @@ const blog = defineCollection({
       // Transform string to Date object
       title: z.string(),
       description: z.string().optional(),
+      order: z.number().optional(),
       authors: z.array(z.string()).optional(),
       // Transform string to Date object
       added: z.string().transform<Date>(str => parseISO(str)),
@@ -23,7 +24,7 @@ const blog = defineCollection({
       //heroAlt: z.string().optional(),
       heroAlt: z.string().optional(),
       tags: z.array(z.string()).optional(),
-      sections: z.array(z.string()).optional(),
+      sections: z.array(z.string()),
       featured: z.boolean().optional(),
       draft: z.boolean().optional(),
       rating: z.number().min(0).max(5).optional(),
@@ -48,6 +49,7 @@ const notes = defineCollection({
     z.object({
       title: z.string(),
       description: z.string().optional(),
+      order: z.number().optional(),
       authors: z.array(z.string()).optional(),
       // Transform string to Date object
       added: z.string().transform<Date>(str => parseISO(str)),

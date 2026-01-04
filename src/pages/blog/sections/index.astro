@@ -10,7 +10,6 @@ const posts = await getCollection('blog')
 const tagMap = new Map()
 
 for (const post of posts) {
-  if (!post.data.sections) continue
   for (const tag of post.data.sections) {
     if (!tagMap.has(tag)) tagMap.set(tag, [])
     tagMap.get(tag).push(post)

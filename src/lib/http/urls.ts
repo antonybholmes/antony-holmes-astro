@@ -59,6 +59,9 @@ export function getUrlFriendlyTag(tag: string): string {
     .replaceAll('&', ' and ') //  ensures that in cases like x&y it becomes x and y
     .replaceAll(/[^a-z0-9]+/g, '-') // replace non-alphanumeric characters with empty string
     .replaceAll(/[ \-\_]+/g, '-') // replace runs of spaces, dashes, or underscores with a single dash
+    .replaceAll(/^\-+|\-+$/g, '') // remove leading or trailing dashes
+    .replaceAll(/\-+/g, '-') // replace multiple dashes with single dash
+    .replace(/\/$/g, '') // remove trailing slash
 }
 
 export function getUrlFriendlyImg(

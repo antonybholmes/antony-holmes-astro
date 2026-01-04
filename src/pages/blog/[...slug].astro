@@ -35,17 +35,28 @@ export async function getStaticPaths() {
     // e.g. /test/my-post/ becomes /my-post/
     // this is useful for SEO and readability
 
-    paths.push({
-      params: { slug: post.id },
-      props: {
-        type: 'post',
-        title: post.data.title,
-        root: '',
-        page: 0,
-        pages: 1,
-        data: [post],
-      },
-    })
+    // url friendly last part of the id
+    const id = post.id.split('/').pop()
+
+    for (const section of post.data.sections) {
+      // we decouple the file storage structure from the URL structure
+      // by flattening the slug to only use the last part of the path
+      // and combining it with the section
+      const slug = `${getUrlFriendlyTag(section)}/${id}`
+
+      // path for a post is the flattened slug without sections
+      paths.push({
+        params: { slug },
+        props: {
+          type: 'post',
+          title: post.data.title,
+          root: '',
+          page: 0,
+          pages: 1,
+          data: [post],
+        },
+      })
+    }
   }
 
   // const pages = paginate(otherPosts, '').map(p => ({
@@ -80,7 +91,7 @@ export async function getStaticPaths() {
     //   },
     // })
     const sectionParts = section.split('/').map(part => part.trim())
-    const title = sectionParts[sectionParts.length - 1]
+    const title = sectionParts.pop()!
     const slug = getUrlFriendlyTag(section)
     const root = `/blog/${slug}`
 
@@ -111,7 +122,7 @@ export async function getStaticPaths() {
 const { type, title, root, page, pages, data, featuredPosts } = Astro.props
 ---
 
-{type === 'post' && <BlogPostLayout post={data[0]!} />}
+{type === 'post' && data.length > 0 && <BlogPostLayout post={data[0]} />}
 
 {
   type === 'posts' && (

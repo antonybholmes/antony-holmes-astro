@@ -1,6 +1,6 @@
 ---
 description: You get what you don't pay for.
-categories:
+sections:
   - Investing
 type: post
 hero: 'vanilla-cake'

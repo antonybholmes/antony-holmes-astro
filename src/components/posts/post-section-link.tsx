@@ -14,13 +14,13 @@ export function PostSectionLink({
   className,
 }: IProps) {
   // pick the first section
-  const section = sectionToParts(post.data.sections?.[0] || 'Section')
+  const section = sectionToParts(post.data.sections?.[0] ?? 'Section')
 
   // convert the section to a name by taking the last part and formatting it
   const sectionName = formatSection(section[section.length - 1]!)
 
   // create a slug from the section
-  const slug = getUrlFriendlyTag(post.data.sections?.[0] || 'section')
+  const slug = getUrlFriendlyTag(post.data.sections?.[0] ?? 'section')
 
   // create the href for the post section link
   const href = `${BLOG_SLUG}/${slug}`
@@ -31,7 +31,7 @@ export function PostSectionLink({
       aria-label={`Read more ${sectionName} posts`}
       title={`Read more ${sectionName} posts`}
       className={cn(
-        'inline-block bg-gradient-to-br from-violet-500 to-rose-500 bg-clip-text font-medium text-transparent self-start',
+        'inline-block bg-linear-to-br from-violet-500 to-rose-500 bg-clip-text font-medium text-transparent self-start',
         textSize,
         className
       )}

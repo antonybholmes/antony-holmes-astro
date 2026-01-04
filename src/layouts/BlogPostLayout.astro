@@ -87,7 +87,7 @@ if (section) {
   }
 }
 
-const dataUpdated = post.data.updated ? post.data.updated : post.data.added
+const dateAdded = post.data.added ? post.data.added : new Date()
 ---
 
 <BaseLayout
@@ -117,7 +117,7 @@ const dataUpdated = post.data.updated ? post.data.updated : post.data.added
                   className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
                   strokeWidth={1.5}
                 />
-                <FormattedDate date={post.data.added} />
+                <FormattedDate date={dateAdded} />
               </VCenterRow>
               <!-- <span
                 class="bg-foreground/25 aspect-square h-1.5 w-1.5 rounded-full"

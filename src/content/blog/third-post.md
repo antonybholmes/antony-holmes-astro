@@ -2,6 +2,8 @@
 title: 'Third post'
 description: 'Lorem ipsum dolor sit amet'
 added: '2022-07-22'
+sections:
+  - 'News'
 # hero: '../../assets/blog-placeholder-2.jpg'
 ---
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.3 (Jan, 2026)
+
+### Changed
+
+- Slugs now decoupled from file system.
+
+
 ## 2.2 (Jul, 2025)
 
 ### Fixed

@@ -2,7 +2,7 @@ import { cn } from '@lib/shadcn-utils'
 
 import { BaseLink } from '@components/link/base-link'
 
-import { getPostUrl } from '@/lib/post'
+import { getPostUrls } from '@/lib/post'
 import type { IPostProps } from './post-tags'
 
 const CLS = cn(
@@ -11,10 +11,12 @@ const CLS = cn(
 )
 
 export function PostTitleLink({ post, mode = 'light', className }: IPostProps) {
+  const urls = getPostUrls(post)
+
   return (
     <h2 className={cn('capitalize', className)}>
       <BaseLink
-        href={getPostUrl(post)}
+        href={urls[0]}
         aria-label={post.data.title}
         //data-underline={true}
         data-mode={mode}

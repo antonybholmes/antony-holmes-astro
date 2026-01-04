@@ -3,7 +3,7 @@
 //import { join } from "path"
 
 import { BLOG_SLUG, POST_EXCERPT_MARKER } from '@/consts'
-import { PATH_SEP } from './http/urls'
+import { getUrlFriendlyTag, PATH_SEP } from './http/urls'
 import { capitalCase } from './text/capital-case'
 import { getSlug, getSlugBaseName, getSlugDir, getSlugSubPaths } from './urls'
 
@@ -27,7 +27,7 @@ export interface IPost {
     title: string
     added: Date
     updated?: Date
-    sections?: string[]
+    sections: string[]
     tags: string[]
     featured?: boolean
     draft?: boolean
@@ -72,6 +72,21 @@ export function sectionToParts(section: string): string[] {
 
 export function getPostUrl(post: IPost): string {
   return `${BLOG_SLUG}/${getSlug(post.id)}`
+}
+
+export function getPostUrls(post: IPost, root: string = BLOG_SLUG): string[] {
+  const id = post.id.split('/').pop()
+
+  const paths: string[] = post.data.sections.map(section => {
+    // we decouple the file storage structure from the URL structure
+    // by flattening the slug to only use the last part of the path
+    // and combining it with the section
+    const slug = `${getUrlFriendlyTag(section)}/${id}`
+
+    return `${root}/${slug}`
+  })
+
+  return paths
 }
 
 export function getPostSlugDir(post: IPost): string {

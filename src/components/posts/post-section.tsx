@@ -13,7 +13,7 @@ interface IProps extends IChildrenProps {
 export function PostSection({ title, href, headerChildren, children }: IProps) {
   return (
     <section className="flex flex-col gap-y-8">
-      <VCenterRow className="border-t-3 border-b border-foreground/75 py-3 justify-between">
+      <VCenterRow className="border-t-4 border-b border-t-foreground border-b-foreground/25 py-3 justify-between">
         <h2 className="font-semibold">
           {href ? <BaseLink href={href}>{title}</BaseLink> : title}
         </h2>

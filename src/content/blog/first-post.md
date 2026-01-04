@@ -2,6 +2,8 @@
 title: 'First post'
 description: 'Lorem ipsum dolor sit amet'
 added: '2022-07-08'
+sections:
+  - 'News'
 hero: '../../assets/blog-placeholder-3.jpg'
 tags:
   - 'cheese'

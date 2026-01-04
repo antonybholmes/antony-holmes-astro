@@ -60,7 +60,7 @@ const headPostStart = page === 0 ? 4 : 0
     <>
       {
         (showTitle || crumbs) && (
-          <ContentDiv className="py-8 mb-8 data-[mode=dark]:bg-gradient-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
+          <ContentDiv className="py-8 mb-8 data-[mode=dark]:bg-linear-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
             <BaseCol className="gap-y-4" slot="main">
               {crumbs && <Breadcrumb crumbs={crumbs} />}
               {showTitle && <PageTitle title={title} />}
