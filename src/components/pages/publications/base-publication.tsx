@@ -138,14 +138,16 @@ export function BasePublication({
     >
       <HCenterCol className="mt-1 grow-0 gap-y-2">
         {showCount && (
-          <div className="text-center text-gray-500">{`${index + 1}`}</div>
+          <div className="text-center text-foreground/50">{`${index + 1}`}</div>
         )}
         <button
           aria-label="Show abstract"
           onClick={() => setExpanded(!isExpanded)}
         >
           <ChevronRightIcon
-            className={cn('trans-all w-3 stroke-2 ', [isExpanded, 'rotate-90'])}
+            className={cn('trans-transform w-3 stroke-2 ', {
+              'rotate-90': isExpanded,
+            })}
           />
         </button>
       </HCenterCol>

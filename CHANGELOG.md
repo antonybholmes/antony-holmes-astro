@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Fixing UI issues in publications. Making index more colorful.
 - Slugs now decoupled from file system.
 
 ### Fixed

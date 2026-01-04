@@ -374,6 +374,12 @@
           "msg": "Slugs now decoupled from file system",
           "date": "2026-01-04T06:11:32.644Z"
         }
+      ],
+      "Fixed": [
+        {
+          "msg": "Fixed links using hard code /blog to using variable",
+          "date": "2026-01-04T06:33:55.354Z"
+        }
       ]
     },
     "author": "Antony Holmes",

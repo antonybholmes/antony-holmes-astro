@@ -30,7 +30,7 @@ skills.map((skillset: any) => {
         {
           skillList.map(skill => {
             return (
-              <li class="trans-color rounded-xl bg-indigo-400 bg-gradient-to-br px-4 py-8 text-white hover:bg-indigo-500">
+              <li class="trans-color rounded-xl bg-indigo-400 bg-linear-to-br px-4 py-8 text-white hover:bg-indigo-500">
                 <h3 class="font-semibold">{skill.name}</h3>
                 <p>{skill.details.sort().join(', ')}</p>
               </li>
@@ -104,13 +104,13 @@ skills.map((skillset: any) => {
     <div>
       <h2 class="text-center text-4xl font-semibold">Education</h2>
 
-      <ul class="mt-16 flex flex-col gap-y-4">
+      <ul class="mt-16 flex flex-col gap-y-8">
         {
           education.map(degree => (
             <li>
               <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
                 <div />
-                <div class="trans-300 transition-color border-border hover:bg-theme/5 col-span-3 h-full w-full rounded-2xl border px-8 py-12">
+                <div class="trans-300 transition-color hover:bg-theme/5 border-border/25 col-span-3 h-full w-full rounded-2xl border px-8 py-12 shadow-lg">
                   <header>
                     <h3 class="text-xl font-semibold">{degree.title}</h3>
                     {/* {degree.date !== '' && (

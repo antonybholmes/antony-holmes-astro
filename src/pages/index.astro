@@ -31,19 +31,22 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
       <BaseCol className="gap-y-8">
         <VCenterRow className="justify-between">
           <BaseCol className="gap-y-2">
-            <h1 class="text-5xl font-bold">
-              <a href="/" class="text-foreground hover:text-primary">
+            <h1 class="text-5xl font-semibold">
+              <a
+                href="/"
+                class="bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
+              >
                 {SITE_TITLE}
               </a>
             </h1>
 
-            <h2 class="text-foreground/30 text-3xl font-medium">
+            <h2 class="text-foreground/75 text-2xl font-medium">
               {SITE_SUBTITLE}
             </h2>
           </BaseCol>
 
           <RoundedImage
-            className="h-42 w-42"
+            className="mr-8 -mb-16 h-50 w-50"
             src="/img/people/antony-holmes.webp"
             alt="Antony Holmes Logo"
           />
@@ -55,15 +58,15 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           <p class="mb-4 text-3xl font-bold">Hi there! I'm Antony.</p>
 
           <p>
-            I'm a researcher and software engineer in New York City who's
-            learned how to do a few cool things with Java, Python, C++, Go,
-            React, Next.js, and Astro, some of which were used to make the very
-            site you're looking at right now.
+            I'm a researcher and software engineer who's learned how to do a few
+            cool things with Java, Python, C++, Go, React, Next.js, and Astro,
+            some of which were used to make the very site you're looking at
+            right now.
           </p>
 
           <p>
-            That's me posing by the Hudson River for no particular reason,
-            except maybe to look cool wearing Risky Business sunglasses.
+            That's me posing by the mighty Hudson River for no particular
+            reason, except maybe to look cool wearing Risky Business sunglasses.
           </p>
 
           <p>
