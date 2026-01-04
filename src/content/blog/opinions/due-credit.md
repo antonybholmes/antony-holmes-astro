@@ -5,7 +5,7 @@ authors:
   - 'Antony Holmes'
 readtime: '1 min'
 sections:
-  - 'Opinions'
+  - ['Opinions']
 tags:
   - 'Finance'
   - 'Credit Cards'

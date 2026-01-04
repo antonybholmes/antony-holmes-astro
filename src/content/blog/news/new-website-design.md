@@ -1,13 +1,13 @@
 ---
 description: I've redesigned my website using Gatsby.
 sections:
-  - 'News'
+  - ['News']
 type: post
 status: added
 title: New website design!
 # hero: /assets/posts/opt/code-1600x800.avif
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2021-07-05'
 tags:
   - Website

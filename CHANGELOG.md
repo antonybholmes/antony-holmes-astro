@@ -10,6 +10,7 @@
 
 ### Fixed
 
+- Fix lighthouse issues. Sections are now nested lists.
 - Fixed links using hard code /blog to using variable.
 
 

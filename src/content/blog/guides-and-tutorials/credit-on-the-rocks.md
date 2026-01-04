@@ -6,7 +6,7 @@ description: 'How to freeze your credit.'
 
 hero: 'ice'
 sections:
-  - 'Guides & Tutorials'
+  - ['Guides & Tutorials']
 tags:
   - 'Credit'
   - 'Finance'

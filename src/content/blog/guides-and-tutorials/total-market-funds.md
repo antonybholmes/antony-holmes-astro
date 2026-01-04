@@ -3,13 +3,12 @@ title: 'Total market funds'
 description: 'How to invest across the whole market.'
 authors:
   - 'Antony Holmes'
-
 sections:
-  - 'Guides & Tutorials'
+  - ['Guides & Tutorials']
 tags:
-  - Finance
-  - Investing
-  - Brokerages
+  - 'Finance'
+  - 'Investing'
+  - 'Brokerages'
 hero: 'market'
 related: ''
 added: '2022-05-04'

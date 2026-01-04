@@ -1,6 +1,5 @@
 import { BLOG_SLUG, HEADING_FONT } from '@/consts'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { formatSection, sectionToParts } from '@lib/post'
+import { sectionToSlug } from '@lib/post'
 import { cn } from '@lib/shadcn-utils'
 import type { IPostProps } from './post-tags'
 
@@ -13,17 +12,18 @@ export function PostSectionLink({
   textSize = 'text-base',
   className,
 }: IProps) {
+  if (!post.data.sections || post.data.sections.length === 0) {
+    return null
+  }
+
   // pick the first section
-  const section = sectionToParts(post.data.sections?.[0] ?? 'Section')
+  const section = post.data.sections[0] //sectionToParts(post.data.sections?.[0] ?? 'Section')
 
   // convert the section to a name by taking the last part and formatting it
-  const sectionName = formatSection(section[section.length - 1]!)
-
-  // create a slug from the section
-  const slug = getUrlFriendlyTag(post.data.sections?.[0] ?? 'section')
+  const sectionName = section[section.length - 1]!
 
   // create the href for the post section link
-  const href = `${BLOG_SLUG}/${slug}`
+  const href = `${BLOG_SLUG}/${sectionToSlug(section)}`
 
   return (
     <a

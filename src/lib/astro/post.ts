@@ -190,7 +190,7 @@ export function getHeroImage(entry: CollectionEntry<'blog'>): string {
     ]
   }
 
-  if (entry.data.sections?.some(s => s.includes('Film'))) {
+  if (entry.data.sections?.some(s => s.includes('Films'))) {
     return FALLBACK_FILM_IMAGES[hash % FALLBACK_FILM_IMAGES.length]
   }
 

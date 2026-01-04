@@ -13,11 +13,24 @@ export interface Props extends ILayoutProps, ICrumbProps {
   superTitle?: string
 }
 
-let { title, showTitle, subTitle, superTitle, tab, crumbs, className } =
-  Astro.props
+let {
+  title,
+  description,
+  showTitle,
+  subTitle,
+  superTitle,
+  tab,
+  crumbs,
+  className,
+} = Astro.props
 ---
 
-<BaseLayout title={title} tab={tab} className={className}>
+<BaseLayout
+  title={title}
+  description={description}
+  tab={tab}
+  className={className}
+>
   <slot name="head" slot="head" />
   <ContentDiv slot="main" className="mt-8">
     <BaseCol slot="main" className="gap-y-8">

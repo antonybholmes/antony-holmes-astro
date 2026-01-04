@@ -5,7 +5,7 @@ authors:
 description: "Everybody's doing something, we'll do nothing."
 added: '2022-02-14'
 sections:
-  - 'Opinions'
+  - ['Opinions']
 tags:
   - 'Investing'
   - 'Portfolio Design'

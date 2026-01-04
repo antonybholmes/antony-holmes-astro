@@ -1,19 +1,17 @@
 ---
-description: How to simplify conditional class name strings.
-categories:
-  - Web Development
+description: 'How to simplify conditional class name strings.'
 type: post
 status: added
-title: Simplifying class name strings
+title: 'Simplifying class name strings'
 sections:
-  - 'Engineering'
+  - ['Engineering', 'Web']
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2023-01-01'
 tags:
-  - Typescript
-  - Tailwind
-  - Tutorials
+  - 'Typescript'
+  - 'Tailwind'
+  - 'Tutorials'
 updated: '2023-01-01'
 ---
 

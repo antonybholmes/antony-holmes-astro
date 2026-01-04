@@ -2,7 +2,7 @@
 product: Cricket
 description: Cricket.
 sections:
-  - 'Reviews/Cell Phones'
+  - ['Reviews', 'Cell Phones']
 type: review
 rating: 4
 pros:
@@ -17,9 +17,9 @@ details:
   - 'Simple, all inclusive wireless provider.'
 url: 'https://www.cricketwireless.com'
 status: draft
-title: Cricket
+title: 'Cricket'
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2022-08-20'
 tags:
   - Low Cost

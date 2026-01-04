@@ -27,7 +27,7 @@ export function HeroPosts({
   const topPosts = posts.slice(1, 4)
 
   return (
-    <section
+    <main
       id="hero-posts"
       className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-12 items-start"
     >
@@ -44,6 +44,6 @@ export function HeroPosts({
         showSectionLinks={showSectionLinks}
         mode={mode}
       />
-    </section>
+    </main>
   )
 }

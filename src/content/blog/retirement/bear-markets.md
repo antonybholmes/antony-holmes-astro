@@ -7,7 +7,7 @@ description: 'Navigating bear markets.'
 hero: 'bear'
 heroAlt: 'Mr Bear, did you take all my money and invest it in salmon?'
 sections:
-  - 'Retirement'
+  - ['Retirement']
 tags:
   - 'Finances'
   - 'Investing'

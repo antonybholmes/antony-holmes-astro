@@ -4,7 +4,7 @@ author: 'Antony Holmes'
 description: 'What is cryptocurrency and should you buy it?'
 hero: 'money'
 sections:
-  - 'Opinions'
+  - ['Opinions']
 tags:
   - 'Investing'
   - 'Cryptocurrency'

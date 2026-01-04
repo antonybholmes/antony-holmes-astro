@@ -2,7 +2,7 @@
 product: Schwab
 description: My review of Schwab.
 sections:
-  - Reviews/Brokerages
+  - ['Reviews', 'Brokerages']
 type: review
 rating: 4.2
 pros:
@@ -23,9 +23,9 @@ authors:
   - 'Antony Holmes'
 added: '2022-08-22'
 tags:
-  - Low Cost
-  - Banking
-  - Investing
+  - 'Low Cost'
+  - 'Banking'
+  - 'Investing'
 ---
 
 Schwab is a great one-stop-shop for all your banking and investing needs. Let's see why.

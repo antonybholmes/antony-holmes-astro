@@ -45,7 +45,7 @@ const tags = (await getUniqueTags()).slice(0, 10)
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div class="col-span-3 flex flex-col gap-8 md:flex-row xl:justify-end">
+        <div class="col-span-3 flex flex-col gap-16 md:flex-row xl:justify-end">
           <BaseCol className="gap-y-2">
             <span class="font-semibold tracking-wide uppercase"
               >Browse By Tag</span
@@ -141,7 +141,7 @@ const tags = (await getUniqueTags()).slice(0, 10)
         </BaseCol>
 
         <VCenterRow className="gap-x-2">
-          <a href={GITHUB_URL} target={TARGET_BLANK}>
+          <a href={GITHUB_URL} target={TARGET_BLANK} title="My GitHub">
             <GitHubIcon />
           </a>
           <ThemeToggle />

@@ -2,7 +2,7 @@ import { TARGET_BLANK } from '@/consts'
 import { httpFetch } from '@/lib/http/http-fetch'
 import { RotateCw } from 'lucide-react'
 import { useEffect, useState } from 'react'
-import { VCenterRow } from './layout/v-center-row'
+import { BaseRow } from './layout/base-row'
 import { BaseLink } from './link/base-link'
 
 export function RandomQuote() {
@@ -30,7 +30,10 @@ export function RandomQuote() {
   }
 
   return (
-    <VCenterRow id="random-quote" className="group gap-x-2">
+    <BaseRow
+      id="random-quote"
+      className="group gap-x-2 justify-between items-start"
+    >
       {quote.url ? (
         <BaseLink href={quote.url} target={TARGET_BLANK}>
           {`"${quote.quote}"`}
@@ -40,11 +43,11 @@ export function RandomQuote() {
       )}
       <button
         onClick={() => fetchQuote()}
-        className="group-hover:opacity-100 opacity-0 transition-opacity cursor-pointer"
+        className="group group-hover:opacity-100 opacity-0 transition-opacity cursor-pointer"
         title="Another delicious quote, perhaps?"
       >
-        <RotateCw className="stroke-foreground w-4 h-4 aspect-square" />
+        <RotateCw className="opacity-50 hover:opacity-100 trans-opacitystroke-foreground w-4 h-4 aspect-square" />
       </button>
-    </VCenterRow>
+    </BaseRow>
   )
 }

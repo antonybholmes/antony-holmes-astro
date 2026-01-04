@@ -4,7 +4,7 @@ description: 'Fear, Uncertainty, Doubt and Missing Out.'
 authors:
   - 'Antony Holmes'
 sections:
-  - 'Opinions'
+  - ['Opinions']
 tags:
   - 'Investing'
 

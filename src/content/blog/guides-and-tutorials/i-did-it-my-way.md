@@ -5,7 +5,7 @@ authors:
   - 'Antony Holmes'
 readtime: '1 min'
 sections:
-  - 'Guides & Tutorials'
+  - ['Guides & Tutorials']
 tags:
   - 'Finance'
   - 'Investing'

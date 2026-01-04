@@ -1,26 +1,26 @@
 ---
-product: Mint Mobile
-description: Mint Mobile.
+product: 'Mint Mobile'
+description: 'Mint Mobile.'
 sections:
-  - 'Reviews/Cell Phones'
+  - ['Reviews', 'Cell Phones']
 type: review
 rating: 4.5
 pros:
   - $22 for 10GB service.
   - Hot spot included.
 cons:
-  - Have to buy 1 year of service for best monthly price.
+  - 'Have to buy 1 year of service for best monthly price.'
 details:
   - 'Simple, all inclusive wireless provider.'
 url: 'https://www.mintmobile.com'
 status: added
-title: Mint Mobile
+title: 'Mint Mobile'
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2022-07-25'
 tags:
-  - Low Cost
-  - MNVO
+  - 'Low Cost'
+  - 'MNVO'
 ---
 
 Mint Mobile is a great low cost wireless provider.

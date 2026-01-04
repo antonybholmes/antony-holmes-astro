@@ -13,7 +13,7 @@ const BTN_CLS =
 function LinkButton({ className, children, ...props }: ILinkProps) {
   return (
     <BaseLink
-      className={cn(BTN_CLS, 'hover:border-border', className)}
+      className={cn(BTN_CLS, 'hover:border-border/50', className)}
       {...props}
     >
       {children}
@@ -98,7 +98,7 @@ function PageButton({ href, page, selected }: IPageButtonProps) {
       <BasePageButton
         href={href}
         page={page}
-        className="trans-color-300 hover:border-border"
+        className="trans-color-300 hover:border-border/50"
       />
     )
   }
@@ -137,7 +137,7 @@ export function PagePagination({ page = 0, pages = 1, root }: IProps) {
 
   return (
     <HCenterRow>
-      <ul className="flex flex-row items-center gap-x-2 font-semibold">
+      <ul className="flex flex-row items-center gap-x-2 font-medium">
         <li>
           <PrevButton href={getPath(prevPage, root)} />
         </li>

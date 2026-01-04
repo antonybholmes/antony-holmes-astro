@@ -74,15 +74,6 @@ const headPostStart = page === 0 ? 4 : 0
         {
           featuredPosts.length > 0 && (
             <section id="featured">
-              {/* <h2 class="border-border mb-8 border-b py-2 text-2xl font-bold">
-                Featured
-              </h2> */}
-
-              {/* <FeaturedPosts
-                posts={featuredPosts as IPost[]}
-                showSectionLinks={showSectionLinks}
-              /> */}
-
               <FeaturedPost
                 post={featuredPosts[0]! as IPost}
                 showSectionLinks={showSectionLinks}
@@ -93,10 +84,6 @@ const headPostStart = page === 0 ? 4 : 0
         }
 
         <section id="latest" class="flex flex-col gap-y-8">
-          <!-- <h2 class="border-border border-b py-2 text-2xl font-bold">
-            {title === 'Latest' ? 'Posts' : 'Latest'}
-          </h2> -->
-
           <BaseCol className="gap-y-24">
             {
               page === 0 && (
@@ -106,11 +93,6 @@ const headPostStart = page === 0 ? 4 : 0
                 />
               )
             }
-
-            <!-- <HeadPosts
-              posts={posts.slice(headPostStart, headPostStart + 2) as IPost[]}
-              showSectionLinks={showSectionLinks}
-            /> -->
 
             <RestPosts
               posts={posts.slice(headPostStart) as IPost[]}
@@ -122,13 +104,5 @@ const headPostStart = page === 0 ? 4 : 0
         </section>
       </main>
     </ContentDiv>
-
-    <!-- <PostsPage
-      posts={data as IPost[]}
-      page={page}
-      pages={pages}
-      root={root}
-      showSectionLinks={showSectionLinks}
-    /> -->
   </Fragment>
 </BaseLayout>

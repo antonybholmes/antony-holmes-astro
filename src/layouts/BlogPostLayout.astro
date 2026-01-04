@@ -18,8 +18,8 @@ import SideTags from '@/components/SideTags.astro'
 import { BLOG_SLUG, TARGET_BLANK } from '@/consts'
 import type { PostWithHero } from '@/lib/astro/post'
 import type { ICrumb } from '@/lib/crumbs'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { sectionToParts, type IPost } from '@/lib/post'
+import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
+import { type IPost } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
 import BaseLayout from './BaseLayout.astro'
 
@@ -70,19 +70,16 @@ const crumbs: ICrumb[] = [
 
 // use the first to make a breadcrumb for nested
 // sections that are otherwise not given in the slug
-const section: string =
-  post.data.sections && post.data.sections?.length > 0
-    ? post.data.sections[0]!
-    : ''
+const section = post.data.sections?.[0] ?? []
 
 if (section) {
-  const parts = growingSubsets(sectionToParts(section))
+  const parts = growingSubsets(section)
 
   for (const part of parts) {
     const name = part[part.length - 1]! // last part is the full section name
     crumbs.push({
       label: name,
-      path: `${BLOG_SLUG}/${getUrlFriendlyTag(part.join('/'))}`,
+      path: `${BLOG_SLUG}/${getUrlFriendlyTag(part.join(PATH_SEP))}`,
     })
   }
 }

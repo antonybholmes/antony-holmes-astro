@@ -1,5 +1,4 @@
 import { getCollection } from 'astro:content'
-import { sectionToParts } from '../post'
 import { growingSubsets } from '../utils'
 import type { PostWithHero } from './post'
 
@@ -18,7 +17,7 @@ export function getPostSectionMap(
       // e.g. from ["Reviews", "Engineering", "AI"] we get:
       // [["Reviews"], ["Reviews",Engineering"], ["Reviews","Engineering","AI"]]
       // so we can map each post to more specific sections
-      for (const sectionNames of growingSubsets(sectionToParts(section))) {
+      for (const sectionNames of growingSubsets(section)) {
         const sectionName = sectionNames.join('/')
 
         if (!sectionMap.has(sectionName)) {
@@ -47,7 +46,7 @@ export async function getUniqueSections(): Promise<string[]> {
 
   for (const post of posts) {
     for (const section of post.data.sections ?? []) {
-      for (const sectionNames of growingSubsets(sectionToParts(section))) {
+      for (const sectionNames of growingSubsets(section)) {
         const sectionName = sectionNames.join('/')
         sections.add(sectionName)
       }

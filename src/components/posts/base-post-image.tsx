@@ -1,4 +1,4 @@
-import { getPostUrl } from '@/lib/post'
+import { getPostUrls } from '@/lib/post'
 import { VCenterRow } from '@layout/v-center-row'
 import { cn } from '@lib/shadcn-utils'
 import type { IPostProps } from './post-tags'
@@ -8,11 +8,13 @@ interface IProps extends IPostProps {
 }
 
 export function BasePostImage({ post, imgClassName, className }: IProps) {
+  const urls = getPostUrls(post)
+
   return (
     <VCenterRow
       className={cn('overflow-hidden justify-center z-10 group', className)}
     >
-      <a href={getPostUrl(post)} aria-label={post.data.title}>
+      <a href={urls[0]} aria-label={post.data.title}>
         <img
           src={post.data.resolvedHero}
           alt={post.data.heroAlt || post.data.title}

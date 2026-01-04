@@ -4,7 +4,7 @@ description: 'Some Frugal Hacks For Automatically Saving Money.'
 authors:
   - 'Antony Holmes'
 sections:
-  - 'Opinions'
+  - ['Opinions']
 tags:
   - 'Budgeting'
   - 'Personal Finance'

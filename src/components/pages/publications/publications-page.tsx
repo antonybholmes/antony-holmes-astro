@@ -11,7 +11,7 @@ import sortPublications from '@lib/pub/sort-publications'
 import { getTopAuthors } from '@/lib/publications/top-authors'
 import { getTopJournals } from '@/lib/publications/top-journals'
 
-import { SEARCH_RECORDS_PER_PAGE, TEXT_SHOW_MORE } from '@/consts'
+import { TEXT_SHOW_MORE } from '@/consts'
 import { BaseCol } from '@layout/base-col'
 
 import { SidebarDiv } from '@/components/layout/sidebar-div'
@@ -238,8 +238,6 @@ export function PublicationsPage() {
   const [yearData, setYearData] = useState<any[]>([])
   const [year1, setYear1] = useState(-1)
   const [year2, setYear2] = useState(-1)
-
-  const [recordsPerPage] = useState(SEARCH_RECORDS_PER_PAGE)
 
   useEffect(() => {
     async function fetchData() {

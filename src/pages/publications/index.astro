@@ -7,6 +7,9 @@ import ContentLayout from '@layouts/ContentLayout.astro'
 //   await httpFetch.getJson<IPublication[]>('publications.json')
 ---
 
-<ContentLayout title="Publications">
+<ContentLayout
+  title="Publications"
+  description="Hey look, it's all the articles I've authored."
+>
   <PublicationsPage client:only="react" slot="main" />
 </ContentLayout>

@@ -1,20 +1,18 @@
 ---
-description: How to make a simple toggle switch using React.
-categories:
-  - Web Development
+description: 'How to make a simple toggle switch using React.'
 type: post
 status: added
-title: Creating a React toggle switch using SVG
+title: 'Creating a React toggle switch using SVG'
 sections:
-  - 'Engineering'
+  - ['Engineering', 'Web']
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2023-01-03'
 tags:
-  - Typescript
-  - React
-  - SVG
-  - Tutorials
+  - 'Typescript'
+  - 'React'
+  - 'SVG'
+  - 'Tutorials'
 ---
 
 Let's make a simple UI toggle switch using React and SVG. No need for some huge library dependency.

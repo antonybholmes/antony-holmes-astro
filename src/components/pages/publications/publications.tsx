@@ -35,17 +35,6 @@ export function Publications({
 }: IProps) {
   return (
     <>
-      {/* {publications.length > 0 && showCount && (
-        <HCenterRow className="mb-8 justify-between">
-          <div>
-
-            {`${publications.length} ${
-              publications.length !== 1 ? "results" : "result"
-            }`}
-          </div>
-        </HCenterRow>
-      )} */}
-
       {publications.length > 0 && (
         <BasePublicationList
           publications={publications}

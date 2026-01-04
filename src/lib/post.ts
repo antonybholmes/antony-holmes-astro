@@ -27,7 +27,7 @@ export interface IPost {
     title: string
     added: Date
     updated?: Date
-    sections: string[]
+    sections?: string[][]
     tags?: string[]
     featured?: boolean
     draft?: boolean
@@ -70,9 +70,9 @@ export function sectionToParts(section: string): string[] {
 //   }
 // }
 
-export function getPostUrl(post: IPost): string {
-  return `${BLOG_SLUG}/${getSlug(post.id)}`
-}
+// export function getPostUrl(post: IPost): string {
+//   return `${BLOG_SLUG}/${getSlug(post.id)}`
+// }
 
 export function getPostUrls(post: IPost, root: string = BLOG_SLUG): string[] {
   const paths: string[] = getPostSlugs(post).map(path => {
@@ -82,14 +82,22 @@ export function getPostUrls(post: IPost, root: string = BLOG_SLUG): string[] {
   return paths
 }
 
+export function sectionToSlug(section: string[]): string {
+  return section.map(s => getUrlFriendlyTag(s)).join(PATH_SEP)
+}
+
 export function getPostSlugs(post: IPost): string[] {
-  const id = post.id.split('/').pop()
+  const id = post.id.split('/').pop()!
+
+  if (!post.data.sections || post.data.sections.length === 0) {
+    return [id]
+  }
 
   const slugs: string[] = post.data.sections.map(section => {
     // we decouple the file storage structure from the URL structure
     // by flattening the slug to only use the last part of the path
     // and combining it with the section
-    const slug = `${getUrlFriendlyTag(section)}/${id}`
+    const slug = `${sectionToSlug(section)}/${id}`
 
     return slug
   })

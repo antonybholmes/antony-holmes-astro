@@ -1,18 +1,19 @@
 ---
-description: You get what you don't pay for.
+title: 'The Vanilla Investor'
+description: "You get what you don't pay for."
 sections:
-  - Investing
+  - ['Investing']
 type: post
 hero: 'vanilla-cake'
 heroAlt: "If you don't eat your cake, you can't have any pudding!"
 status: added
-title: The Vanilla Investor
+
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2021-12-09'
 tags:
-  - Portfolio Design
-  - Guides
+  - 'Portfolio Design'
+  - 'Guides'
 ---
 
 There's an old adage in financial circles that **you get what you don't pay for**.

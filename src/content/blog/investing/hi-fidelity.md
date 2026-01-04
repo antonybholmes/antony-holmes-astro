@@ -1,34 +1,34 @@
 ---
-product: Fidelity
-description: My review of Fidelity.
+product: 'Fidelity'
+description: 'My review of Fidelity.'
 sections:
-  - 'Reviews/Brokerages'
+  - ['Reviews', 'Brokerages']
 type: review
 heroAlt: 'This looks cool, but has nothing to do with banking.'
 rating: 4.5
 pros:
-  - Buy any share/ETF in fractional amounts.
-  - Early deposit of direct deposits.
-  - Unlimited 2% cash back credit card.
-  - Cashback automatically deposited into Fidelity account.
+  - 'Buy any share/ETF in fractional amounts.'
+  - 'Early deposit of direct deposits.'
+  - 'Unlimited 2% cash back credit card.'
+  - 'Cashback automatically deposited into Fidelity account.'
 cons:
-  - Promotes funds with higher expense ratios over cheaper index versions.
-  - App and website are a bit outdated.
+  - 'Promotes funds with higher expense ratios over cheaper index versions.'
+  - 'App and website are a bit outdated.'
 details:
-  - Buy shares/ETFs in dollar amounts.
-  - Basically no account fees.
-  - Unlimited 2% cash back credit card.
+  - 'Buy shares/ETFs in dollar amounts.'
+  - 'Basically no account fees.'
+  - 'Unlimited 2% cash back credit card.'
 url: 'https://www.fidelity.com'
 status: added
 title: 'Hi, Fidelity'
 
 authors:
-  - Antony Holmes
+  - 'Antony Holmes'
 added: '2022-07-18'
 tags:
-  - Low Cost
-  - Banking
-  - Investing
+  - 'Low Cost'
+  - 'Banking'
+  - 'Investing'
 updated: '2022-07-18'
 ---
 

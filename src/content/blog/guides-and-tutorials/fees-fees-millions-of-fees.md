@@ -5,10 +5,10 @@ added: '2022-01-19'
 authors:
   - 'Antony Holmes'
 sections:
-  - 'Guides & Tutorials'
+  - ['Guides & Tutorials']
 tags:
   - 'Finance'
-  - 'Investments'
+  - 'Investing'
 heroAlt: 'Love bees, hate fees.'
 draft: false
 related: []
