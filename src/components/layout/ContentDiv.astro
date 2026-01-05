@@ -20,10 +20,13 @@ const { mode = 'light', mainCls, className } = Astro.props
     className
   )}
 >
-  <BaseCol className="hidden h-full grow lg:flex"><slot name="left" /></BaseCol>
-  <BaseCol className={cn('col-span-3 h-full grow', mainCls)}
-    ><slot name="main" /></BaseCol
-  >
-  <BaseCol className="hidden h-full grow lg:flex"><slot name="right" /></BaseCol
-  >
+  <BaseCol className="hidden h-full grow lg:flex">
+    <slot name="left" />
+  </BaseCol>
+  <BaseCol className={cn('col-span-3 h-full grow', mainCls)}>
+    <slot name="main" />
+  </BaseCol>
+  <BaseCol className="hidden h-full grow lg:flex">
+    <slot name="right" />
+  </BaseCol>
 </div>

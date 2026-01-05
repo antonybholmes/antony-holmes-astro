@@ -26,7 +26,7 @@ const tags = [...tagMap.keys()].sort()
           return (
             <li>
               <ThemeLink href={`${BLOG_SLUG}/tag/${tag.toLowerCase()}/`}>
-                {tag}
+                #{tag}
               </ThemeLink>
               ({`${n.toLocaleString()} post${n !== 1 ? 's' : ''}`})
             </li>

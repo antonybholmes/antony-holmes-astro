@@ -10,13 +10,13 @@ tags:
   - 'Personal Finance'
   - Spending
 hero: 'axe'
-heroCaption: "This is the most money I've ever seen in a photo."
+heroAlt: "It's the wood that makes it good."
 draft: false
 related: []
 added: '2022-06-17'
 ---
 
-As a recent immigrant and not yet independently wealthy, I've always practicing being somewhat frugal. I consider the cost of EVERYTHING.
+As a recent immigrant and not yet independently wealthy, I've always practicing being somewhat frugal. I consider the cost of everything!
 
 <!-- more -->
 
@@ -84,7 +84,7 @@ You might also consider renting. Owning a home is extremely costly and you have 
 I realized one day that I've never eaten an enjoyable or memorable meal in a restaurant, no matter the type of cuisine nor the price. So I stopped wasting my time and money eating in sit down restaurants. What is the point of spending a premium to be inconvenienced by having to travel out of your way to eat food in a room full of strangers where no matter how attentive the server is the whole rigmarole is grossly inefficient and slow. Prepared food has it's place, but why eat a salad in some restuarant when you can go to a salad bar and have them freshly prepare a salad in front of you in a fraction of the time and for a fraction of the cost with better ingredients?
 
 <div class="conclusion">
-<h2>Take home</h2>
+<h2>Take Home</h2>
 <ol>
 <li>Small changes and savings can add up to big results over time.</li>
 <li>Many of these savings are automatic once they are established.</li>

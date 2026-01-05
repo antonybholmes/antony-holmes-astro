@@ -32,7 +32,7 @@ export async function getStaticPaths() {
         ...p,
         props: {
           ...p.props,
-          title: tag,
+          title: `#${tag} Posts`,
           pageTitle: `${tag} - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
           root: getTagBaseUrl(tag),

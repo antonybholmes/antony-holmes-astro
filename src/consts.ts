@@ -118,12 +118,12 @@ export const MENU_ITEMS: {
   icon: string
   ariaLabel: string
 }[] = [
-  {
-    label: TEXT_HOME,
-    path: '/',
-    icon: 'home',
-    ariaLabel: 'Home',
-  },
+  // {
+  //   label: TEXT_HOME,
+  //   path: '/',
+  //   icon: 'home',
+  //   ariaLabel: 'Home',
+  // },
   {
     label: 'Blog',
     path: BLOG_SLUG,

@@ -9,7 +9,7 @@ sections:
 tags:
   - 'Finance'
   - 'Saving'
-heroAlt: 'What a pair'
+heroAlt: "This stock image doesn't even show a 50 cent coin"
 draft: false
 related: []
 ---

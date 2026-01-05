@@ -4,7 +4,6 @@ import { RECORDS_PER_PAGE, SITE_SUBTITLE, SITE_TITLE } from '../consts'
 import { ThemeLink } from '@/components/link/theme-link'
 
 import { BaseCol } from '@/components/layout/base-col'
-import { VCenterRow } from '@/components/layout/v-center-row'
 
 import { RoundedImage } from '@/components/rounded-image'
 
@@ -23,20 +22,24 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 <BaseLayout title={SITE_TITLE}>
   <main class="flex flex-col gap-y-16" slot="main">
     <ContentDiv
-      className="gap-y-4 bg-linear-to-r from-blue-950 via-blue-800 to-indigo-950 py-16 text-white/80"
+      className="bg-linear-to-r from-blue-950 via-blue-800 to-indigo-950 py-16 text-white/80"
+      mainCls="gap-y-4"
     >
-      <VCenterRow className="justify-between" slot="main">
+      <div
+        class="flex flex-col items-center gap-4 lg:flex-row lg:justify-between"
+        slot="main"
+      >
         <BaseCol className="gap-y-2">
-          <h1 class="text-5xl font-semibold">
+          <h1 class="text-center text-5xl font-semibold lg:text-left">
             <a
               href="/"
               class="bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent"
             >
-              >{SITE_TITLE}
+              &gt; {SITE_TITLE}
             </a>
           </h1>
 
-          <h2 class="text-2xl font-medium">
+          <h2 class="text-center text-2xl font-medium lg:text-left">
             {SITE_SUBTITLE}
           </h2>
         </BaseCol>
@@ -46,7 +49,7 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           src="/img/people/antony-holmes.webp"
           title="That's me by the Hudson River"
         />
-      </VCenterRow>
+      </div>
 
       <section class="flex flex-col gap-y-3" slot="main">
         <p class="mb-4 text-3xl font-bold">Hi there! I'm Antony.</p>

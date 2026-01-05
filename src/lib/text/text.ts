@@ -48,7 +48,7 @@ export function fixName(name: string) {
   return name
     .replaceAll('Svg', 'SVG')
     .replace('Faq', 'FAQ')
-    .replaceAll('-', ' ')
+    .replaceAll('-', ' ') // also convert dashes to spaces
 }
 
 interface ITruncateOptions {

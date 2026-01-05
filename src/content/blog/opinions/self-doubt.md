@@ -1,5 +1,5 @@
 ---
-title: 'Self doubt'
+title: 'Self Doubt'
 description: 'Fear, Uncertainty, Doubt and Missing Out.'
 authors:
   - 'Antony Holmes'

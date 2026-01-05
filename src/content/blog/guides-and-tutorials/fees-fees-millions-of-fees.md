@@ -16,6 +16,8 @@ related: []
 
 Fees, you can't avoid 'em, but knowing whether they're bogus can save you a lot of money long term.
 
+## Investment Fees
+
 You can't completely avoid investment fees, but using a low cost brokerage will allow you to minimize them. The table summarizes common fees you might see attached to a fund. Understand what they are an when to avoid them.
 
 <table>

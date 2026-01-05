@@ -390,10 +390,10 @@ input[type='search']::-webkit-search-cancel-button {
   }
 
   .conclusion {
-    @apply bg-theme/10 mt-16 mb-4 rounded-lg p-5 text-base;
+    @apply bg-theme/10 mt-8 mb-4 rounded-lg p-5 text-base;
 
     h2 {
-      @apply m-0;
+      @apply m-0 mb-1;
     }
 
     ol,

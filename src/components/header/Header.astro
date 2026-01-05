@@ -63,9 +63,10 @@ const { tab = 'Home', mode = 'light' } = Astro.props
           <BaseLink
             href="/rss.xml"
             title="Subscribe to RSS feed"
-            className="stroke-foreground trans-color hover:stroke-orange-400"
-            ><Rss className="h-5 w-5" stroke="" /></BaseLink
+            className="stroke-foreground trans-color hidden hover:stroke-orange-400 lg:inline-flex"
           >
+            <Rss className="h-5 w-5" stroke="" />
+          </BaseLink>
         </VCenterRow>
       </div>
     </ContentDiv>

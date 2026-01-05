@@ -3,6 +3,7 @@ title: '10k Steps A Day'
 description: "Let's walk."
 type: post
 draft: true
+heroAlt: 'An Apple Watch is a good way to track steps'
 sections:
   - ['Health']
 authors:

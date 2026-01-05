@@ -12,6 +12,7 @@ tags:
   - 'Portfolio Design'
 related: ''
 hero: 'full-fat'
+heroAlt: "Fun facts: I'm somewhat lactose intolerant and I rarely eat cookies."
 added: '2021-12-07'
 ---
 
