@@ -1,5 +1,5 @@
 import type { IClassProps } from '@/interfaces/class-props'
-import { getUrlFriendlyImg } from '@lib/urls'
+import { getUrlFriendlyImg } from '@lib/http/urls'
 import { RoundedImage } from '../rounded-image'
 
 export interface IAvatarProps extends IClassProps {

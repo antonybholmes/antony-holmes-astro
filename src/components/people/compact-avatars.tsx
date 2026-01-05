@@ -52,8 +52,10 @@ export function CompactAvatars({
             >
               {person}
             </BaseLink>
-            {index < people.length - 2 ? ',' : ''}
-            {index === people.length - 2 ? ' & ' : ''}
+            <span className="text-foreground/50">
+              {index < people.length - 2 ? ',' : ''}
+              {index === people.length - 2 ? ' & ' : ''}
+            </span>
           </Fragment>
         ))}
       </span>

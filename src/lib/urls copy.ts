@@ -1,4 +1,3 @@
-import { TAG_SLUG } from '@/consts'
 import { getUrlFriendlyTag, PATH_SEP } from './http/urls'
 import { range } from './math/range'
 
@@ -39,10 +38,6 @@ export function getUrlFriendlyTags(tags: string[]): string[] {
 //     .map(tag => capitalize(tag))
 //     .join(" ")
 // }
-
-export const getTagBaseUrl = (tag: string) => {
-  return `${TAG_SLUG}/${getUrlFriendlyTag(tag)}`
-}
 
 export function getSlug(slug: string): string {
   return slug

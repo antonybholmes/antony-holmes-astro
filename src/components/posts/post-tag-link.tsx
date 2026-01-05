@@ -1,5 +1,5 @@
-import { BaseLink } from "@components/link/base-link"
-import { getTagBaseUrl } from "@lib/urls"
+import { BaseLink } from '@components/link/base-link'
+import { getTagBaseUrl } from '@lib/http/urls'
 
 interface IProps {
   tag: string

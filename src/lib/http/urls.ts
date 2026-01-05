@@ -1,5 +1,7 @@
+import { READ_TIME_SLUG, TAG_SLUG } from '@/consts'
 import { type IFieldMap } from '@interfaces/field-map'
 import { type IStringMap } from '@interfaces/string-map'
+import { range } from '../math/range'
 import type { UndefNullStr } from '../text/text'
 
 export const PATH_SEP = '/'
@@ -66,18 +68,30 @@ export function getUrlFriendlyTag(tag: string): string {
 
 export function getUrlFriendlyImg(
   img: string,
-  ext = 'avif',
-  size: number | [number, number] = 800
+  ext = 'webp',
+  size: number | [number, number] | undefined = undefined
 ): string {
-  if (!Array.isArray(size)) {
-    size = [size, size]
-  }
+  if (size) {
+    if (!Array.isArray(size)) {
+      size = [size, size]
+    }
 
-  return `${getUrlFriendlyTag(img)}-${size[0]}x${size[1]}.${ext}`
+    return `${getUrlFriendlyTag(img)}-${size[0]}x${size[1]}.${ext}`
+  } else {
+    return `${getUrlFriendlyTag(img)}.${ext}`
+  }
 }
 
 export function getUrlFriendlyTags(tags: string[]): string[] {
   return tags.map(tag => getUrlFriendlyTag(tag))
+}
+
+export function getTagBaseUrl(tag: string) {
+  return `${TAG_SLUG}/${getUrlFriendlyTag(tag)}`
+}
+
+export function getTimeBaseUrl(time: number) {
+  return `${READ_TIME_SLUG}/${time}-min`
 }
 
 export function getSlug(path: string): string {
@@ -87,6 +101,21 @@ export function getSlug(path: string): string {
     .split(PATH_SEP)
     .map(p => getUrlFriendlyTag(p))
     .join(PATH_SEP)
+}
+
+export function getSlugBaseName(slug: string): string {
+  // get the end of the path using slice and then return the last element
+  return getSlugDir(slug).split(PATH_SEP).slice(-1)[0]
+}
+
+export function getSlugSubPaths(slug: string): string[] {
+  const parts = getSlugDir(slug).split(PATH_SEP)
+
+  const ret = range(0, parts.length).map(i =>
+    parts.slice(0, i + 1).join(PATH_SEP)
+  )
+
+  return ret
 }
 
 export function getSlugDir(path: string): string {

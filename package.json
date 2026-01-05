@@ -5,11 +5,11 @@
   "scripts": {
     "update-version": "tsx scripts/update-version.ts",
     "predev": "pnpm update-version",
-    "dev": "astro dev",
+    "dev": "astro dev --force",
     "generate:og": "tsx scripts/generate-og.ts",
     "generate:hero": "tsx scripts/generate-hero.ts",
     "prebuild": "pnpm update-version",
-    "build": "astro build",
+    "build": "astro build --force",
     "preview": "astro preview",
     "astro": "astro",
     "make-changelog-markdown": "tsx scripts/make-changelog-markdown.ts"

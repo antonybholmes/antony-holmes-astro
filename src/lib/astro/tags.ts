@@ -6,30 +6,29 @@ export function getTagPostMap(
 ): Map<string, CollectionEntry<'blog'>[]> {
   const tagMap = new Map<string, CollectionEntry<'blog'>[]>()
 
-  posts
-    .filter(post => post.data.tags && post.data.tags.length > 0)
-    .forEach(post => {
-      post.data.tags!.forEach((tag: string) => {
-        if (!tagMap.has(tag)) {
-          tagMap.set(tag, [])
-        }
+  for (const post of posts.filter(
+    post => post.data.tags && post.data.tags.length > 0
+  )) {
+    for (const tag of post.data.tags!) {
+      if (!tagMap.has(tag)) {
+        tagMap.set(tag, [])
+      }
 
-        if (max === -1 || tagMap.get(tag)!.length < max) {
-          tagMap.get(tag)!.push(post)
-        }
-      })
-      //})
-    })
+      if (max === -1 || tagMap.get(tag)!.length < max) {
+        tagMap.get(tag)!.push(post)
+      }
+    }
+  }
 
   return tagMap
 }
 
-let cachedTags: { tag: string; count: number }[] | null = null
+//let cachedTags: { tag: string; count: number }[] | null = null
 
 export async function getUniqueTags(): Promise<
   { tag: string; count: number }[]
 > {
-  if (cachedTags) return cachedTags
+  //if (cachedTags) return cachedTags
 
   const tagMap = getTagPostMap(await getCollection('blog'))
 
@@ -42,7 +41,7 @@ export async function getUniqueTags(): Promise<
     })
     .map(e => ({ tag: e[0], count: e[1].length }))
 
-  cachedTags = tags
+  //cachedTags = tags
 
-  return cachedTags
+  return tags //cachedTags
 }

@@ -30,6 +30,7 @@ export const ANIMATION_DURATION_S = 0.3
 export const ANIMATION_DURATION_MS = 250
 
 export const TAG_SLUG = 'tag'
+export const READ_TIME_SLUG = 'read-time'
 export const PAGE_1_SLUG = 'page-1'
 export const PEOPLE_SLUG = '/people'
 export const BLOG_SLUG = '/blog'

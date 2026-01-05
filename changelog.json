@@ -396,5 +396,18 @@
     },
     "author": "Antony Holmes",
     "date": "2026-01-04T06:11:32.644Z"
+  },
+  {
+    "version": "2.5",
+    "messages": {
+      "Added": [
+        {
+          "msg": "Added read time",
+          "date": "2026-01-05T00:34:09.110Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-01-05T00:34:09.110Z"
   }
 ]

@@ -1,17 +1,16 @@
 ---
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
-import { getTagPostMap } from '@/lib/astro/tags'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
+import { getTimePostMap } from '@/lib/astro/time'
+import { getTimeBaseUrl } from '@/lib/http/urls'
 import { getSortedPosts } from '@lib/astro/post'
 import { paginate } from '@lib/paginate'
 
-import { getTagBaseUrl } from '@lib/http/urls'
 import type { CollectionEntry } from 'astro:content'
 
 export async function getStaticPaths() {
   const allPosts = await getSortedPosts()
 
-  const tagMap = getTagPostMap(allPosts)
+  const tagMap = await getTimePostMap(allPosts)
 
   let paths: {
     params: { slug?: string }
@@ -26,16 +25,16 @@ export async function getStaticPaths() {
     }
   }[] = []
 
-  for (const [tag, posts] of tagMap.entries()) {
+  for (const [time, posts] of tagMap.entries()) {
     paths = paths.concat(
-      paginate(posts, getUrlFriendlyTag(tag)).map(p => ({
+      paginate(posts, `${time}-min`).map(p => ({
         ...p,
         props: {
           ...p.props,
-          title: tag,
-          pageTitle: `${tag} - Page ${p.props.page + 1} of ${p.props.pages}`,
+          title: `${time} min read`,
+          pageTitle: `${time} min read - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
-          root: getTagBaseUrl(tag),
+          root: getTimeBaseUrl(time),
         },
       }))
     )

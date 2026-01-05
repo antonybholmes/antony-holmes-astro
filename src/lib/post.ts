@@ -3,9 +3,15 @@
 //import { join } from "path"
 
 import { BLOG_SLUG, POST_EXCERPT_MARKER } from '@/consts'
-import { getUrlFriendlyTag, PATH_SEP } from './http/urls'
+import {
+  getSlug,
+  getSlugBaseName,
+  getSlugDir,
+  getSlugSubPaths,
+  getUrlFriendlyTag,
+  PATH_SEP,
+} from './http/urls'
 import { capitalCase } from './text/capital-case'
-import { getSlug, getSlugBaseName, getSlugDir, getSlugSubPaths } from './urls'
 
 export const POSTS_DIR = 'src/content/posts'
 export const REVIEWS_DIR = 'src/content/review'

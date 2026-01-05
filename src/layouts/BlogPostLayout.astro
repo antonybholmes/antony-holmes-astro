@@ -5,9 +5,10 @@ import FormattedDate from '../components/FormattedDate.astro'
 
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
-import { Calendar, Clock, Minus, Plus } from 'lucide-react'
+import { Calendar, Minus, Plus } from 'lucide-react'
 
 import { Breadcrumb } from '@/components/breadcrumb'
+import FormattedReadTime from '@/components/FormattedReadTime.astro'
 import { BaseCol } from '@/components/layout/base-col'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
@@ -21,6 +22,7 @@ import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
 import { type IPost } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
+import { CompactAvatars } from '@components/people/compact-avatars'
 import BaseLayout from './BaseLayout.astro'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
@@ -85,6 +87,7 @@ if (section) {
 }
 
 const dateAdded = post.data.added ? post.data.added : new Date()
+console.log('Date added:', post.data.title, remarkPluginFrontmatter)
 ---
 
 <BaseLayout
@@ -103,48 +106,45 @@ const dateAdded = post.data.added ? post.data.added : new Date()
         <Fragment slot="main">
           <Breadcrumb crumbs={crumbs} mode="light" />
 
-          <VCenterRow
-            data-mode="light"
-            className="text-foreground/50 justify-between gap-2 text-sm data-[mode=dark]:text-white"
-          >
-            <VCenterRow className="gap-x-6">
-              <VCenterRow className="gap-x-1">
-                <Calendar
-                  data-mode="light"
-                  className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
-                  strokeWidth={1.5}
-                />
-                <FormattedDate date={dateAdded} />
-              </VCenterRow>
-              <!-- <span
-                class="bg-foreground/25 aspect-square h-1.5 w-1.5 rounded-full"
-              ></span> -->
-              <VCenterRow className="gap-x-1">
-                <Clock
-                  data-mode="light"
-                  className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
-                  strokeWidth={1.5}
-                />
-                <span>{remarkPluginFrontmatter.minutesRead}</span></VCenterRow
-              >
-            </VCenterRow>
+          <BaseCol className="gap-y-4 text-sm">
+            <CompactAvatars people={post.data.authors ?? []} />
 
-            {
-              post.data.links && (
-                <VCenterRow className="gap-x-2">
-                  {post.data.links.map(link => (
-                    <ThemeIndexLink
-                      href={link.url}
-                      target={TARGET_BLANK}
-                      startingColor="text-theme"
-                    >
-                      {link.title}
-                    </ThemeIndexLink>
-                  ))}
+            <VCenterRow
+              data-mode="light"
+              className="text-foreground/50 justify-between gap-2 data-[mode=dark]:text-white"
+            >
+              <VCenterRow className="gap-x-6">
+                <VCenterRow className="gap-x-1">
+                  <Calendar
+                    data-mode="light"
+                    className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
+                    strokeWidth={1.5}
+                  />
+                  <FormattedDate date={dateAdded} />
                 </VCenterRow>
-              )
-            }
-          </VCenterRow>
+
+                <FormattedReadTime
+                  readingTime={remarkPluginFrontmatter.readingTime}
+                />
+              </VCenterRow>
+
+              {
+                post.data.links && (
+                  <VCenterRow className="gap-x-2">
+                    {post.data.links.map(link => (
+                      <ThemeIndexLink
+                        href={link.url}
+                        target={TARGET_BLANK}
+                        startingColor="text-theme"
+                      >
+                        {link.title}
+                      </ThemeIndexLink>
+                    ))}
+                  </VCenterRow>
+                )
+              }
+            </VCenterRow>
+          </BaseCol>
 
           <BaseCol className="gap-y-2">
             <h1

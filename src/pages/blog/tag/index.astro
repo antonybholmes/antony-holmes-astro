@@ -3,25 +3,12 @@ import { ThemeLink } from '@/components/link/theme-link'
 import { BLOG_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
+import { getTagPostMap } from '@/lib/astro/tags'
 
 const posts = await getSortedPosts()
 
 // Extract tags from all posts
-const tagMap = new Map()
-
-for (const post of posts) {
-  if (!post.data.tags) {
-    continue
-  }
-
-  for (const tag of post.data.tags) {
-    if (!tagMap.has(tag)) {
-      tagMap.set(tag, [])
-    }
-
-    tagMap.get(tag).push(post)
-  }
-}
+const tagMap = getTagPostMap(posts)
 
 const tags = [...tagMap.keys()].sort()
 ---
@@ -34,13 +21,17 @@ const tags = [...tagMap.keys()].sort()
     <h1 class="text-2xl font-bold">Tags</h1>
     <ul>
       {
-        tags.map(tag => (
-          <li>
-            <ThemeLink href={`${BLOG_SLUG}/tag/${tag.toLowerCase()}/`}>
-              {tag} ({tagMap.get(tag).length})
-            </ThemeLink>
-          </li>
-        ))
+        tags.map(tag => {
+          const n = tagMap.get(tag)?.length ?? 0
+          return (
+            <li>
+              <ThemeLink href={`${BLOG_SLUG}/tag/${tag.toLowerCase()}/`}>
+                {tag}
+              </ThemeLink>
+              ({`${n.toLocaleString()} post${n !== 1 ? 's' : ''}`})
+            </li>
+          )
+        })
       }
     </ul>
   </main>

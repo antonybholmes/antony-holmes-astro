@@ -7,6 +7,8 @@ title: First Post! Welcome
 authors:
   - 'Antony Holmes'
 added: '2021-01-01T22:58:26.000Z'
+sections:
+  - ['News']
 tags:
   - Website
 ---

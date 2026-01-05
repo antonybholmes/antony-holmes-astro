@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.5 (Jan, 2026)
+
+### Added
+
+- Added read time.
+
+
 ## 2.3 (Jan, 2026)
 
 ### Changed

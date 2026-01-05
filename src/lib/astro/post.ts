@@ -7,10 +7,10 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
 
 import { range } from '../math/range'
-import { getSlugSubPaths } from '../urls'
+
 import { getAllMDFiles } from './files'
 
-import { getUrlFriendlyTag } from '../http/urls'
+import { getSlugSubPaths, getUrlFriendlyTag } from '../http/urls'
 import { POSTS_DIR, REVIEWS_DIR } from '../post'
 
 export function getPostPaths() {

@@ -27,7 +27,7 @@ export function HeroPost({
   post,
   className,
   imgClassName = ' aspect-16/9',
-  headerClassName = 'text-2xl md:text-3xl font-bold',
+  headerClassName = 'text-2xl md:text-3xl font-semibold',
   innerClassName,
   contentClassName = 'text-base',
   showDescription = true,

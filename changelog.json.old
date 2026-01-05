@@ -387,6 +387,10 @@
         {
           "msg": "Fixed links using hard code /blog to using variable",
           "date": "2026-01-04T06:33:55.354Z"
+        },
+        {
+          "msg": "Fix lighthouse issues. Sections are now nested lists",
+          "date": "2026-01-04T17:54:19.875Z"
         }
       ]
     },
