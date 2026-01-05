@@ -9,6 +9,7 @@
 
 ### Fixed
 
+- Bug fixes and updates.
 - Fix UI issues for small layout.
 - Bug fixes and updates.
 
