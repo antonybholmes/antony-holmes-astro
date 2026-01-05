@@ -23,6 +23,9 @@ importers:
       '@fontsource/dancing-script':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource/dm-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/figtree':
         specifier: ^5.2.10
         version: 5.2.10
@@ -705,6 +708,9 @@ packages:
 
   '@fontsource/dancing-script@5.2.8':
     resolution: {integrity: sha512-zHVVgIQ5/rAIM0VVp1QMsqvJm9INHO5/C82E9rHT6NlabjaPTFYn8wl9lT4vPWizfB0TublGQM1999kfdA+XFA==}
+
+  '@fontsource/dm-sans@5.2.8':
+    resolution: {integrity: sha512-tlovG42m9ESG28WiHpLq3F5umAlm64rv0RkqTbYowRn70e9OlRr5a3yTJhrhrY+k5lftR/OFJjPzOLQzk8EfCA==}
 
   '@fontsource/figtree@5.2.10':
     resolution: {integrity: sha512-nlO06N1qad88ySqzi/a2xwDBkamfZ4MFilP8la5dDyRY36ED0UYTs2hhtwJf8fM52+Nn7dQO2r27reKaXOyOIg==}
@@ -4875,6 +4881,8 @@ snapshots:
   '@floating-ui/utils@0.2.10': {}
 
   '@fontsource/dancing-script@5.2.8': {}
+
+  '@fontsource/dm-sans@5.2.8': {}
 
   '@fontsource/figtree@5.2.10': {}
 

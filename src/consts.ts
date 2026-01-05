@@ -17,7 +17,7 @@ export const HEADER_SEP = '-'
 //   "Antony Holmes's personal website for sharing experiments, tools, and resources related to software development, data science, and more."
 
 export const SITE_DESCRIPTION =
-  "I'm Antony Holmes, a software engineer and researcher in New York City. I write about tech, projects, films, whatever's on my mind really."
+  "I'm Antony Holmes, a software engineer and researcher in New York City. I write about tech, projects, transit, films, whatever's on my mind really."
 
 export const EMAIL = 'hello@antonyholmes.dev'
 export const RECORDS_PER_PAGE = 12

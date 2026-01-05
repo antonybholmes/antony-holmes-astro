@@ -20,6 +20,7 @@
     "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.6.0",
     "@fontsource/dancing-script": "^5.2.8",
+    "@fontsource/dm-sans": "^5.2.8",
     "@fontsource/figtree": "^5.2.10",
     "@fontsource/geist": "^5.2.8",
     "@fontsource/inter": "^5.2.8",

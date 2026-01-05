@@ -1,5 +1,5 @@
 ---
-description: 'How to create unique ids for databases, ui components and anything else your heart desires.'
+description: 'How to create unique ids for databases, UI components and anything else your heart desires.'
 type: post
 status: added
 title: 'Unique IDs'
@@ -7,7 +7,7 @@ sections:
   - ['Engineering']
 authors:
   - 'Antony Holmes'
-added: '2026-01-04'
+added: '2026-01-02'
 tags:
   - 'Tutorials'
 ---
@@ -16,11 +16,13 @@ Creating some databases recently, I started thinking more about primary keys and
 
 ## Universal truths
 
-Enter Universally Unique Identifiers (UUIDs), a specification for generating 128-bit numbers that can act as globally unique identifiers with negligible collision probability so that we can generate an infinite number effectively without having to worry about ids repeating. They are commonly represented as 36 character strings, e.g. <strong>f81d4fae-7dec-11d0-a765-00a0c91e6bf6</strong> and can be used in place of numerical primary keys. Strings of course take up more space in the database, so there may be a space concern, but if you are using PostgreSQL, it has built in support for storing UUIDs as numbers and can seamlessly map between the string and numerical representations for you.
+Enter Universally Unique Identifiers (UUIDs), a specification for generating 128-bit numbers that can act as globally unique identifiers with negligible collision probability so that we can effectively generate an infinite number of ids without having to worry about them repeating.
 
-Generally if you've encountered UUIDs, they were probably the v4 variants, which do what they say on the tin: create totally random ids. Random is useful, but in databases we often want to keep ids ordered as well. Is there some way to get the random properties of a UUID with the orderabilty of integer primary keys? Good news, there is! UUID v7 embeds a Unix Epoch timestamp in the first 48 bits with the remaining bits being random. This means that keys can be ordered sequentially, but are still unpredicable. Hurrah!
+UUIDs are commonly represented as 36 character strings, e.g. <strong>f81d4fae-7dec-11d0-a765-00a0c91e6ba6</strong> and can be used in place of numerical primary keys. Strings of course take up more space in the database, so there may be a space concern, but if you are using PostgreSQL, it has built in support for storing UUIDs as numbers and can seamlessly map between the string and numerical representations for you.
 
-Here's a simple example to illustrate how to create UUIDs using typescript:
+If you've encountered UUIDs, they were probably the v4 variants, which do what they say on the tin: create totally random ids. Totally random is a useful proptry, but we often want to keep ids ordered in a database. Is there some way to get the random properties of a UUID with the orderability of integer primary keys? Good news, there is! UUID v7 embeds a Unix Epoch timestamp in the first 48 bits with the remaining bits being random. This means that keys can be ordered sequentially, but are still unpredicable. Hurrah!
+
+Here's a simple example to illustrate how to create UUIDs using JS:
 
 ```typescript
 import { v4, v7 } from 'uuid'
@@ -31,7 +33,7 @@ const uuidv7 = v7() // each call generates a new id
 
 ## Size isn't everything
 
-So all is good? Not quite. It probably didn't escape your attention that UUIDs are rather long and unwieldy (<strong>f81d4fae-7dec-11d0-a765-00a0c91e6bf6</strong>) and if you are dealing with lots of them, they will rapidly pollute your debugger with strings making your output much longer and harder to parse. If you are using them in a front end, they will pad out the HTML causing longer page loads (well in sufficently large quantities). Also, UUIDS are often overkill because the scale of the data doesn't really require records to be globally unique, just some kind of good enough uniqueness would be sufficient.
+So all is well with the world? Not quite. It probably didn't escape your attention that UUIDs are rather long and unwieldy (<strong>f81d4fae-7dec-11d0-a765-00a0c91e6bf6</strong>) and if you are dealing with lots of them, they will rapidly pollute your debugger or front end. Also, UUIDS are often overkill because the scale of the data doesn't really require records to be globally unique, just some kind of good enough uniqueness would be sufficient.
 
 Viola [Nano Ids](https://github.com/ai/nanoid). A simplier faster, alternative that can generate random ids from an alphabet (commonly letters and numbers).
 

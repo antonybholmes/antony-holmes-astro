@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added new post.
 - Added read time.
 
 

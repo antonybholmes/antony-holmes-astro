@@ -23,6 +23,10 @@ export function getReviewPaths() {
 
 const FALLBACK_IMAGES = ['/img/blog/generic-1.webp', '/img/blog/generic-2.webp']
 
+const FALLBACK_TRANSIT_IMAGES = ['/img/blog/generic-transit-1.webp']
+
+const FALLBACK_HEALTH_IMAGES = ['/img/blog/generic-health-1.webp']
+
 const FALLBACK_ENGINEERING_IMAGES = [
   '/img/blog/generic-engineering-1.webp',
   '/img/blog/generic-engineering-2.webp',
@@ -56,12 +60,7 @@ export function sortPostsByDateDesc(
 ): CollectionEntry<'blog'>[] {
   const ret = posts
     .filter(post => !post.id.endsWith('_index.md'))
-    // .filter(post => {
-    //   return (
-    //     process.env.NODE_ENV === "development" ||
-    //     post.data.status === "added"
-    //   )
-    // })
+
     // sort posts by date in descending order
     .sort((a, b) => {
       let d =
@@ -94,7 +93,7 @@ export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
   // this way we can still see drafts in development
   // but not in production
   if (import.meta.env.PROD) {
-    posts = posts.filter(({ data }) => data.draft !== true)
+    posts = posts.filter(({ data }) => !data.draft)
   }
 
   // remove index posts
@@ -184,10 +183,18 @@ export function getHeroImage(entry: CollectionEntry<'blog'>): string {
 
   const hash = hashSlug(entry.id)
 
+  if (entry.data.sections?.some(s => s.includes('Transit'))) {
+    return FALLBACK_TRANSIT_IMAGES[hash % FALLBACK_TRANSIT_IMAGES.length]
+  }
+
   if (entry.data.sections?.some(s => s.includes('Engineering'))) {
     return FALLBACK_ENGINEERING_IMAGES[
       hash % FALLBACK_ENGINEERING_IMAGES.length
     ]
+  }
+
+  if (entry.data.sections?.some(s => s.includes('Health'))) {
+    return FALLBACK_HEALTH_IMAGES[hash % FALLBACK_HEALTH_IMAGES.length]
   }
 
   if (entry.data.sections?.some(s => s.includes('Films'))) {
