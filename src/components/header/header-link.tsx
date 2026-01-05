@@ -78,7 +78,7 @@ export const HeaderLink = ({
       href={href}
       data-state={isActive ? 'active' : 'inactive'}
       data-mode={mode}
-      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[mode=dark]:text-white data-[state=active]:text-theme boldable-text-tab px-4 h-16"
+      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[mode=dark]:text-white data-[state=active]:text-theme boldable-text-tab h-16"
       {...props}
       //onMouseEnter={handleMouseEnter}
       //onMouseLeave={handleMouseLeave}
