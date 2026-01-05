@@ -141,8 +141,9 @@ export function BasePublication({
           <div className="text-center text-foreground/50">{`${index + 1}`}</div>
         )}
         <button
-          aria-label="Show abstract"
+          title={`${isExpanded ? 'Hide' : 'Show'} abstract`}
           onClick={() => setExpanded(!isExpanded)}
+          className="cursor-pointer"
         >
           <ChevronRightIcon
             className={cn('trans-transform w-3 stroke-2 ', {

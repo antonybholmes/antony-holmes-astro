@@ -421,9 +421,9 @@ export function PublicationsPage() {
           <Switch
             onCheckedChange={state => setShowAbstract(state)}
             checked={showAbstract}
-            aria-label="Show Abstracts"
+            aria-label="Show abstracts"
           >
-            Show Abstracts
+            Show abstracts
           </Switch>
         </VCenterRow>
 

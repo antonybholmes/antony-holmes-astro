@@ -7,6 +7,10 @@
 - Added new post.
 - Added read time.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 2.3 (Jan, 2026)
 

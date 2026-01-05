@@ -12,7 +12,9 @@ export function RandomQuote() {
 
   async function fetchQuote() {
     const quotes =
-      await httpFetch.getJson<{ quote: string; url: string }[]>('/quotes.json')
+      await httpFetch.getJson<{ quote: string; url: string }[]>(
+        '/api/quotes.json'
+      )
 
     const randomIndex = Math.floor(Math.random() * quotes.length)
     setQuote({
