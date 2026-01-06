@@ -2,6 +2,10 @@
 
 ## 2.6 (Jan, 2026)
 
+### Changed
+
+- UI tweaks.
+
 ### Fixed
 
 - Bug fixes and updates.

@@ -23,12 +23,12 @@ function escapeXML(str: string): string {
 
 async function main() {
   const files = await globby('src/content/blog/**/{*.md,*.mdx}')
-  const template = await fs.readFileSync('src/assets/og-template.svg', 'utf8')
+  const template = fs.readFileSync('src/assets/og-template.svg', 'utf8')
 
-  await fs.mkdirSync(OUTPUT_DIR, { recursive: true })
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true })
 
   for (const file of files) {
-    const content = await fs.readFileSync(file, 'utf8')
+    const content = fs.readFileSync(file, 'utf8')
     const { data } = matter(content)
     const title = escapeXML(data.title || 'Untitled')
     const authors = data.authors

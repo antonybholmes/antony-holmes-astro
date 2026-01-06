@@ -13,7 +13,6 @@ import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { Rss } from 'lucide-react'
 import { GitHubIcon } from './icons/github-icon'
 import { BaseCol } from './layout/base-col'
-import { BaseRow } from './layout/base-row'
 import ContentDiv from './layout/ContentDiv.astro'
 import { VCenterRow } from './layout/v-center-row'
 import { BaseLink } from './link/base-link'
@@ -45,7 +44,9 @@ const tags = (await getUniqueTags()).slice(0, 10)
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div class="col-span-3 flex flex-col gap-16 md:flex-row xl:justify-end">
+        <div
+          class="col-span-3 flex flex-col justify-center gap-16 md:flex-row xl:justify-end"
+        >
           <BaseCol className="gap-y-2">
             <span class="font-semibold tracking-wide uppercase"
               >Browse By Tag</span
@@ -106,14 +107,15 @@ const tags = (await getUniqueTags()).slice(0, 10)
         </div>
       </div>
 
-      <BaseRow className="items-start justify-between text-xs">
-        <BaseCol className="gap-y-3">
-          <span class="font-medium">
+      <div class="grid grid-cols-1 items-start gap-y-4 text-xs md:grid-cols-5">
+        <div></div>
+        <BaseCol className="col-span-3 items-center gap-y-3">
+          <span class="text-center font-medium">
             &copy; {today.getFullYear()}
             {SITE_AUTHOR}. All rights reserved.
           </span>
 
-          <div class="flex flex-col gap-x-6 gap-y-2 md:flex-row">
+          <div class="flex flex-col items-center gap-x-4 gap-y-2 md:flex-row">
             <BaseLink
               href="/sitemap"
               title="View site map"
@@ -140,7 +142,7 @@ const tags = (await getUniqueTags()).slice(0, 10)
           </div>
         </BaseCol>
 
-        <VCenterRow className="gap-x-2">
+        <VCenterRow className="justify-center gap-x-2 md:justify-end">
           <a href={GITHUB_URL} target={TARGET_BLANK} title="My GitHub">
             <GitHubIcon />
           </a>
@@ -153,7 +155,7 @@ const tags = (await getUniqueTags()).slice(0, 10)
             <Rss className="h-5 w-5" stroke="" />
           </BaseLink>
         </VCenterRow>
-      </BaseRow>
+      </div>
     </BaseCol>
   </ContentDiv>
 </footer>

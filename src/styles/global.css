@@ -354,6 +354,10 @@ input[type='search']::-webkit-search-cancel-button {
   ol {
     @apply ml-4 list-decimal;
   }
+
+  a {
+    @apply text-theme hover:underline;
+  }
 }
 
 .post {
@@ -367,10 +371,6 @@ input[type='search']::-webkit-search-cancel-button {
 
   tr td {
     @apply px-2 py-1;
-  }
-
-  a {
-    @apply text-theme hover:underline;
   }
 
   p em {

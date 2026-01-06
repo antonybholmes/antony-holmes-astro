@@ -427,5 +427,18 @@
     },
     "author": "Antony Holmes",
     "date": "2026-01-05T00:34:09.110Z"
+  },
+  {
+    "version": "2.6",
+    "messages": {
+      "Fixed": [
+        {
+          "msg": "Bug fixes and updates.",
+          "date": "2026-01-06T04:32:15.460Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-01-06T04:32:15.460Z"
   }
 ]
