@@ -20,7 +20,7 @@ export function PostsPage({
 
   return (
     <BaseCol className="gap-y-24">
-      <ContentDiv className="py-16 bg-gradient-to-br from-gray-900 to-gray-700">
+      <ContentDiv className="py-16 bg-linear-to-br from-gray-900 to-gray-700">
         <HeroPosts
           posts={heroPosts}
           page={0}

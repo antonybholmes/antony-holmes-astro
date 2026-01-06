@@ -19,8 +19,8 @@ function placeHolder(f: string, out: string) {
 let maxSize = '1024x1024'
 let sizes = [800]
 
-let dir = './content/img/blog'
-let outDir = './public/img/blog'
+let dir = './content/assets/images/blog'
+let outDir = './public/assets/images/blog'
 
 let files = fs.readdirSync(dir)
 

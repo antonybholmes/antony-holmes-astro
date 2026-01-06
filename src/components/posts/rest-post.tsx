@@ -27,8 +27,6 @@ export function RestPost({
   mode = 'light',
   className,
 }: IProps) {
-  const hasImage = Boolean(post.data.resolvedHero)
-
   return (
     <article
       data-mode={mode}

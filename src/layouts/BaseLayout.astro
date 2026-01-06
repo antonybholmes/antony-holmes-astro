@@ -18,6 +18,7 @@ let {
   title = '',
   description = '',
   bg = 'bg-body',
+  image,
   tab,
   className,
 } = Astro.props
@@ -33,7 +34,7 @@ const { mode = 'light' } = Astro.props
 
 <html lang="en" class={cls}>
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={image} />
     <slot name="head" />
   </head>
 

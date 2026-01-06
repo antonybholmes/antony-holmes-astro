@@ -57,11 +57,11 @@ const slug = post.id.split('/').pop() || post.id // Flatten the slug
 
 const { Content, remarkPluginFrontmatter } = await render(post)
 
-const ogImage = `/img/og/${slug}.webp` //png
+const ogImage = `/assets/images/og/${slug}.webp` //png
 
 // const hero = post.data.hero
 //   ? post.data.hero
-//   : `/img/blog/${slug}.webp`
+//   : `/assets/images/blog/${slug}.webp`
 
 const crumbs: ICrumb[] = [
   {
@@ -93,6 +93,7 @@ console.log('Date added:', post.data.title, remarkPluginFrontmatter)
 <BaseLayout
   title={post.data.title}
   description={post.data.description}
+  image={post.data.hero}
   tab="Blog"
   mode="light"
 >

@@ -35,8 +35,8 @@ echo ${branch}
 # pnpm update-version
 
 # remove old OG images
-rm public/img/og/*.png
-rm public/img/og/*.webp
+rm public/assets/images/og/*.png
+rm public/assets/images/og/*.webp
 pnpm generate:og
 
 ./base_commit.sh -t "${type}" -m "${msg}" -b dev

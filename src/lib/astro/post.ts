@@ -21,33 +21,36 @@ export function getReviewPaths() {
   return getAllMDFiles(REVIEWS_DIR)
 }
 
-const FALLBACK_IMAGES = ['/img/blog/generic-1.webp', '/img/blog/generic-2.webp']
+const FALLBACK_IMAGES = [
+  '/assets/images/blog/generic-1.webp',
+  '/assets/images/blog/generic-2.webp',
+]
 
-const FALLBACK_TRANSIT_IMAGES = ['/img/blog/generic-transit-1.webp']
+const FALLBACK_TRANSIT_IMAGES = ['/assets/images/blog/generic-transit-1.webp']
 
-const FALLBACK_HEALTH_IMAGES = ['/img/blog/generic-health-1.webp']
+const FALLBACK_HEALTH_IMAGES = ['/assets/images/blog/generic-health-1.webp']
 
 const FALLBACK_ENGINEERING_IMAGES = [
-  '/img/blog/generic-engineering-1.webp',
-  '/img/blog/generic-engineering-2.webp',
-  '/img/blog/generic-engineering-3.webp',
+  '/assets/images/blog/generic-engineering-1.webp',
+  '/assets/images/blog/generic-engineering-2.webp',
+  '/assets/images/blog/generic-engineering-3.webp',
 ]
 
 const FALLBACK_FILM_IMAGES = [
-  '/img/blog/generic-film-1.webp',
-  '/img/blog/generic-film-2.webp',
+  '/assets/images/blog/generic-film-1.webp',
+  '/assets/images/blog/generic-film-2.webp',
 ]
 
 const FALLBACK_FINANCE_IMAGES = [
-  '/img/blog/generic-finance-1.webp',
-  '/img/blog/generic-finance-2.webp',
+  '/assets/images/blog/generic-finance-1.webp',
+  '/assets/images/blog/generic-finance-2.webp',
 ]
 
-const FALLBACK_PHONE_IMAGES = ['/img/blog/generic-phone-1.webp']
+const FALLBACK_PHONE_IMAGES = ['/assets/images/blog/generic-phone-1.webp']
 
-const FALLBACK_BANK_IMAGES = ['/img/blog/generic-bank-1.webp']
+const FALLBACK_BANK_IMAGES = ['/assets/images/blog/generic-bank-1.webp']
 
-const FALLBACK_NEWS_IMAGES = ['/img/blog/generic-news-1.webp']
+const FALLBACK_NEWS_IMAGES = ['/assets/images/blog/generic-news-1.webp']
 
 /**
  * Sort post in descending order by date added. If there is a date tie,
@@ -158,6 +161,19 @@ export type PostWithHero = CollectionEntry<'blog'> & {
   }
 }
 
+export function fixHeroPath(hero: string): string {
+  // dont need to bother with path
+  if (!hero.includes('/')) {
+    hero = `/assets/images/blog/${hero}`
+  }
+
+  if (!hero.match(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/i)) {
+    hero += '.webp'
+  }
+
+  return hero
+}
+
 /**
  * Tries to resolve the hero image for a post. If the post has a hero image set, it will return that.
  * If not, it will return a fallback image based on the post's sections.
@@ -167,18 +183,7 @@ export type PostWithHero = CollectionEntry<'blog'> & {
  */
 export function getHeroImage(entry: CollectionEntry<'blog'>): string {
   if (entry.data.hero) {
-    let hero = entry.data.hero
-
-    // dont need to bother with path
-    if (!hero.includes('/')) {
-      hero = `/img/blog/${entry.data.hero}`
-    }
-
-    if (!hero.endsWith('.webp')) {
-      hero += '.webp'
-    }
-
-    return hero
+    return fixHeroPath(entry.data.hero)
   }
 
   const hash = hashSlug(entry.id)

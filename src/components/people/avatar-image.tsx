@@ -6,14 +6,20 @@ export interface IAvatarProps extends IClassProps {
   person: string
 }
 
-interface IProps extends IAvatarProps {}
+interface IProps extends IAvatarProps {
+  alt?: string
+}
 
-export function AvatarImage({ person, className, ...props }: IProps) {
+export function AvatarImage({ person, className, alt, ...props }: IProps) {
+  if (!alt) {
+    alt = `A most delightful photo of ${person}`
+  }
+
   return (
     <RoundedImage
-      src={`/img/people/${getUrlFriendlyImg(person)}`}
-      alt={`A delightful photo of ${person}`}
-      title={`A delightful photo of ${person}`}
+      src={`/assets/images/people/${getUrlFriendlyImg(person)}`}
+      alt={alt}
+      title={alt}
       className={className}
     />
   )

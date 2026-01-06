@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.6 (Jan, 2026)
+
+### Fixed
+
+- Bug fixes and updates.
+
+
 ## 2.5 (Jan, 2026)
 
 ### Added

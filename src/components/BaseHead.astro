@@ -35,19 +35,24 @@ import '@fontsource/poppins/700.css'
 
 import '../styles/global.css'
 
-import type { ImageMetadata } from 'astro'
+import { fixHeroPath } from '@/lib/astro/post'
 import { ClientRouter } from 'astro:transitions'
-import FallbackImage from '../assets/blog-placeholder-1.jpg'
 import { SITE_TITLE } from '../consts'
 interface Props {
   title: string
   description: string
-  image?: ImageMetadata
+  image?: string
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
-const { title, description, image = FallbackImage } = Astro.props
+let { title, description, image } = Astro.props
+
+if (image) {
+  image = fixHeroPath(image)
+}
+
+const absoluteImage = image ? new URL(image, Astro.url) : ''
 ---
 
 <!-- Global Metadata -->
@@ -82,7 +87,7 @@ const { title, description, image = FallbackImage } = Astro.props
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+{description && <meta property="twitter:description" content={description} />}
+{image && <meta property="twitter:image" content={absoluteImage} />}
 
 <ClientRouter />

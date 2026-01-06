@@ -7,7 +7,7 @@ export interface ILayoutProps extends IDivProps {
   isIndexed?: boolean
   bg?: string
   //added?: Date
-  hero?: string
+  image?: string
   heroAlt?: string
   heroTitle?: string
 }

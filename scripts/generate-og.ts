@@ -6,7 +6,7 @@ import matter from 'gray-matter'
 import path from 'path'
 import sharp from 'sharp'
 
-const OUTPUT_DIR = 'public/img/og'
+const OUTPUT_DIR = 'public/assets/images/og'
 
 function escapeXML(str: string): string {
   return str.replace(/[&<>"']/g, char => {
@@ -64,7 +64,7 @@ async function main() {
     const outputPath = path.join(OUTPUT_DIR, `${slug}.webp`)
 
     if (!fs.existsSync(outputPath)) {
-      await fs.writeFileSync(outputPath, buffer)
+      fs.writeFileSync(outputPath, buffer)
       console.log(`✅ Generated OG image for ${slug}`)
     } else {
       console.log(`⚠️ OG image for ${slug} already exists, skipping`)
