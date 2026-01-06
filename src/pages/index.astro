@@ -30,7 +30,9 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
         slot="main"
       >
         <BaseCol className="gap-y-2">
-          <h1 class="text-center text-5xl font-semibold lg:text-left">
+          <h1
+            class="text-center text-4xl font-semibold md:text-5xl lg:text-left"
+          >
             <a
               href="/"
               class="bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent"
@@ -39,7 +41,7 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
             </a>
           </h1>
 
-          <h2 class="text-center text-2xl font-medium lg:text-left">
+          <h2 class="text-center text-xl font-medium md:text-2xl lg:text-left">
             {SITE_SUBTITLE}
           </h2>
         </BaseCol>
