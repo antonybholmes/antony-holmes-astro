@@ -28,7 +28,7 @@ export function getTagPostMap(
 //let cachedTags: { tag: string; count: number }[] | null = null
 
 export async function getUniqueTags(): Promise<
-  { tag: string; count: number }[]
+  { name: string; count: number }[]
 > {
   //if (cachedTags) return cachedTags
 
@@ -41,7 +41,7 @@ export async function getUniqueTags(): Promise<
       // sort by count descending, then alphabetically
       return d !== 0 ? d : a[0].localeCompare(b[0])
     })
-    .map(e => ({ tag: e[0], count: e[1].length }))
+    .map(e => ({ name: e[0], count: e[1].length }))
 
   //cachedTags = tags
 

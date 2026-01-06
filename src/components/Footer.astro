@@ -23,7 +23,7 @@ import ThemeToggle from './ThemeToggle.astro'
 const today = new Date()
 
 const sections = (await getUniqueSections()).filter(
-  section => section !== 'All' && !section.includes('/')
+  section => section.name !== 'All' && !section.name.includes('/')
 )
 
 const tags = (await getUniqueTags()).slice(0, 10)
@@ -45,7 +45,7 @@ const tags = (await getUniqueTags()).slice(0, 10)
         </BaseCol>
 
         <div
-          class="col-span-3 flex flex-col justify-center gap-16 md:flex-row xl:justify-end"
+          class="col-span-3 flex flex-col justify-center gap-8 md:flex-row xl:justify-end"
         >
           <BaseCol className="gap-y-2">
             <span class="font-semibold tracking-wide uppercase"
@@ -56,10 +56,11 @@ const tags = (await getUniqueTags()).slice(0, 10)
                 tags.map(t => (
                   <li>
                     <BaseLink
-                      href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(t.tag)}`}
+                      href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(t.name)}`}
                     >
-                      #{t.tag} ({t.count})
-                    </BaseLink>
+                      #{t.name}
+                    </BaseLink>{' '}
+                    ({t.count})
                   </li>
                 ))
               }
@@ -75,11 +76,12 @@ const tags = (await getUniqueTags()).slice(0, 10)
                 sections.map(section => (
                   <li>
                     <BaseLink
-                      href={`${BLOG_SLUG}/${getUrlFriendlyTag(section)}`}
+                      href={`${BLOG_SLUG}/${getUrlFriendlyTag(section.name)}`}
                       className="hover:underline"
                     >
-                      {section}
-                    </BaseLink>
+                      {section.name}
+                    </BaseLink>{' '}
+                    ({section.count})
                   </li>
                 ))
               }

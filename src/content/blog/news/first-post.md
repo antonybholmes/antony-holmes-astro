@@ -1,7 +1,7 @@
 ---
 description: Welcome to my personal website.
 type: post
-heroAlt: This post is more technologically advanced than a stamp.
+heroAlt: This post is more technologically advanced than a Gutenberg Press.
 status: added
 title: First Post! Welcome
 authors:

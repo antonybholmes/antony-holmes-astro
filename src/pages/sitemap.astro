@@ -75,7 +75,7 @@ const uniqueRoutes = Array.from(
   <div class="mt-8 mb-64 grid grid-cols-1 gap-8 md:grid-cols-4" slot="main">
     <section>
       <h3 class="mt-4 font-semibold">Learn More</h3>
-      <ul class="mt-4 grid grid-cols-1 gap-y-4">
+      <ul class="mt-4 grid grid-cols-1 gap-y-2">
         {
           uniqueRoutes.map((link: { url: string; title: string }) => {
             return (
@@ -92,7 +92,7 @@ const uniqueRoutes = Array.from(
 
     <section>
       <h3 class="mt-4 font-semibold">Help</h3>
-      <ul class="mt-4 flex flex-col gap-y-4">
+      <ul class="mt-4 flex flex-col gap-y-2">
         <li>
           <ThemeLink href="/about" aria-label="View help information">
             About

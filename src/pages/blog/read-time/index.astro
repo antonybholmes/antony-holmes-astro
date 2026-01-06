@@ -4,14 +4,23 @@ import { BLOG_SLUG, READ_TIME_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { getTimePostMap } from '@/lib/astro/time'
-import { numSort } from '@/lib/math/math'
 
 const posts = await getSortedPosts()
 
 // Extract tags from all posts
 const tagMap = await getTimePostMap(posts)
 
-const times = numSort([...tagMap.keys()])
+const tags = [...tagMap.keys()]
+  .sort((a, b) => {
+    let d = tagMap.get(a)!.length - tagMap.get(b)!.length
+
+    if (d !== 0) {
+      return d
+    }
+
+    return a.toString().localeCompare(b.toString())
+  })
+  .reverse()
 ---
 
 <ContentLayout
@@ -22,14 +31,14 @@ const times = numSort([...tagMap.keys()])
     <h1 class="text-2xl font-bold">Read Time</h1>
     <ul>
       {
-        times.map(time => {
-          const n = tagMap.get(time)?.length ?? 0
+        tags.map(tag => {
+          const n = tagMap.get(tag)?.length ?? 0
           return (
             <li>
-              <ThemeLink href={`${BLOG_SLUG}/${READ_TIME_SLUG}/${time}-min/`}>
-                {`${time} min read`}
+              <ThemeLink href={`${BLOG_SLUG}/${READ_TIME_SLUG}/${tag}-min/`}>
+                {`${tag} min`}
               </ThemeLink>
-              ({`${n} post${n !== 1 ? 's' : ''}`})
+              ({`${n.toLocaleString()} post${n !== 1 ? 's' : ''}`})
             </li>
           )
         })

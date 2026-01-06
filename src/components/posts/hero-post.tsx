@@ -42,7 +42,7 @@ export function HeroPost({
   return (
     <article
       className={cn(
-        'flex flex-col gap-y-4 group pb-6 bg-muted/30 rounded-2xl overflow-hidden h-full',
+        'flex flex-col gap-y-4 group pb-6 bg-muted/30 rounded-2xl overflow-hidden',
         className
       )}
     >

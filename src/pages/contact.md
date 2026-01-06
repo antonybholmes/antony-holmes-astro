@@ -2,11 +2,12 @@
 title: 'Get In Touch'
 subtitle: ''
 hero: ''
-authors: 'Antony Holmes'
+authors:
+  - 'Antony Holmes'
 layout: ../layouts/MarkdownLayout.astro
 ---
 
-There are a number of email addresses you can use to contact me, but in reality I'll probably see the email regardless of which one you use:
+There are a number of addresses you can use to contact me, but in reality I'll probably see your email regardless of which one you use:
 
 ## Contact me
 

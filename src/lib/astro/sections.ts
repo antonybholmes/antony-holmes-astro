@@ -37,23 +37,23 @@ export function getPostSectionMap(
 
 //let cachedSections: string[] | null = null
 
-export async function getUniqueSections(): Promise<string[]> {
+export async function getUniqueSections(): Promise<
+  { name: string; count: number }[]
+> {
   //if (cachedSections) return cachedSections
 
-  const posts = await getCollection('blog')
+  const tagMap = getPostSectionMap(await getCollection('blog'))
 
-  const sections = new Set<string>()
+  const tags = [...tagMap.entries()]
+    .sort((a, b) => {
+      const d = b[1].length - a[1].length
 
-  for (const post of posts) {
-    for (const section of post.data.sections ?? []) {
-      for (const sectionNames of growingSubsets(section)) {
-        const sectionName = sectionNames.join('/')
-        sections.add(sectionName)
-      }
-    }
-  }
+      // sort by count descending, then alphabetically
+      return d !== 0 ? d : a[0].localeCompare(b[0])
+    })
+    .map(e => ({ name: e[0], count: e[1].length }))
 
-  const cachedSections = [...sections].sort()
+  //cachedTags = tags
 
-  return cachedSections
+  return tags //cachedTags
 }

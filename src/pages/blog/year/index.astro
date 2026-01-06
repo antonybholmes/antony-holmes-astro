@@ -3,7 +3,6 @@ import { ThemeLink } from '@/components/link/theme-link'
 import { BLOG_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
-import { numSort } from '@/lib/math/math'
 
 const posts = await getSortedPosts()
 
@@ -20,7 +19,19 @@ for (const post of posts) {
   tagMap.get(year)!.push(post)
 }
 
-const tags = numSort([...tagMap.keys()]).reverse() // Sort years in descending order
+const tags = [...tagMap.keys()]
+  .sort((a, b) => {
+    let d = tagMap.get(a)!.length - tagMap.get(b)!.length
+
+    if (d !== 0) {
+      return d
+    }
+
+    return a.toString().localeCompare(b.toString())
+  })
+  .reverse()
+
+//const tags = numSort([...tagMap.keys()]).reverse() // Sort years in descending order
 ---
 
 <ContentLayout
@@ -31,13 +42,15 @@ const tags = numSort([...tagMap.keys()]).reverse() // Sort years in descending o
     <h1 class="text-2xl font-bold">Years</h1>
     <ul>
       {
-        tags.map(tag => (
-          <li>
-            <ThemeLink href={`${BLOG_SLUG}/year/${tag}/`}>
-              {tag} ({tagMap.get(tag)!.length})
-            </ThemeLink>
-          </li>
-        ))
+        tags.map(tag => {
+          const n = tagMap.get(tag)?.length ?? 0
+          return (
+            <li>
+              <ThemeLink href={`${BLOG_SLUG}/year/${tag}/`}>{tag}</ThemeLink>{' '}
+              {`(${n.toLocaleString()} post${n !== 1 ? 's' : ''})`}
+            </li>
+          )
+        })
       }
     </ul>
   </main>

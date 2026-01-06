@@ -10,7 +10,19 @@ const posts = await getSortedPosts()
 // Extract tags from all posts
 const tagMap = getTagPostMap(posts)
 
-const tags = [...tagMap.keys()].sort()
+//const tags = [...tagMap.keys()].sort()
+
+const tags = [...tagMap.keys()]
+  .sort((a, b) => {
+    let d = tagMap.get(a)!.length - tagMap.get(b)!.length
+
+    if (d !== 0) {
+      return d
+    }
+
+    return a.toString().localeCompare(b.toString())
+  })
+  .reverse()
 ---
 
 <ContentLayout
