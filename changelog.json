@@ -462,6 +462,10 @@
         {
           "msg": "OG images now made with Puppeteer",
           "date": "2026-01-07T16:57:05.678Z"
+        },
+        {
+          "msg": "OG cards refined",
+          "date": "2026-01-07T18:02:53.789Z"
         }
       ],
       "Fixed": [
