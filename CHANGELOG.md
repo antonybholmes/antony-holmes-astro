@@ -4,6 +4,7 @@
 
 ### Changed
 
+- OG images are now based on hero.
 - UI tweaks.
 
 ### Fixed

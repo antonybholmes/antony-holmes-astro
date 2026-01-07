@@ -1,5 +1,5 @@
 ---
-title: 'Out With The Old And In With The New'
+title: 'Out With The Old, In With The New'
 description: 'New York City has finally rolled out contactless payments for subway and buses.'
 type: post
 # draft: true

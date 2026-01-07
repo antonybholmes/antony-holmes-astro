@@ -1,6 +1,7 @@
 ---
 title: 'Tales from the Crypto'
-author: 'Antony Holmes'
+authors:
+  - 'Antony Holmes'
 description: 'What is cryptocurrency and should you buy it?'
 hero: 'money'
 sections:

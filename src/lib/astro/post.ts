@@ -12,6 +12,7 @@ import { getAllMDFiles } from './files'
 
 import { getSlugSubPaths, getUrlFriendlyTag } from '../http/urls'
 import { POSTS_DIR, REVIEWS_DIR } from '../post'
+import { getHeroImage } from './hero'
 
 export function getPostPaths() {
   return getAllMDFiles(POSTS_DIR)
@@ -20,37 +21,6 @@ export function getPostPaths() {
 export function getReviewPaths() {
   return getAllMDFiles(REVIEWS_DIR)
 }
-
-const FALLBACK_IMAGES = [
-  '/assets/images/blog/generic-1.webp',
-  '/assets/images/blog/generic-2.webp',
-]
-
-const FALLBACK_TRANSIT_IMAGES = ['/assets/images/blog/generic-transit-1.webp']
-
-const FALLBACK_HEALTH_IMAGES = ['/assets/images/blog/generic-health-1.webp']
-
-const FALLBACK_ENGINEERING_IMAGES = [
-  '/assets/images/blog/generic-engineering-1.webp',
-  '/assets/images/blog/generic-engineering-2.webp',
-  '/assets/images/blog/generic-engineering-3.webp',
-]
-
-const FALLBACK_FILM_IMAGES = [
-  '/assets/images/blog/generic-film-1.webp',
-  '/assets/images/blog/generic-film-2.webp',
-]
-
-const FALLBACK_FINANCE_IMAGES = [
-  '/assets/images/blog/generic-finance-1.webp',
-  '/assets/images/blog/generic-finance-2.webp',
-]
-
-const FALLBACK_PHONE_IMAGES = ['/assets/images/blog/generic-phone-1.webp']
-
-const FALLBACK_BANK_IMAGES = ['/assets/images/blog/generic-bank-1.webp']
-
-const FALLBACK_NEWS_IMAGES = ['/assets/images/blog/generic-news-1.webp']
 
 /**
  * Sort post in descending order by date added. If there is a date tie,
@@ -161,99 +131,16 @@ export type PostWithHero = CollectionEntry<'blog'> & {
   }
 }
 
-export function fixHeroPath(hero: string): string {
-  // dont need to bother with path
-  if (!hero.includes('/')) {
-    hero = `/assets/images/blog/${hero}`
-  }
-
-  if (!hero.match(/\.(jpg|jpeg|png|webp|avif|gif|svg)$/i)) {
-    hero += '.webp'
-  }
-
-  return hero
-}
-
-/**
- * Tries to resolve the hero image for a post. If the post has a hero image set, it will return that.
- * If not, it will return a fallback image based on the post's sections.
- * If no sections match, it will return a generic fallback image.
- * @param entry
- * @returns
- */
-export function getHeroImage(entry: CollectionEntry<'blog'>): string {
-  if (entry.data.hero) {
-    return fixHeroPath(entry.data.hero)
-  }
-
-  const hash = hashSlug(entry.id)
-
-  if (entry.data.sections?.some(s => s.includes('Transit'))) {
-    return FALLBACK_TRANSIT_IMAGES[hash % FALLBACK_TRANSIT_IMAGES.length]
-  }
-
-  if (entry.data.sections?.some(s => s.includes('Engineering'))) {
-    return FALLBACK_ENGINEERING_IMAGES[
-      hash % FALLBACK_ENGINEERING_IMAGES.length
-    ]
-  }
-
-  if (entry.data.sections?.some(s => s.includes('Health'))) {
-    return FALLBACK_HEALTH_IMAGES[hash % FALLBACK_HEALTH_IMAGES.length]
-  }
-
-  if (entry.data.sections?.some(s => s.includes('Films'))) {
-    return FALLBACK_FILM_IMAGES[hash % FALLBACK_FILM_IMAGES.length]
-  }
-
-  if (
-    entry.data.sections?.some(
-      s =>
-        s.includes('Finance') ||
-        s.includes('Economics') ||
-        s.includes('Business') ||
-        s.includes('Brokerages') ||
-        s.includes('Investing') ||
-        s.includes('Trading') ||
-        s.includes('Retirement')
-    )
-  ) {
-    return FALLBACK_FINANCE_IMAGES[hash % FALLBACK_FINANCE_IMAGES.length]
-  }
-
-  if (entry.data.sections?.some(s => s.includes('Phone'))) {
-    return FALLBACK_PHONE_IMAGES[hash % FALLBACK_PHONE_IMAGES.length]
-  }
-
-  if (
-    entry.data.sections?.some(s => s.includes('Bank') || s.includes('Credit'))
-  ) {
-    return FALLBACK_BANK_IMAGES[hash % FALLBACK_BANK_IMAGES.length]
-  }
-
-  if (entry.data.sections?.some(s => s.includes('News'))) {
-    return FALLBACK_NEWS_IMAGES[hash % FALLBACK_NEWS_IMAGES.length]
-  }
-
-  return FALLBACK_IMAGES[hash % FALLBACK_IMAGES.length]
-}
-
-// Simple hash for consistent fallback selection
-function hashSlug(str: string): number {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i)
-    hash |= 0 // Convert to 32bit int
-  }
-  return Math.abs(hash)
-}
-
 export function addHeroToPost(entry: CollectionEntry<'blog'>): PostWithHero {
   return {
     ...entry,
     data: {
       ...entry.data,
-      resolvedHero: getHeroImage(entry),
+      resolvedHero: getHeroImage(
+        entry.data.title,
+        entry.data.hero,
+        entry.data.sections ?? []
+      ),
     },
   }
 }

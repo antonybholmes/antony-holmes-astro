@@ -57,7 +57,8 @@ const slug = post.id.split('/').pop() || post.id // Flatten the slug
 
 const { Content, remarkPluginFrontmatter } = await render(post)
 
-const ogImage = `/assets/images/og/${slug}.webp` //png
+// use png for og images and compatibility
+const ogImage = `/assets/images/og/${slug}.png` //png`/assets/images/og/${slug}.webp` //png
 
 // const hero = post.data.hero
 //   ? post.data.hero
