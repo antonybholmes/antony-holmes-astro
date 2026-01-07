@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.7 (Jan, 2026)
+
+### Changed
+
+- Moved quote button closer to quote.
+
+
 ## 2.6 (Jan, 2026)
 
 ### Changed
