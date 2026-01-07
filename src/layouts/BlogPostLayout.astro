@@ -16,7 +16,7 @@ import { ThemeIndexLink } from '@/components/link/theme-index-link'
 import { HeroImageCaption } from '@/components/posts/hero-image-caption'
 import { StarRating } from '@/components/posts/star-rating'
 import SideTags from '@/components/SideTags.astro'
-import { BLOG_SLUG, TARGET_BLANK } from '@/consts'
+import { BLOG_SLUG, SITE_URL, TARGET_BLANK } from '@/consts'
 import type { PostWithHero } from '@/lib/astro/post'
 import type { ICrumb } from '@/lib/crumbs'
 import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
@@ -58,7 +58,7 @@ const slug = post.id.split('/').pop() || post.id // Flatten the slug
 const { Content, remarkPluginFrontmatter } = await render(post)
 
 // use png for og images and compatibility
-const ogImage = `/assets/images/og/${slug}.png` //png`/assets/images/og/${slug}.webp` //png
+const ogImage = `${SITE_URL}/assets/images/og/${slug}.png` //png`/assets/images/og/${slug}.webp` //png
 
 // const hero = post.data.hero
 //   ? post.data.hero
@@ -100,6 +100,7 @@ console.log('Date added:', post.data.title, remarkPluginFrontmatter)
 >
   <Fragment slot="head">
     <meta property="og:image" content={ogImage} />
+    <meta property="twitter:image" content={ogImage} />
   </Fragment>
 
   <article slot="main" class="mt-8 flex flex-col gap-y-16">
