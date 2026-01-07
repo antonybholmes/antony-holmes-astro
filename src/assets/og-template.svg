@@ -5,8 +5,11 @@
       <stop offset="100%" stop-color="#06b6d4" />
     </linearGradient>
     <clipPath id="roundedClip">
-      <rect x="0" y="0" width="100%" height="100%" rx="64" ry="64"/>
+      <rect x="0" y="0" width="100%" height="100%" rx="{{rx}}" ry="{{rx}}"/>
     </clipPath>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="3" />
+    </filter>
   </defs>
   <style>
     .title {
@@ -25,15 +28,24 @@
   <!-- <rect width="1200" height="630" fill="#1a202c" /> -->
   <!-- <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="63" /> -->
 
-  <image href="{{hero}}" x="0" y="0"   
+  <image href="{{hero}}" 
+    x="0" 
+    y="0"   
     width="100%"
     height="100%"
     clip-path="url(#roundedClip)"
-	preserveAspectRatio="xMidYMid slice"
+	  preserveAspectRatio="xMidYMid slice"
   />
   
   <!-- dim image a bit to make writing pop -->
-  <rect width="100%" height="100%" fill="black" fill-opacity="0.25" rx="64" />
+  <rect 
+    width="100%" 
+    height="100%" 
+    fill="black" 
+    fill-opacity="0.25" 
+    rx="{{rx}}"
+    ry="{{rx}}"
+    filter="url(#blur)" />
 
   <text x="60" y="200" class="title">{{title}}</text>
   <text x="60" y="280" class="meta">By {{author}}</text>
