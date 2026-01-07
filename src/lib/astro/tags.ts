@@ -43,7 +43,5 @@ export async function getUniqueTags(): Promise<
     })
     .map(e => ({ name: e[0], count: e[1].length }))
 
-  //cachedTags = tags
-
-  return tags //cachedTags
+  return tags
 }

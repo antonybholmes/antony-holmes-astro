@@ -6,6 +6,10 @@
 
 - Moved quote button closer to quote.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 2.6 (Jan, 2026)
 
