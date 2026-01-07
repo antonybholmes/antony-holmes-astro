@@ -41,8 +41,6 @@ async function main() {
     // fix for full path
     hero = `public${hero}`
 
-    console.log('hero', hero)
-
     // hero is webp so embed as data URI
 
     let svg = template

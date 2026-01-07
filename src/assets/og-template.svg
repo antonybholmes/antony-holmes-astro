@@ -32,7 +32,7 @@
 	preserveAspectRatio="xMidYMid slice"
   />
   
-  <! -- dim image a bit to make writing pop -->
+  <!-- dim image a bit to make writing pop -->
   <rect width="100%" height="100%" fill="black" fill-opacity="0.25" rx="64" />
 
   <text x="60" y="200" class="title">{{title}}</text>
