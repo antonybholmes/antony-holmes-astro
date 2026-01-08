@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Added photos section.
 - OG cards refined.
 - OG images now made with Puppeteer.
 - Moved quote button closer to quote.

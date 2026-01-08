@@ -1,24 +1,24 @@
 {
   "default": [
-    "/assets/images/blog/generic-1.webp",
-    "/assets/images/blog/generic-2.webp"
+    "/assets/images/blog/generic/1.webp",
+    "/assets/images/blog/generic/2.webp"
   ],
-  "transit": ["/assets/images/blog/generic-transit-1.webp"],
-  "health": ["/assets/images/blog/generic-health-1.webp"],
+  "transit": ["/assets/images/blog/generic/transit-1.webp"],
+  "health": ["/assets/images/blog/generic/health-1.webp"],
   "engineering": [
-    "/assets/images/blog/generic-engineering-1.webp",
-    "/assets/images/blog/generic-engineering-2.webp",
-    "/assets/images/blog/generic-engineering-3.webp"
+    "/assets/images/blog/generic/engineering-1.webp",
+    "/assets/images/blog/generic/engineering-2.webp",
+    "/assets/images/blog/generic/engineering-3.webp"
   ],
   "films": [
-    "/assets/images/blog/generic-film-1.webp",
-    "/assets/images/blog/generic-film-2.webp"
+    "/assets/images/blog/generic/film-1.webp",
+    "/assets/images/blog/generic/film-2.webp"
   ],
   "finance": [
-    "/assets/images/blog/generic-finance-1.webp",
-    "/assets/images/blog/generic-finance-2.webp"
+    "/assets/images/blog/generic/finance-1.webp",
+    "/assets/images/blog/generic/finance-2.webp"
   ],
-  "phone": ["/assets/images/blog/generic-phone-1.webp"],
-  "bank": ["/assets/images/blog/generic-bank-1.webp"],
-  "news": ["/assets/images/blog/generic-news-1.webp"]
+  "phone": ["/assets/images/blog/generic/phone-1.webp"],
+  "bank": ["/assets/images/blog/generic/bank-1.webp"],
+  "news": ["/assets/images/blog/generic/news-1.webp"]
 }
