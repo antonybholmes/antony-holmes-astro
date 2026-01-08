@@ -11,6 +11,7 @@
 
 ### Fixed
 
+- Fixed about screen width.
 - Bug fixes and updates.
 
 

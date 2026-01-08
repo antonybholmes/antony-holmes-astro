@@ -28,9 +28,9 @@ const LINKS = [
 
 export function AboutPage({ children }: IChildrenProps) {
   return (
-    <CenterCol>
+    <CenterCol className="mx-4 my-8 gap-y-8">
       <Card
-        className="text-sm shadow-md w-lg"
+        className="text-sm shadow-md w-full md:w-lg"
         style={{ paddingLeft: 0, paddingRight: 0 }}
       >
         <VCenterRow className="gap-x-4 py-2 px-6">
@@ -75,7 +75,7 @@ export function AboutPage({ children }: IChildrenProps) {
           </ThemeLink>
         </VCenterRow>
       </Card>
-      <Card className="text-sm shadow-md w-lg mt-8">
+      <Card className="text-sm shadow-md w-full md:w-lg">
         <BaseCol className="gap-y-1">
           <p>{APP_NAME}</p>
           <p>
