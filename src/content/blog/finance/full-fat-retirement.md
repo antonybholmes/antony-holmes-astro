@@ -5,7 +5,7 @@ authors:
   - 'Antony Holmes'
 
 sections:
-  - ['Retirement']
+  - ['Finance']
 tags:
   - 'Retirement'
   - 'Investing'

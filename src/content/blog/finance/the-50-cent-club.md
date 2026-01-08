@@ -5,7 +5,7 @@ description: 'How much should I be saving, really?'
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Retirement']
+  - ['Finance']
 tags:
   - 'Finance'
   - 'Saving'

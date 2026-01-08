@@ -8,12 +8,12 @@ sections:
   - ['Opinions']
 tags:
   - 'Investing'
-hero: potatoes
+hero: 'potatoes'
 related: ''
 added: '2022-02-07'
 ---
 
-s changes can lead to big outcomes with a little bit of disipline.
+Small changes can lead to big outcomes with a little bit of disipline.
 
 <!-- more -->
 

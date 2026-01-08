@@ -52,7 +52,7 @@ export function getHeroImage(
   if (
     sections?.some(
       s =>
-        s.includes('Finance') ||
+        s.includes('Finances') ||
         s.includes('Economics') ||
         s.includes('Business') ||
         s.includes('Brokerages') ||
@@ -62,6 +62,10 @@ export function getHeroImage(
     )
   ) {
     return fallbackImages['finance'][hash % fallbackImages['finance'].length]
+  }
+
+  if (sections?.some(s => s.includes('Photos'))) {
+    return fallbackImages['photos'][hash % fallbackImages['photos'].length]
   }
 
   if (sections?.some(s => s.includes('Phone'))) {

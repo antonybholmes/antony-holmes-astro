@@ -2,7 +2,7 @@
 title: 'The Vanilla Investor'
 description: "You get what you don't pay for."
 sections:
-  - ['Investing']
+  - ['Finance']
 type: post
 hero: 'vanilla-cake'
 heroAlt: "If you don't eat your cake, you can't have any pudding!"

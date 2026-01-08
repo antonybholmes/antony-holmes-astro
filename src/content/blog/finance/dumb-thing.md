@@ -4,7 +4,7 @@ description: 'Wealth building involves not doing dumb stuff with your money.'
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Opinions']
+  - ['Finance']
 tags:
   - 'Finance'
   - 'Investing'
