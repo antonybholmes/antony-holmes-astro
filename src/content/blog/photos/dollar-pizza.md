@@ -3,7 +3,7 @@ title: 'Dollar Pizza'
 description: "New York City's ridiculously cheap pizza seems to be coming to an end."
 type: post
 # draft: true
-hero: '/assets/images/blog/photos/dollar-pizza.webp'
+hero: '/assets/images/photos/dollar-pizza.webp'
 heroAlt: "$1.50 for a slice of pizza? It's highway robbery."
 sections:
   - ['Photos']

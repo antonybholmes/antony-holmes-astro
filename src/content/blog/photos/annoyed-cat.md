@@ -3,7 +3,7 @@ title: "What you lookin' at?"
 description: 'Mr Sprinkles loves having his photo taken.'
 type: post
 # draft: true
-hero: '/assets/images/blog/photos/annoyed-cat.webp'
+hero: '/assets/images/photos/annoyed-cat.webp'
 heroAlt: 'Could I BE any less interested?'
 sections:
   - ['Photos']
