@@ -2,7 +2,7 @@
 title: '10k A Day'
 description: "Let's walk."
 type: post
-heroAlt: 'An Apple Watch is a good way to track steps'
+heroAlt: 'Fun fact: Did you know you use your feet to walk?'
 sections:
   - ['Health']
 authors:

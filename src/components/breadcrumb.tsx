@@ -57,7 +57,7 @@ export function Breadcrumb({
       ret.push(
         <li key={`divider-${i}`}>
           <span
-            className="text-foreground/50 data-[mode=dark]:text-white mx-2"
+            className="text-foreground/50 data-[mode=dark]:text-white mx-1"
             data-mode={mode}
           >
             /

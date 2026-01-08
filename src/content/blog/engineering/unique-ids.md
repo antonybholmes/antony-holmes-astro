@@ -8,6 +8,7 @@ sections:
 authors:
   - 'Antony Holmes'
 added: '2026-01-02'
+heroAlt: "Look, it's some janky code with Bokeh to make this post seem more exciting."
 tags:
   - 'Tutorials'
 ---
