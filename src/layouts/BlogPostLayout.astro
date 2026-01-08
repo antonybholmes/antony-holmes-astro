@@ -108,46 +108,6 @@ const dateAdded = post.data.added ? post.data.added : new Date()
         <Fragment slot="main">
           <Breadcrumb crumbs={crumbs} mode="light" />
 
-          <BaseCol className="gap-y-4 text-sm">
-            <CompactAvatars people={post.data.authors ?? []} />
-
-            <VCenterRow
-              data-mode="light"
-              className="text-foreground/50 justify-between gap-2 data-[mode=dark]:text-white"
-            >
-              <VCenterRow className="gap-x-6">
-                <VCenterRow className="gap-x-1">
-                  <Calendar
-                    data-mode="light"
-                    className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
-                    strokeWidth={1.5}
-                  />
-                  <FormattedDate date={dateAdded} />
-                </VCenterRow>
-
-                <FormattedReadTime
-                  readingTime={remarkPluginFrontmatter.readingTime}
-                />
-              </VCenterRow>
-
-              {
-                post.data.links && (
-                  <VCenterRow className="gap-x-2">
-                    {post.data.links.map(link => (
-                      <ThemeIndexLink
-                        href={link.url}
-                        target={TARGET_BLANK}
-                        startingColor="text-theme"
-                      >
-                        {link.title}
-                      </ThemeIndexLink>
-                    ))}
-                  </VCenterRow>
-                )
-              }
-            </VCenterRow>
-          </BaseCol>
-
           <BaseCol className="gap-y-2">
             <h1
               class="text-4xl font-bold data-[mode=dark]:text-white"
@@ -192,64 +152,106 @@ const dateAdded = post.data.added ? post.data.added : new Date()
     </header>
 
     <ContentDiv slot="main" mainCls="gap-y-8">
-      <SidebarDiv mainCls="gap-y-8" slot="main">
-        <Fragment slot="main">
-          {
-            post.data.rating && (
-              <VCenterRow className="gap-x-4">
-                {post.data.rating && <StarRating rating={post.data.rating} />}
-              </VCenterRow>
-            )
-          }
+      <Fragment slot="main">
+        <BaseCol className="gap-y-3 text-sm">
+          <CompactAvatars people={post.data.authors ?? []} />
 
-          {
-            post.data.pros && (
-              <section
-                id="pros-and-cons"
-                class="grid grid-cols-1 gap-6 text-sm lg:grid-cols-2"
-              >
-                <BaseCol className="gap-2 bg-emerald-50 p-6 rounded-2xl">
-                  <h3 class="text-lg font-semibold">Pros</h3>
-                  <ul class="flex flex-col gap-2">
-                    {post.data.pros.map(p => (
-                      <li class="flex flex-row items-center gap-x-2">
-                        <VCenterRow className="justify-center shrink-0 bg-emerald-400 rounded-full w-4.5 h-4.5 aspect-square">
-                          <Plus stroke="white" className="w-5 h-5" />
-                        </VCenterRow>
-                        <span>{p}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </BaseCol>
-                {post.data.cons && (
-                  <BaseCol className="gap-2 bg-red-50 p-6 rounded-2xl">
-                    <h3 class="text-lg font-semibold">Cons</h3>
+          <VCenterRow
+            data-mode="light"
+            className="text-foreground/50 justify-between gap-2 data-[mode=dark]:text-white"
+          >
+            <VCenterRow className="gap-x-5">
+              <VCenterRow className="gap-x-1.5">
+                <Calendar
+                  data-mode="light"
+                  className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
+                  strokeWidth={1.5}
+                />
+                <FormattedDate date={dateAdded} />
+              </VCenterRow>
+
+              <FormattedReadTime
+                readingTime={remarkPluginFrontmatter.readingTime}
+              />
+            </VCenterRow>
+
+            {
+              post.data.links && (
+                <VCenterRow className="gap-x-2">
+                  {post.data.links.map(link => (
+                    <ThemeIndexLink
+                      href={link.url}
+                      target={TARGET_BLANK}
+                      startingColor="text-theme"
+                    >
+                      {link.title}
+                    </ThemeIndexLink>
+                  ))}
+                </VCenterRow>
+              )
+            }
+          </VCenterRow>
+        </BaseCol>
+
+        <SidebarDiv mainCls="gap-y-8">
+          <Fragment slot="main">
+            {
+              post.data.rating && (
+                <VCenterRow className="gap-x-4">
+                  {post.data.rating && <StarRating rating={post.data.rating} />}
+                </VCenterRow>
+              )
+            }
+
+            {
+              post.data.pros && (
+                <section
+                  id="pros-and-cons"
+                  class="grid grid-cols-1 gap-6 text-sm lg:grid-cols-2"
+                >
+                  <BaseCol className="gap-2 bg-emerald-50 p-6 rounded-2xl">
+                    <h3 class="text-lg font-semibold">Pros</h3>
                     <ul class="flex flex-col gap-2">
-                      {post.data.cons.map(p => (
+                      {post.data.pros.map(p => (
                         <li class="flex flex-row items-center gap-x-2">
-                          <VCenterRow className="justify-center shrink-0 bg-red-400 rounded-full w-4.5 h-4.5 aspect-square">
-                            <Minus stroke="white" className="w-5 h-5" />
+                          <VCenterRow className="justify-center shrink-0 bg-emerald-400 rounded-full w-4.5 h-4.5 aspect-square">
+                            <Plus stroke="white" className="w-5 h-5" />
                           </VCenterRow>
                           <span>{p}</span>
                         </li>
                       ))}
                     </ul>
                   </BaseCol>
-                )}
-              </section>
-            )
-          }
+                  {post.data.cons && (
+                    <BaseCol className="gap-2 bg-red-50 p-6 rounded-2xl">
+                      <h3 class="text-lg font-semibold">Cons</h3>
+                      <ul class="flex flex-col gap-2">
+                        {post.data.cons.map(p => (
+                          <li class="flex flex-row items-center gap-x-2">
+                            <VCenterRow className="justify-center shrink-0 bg-red-400 rounded-full w-4.5 h-4.5 aspect-square">
+                              <Minus stroke="white" className="w-5 h-5" />
+                            </VCenterRow>
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </BaseCol>
+                  )}
+                </section>
+              )
+            }
 
-          <section class="markdown post">
-            <Content />
-          </section>
-        </Fragment>
-        <BaseCol className="sticky top-20 gap-12" slot="side">
-          <SideTags tags={post.data.tags} />
-          <TableOfContents client:only="react" />
-          <!--  <LatestPosts /> -->
-        </BaseCol>
-      </SidebarDiv>
+            <section class="markdown post">
+              <Content />
+            </section>
+          </Fragment>
+          <BaseCol className="sticky top-20 gap-12" slot="side">
+            <SideTags tags={post.data.tags} />
+            <TableOfContents client:only="react" />
+            <!--  <LatestPosts /> -->
+          </BaseCol>
+        </SidebarDiv>
+      </Fragment>
     </ContentDiv>
   </article>
 </BaseLayout>
