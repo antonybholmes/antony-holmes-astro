@@ -362,11 +362,11 @@ input[type='search']::-webkit-search-cancel-button {
 
 .post {
   table {
-    @apply my-4 w-full bg-amber-100 text-base;
+    @apply my-4 w-full border border-emerald-400 bg-emerald-50 text-sm;
   }
 
   th {
-    @apply bg-amber-400 py-1 text-white;
+    @apply border-b border-emerald-400 bg-emerald-300 py-2 text-white;
   }
 
   tr td {
