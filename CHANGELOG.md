@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.8 (Jan, 2026)
+
+### Added
+
+- Added back to top button.
+
+
 ## 2.7 (Jan, 2026)
 
 ### Changed

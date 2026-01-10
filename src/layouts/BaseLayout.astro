@@ -1,4 +1,5 @@
 ---
+import BackToTop from '@/components/back-to-top'
 import { SITE_DESCRIPTION } from '@/consts'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
@@ -45,5 +46,7 @@ const { mode = 'light' } = Astro.props
     <!-- <slot name="footer" /> -->
 
     <Footer />
+
+    <BackToTop client:load />
   </body>
 </html>
