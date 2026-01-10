@@ -6,6 +6,10 @@
 
 - Added back to top button.
 
+### Changed
+
+- Changed aspect ratio of blog image to 16/9 and changed animation of back to top.
+
 
 ## 2.7 (Jan, 2026)
 

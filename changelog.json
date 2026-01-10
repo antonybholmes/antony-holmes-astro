@@ -494,6 +494,12 @@
           "msg": "Added back to top button",
           "date": "2026-01-10T02:56:07.951Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Changed aspect ratio of blog image to 16/9 and changed animation of back to top",
+          "date": "2026-01-10T23:31:21.032Z"
+        }
       ]
     },
     "author": "Antony Holmes",
