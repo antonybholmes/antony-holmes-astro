@@ -32,7 +32,10 @@ export function RandomQuote() {
   }
 
   return (
-    <BaseRow id="random-quote" className="group gap-x-4 items-start">
+    <BaseRow
+      id="random-quote"
+      className="group gap-x-3 items-start justify-between w-full"
+    >
       {quote.url ? (
         <BaseLink href={quote.url} target={TARGET_BLANK}>
           {`"${quote.quote}"`}

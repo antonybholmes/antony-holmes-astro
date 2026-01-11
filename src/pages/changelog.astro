@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro'
-import { Content as ChangelogContent } from 'CHANGELOG.md'
+import ContentLayout from '@/layouts/ContentLayout.astro'
 import { MarkdownContent } from '@components/markdown-content'
+import { Content as ChangelogContent } from 'CHANGELOG.md'
 ---
 
-<BaseLayout title="Changelog">
-  <MarkdownContent className="changelog p-6" slot="main">
+<ContentLayout title="Changelog">
+  <MarkdownContent className="changelog" slot="main">
     <ChangelogContent />
   </MarkdownContent>
-</BaseLayout>
+</ContentLayout>

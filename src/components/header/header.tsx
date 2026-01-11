@@ -58,7 +58,7 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
             <Logo />
 
             <ul
-              className="col-span-3 flex h-full flex-row items-center justify-center gap-x-5"
+              className="col-span-3 flex h-full flex-row items-center justify-center gap-x-6"
               slot="main"
             >
               {MENU_ITEMS.map(item => (

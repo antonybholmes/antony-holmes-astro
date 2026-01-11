@@ -33,7 +33,7 @@ const engineering = allPosts.filter(post =>
   className="gap-y-16"
 >
   <Fragment slot="main">
-    <ContentDiv className="bg-gray-800 py-24">
+    <ContentDiv className="bg-gray-800 pt-32 pb-24">
       <HeroPosts
         posts={allPosts as IPost[]}
         page={0}
@@ -66,40 +66,42 @@ const engineering = allPosts.filter(post =>
       </section>
     </ContentDiv>
     <ContentDiv>
-      <Fragment slot="main">
-        <PostTwoCol
-          title="Engineering"
+      <PostTwoCol
+        slot="main"
+        title="Engineering"
+        href="/blog/engineering"
+        posts={engineering as IPost[]}
+        page={0}
+        pages={pages}
+        showSectionLinks={false}
+      >
+        <ArrowLink
           href="/blog/engineering"
-          posts={engineering as IPost[]}
-          page={0}
-          pages={pages}
-          showSectionLinks={false}
+          className="hover:text-theme trans-color text-sm"
+          stroke="stroke-foreground group-hover:stroke-theme"
+          >More engineering</ArrowLink
         >
-          <ArrowLink
-            href="/blog/engineering"
-            className="hover:text-theme trans-color text-sm"
-            stroke="stroke-foreground group-hover:stroke-theme"
-            >More engineering</ArrowLink
-          >
-        </PostTwoCol>
-
-        <PostTwoCol
-          title="News"
-          href="/blog/news"
-          posts={news as IPost[]}
-          page={0}
-          pages={pages}
-          showSectionLinks={false}
-        >
-          <ArrowLink
-            href="/blog/news"
-            className="hover:text-theme trans-color text-sm"
-            stroke="stroke-foreground group-hover:stroke-theme"
-            >More news</ArrowLink
-          >
-        </PostTwoCol>
-      </Fragment>
+      </PostTwoCol>
     </ContentDiv>
-    <!-- <PostsPage posts={posts} page={0} pages={pages} slot="main" /> -->
+
+    <ContentDiv>
+      <PostTwoCol
+        slot="main"
+        title="News"
+        href="/blog/news"
+        posts={news as IPost[]}
+        page={0}
+        pages={pages}
+        showSectionLinks={false}
+      >
+        <ArrowLink
+          href="/blog/news"
+          className="hover:text-theme trans-color text-sm"
+          stroke="stroke-foreground group-hover:stroke-theme"
+          >More news</ArrowLink
+        >
+      </PostTwoCol>
+    </ContentDiv>
   </Fragment>
+  <!-- <PostsPage posts={posts} page={0} pages={pages} slot="main" /> -->
 </BaseLayout>

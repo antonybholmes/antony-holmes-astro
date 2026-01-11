@@ -1,9 +1,9 @@
 ---
+import ContentLayout from '@/layouts/ContentLayout.astro'
 import { AboutPage } from '@components/pages/about'
-import BaseLayout from '@layouts/BaseLayout.astro'
 //client:only="react"
 ---
 
-<BaseLayout title="About">
+<ContentLayout title="About">
   <AboutPage slot="main" />
-</BaseLayout>
+</ContentLayout>

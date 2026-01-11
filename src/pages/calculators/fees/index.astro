@@ -1,0 +1,26 @@
+---
+import { Breadcrumb } from '@/components/breadcrumb'
+import { BaseCol } from '@/components/layout/base-col'
+import { FeesPage } from '@/components/pages/calculators/fees'
+import ContentLayout from '@/layouts/ContentLayout.astro'
+import type { ICrumb } from '@/lib/crumbs'
+
+const crumbs: ICrumb[] = [
+  {
+    label: 'Calculators',
+    path: '/calculators',
+  },
+  {
+    label: 'Fees',
+    path: '/calculators/fees',
+  },
+]
+---
+
+<ContentLayout title="Fee Calculator" tab="Calculators">
+  <BaseCol slot="main" className="gap-y-8">
+    <Breadcrumb crumbs={crumbs} />
+
+    <FeesPage client:only="react" />
+  </BaseCol>
+</ContentLayout>

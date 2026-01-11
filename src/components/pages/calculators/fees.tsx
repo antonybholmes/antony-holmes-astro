@@ -55,10 +55,9 @@ export function FeesPage() {
 
   return (
     <SidebarDiv className="mt-8">
-      <div>
-        <FeeGraph data1={data1} data2={data2} />
+      <FeeGraph data1={data1} data2={data2} />
 
-        {/* <HCenterRow className="mb-16">
+      {/* <HCenterRow className="mb-16">
             <BlueAlert>
               Fees could cost you $
               {Math.round(
@@ -67,7 +66,6 @@ export function FeesPage() {
               over {years} years!
             </BlueAlert>
           </HCenterRow> */}
-      </div>
 
       <BaseCol className="gap-y-2 text-sm">
         <div>

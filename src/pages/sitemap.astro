@@ -8,10 +8,10 @@ import path from 'path'
 import ContentLayout from '../layouts/ContentLayout.astro'
 
 // 1. Static routes (manually added)
-const staticRoutes = [
-  { url: '/', title: 'Home' },
-  { url: '/about', title: 'About' },
-]
+// const staticRoutes = [
+//   { url: '/', title: 'Home' },
+//   { url: '/about', title: 'About' },
+// ]
 
 // 2. Dynamic routes from content collection (e.g. blog)
 const blogPosts = await getCollection('blog')
@@ -63,7 +63,10 @@ function getPageRoutes(
 const discoveredRoutes = getPageRoutes('./src/pages')
 
 // Merge all
-const allRoutes = [...discoveredRoutes]
+const allRoutes = [
+  ...discoveredRoutes,
+  { url: 'calculators', title: 'Calculators' },
+]
 
 // Remove duplicates (by URL)
 const uniqueRoutes = Array.from(
