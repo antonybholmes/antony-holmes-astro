@@ -1,16 +1,18 @@
 ---
 import BackToTop from '@/components/back-to-top'
+import { Header } from '@/components/header/header'
 import { SITE_DESCRIPTION } from '@/consts'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
 import BaseHead from '@components/BaseHead.astro'
 import Footer from '@components/Footer.astro'
-import Header from '@components/header/Header.astro'
+
 import { type ILayoutProps } from '@interfaces/layout-props'
 
 interface Props extends ILayoutProps {
   headerBg?: string
   mode?: ColorMode
+  headerCls?: string
 }
 
 const BODY_CLS = 'margin-0 min-h-screen text-foreground flex flex-col grow'
@@ -18,9 +20,11 @@ const BODY_CLS = 'margin-0 min-h-screen text-foreground flex flex-col grow'
 let {
   title = '',
   description = '',
+  mode = 'light',
   bg = 'bg-body',
   image,
   tab,
+  headerCls,
   className,
 } = Astro.props
 
@@ -29,8 +33,6 @@ if (!description) {
 }
 
 const cls = cn(BODY_CLS, bg)
-
-const { mode = 'light' } = Astro.props
 ---
 
 <html lang="en" class={cls}>
@@ -40,13 +42,13 @@ const { mode = 'light' } = Astro.props
   </head>
 
   <body class={cn(cls, className)}>
-    <Header tab={tab} mode={mode} />
+    <Header tab={tab} mode={mode} className={headerCls} client:only="react" />
 
     <slot name="main" />
     <!-- <slot name="footer" /> -->
 
     <Footer />
 
-    <BackToTop client:load />
+    <BackToTop client:only="react" />
   </body>
 </html>

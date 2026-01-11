@@ -1,11 +1,12 @@
 import { BLOG_SLUG } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
+import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
 import { format } from 'date-fns'
 
 interface IProps extends IClassProps {
   date: Date
-  mode?: 'light' | 'dark'
+  mode?: ColorMode
 }
 
 export function FormattedDate({ date, className, mode = 'light' }: IProps) {

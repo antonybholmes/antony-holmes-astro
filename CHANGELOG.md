@@ -8,6 +8,7 @@
 
 ### Changed
 
+- Added different header modes so we can have blog with dark header and changed fonts as figtree looks better than poppins. Lots of UI tweaks.
 - Changed aspect ratio of blog image to 16/9 and changed animation of back to top.
 
 

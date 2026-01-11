@@ -38,6 +38,7 @@ import BaseLayout from './BaseLayout.astro'
 
 interface Props {
   post: PostWithHero
+  mode?: 'light' | 'dark'
 }
 
 // const {
@@ -51,7 +52,7 @@ interface Props {
 //   tags,
 // } = Astro.props
 
-const { post } = Astro.props
+const { post, mode = 'dark' } = Astro.props
 
 const slug = post.id.split('/').pop() || post.id // Flatten the slug
 
@@ -95,23 +96,27 @@ const dateAdded = post.data.added ? post.data.added : new Date()
   description={post.data.description}
   image={post.data.hero}
   tab="Blog"
-  mode="light"
+  mode={mode}
 >
   <Fragment slot="head">
     <meta property="og:image" content={ogImage} />
     <meta property="twitter:image" content={ogImage} />
   </Fragment>
 
-  <article slot="main" class="mt-8 flex flex-col gap-y-16">
-    <header>
-      <ContentDiv slot="main" mainCls="gap-y-8">
-        <Fragment slot="main">
-          <Breadcrumb crumbs={crumbs} mode="light" />
+  <article slot="main" class="relative flex flex-col gap-y-16">
+    <header class="relative">
+      <span
+        class="absolute top-0 left-0 z-0 h-96 w-full bg-gray-800 lg:h-128"
+        id="blog-header-bg"></span>
 
-          <BaseCol className="gap-y-2">
+      <ContentDiv className="relative z-10 mt-24">
+        <BaseCol slot="main" className="gap-y-8 lg:gap-y-16">
+          <Breadcrumb crumbs={crumbs} mode={mode} />
+
+          <BaseCol className="gap-y-3 lg:gap-y-6">
             <h1
-              class="text-4xl font-bold data-[mode=dark]:text-white"
-              data-mode="light"
+              class="text-4xl font-bold tracking-tight data-[mode=dark]:text-white lg:text-5xl"
+              data-mode={mode}
             >
               {post.data.title}
             </h1>
@@ -119,43 +124,62 @@ const dateAdded = post.data.added ? post.data.added : new Date()
             {
               post.data.description && (
                 <p
-                  class="text-foreground/70 data-[mode=dark]:text-white/50"
-                  data-mode="light"
+                  class="text-foreground/70 text-xl data-[mode=dark]:text-white/50"
+                  data-mode={mode}
                 >
                   {post.data.description}
                 </p>
               )
             }
-          </BaseCol>
 
-          {
-            post.data.resolvedHero && (
-              <div class="group relative aspect-video w-full overflow-hidden rounded-2xl">
-                <img
-                  src={post.data.resolvedHero}
-                  alt={post.data.heroAlt || post.data.title}
-                  class="w-full scale-102 object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105"
-                  loading="lazy"
-                />
-
-                {post.data.heroAlt && (
-                  <HeroImageCaption
-                    post={post as IPost}
-                    className="duration-500 opacity-0 transition-opacity group-hover:opacity-100"
+            {
+              post.data.resolvedHero && (
+                <div class="group relative aspect-video w-full overflow-hidden rounded-2xl">
+                  <img
+                    src={post.data.resolvedHero}
+                    alt={post.data.heroAlt || post.data.title}
+                    class="w-full scale-102 object-cover object-center transition-transform duration-500 ease-in-out group-hover:scale-105"
+                    loading="lazy"
                   />
-                )}
-              </div>
-            )
-          }
-        </Fragment>
+
+                  {post.data.heroAlt && (
+                    <HeroImageCaption
+                      post={post as IPost}
+                      className="duration-500 opacity-0 transition-opacity group-hover:opacity-100"
+                    />
+                  )}
+                </div>
+              )
+            }
+          </BaseCol>
+        </BaseCol>
       </ContentDiv>
     </header>
 
-    <ContentDiv slot="main" mainCls="gap-y-8">
-      <Fragment slot="main">
+    <ContentDiv>
+      <BaseCol slot="main" className="gap-y-8">
         <BaseCol className="gap-y-3 text-sm">
-          <CompactAvatars people={post.data.authors ?? []} />
+          <VCenterRow className="justify-between gap-x-2">
+            <CompactAvatars people={post.data.authors ?? []} />
 
+            {
+              post.data.links && (
+                <ul class="gap-x-2">
+                  {post.data.links.map(link => (
+                    <li>
+                      <ThemeIndexLink
+                        href={link.url}
+                        target={TARGET_BLANK}
+                        startingColor="text-theme"
+                      >
+                        {link.title}
+                      </ThemeIndexLink>
+                    </li>
+                  ))}
+                </ul>
+              )
+            }
+          </VCenterRow>
           <VCenterRow
             data-mode="light"
             className="text-foreground/50 justify-between gap-2 data-[mode=dark]:text-white"
@@ -175,21 +199,23 @@ const dateAdded = post.data.added ? post.data.added : new Date()
               />
             </VCenterRow>
 
-            {
+            <!-- {
               post.data.links && (
-                <VCenterRow className="gap-x-2">
+                <ul class="gap-x-2">
                   {post.data.links.map(link => (
-                    <ThemeIndexLink
-                      href={link.url}
-                      target={TARGET_BLANK}
-                      startingColor="text-theme"
-                    >
-                      {link.title}
-                    </ThemeIndexLink>
+                    <li>
+                      <ThemeIndexLink
+                        href={link.url}
+                        target={TARGET_BLANK}
+                        startingColor="text-theme"
+                      >
+                        {link.title}
+                      </ThemeIndexLink>
+                    </li>
                   ))}
-                </VCenterRow>
+                </ul>
               )
-            }
+            } -->
           </VCenterRow>
         </BaseCol>
 
@@ -209,7 +235,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
                   id="pros-and-cons"
                   class="grid grid-cols-1 gap-6 text-sm lg:grid-cols-2"
                 >
-                  <BaseCol className="gap-2 bg-emerald-50 p-6 rounded-2xl">
+                  <BaseCol className="gap-2 bg-emerald-50 p-5 rounded-xl text-emerald-600">
                     <h3 class="text-lg font-semibold">Pros</h3>
                     <ul class="flex flex-col gap-2">
                       {post.data.pros.map(p => (
@@ -223,7 +249,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
                     </ul>
                   </BaseCol>
                   {post.data.cons && (
-                    <BaseCol className="gap-2 bg-red-50 p-6 rounded-2xl">
+                    <BaseCol className="gap-2 bg-red-50 p-5 rounded-xl text-red-600">
                       <h3 class="text-lg font-semibold">Cons</h3>
                       <ul class="flex flex-col gap-2">
                         {post.data.cons.map(p => (
@@ -251,7 +277,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
             <!--  <LatestPosts /> -->
           </BaseCol>
         </SidebarDiv>
-      </Fragment>
+      </BaseCol>
     </ContentDiv>
   </article>
 </BaseLayout>

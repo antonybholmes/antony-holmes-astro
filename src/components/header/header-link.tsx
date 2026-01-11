@@ -21,8 +21,8 @@ export const HeaderLink = ({
   const ref = useRef<HTMLSpanElement>(null)
   const [hover, setHover] = useState(false)
 
-  const animationRef = useRef<gsap.core.Timeline>(null)
-  const backRef = useRef<gsap.core.Timeline>(null)
+  // const animationRef = useRef<gsap.core.Timeline>(null)
+  // const backRef = useRef<gsap.core.Timeline>(null)
 
   // useEffect(() => {
   //   if (ref.current) {
@@ -78,7 +78,7 @@ export const HeaderLink = ({
       href={href}
       data-state={isActive ? 'active' : 'inactive'}
       data-mode={mode}
-      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[mode=dark]:text-white data-[state=active]:text-theme boldable-text-tab h-16"
+      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[mode=trans]:text-white data-[mode=dark]:text-white data-[state=active]:text-theme boldable-text-tab h-16"
       {...props}
       //onMouseEnter={handleMouseEnter}
       //onMouseLeave={handleMouseLeave}
@@ -88,7 +88,7 @@ export const HeaderLink = ({
         <span
           ref={ref}
           data-mode={mode}
-          className="absolute w-full opacity-0 scale-x-80 left-0 bottom-0 bg-theme data-[mode=dark]:bg-white rounded-full group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
+          className="absolute w-full opacity-0 scale-x-80 left-0 bottom-0 bg-theme data-[mode=trans]:bg-white data-[mode=dark]:bg-white rounded-full group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
           style={{ height: BAR_WIDTH }}
         />
       </span>

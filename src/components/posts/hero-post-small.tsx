@@ -6,6 +6,7 @@ import { BaseCol } from '@layout/base-col'
 import { FormattedDate } from '@components/formatted-date'
 import { CompactAvatars } from '@components/people/compact-avatars'
 
+import type { ColorMode } from '@/interfaces/color-mode'
 import { getPostExcerpt, type IPost } from '@/lib/post'
 import { PostImage } from './post-image'
 import { PostSectionLink } from './post-section-link'
@@ -83,7 +84,7 @@ export function PostAuthorsAndDate({
   post: IPost
   showAuthors?: boolean
   showAvatar?: boolean
-  mode?: 'light' | 'dark'
+  mode?: ColorMode
 }) {
   return (
     <div className="flex flex-col xl:flex-row gap-x-2 gap-y-1 xl:items-center text-sm">

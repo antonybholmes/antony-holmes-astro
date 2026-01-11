@@ -42,9 +42,10 @@ export function HeroPost({
   return (
     <article
       className={cn(
-        'flex flex-col gap-y-4 group pb-6 bg-muted/30 rounded-2xl overflow-hidden',
+        'flex flex-col gap-y-4 group pb-6 data-[mode=light]:bg-muted/30 data-[mode=dark]:bg-white/5 rounded-2xl overflow-hidden',
         className
       )}
+      data-mode={mode}
     >
       {post.data.resolvedHero && (
         <PostImage post={post} className={imgClassName} />

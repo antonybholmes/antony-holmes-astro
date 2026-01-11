@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
-import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
 import { BaseLink } from '@components/link/base-link'
 import { BaseRow } from '@layout/base-row'
 import { HCenterCol } from '@layout/h-center-col'
@@ -9,6 +8,7 @@ import { ThemeLink } from '@/components/link/theme-link'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { IPublication } from '@/lib/publications/publication'
 import { cn } from '@/lib/shadcn-utils'
+import { Minus, Plus } from 'lucide-react'
 
 type AbstractProps = {
   publication: any
@@ -143,20 +143,21 @@ export function BasePublication({
         <button
           title={`${isExpanded ? 'Hide' : 'Show'} abstract`}
           onClick={() => setExpanded(!isExpanded)}
-          className="cursor-pointer"
+          className="cursor-pointer border border-foreground flex flex-row items-center justify-center rounded-sm w-4 h-4 aspect-square"
         >
-          <ChevronRightIcon
+          {/* <ChevronRightIcon
             className={cn('trans-transform w-3 stroke-2 ', {
               'rotate-90': isExpanded,
             })}
-          />
+          /> */}
+          {isExpanded ? <Minus className="w-4" /> : <Plus className="w-4" />}
         </button>
       </HCenterCol>
 
       <div className="grow group">
         <BaseRow className="gap-x-2">
           <div className="grow">
-            <h2>
+            <h2 className="tracking-tight">
               {url !== '' ? (
                 <ThemeLink
                   aria-label="View article"

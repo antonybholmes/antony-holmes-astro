@@ -3,6 +3,7 @@ import type { IPostProps } from './post-tags'
 
 import { BaseCol } from '@layout/base-col'
 
+import type { ColorMode } from '@/interfaces/color-mode'
 import { getPostExcerpt } from '@/lib/post'
 import { PostAuthorsAndDate } from './hero-post-small'
 import { PostImage } from './post-image'
@@ -20,7 +21,7 @@ interface IProps extends IPostProps {
   showAvatarImage?: boolean
   dateBelow?: boolean
   showSectionLinks?: boolean
-  mode?: 'light' | 'dark'
+  mode?: ColorMode
 }
 
 export function FeaturedPost({

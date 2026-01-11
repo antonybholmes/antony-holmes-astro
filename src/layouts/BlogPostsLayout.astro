@@ -56,21 +56,18 @@ const headPostStart = page === 0 ? 4 : 0
 ---
 
 <BaseLayout title={pageTitle ?? title} tab="Blog">
-  <Fragment slot="main">
-    <>
+  <ContentDiv slot="main" className="mt-24">
+    <BaseCol slot="main" className="gap-y-16">
       {
         (showTitle || crumbs) && (
-          <ContentDiv className="py-8 mb-8 data-[mode=dark]:bg-linear-to-br data-[mode=dark]:from-gray-900 data-[mode=dark]:to-gray-700">
-            <BaseCol className="gap-y-4" slot="main">
-              {crumbs && <Breadcrumb crumbs={crumbs} />}
-              {showTitle && <PageTitle title={title} />}
-            </BaseCol>
-          </ContentDiv>
+          <BaseCol className="gap-y-4">
+            {crumbs && <Breadcrumb crumbs={crumbs} />}
+            {showTitle && <PageTitle title={title} />}
+          </BaseCol>
         )
       }
-    </>
-    <ContentDiv>
-      <main slot="main" class="flex flex-col gap-y-16">
+
+      <main class="flex flex-col gap-y-16">
         {
           featuredPosts.length > 0 && (
             <section id="featured">
@@ -103,6 +100,6 @@ const headPostStart = page === 0 ? 4 : 0
           </BaseCol>
         </section>
       </main>
-    </ContentDiv>
-  </Fragment>
+    </BaseCol>
+  </ContentDiv>
 </BaseLayout>

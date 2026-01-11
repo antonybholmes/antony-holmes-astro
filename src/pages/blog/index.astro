@@ -1,13 +1,13 @@
 ---
-import { BaseCol } from '@/components/layout/base-col'
+import ContentDiv from '@/components/layout/ContentDiv.astro'
 import { ArrowLink } from '@/components/link/arrow-link'
 import { PostSectionCol } from '@/components/posts/post-section-col'
+import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getPostSectionMap } from '@/lib/astro/sections'
 import type { IPost } from '@/lib/post'
 import { HeroPosts } from '@components/posts/hero-posts'
 import { PostCol } from '@components/posts/post-col'
 import { PostTwoCol } from '@components/posts/post-two-col'
-import ContentLayout from '@layouts/ContentLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@lib/astro/post'
 import { getPageCount } from '@lib/paginate'
 
@@ -26,59 +26,80 @@ const engineering = allPosts.filter(post =>
 )
 ---
 
-<ContentLayout title="Blog" description="All the lastest posts from my blog.">
-  <BaseCol className="gap-y-16" slot="main">
-    <HeroPosts posts={allPosts as IPost[]} page={0} pages={pages} />
-    <section class="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-12">
-      <PostCol
-        title="Latest"
-        href="/blog/latest"
+<BaseLayout
+  title="Blog"
+  description="All the lastest posts from my blog."
+  mode="dark"
+  className="gap-y-16"
+>
+  <Fragment slot="main">
+    <ContentDiv className="bg-gray-800 py-24">
+      <HeroPosts
         posts={allPosts as IPost[]}
         page={0}
         pages={pages}
+        slot="main"
+        mode="dark"
+      />
+    </ContentDiv>
+    <ContentDiv>
+      <section
+        class="grid grid-cols-1 gap-y-4 lg:grid-cols-2 lg:gap-x-12"
+        slot="main"
       >
-        <ArrowLink
+        <PostCol
+          title="Latest"
           href="/blog/latest"
-          className="hover:text-theme trans-color text-sm"
-          stroke="stroke-foreground group-hover:stroke-theme"
-          >View all</ArrowLink
+          posts={allPosts as IPost[]}
+          page={0}
+          pages={pages}
         >
-      </PostCol>
+          <ArrowLink
+            href="/blog/latest"
+            className="hover:text-theme trans-color text-sm"
+            stroke="stroke-foreground group-hover:stroke-theme"
+            >View all</ArrowLink
+          >
+        </PostCol>
 
-      <PostSectionCol section="All" postMap={postMap} client:visible />
-    </section>
+        <PostSectionCol section="All" postMap={postMap} client:visible />
+      </section>
+    </ContentDiv>
+    <ContentDiv>
+      <Fragment slot="main">
+        <PostTwoCol
+          title="Engineering"
+          href="/blog/engineering"
+          posts={engineering as IPost[]}
+          page={0}
+          pages={pages}
+          showSectionLinks={false}
+        >
+          <ArrowLink
+            href="/blog/engineering"
+            className="hover:text-theme trans-color text-sm"
+            stroke="stroke-foreground group-hover:stroke-theme"
+            >More engineering</ArrowLink
+          >
+        </PostTwoCol>
 
-    <PostTwoCol
-      title="Engineering"
-      href="/blog/engineering"
-      posts={engineering as IPost[]}
-      page={0}
-      pages={pages}
-      showSectionLinks={false}
-    >
-      <ArrowLink
-        href="/blog/engineering"
-        className="hover:text-theme trans-color text-sm"
-        stroke="stroke-foreground group-hover:stroke-theme"
-        >More engineering</ArrowLink
-      >
-    </PostTwoCol>
-
-    <PostTwoCol
-      title="News"
-      href="/blog/news"
-      posts={news as IPost[]}
-      page={0}
-      pages={pages}
-      showSectionLinks={false}
-    >
-      <ArrowLink
-        href="/blog/news"
-        className="hover:text-theme trans-color text-sm"
-        stroke="stroke-foreground group-hover:stroke-theme">More news</ArrowLink
-      >
-    </PostTwoCol>
-
+        <PostTwoCol
+          title="News"
+          href="/blog/news"
+          posts={news as IPost[]}
+          page={0}
+          pages={pages}
+          showSectionLinks={false}
+        >
+          <ArrowLink
+            href="/blog/news"
+            className="hover:text-theme trans-color text-sm"
+            stroke="stroke-foreground group-hover:stroke-theme"
+            >More news</ArrowLink
+          >
+        </PostTwoCol>
+      </Fragment>
+    </ContentDiv>
     <!-- <PostsPage posts={posts} page={0} pages={pages} slot="main" /> -->
-  </BaseCol>
-</ContentLayout>
+  </Fragment>
+</BaseLayout>

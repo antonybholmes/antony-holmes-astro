@@ -2,6 +2,7 @@ import { BaseLink } from '@components/link/base-link'
 import { VCenterRow } from '@layout/v-center-row'
 
 import type { IClassProps } from '@/interfaces/class-props'
+import type { ColorMode } from '@/interfaces/color-mode'
 import { getAuthorBaseUrl } from '@/lib/astro/author'
 import { cn } from '@/lib/shadcn-utils'
 import { Fragment } from 'react/jsx-runtime'
@@ -10,7 +11,7 @@ import { AvatarImage } from './avatar-image'
 interface IProps extends IClassProps {
   people: string[]
   showImages?: boolean
-  mode?: 'light' | 'dark'
+  mode?: ColorMode
 }
 
 export function CompactAvatars({

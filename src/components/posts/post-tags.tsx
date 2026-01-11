@@ -1,10 +1,11 @@
 import type { IClassProps } from '@/interfaces/class-props'
+import type { ColorMode } from '@/interfaces/color-mode'
 import type { IPost } from '@/lib/post'
 import { PostTagLink } from './post-tag-link'
 
 export interface IPostProps extends IClassProps {
   post: IPost
-  mode?: 'light' | 'dark'
+  mode?: ColorMode
 }
 
 export function PostTags({ post }: IPostProps) {

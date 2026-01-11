@@ -55,13 +55,12 @@ export function Breadcrumb({
 
     if (showHome || i > 0) {
       ret.push(
-        <li key={`divider-${i}`}>
-          <span
-            className="text-foreground/50 data-[mode=dark]:text-white mx-1"
-            data-mode={mode}
-          >
-            /
-          </span>
+        <li
+          key={`divider-${i}`}
+          className="text-foreground/50 data-[mode=dark]:text-white/50"
+          data-mode={mode}
+        >
+          /
         </li>
       )
     }
@@ -84,7 +83,7 @@ export function Breadcrumb({
   return (
     <ul
       className={cn(
-        'flex flex-row flex-nowrap items-center gap-x-1 text-sm',
+        'flex flex-row flex-nowrap items-center gap-x-3 text-sm',
         className
       )}
     >
