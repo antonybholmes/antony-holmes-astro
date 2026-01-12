@@ -109,7 +109,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
         class="absolute top-0 left-0 z-0 h-96 w-full bg-gray-800 lg:h-128"
         id="blog-header-bg"></span>
 
-      <ContentDiv className="relative z-10 mt-24">
+      <ContentDiv className="relative z-10 mt-24" colCls="lg:w-1/2">
         <BaseCol slot="main" className="gap-y-8 lg:gap-y-16">
           <Breadcrumb crumbs={crumbs} mode={mode} />
 
@@ -124,7 +124,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
             {
               post.data.description && (
                 <p
-                  class="text-foreground/70 text-xl data-[mode=dark]:text-white/50"
+                  class="text-foreground/70 text-lg data-[mode=dark]:text-white/50"
                   data-mode={mode}
                 >
                   {post.data.description}
@@ -156,7 +156,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
       </ContentDiv>
     </header>
 
-    <ContentDiv>
+    <ContentDiv colCls="lg:w-1/2">
       <BaseCol slot="main" className="gap-y-8">
         <BaseCol className="gap-y-3 text-sm">
           <VCenterRow className="justify-between gap-x-2">

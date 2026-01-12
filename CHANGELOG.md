@@ -4,6 +4,7 @@
 
 ### Added
 
+- UI tweaks. Added Open Graph preview page.
 - Added back to top button.
 
 ### Changed

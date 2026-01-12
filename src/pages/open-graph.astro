@@ -1,0 +1,23 @@
+---
+import { ThemeLink } from '@/components/link/theme-link'
+import ContentLayout from '../layouts/ContentLayout.astro'
+
+import { OGImage } from '@/components/og/og'
+---
+
+<ContentLayout title="Open Graph Preview">
+  <div slot="main" class="flex flex-col gap-y-4">
+    <p>
+      This page generates a preview of the Open Graph image for any page on the
+      site. Just add <code>?title=Your+Title+Here</code> to the URL to see the image
+      update.
+    </p>
+    <p>
+      For example, to see the Open Graph image for the homepage, visit:{' '}
+      <ThemeLink href="/open-graph?title=the-vanilla-investor">
+        /open-graph?title=the-vanilla-investor
+      </ThemeLink>
+    </p>
+    <OGImage client:only="react" slot="main" />
+  </div>
+</ContentLayout>

@@ -26,8 +26,8 @@ interface IProps extends IPostProps {
 export function HeroPost({
   post,
   className,
-  imgClassName = ' aspect-video',
-  headerClassName = 'text-2xl md:text-3xl font-semibold',
+  imgClassName = 'aspect-video',
+  headerClassName = 'text-xl md:text-3xl lg:text-xl xl:text-2xl 2xl:text-3xl font-semibold',
   innerClassName,
   contentClassName = 'text-base',
   showDescription = true,
@@ -42,7 +42,7 @@ export function HeroPost({
   return (
     <article
       className={cn(
-        'flex flex-col gap-y-4 group pb-6 data-[mode=light]:bg-muted/30 data-[mode=dark]:bg-white/5 rounded-2xl overflow-hidden',
+        'flex flex-col gap-y-4 group pb-6 data-[mode=light]:bg-muted/30 data-[mode=dark]:bg-white/5 rounded-xl overflow-hidden',
         className
       )}
       data-mode={mode}

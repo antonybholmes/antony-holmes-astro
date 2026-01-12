@@ -71,8 +71,6 @@ async function main() {
     if (fs.existsSync(hero)) {
       // convert to png
 
-      console.log('heroPath', hero)
-
       const heroBuffer = fs.readFileSync(hero)
       //const pngBuffer = await sharp(heroBuffer).png().toBuffer()
       const base64Hero = heroBuffer.toString('base64')

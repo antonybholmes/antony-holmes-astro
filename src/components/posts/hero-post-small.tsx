@@ -34,13 +34,16 @@ export function HeroPostSmall({
     <article
       data-mode={mode}
       className={cn(
-        'group grid grid-cols-1 gap-4 data-[mode=dark]:text-white',
-        hasImage && 'md:grid-cols-3',
+        'group grid grid-cols-1 gap-y-4 data-[mode=dark]:text-white',
+        hasImage && 'md:grid-cols-3 md:gap-x-5',
         className
       )}
     >
       {post.data.resolvedHero && (
-        <PostImage post={post} className="col-span-1 aspect-4/3 rounded-xl" />
+        <PostImage
+          post={post}
+          className="col-span-1 aspect-video md:aspect-4/3 rounded-lg"
+        />
       )}
       <BaseCol className="col-span-2 gap-y-1">
         <BaseCol>

@@ -5,16 +5,27 @@ import { ContentDiv as BaseContentDiv } from './content-div'
 
 interface Props extends IClassProps {
   mode?: ColorMode
+  colCls?: string
   contentCls?: string
 }
 
-const { mode = 'light', contentCls, className } = Astro.props
+const {
+  mode = 'light',
+  colCls = 'xl:w-3/5',
+  contentCls,
+  className,
+} = Astro.props
 ---
 
-<BaseContentDiv className={className} contentCls={contentCls} mode={mode}>
-  <slot name="left" />
+<BaseContentDiv
+  className={className}
+  colCls={colCls}
+  contentCls={contentCls}
+  mode={mode}
+>
+  <!-- <slot name="left" /> -->
 
   <slot name="main" />
 
-  <slot name="right" />
+  <!-- <slot name="right" /> -->
 </BaseContentDiv>

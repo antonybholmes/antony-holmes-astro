@@ -26,13 +26,11 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
       contentCls="gap-y-4"
     >
       <div
-        class="flex flex-col items-center gap-4 lg:flex-row lg:justify-between"
+        class="flex flex-col items-center gap-8 lg:flex-row lg:justify-between"
         slot="main"
       >
         <BaseCol className="gap-y-2">
-          <h1
-            class="text-center text-4xl font-semibold md:text-5xl lg:text-left"
-          >
+          <h1 class="text-center text-4xl font-bold md:text-5xl lg:text-left">
             <a
               href="/"
               class="bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent"
@@ -41,7 +39,7 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
             </a>
           </h1>
 
-          <h2 class="text-center text-xl font-medium md:text-2xl lg:text-left">
+          <h2 class="text-center text-2xl md:text-3xl lg:text-left">
             {SITE_SUBTITLE}
           </h2>
         </BaseCol>
@@ -54,7 +52,7 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
       </div>
 
       <section class="flex flex-col gap-y-3" slot="main">
-        <p class="mb-4 text-3xl font-bold">Hi there! I'm Antony.</p>
+        <p class="text-3xl font-bold">Hi there! I'm Antony.</p>
         <p>
           That's me posing by the mighty Hudson River for no particular reason,
           except maybe to look cool wearing Risky Business sunglasses.

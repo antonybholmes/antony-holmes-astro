@@ -325,6 +325,10 @@ input[type='search']::-webkit-search-cancel-button {
   appearance: none;
 }
 
+.text-gradient {
+  @apply self-start bg-linear-to-r from-fuchsia-400 via-pink-400 to-red-400 bg-clip-text text-transparent;
+}
+
 .markdown {
   h1,
   h2,

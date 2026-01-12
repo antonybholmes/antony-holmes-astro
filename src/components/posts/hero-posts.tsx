@@ -29,7 +29,7 @@ export function HeroPosts({
   return (
     <main
       id="hero-posts"
-      className="grid grid-cols-1 lg:grid-cols-2 gap-y-4 lg:gap-x-12 items-start"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-y-8 lg:gap-x-12 items-start"
     >
       <HeroPost
         post={topPost}

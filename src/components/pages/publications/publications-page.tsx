@@ -25,8 +25,6 @@ const EMPTY_QUERY = ''
 
 //const RECORDS_PER_PAGE = [25, 50, 100, 200, 500, 1000]
 
-export const PUB_API_URL = '/api/publications/lab.json'
-
 function searchAuthors(q: string, publication: IPublication) {
   for (let author of publication.authorList) {
     if (author.toLowerCase().includes(q)) {

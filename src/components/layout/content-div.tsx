@@ -8,11 +8,12 @@ import { BaseCol } from './base-col'
 export function ContentDiv({
   ref,
   className,
+  colCls = 'xl:w-3/5',
   contentCls,
   mode = 'light',
   children,
   ...props
-}: IDivProps & { contentCls?: string; mode?: ColorMode }) {
+}: IDivProps & { colCls?: string; contentCls?: string; mode?: ColorMode }) {
   const c = Children.toArray(children)
 
   if (c.length === 0) {
@@ -24,20 +25,21 @@ export function ContentDiv({
       ref={ref}
       data-mode={mode}
       className={cn(
-        'grid grid-cols-1 lg:grid-cols-4 px-4 lg:px-0 grow h-full',
+        'px-4 grow w-full h-full',
+
         className
       )}
       {...props}
     >
-      <BaseCol className="hidden h-full grow lg:flex">
+      {/* <BaseCol className="hidden h-full grow lg:flex">
         {c.length > 1 && c[0]}
-      </BaseCol>
-      <BaseCol className={cn('col-span-2 h-full grow', contentCls)}>
+      </BaseCol> */}
+      <BaseCol className={cn('h-full mx-auto', colCls, contentCls)}>
         {c.length > 1 ? c[1] : c[0]}
       </BaseCol>
-      <BaseCol className="hidden h-full grow lg:flex">
+      {/* <BaseCol className="hidden h-full grow lg:flex">
         {c.length > 2 && c[2]}
-      </BaseCol>
+      </BaseCol> */}
     </div>
   )
 }

@@ -8,7 +8,7 @@ import { ThemeLink } from '@/components/link/theme-link'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { IPublication } from '@/lib/publications/publication'
 import { cn } from '@/lib/shadcn-utils'
-import { Minus, Plus } from 'lucide-react'
+import { ChevronRightIcon } from 'lucide-react'
 
 type AbstractProps = {
   publication: any
@@ -134,24 +134,19 @@ export function BasePublication({
 
   return (
     <article
-      className={cn('publication flex flex-row gap-x-2 text-sm', className)}
+      className={cn('publication flex flex-row gap-x-3 text-sm', className)}
     >
       <HCenterCol className="mt-1 grow-0 gap-y-2">
         {showCount && (
-          <div className="text-center text-foreground/50">{`${index + 1}`}</div>
+          <div className="text-center text-foreground/70">{`${index + 1}`}</div>
         )}
-        <button
+        {/* <button
           title={`${isExpanded ? 'Hide' : 'Show'} abstract`}
           onClick={() => setExpanded(!isExpanded)}
           className="cursor-pointer border border-foreground flex flex-row items-center justify-center rounded-sm w-4 h-4 aspect-square"
         >
-          {/* <ChevronRightIcon
-            className={cn('trans-transform w-3 stroke-2 ', {
-              'rotate-90': isExpanded,
-            })}
-          /> */}
           {isExpanded ? <Minus className="w-4" /> : <Plus className="w-4" />}
-        </button>
+        </button> */}
       </HCenterCol>
 
       <div className="grow group">
@@ -175,15 +170,28 @@ export function BasePublication({
             rendering for the authors. */}
             <span dangerouslySetInnerHTML={{ __html: authors }} />
 
-            <ul className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1 text-emerald-700">
+            <ul className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1 text-emerald-600">
               <li>
                 {publication.journal}. {publication.year}.
               </li>
             </ul>
 
-            <ul className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1 text-emerald-700">
+            <ul className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1 text-emerald-600">
               {links.map(link => link)}
             </ul>
+
+            <button
+              title={`${isExpanded ? 'Hide' : 'Show'} abstract`}
+              onClick={() => setExpanded(!isExpanded)}
+              className="cursor-pointer flex flex-row items-center justify-center gap-x-0.5 text-foreground/50"
+            >
+              <ChevronRightIcon
+                className={cn('trans-transform w-4 h-4 aspect-square', {
+                  'rotate-90': isExpanded,
+                })}
+              />
+              <span>Abstract</span>
+            </button>
           </div>
           {/* <VCenterRow>
             <PillButton
