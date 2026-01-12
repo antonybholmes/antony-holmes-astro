@@ -16,7 +16,7 @@ New year, new me, new something or other...
 
 2026 might finally be the year I get a little more consistent with writing blog posts, just to test myself and sharpen those writing skills.
 
-It has also been an opportunity to review the site's codebase and dust off a few cobwebs and fix some of the nagging issues I had with it.
+It has also been an opportunity to review the site's codebase, dust off a few cobwebs and fix some of the nagging issues I had with it.
 
 Not much else to say except let's see if I can keep finding interesting topics to write about. You might also see more pictures of my cats.
 
