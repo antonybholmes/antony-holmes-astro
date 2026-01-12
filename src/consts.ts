@@ -177,11 +177,11 @@ export const FOOTER_ITEMS = [
     label: 'General',
     items: [
       {
-        label: 'About Antony',
+        label: 'About Me',
         href: '/people/antony-holmes',
       },
       {
-        label: 'About This Site',
+        label: 'About The Site',
         href: '/about',
       },
       {

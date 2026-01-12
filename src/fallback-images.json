@@ -21,5 +21,9 @@
   "phone": ["/assets/images/blog/generic/phone-1.webp"],
   "photos": ["/assets/images/blog/generic/photos-1.webp"],
   "bank": ["/assets/images/blog/generic/bank-1.webp"],
-  "news": ["/assets/images/blog/generic/news-1.webp"]
+  "news": [
+    "/assets/images/blog/generic/news-1.webp",
+    "/assets/images/blog/generic/news-2.webp",
+    "/assets/images/blog/generic/news-3.webp"
+  ]
 }

@@ -49,7 +49,7 @@ export function CompactAvatars({
               aria-label={`Click to read more about ${person}`}
               //data-underline={true}
               data-mode={mode}
-              className="hover:underline underline-offset-2 hover:text-sky-600 decoration-sky-600 data-[mode=dark]:text-white data-[mode=dark]:decoration-white data-[mode=dark]:hover:decoration-sky-400 data-[mode=dark]:hover:text-sky-400"
+              className="hover:underline underline-offset-2 hover:text-theme decoration-theme data-[mode=dark]:text-white data-[mode=dark]:decoration-white data-[mode=dark]:hover:decoration-theme data-[mode=dark]:hover:text-theme"
             >
               {person}
             </BaseLink>

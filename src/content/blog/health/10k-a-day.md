@@ -1,13 +1,13 @@
 ---
 title: '10k A Day'
-description: "Let's walk."
+description: 'For just 10k a day you can make the difference.'
 type: post
 heroAlt: 'Fun fact: Did you know you use your feet to walk?'
 sections:
   - ['Health']
 authors:
   - 'Antony Holmes'
-added: '2026-01-08'
+added: '2026-01-14'
 tags:
   - 'Walking'
   - 'Fitness'

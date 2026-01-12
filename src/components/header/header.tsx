@@ -44,7 +44,7 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     <header
       data-mode={mode}
       className={cn(
-        'fixed w-full top-0 z-20 flex h-16 flex-col justify-center data-[mode=light]:bg-background/75 data-[mode=dark]:bg-gray-800/75',
+        'fixed w-full top-0 z-20 flex h-16 flex-col justify-center data-[mode=light]:bg-background/75 data-[mode=dark]:bg-gray-800/75 dark:bg-transparent!',
         className
       )}
       style={{ backdropFilter: `blur(${blur}px)` }}

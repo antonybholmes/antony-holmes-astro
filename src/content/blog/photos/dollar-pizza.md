@@ -9,7 +9,7 @@ sections:
   - ['Photos']
 authors:
   - 'Antony Holmes'
-added: '2026-01-01'
+added: '2026-01-08'
 tags:
   - 'New York City'
   - 'Pizza'
