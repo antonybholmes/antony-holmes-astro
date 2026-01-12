@@ -55,7 +55,7 @@ export function TableOfContents() {
       <h2 className="mb-4 text-base font-semibold border-b border-border/50 pb-2">
         Table of Contents
       </h2>
-      <ul className="text-sm">
+      <ul className="text-xs">
         {headings.map(({ id, text, level }) => (
           <li key={id} data-active={activeId === id} className="">
             <button
@@ -67,7 +67,7 @@ export function TableOfContents() {
                   ?.scrollIntoView({ behavior: 'smooth' })
               }
               style={{
-                paddingLeft: `${level / 2}rem`,
+                paddingLeft: `${level / 3}rem`,
               }}
               aria-label={`Scroll to ${text}`}
             >

@@ -4,6 +4,7 @@ import { BLOG_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { getTagPostMap } from '@/lib/astro/tags'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
 
 const posts = await getSortedPosts()
 
@@ -12,17 +13,16 @@ const tagMap = getTagPostMap(posts)
 
 //const tags = [...tagMap.keys()].sort()
 
-const tags = [...tagMap.keys()]
-  .sort((a, b) => {
-    let d = tagMap.get(a)!.length - tagMap.get(b)!.length
+const tags = [...tagMap.keys()].sort((a, b) => {
+  // let d = tagMap.get(a)!.length - tagMap.get(b)!.length
 
-    if (d !== 0) {
-      return d
-    }
+  // if (d !== 0) {
+  //   return d
+  // }
 
-    return a.toString().localeCompare(b.toString())
-  })
-  .reverse()
+  return a.toString().localeCompare(b.toString())
+})
+//.reverse()
 ---
 
 <ContentLayout
@@ -37,8 +37,8 @@ const tags = [...tagMap.keys()]
           const n = tagMap.get(tag)?.length ?? 0
           return (
             <li>
-              <ThemeLink href={`${BLOG_SLUG}/tag/${tag.toLowerCase()}/`}>
-                #{tag}
+              <ThemeLink href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(tag)}/`}>
+                {tag}
               </ThemeLink>
               ({`${n.toLocaleString()} post${n !== 1 ? 's' : ''}`})
             </li>

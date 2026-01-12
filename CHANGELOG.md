@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.9 (Jan, 2026)
+
+### Fixed
+
+- Added OG image generation post.
+
+
 ## 2.8 (Jan, 2026)
 
 ### Added

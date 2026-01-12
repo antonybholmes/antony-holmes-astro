@@ -5,6 +5,8 @@ import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { getSortedPosts } from '@lib/astro/post'
 import { paginate } from '@lib/paginate'
 
+import { capitalCase } from '@/lib/text/capital-case'
+import { fixName } from '@/lib/text/text'
 import { getTagBaseUrl } from '@lib/http/urls'
 import type { CollectionEntry } from 'astro:content'
 
@@ -27,13 +29,14 @@ export async function getStaticPaths() {
   }[] = []
 
   for (const [tag, posts] of tagMap.entries()) {
+    const title = fixName(capitalCase(tag))
     paths = paths.concat(
       paginate(posts, getUrlFriendlyTag(tag)).map(p => ({
         ...p,
         props: {
           ...p.props,
-          title: `#${tag} Posts`,
-          pageTitle: `${tag} - Page ${p.props.page + 1} of ${p.props.pages}`,
+          title: `${title} Posts`,
+          pageTitle: `${title} - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
           root: getTagBaseUrl(tag),
         },

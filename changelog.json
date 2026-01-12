@@ -512,5 +512,18 @@
     },
     "author": "Antony Holmes",
     "date": "2026-01-10T02:56:07.951Z"
+  },
+  {
+    "version": "2.9",
+    "messages": {
+      "Fixed": [
+        {
+          "msg": "Added OG image generation post",
+          "date": "2026-01-12T02:21:12.319Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-01-12T02:21:12.319Z"
   }
 ]

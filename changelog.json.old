@@ -493,6 +493,10 @@
         {
           "msg": "Added back to top button",
           "date": "2026-01-10T02:56:07.951Z"
+        },
+        {
+          "msg": "UI tweaks. Added Open Graph preview page",
+          "date": "2026-01-12T00:38:35.197Z"
         }
       ],
       "Changed": [

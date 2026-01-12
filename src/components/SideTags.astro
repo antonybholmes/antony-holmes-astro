@@ -1,5 +1,6 @@
 ---
 import { BLOG_SLUG } from '@/consts'
+import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { ThemeLink } from './link/theme-link'
 
 type Props = { tags?: string[] }
@@ -7,20 +8,23 @@ type Props = { tags?: string[] }
 const { tags } = Astro.props
 
 // Optional: Filter out anything deeper than h3
-const sortedTags =
-  tags?.sort().map(t => t.toLowerCase().replace(/\s+/g, '-')) || [] // Convert to slug format
+const sortedTags = tags || [] // Convert to slug format
+
+if (sortedTags.length === 0) {
+  return null
+}
 ---
 
-<ul class="flex flex-row flex-wrap items-center gap-1.5">
+<ul class="flex flex-row flex-wrap items-center gap-1.5 text-xs">
   {
     sortedTags.map(tag => (
-      <li class="border-border/50 hover:border-border trans-color rounded-full border px-3 py-1.5 text-xs">
+      <li class="border-border/50 hover:border-border trans-color rounded-full border px-3 py-1.5">
         <ThemeLink
           startingColor="text-foreground"
           endingColor="text-theme"
-          href={`${BLOG_SLUG}/tag/${tag}`}
+          href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(tag)}`}
         >
-          #{tag}
+          {tag}
         </ThemeLink>
       </li>
     ))

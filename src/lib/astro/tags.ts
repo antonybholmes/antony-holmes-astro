@@ -1,5 +1,4 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
-import { getUrlFriendlyTag } from '../http/urls'
 
 export function getTagPostMap(
   posts: CollectionEntry<'blog'>[],
@@ -11,7 +10,7 @@ export function getTagPostMap(
     post => post.data.tags && post.data.tags.length > 0
   )) {
     for (let tag of post.data.tags!) {
-      tag = getUrlFriendlyTag(tag)
+      //tag = getUrlFriendlyTag(tag)
       if (!tagMap.has(tag)) {
         tagMap.set(tag, [])
       }
