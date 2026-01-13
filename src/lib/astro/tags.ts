@@ -38,7 +38,7 @@ export async function getUniqueTags(): Promise<
       const d = b[1].length - a[1].length
 
       // sort by count descending, then alphabetically
-      return d !== 0 ? d : a[0].localeCompare(b[0])
+      return a[0].localeCompare(b[0]) //d !== 0 ? d : a[0].localeCompare(b[0])
     })
     .map(e => ({ name: e[0], count: e[1].length }))
 

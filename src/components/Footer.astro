@@ -24,9 +24,9 @@ const MAX_ITEMS = 8
 
 const today = new Date()
 
-const sections = (await getUniqueSections())
-  .filter(section => section.name !== 'All' && !section.name.includes('/'))
-  .slice(0, MAX_ITEMS)
+const sections = (await getUniqueSections()).filter(
+  section => section.name !== 'All' && !section.name.includes('/')
+)
 
 const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
 ---
@@ -50,9 +50,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
           class="col-span-3 flex flex-col justify-center gap-12 md:flex-row xl:justify-end"
         >
           <BaseCol className="gap-y-2">
-            <span class="font-semibold tracking-wide uppercase"
-              >Browse By Category</span
-            >
+            <span class="font-semibold tracking-wide uppercase">Sections</span>
             <ul class="flex flex-col gap-y-1.5">
               {
                 sections.map(section => (
@@ -62,8 +60,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
                       className="hover:underline"
                     >
                       {section.name}
-                    </BaseLink>{' '}
-                    ({section.count})
+                    </BaseLink>
                   </li>
                 ))
               }
@@ -71,9 +68,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
           </BaseCol>
 
           <BaseCol className="gap-y-2">
-            <span class="font-semibold tracking-wide uppercase"
-              >Browse By Tag</span
-            >
+            <span class="font-semibold tracking-wide uppercase">Tags</span>
             <ul class="grid grid-cols-1 gap-1.5">
               {
                 tags.map(t => (
@@ -82,11 +77,14 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
                       href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(t.name)}`}
                     >
                       {t.name}
-                    </BaseLink>{' '}
-                    ({t.count})
+                    </BaseLink>
                   </li>
                 ))
               }
+
+              <li>
+                <BaseLink href={`${BLOG_SLUG}/tag`}>More...</BaseLink>
+              </li>
             </ul>
           </BaseCol>
 

@@ -1,8 +1,6 @@
 ---
 import { RECORDS_PER_PAGE, SITE_SUBTITLE, SITE_TITLE } from '../consts'
 
-import { ThemeLink } from '@/components/link/theme-link'
-
 import { BaseCol } from '@/components/layout/base-col'
 
 import { RoundedImage } from '@/components/rounded-image'
@@ -19,94 +17,108 @@ import { RestPosts } from '@/components/posts/rest-posts'
 const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
-<BaseLayout title={SITE_TITLE} mode="trans" headerCls="bg-blue-900/75">
-  <main class="flex flex-col gap-y-16" slot="main">
-    <ContentDiv
-      className="bg-blue-900 py-24 text-white/95"
-      contentCls="gap-y-4"
-    >
-      <div
-        class="flex flex-col items-center gap-8 lg:flex-row lg:justify-between"
-        slot="main"
+<BaseLayout title={SITE_TITLE} mode="trans" headerCls="bg-gray-800/50">
+  <main class="flex flex-col gap-y-8" slot="main">
+    <Fragment slot="main">
+      <ContentDiv
+        className="relative bg-linear-to-b bg-[url(/assets/images/wave.webp)] from-blue-900 via-blue-900 via-25% to-emerald-500/70 bg-cover bg-center py-24"
+        contentCls="gap-y-16"
       >
-        <BaseCol className="gap-y-2">
-          <h1 class="text-center text-4xl font-bold md:text-5xl lg:text-left">
-            <a
-              href="/"
-              class="bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent"
-            >
-              &gt; {SITE_TITLE}
-            </a>
-          </h1>
+        <Fragment slot="main">
+          <!-- <span
+            class="absolute top-0 left-0 z-0 h-full w-full bg-linear-to-b from-black/30 to-black/20"
+          >
+          </span> -->
 
-          <h2 class="text-center text-2xl md:text-3xl lg:text-left">
-            {SITE_SUBTITLE}
-          </h2>
-        </BaseCol>
+          <div
+            class="relative z-10 flex flex-col items-center gap-8 text-white lg:flex-row lg:justify-between"
+          >
+            <BaseCol className="gap-y-2">
+              <h1
+                class="text-center text-4xl font-bold md:text-5xl lg:text-left"
+              >
+                <a
+                  href="/"
+                  class="bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent"
+                >
+                  &gt; {SITE_TITLE}
+                </a>
+              </h1>
 
-        <RoundedImage
-          className="aspect-square h-54 w-54 shadow-lg"
-          src="/assets/images/people/antony-holmes.webp"
-          title="That's me by the Hudson River"
-        />
-      </div>
+              <h2 class="text-center text-2xl md:text-3xl lg:text-left">
+                {SITE_SUBTITLE}
+              </h2>
+            </BaseCol>
 
-      <section class="flex flex-col gap-y-4 text-justify" slot="main">
-        <p class="text-3xl font-bold">Hi there! I'm Antony.</p>
-        <p>
-          Like all the best sites, I must begin with some blurb about myself,
-          that's the rule. That's me posing by the mighty Hudson River for no
-          particular reason, except maybe to look cool wearing Risky Business
-          sunglasses.
-        </p>
-        <p>
-          I'm a researcher and software engineer who's learned how to do a few
-          cool things with Java, Python, C++, Go, Typescript, and React amongst
-          others.
-        </p>
-        <p>
-          Some of these tricks were used to make the very site you're looking at
-          right now. I made this site with love, to try and get high{' '}
-          <ThemeLink
-            href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
-            >Lighthouse</ThemeLink
-          >{' '}
-          scores, and to handcraft something unique in my own personal style that
-          does not involve me lazily asking some AI agent to do it all for me. I think
-          I mostly succeeded.
-        </p>
+            <RoundedImage
+              className="aspect-square h-54 w-54"
+              src="/assets/images/people/antony-holmes.webp"
+              title="That's me by the Hudson River"
+            />
+          </div>
 
-        <p>
-          I cover an assortment of topics, mostly tech, projects, transit,
-          finance, but really just whatever takes my fancy.
-        </p>
+          <section
+            class="relative z-10 flex flex-col gap-y-6 rounded-4xl bg-black/20 p-8 text-justify text-lg text-white backdrop-blur-md md:p-16"
+          >
+            <p class="text-3xl font-bold">Hi there! I'm Antony.</p>
+            <p>
+              Like all the best sites, I must begin with some blurb about
+              myself, that's the rule. That's me posing by the mighty Hudson
+              River for no particular reason, except maybe to look cool wearing
+              Risky Business sunglasses.
+            </p>
+            <p>
+              I'm a researcher and software engineer who's learned how to do a
+              few cool things with Java, Python, C++, Go, Typescript, and React
+              amongst others.
+            </p>
+            <p>
+              Some of what I've learnt was used to make the very site you're
+              looking at right now. I made this with love, to try and get high{
+                ' '
+              }
+              <a
+                href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
+                >Lighthouse</a
+              >{' '}
+              scores, and to handcraft something unique in my own personal style that
+              doesn't involve lazily asking some AI agent to do all the work for me.
+              I think I mostly succeeded.
+            </p>
 
-        <p>
-          I have an aptly named publications page where you can view all of the
-          scientific literature I have written, primarily focused on cancer
-          genetics.
-        </p>
+            <p>
+              I cover an assortment of topics, mostly tech, projects, transit,
+              finance, but really just whatever takes my fancy.
+            </p>
 
-        <p>
-          My life story probably won't be optioned, but if it is, I hope the
-          movie contains the music of Kraftwerk.
-        </p>
-      </section>
-    </ContentDiv>
+            <p>
+              I have an aptly named publications page where you can view all of
+              the scientific literature I have written, primarily focused on
+              cancer genetics.
+            </p>
 
-    <ContentDiv className="gap-y-4">
-      <section id="latest" class="flex flex-col gap-y-8" slot="main">
-        <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
+            <p>
+              My life story probably won't be optioned, but if it is, I hope the
+              movie contains the music of Kraftwerk.
+            </p>
+          </section>
+        </Fragment>
+      </ContentDiv>
 
-        <BaseCol className="gap-y-24">
-          <HeroPosts posts={posts as IPost[]} />
+      <ContentDiv className="gap-y-4">
+        <section id="latest" class="flex flex-col gap-y-8" slot="main">
+          <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
 
-          <RestPosts posts={posts.slice(4) as IPost[]} />
+          <BaseCol className="gap-y-24">
+            <HeroPosts posts={posts as IPost[]} />
 
-          <!-- <PagePagination page={0} pages={pages} root={root} /> -->
-        </BaseCol>
-      </section>
-    </ContentDiv>
+            <RestPosts posts={posts.slice(4) as IPost[]} />
+
+            <!-- <PagePagination page={0} pages={pages} root={root} /> -->
+          </BaseCol>
+        </section>
+      </ContentDiv>
+    </Fragment>
   </main>
 
   <!-- <PostSection title="Latest posts">

@@ -31,16 +31,18 @@ const tags = [...tagMap.keys()].sort((a, b) => {
 >
   <main slot="main" class="flex flex-col gap-y-8">
     <h1 class="text-2xl font-bold">Tags</h1>
-    <ul>
+    <ul class="grid grid-cols-2 gap-2">
       {
         tags.map(tag => {
           const n = tagMap.get(tag)?.length ?? 0
           return (
-            <li>
+            <li class="flex flex-row items-center gap-x-2">
               <ThemeLink href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(tag)}/`}>
                 {tag}
               </ThemeLink>
-              ({`${n.toLocaleString()} post${n !== 1 ? 's' : ''}`})
+              <span class="border-border/50 text-foreground/50 flex h-5 min-w-5 flex-row items-center justify-center rounded-full border px-1 text-xs">
+                {n.toLocaleString()}
+              </span>
             </li>
           )
         })

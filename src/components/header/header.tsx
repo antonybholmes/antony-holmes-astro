@@ -77,7 +77,7 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
 
             <VCenterRow
               slot="right"
-              className="justify-end gap-x-2 hidden md:flex"
+              className="justify-end gap-x-3 hidden md:flex"
             >
               <ThemeToggle mode={mode} />
               <BaseLink
