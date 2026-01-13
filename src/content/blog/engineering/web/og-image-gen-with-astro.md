@@ -15,7 +15,7 @@ tags:
   - 'Tutorials'
 ---
 
-I use [Astro](https://astro.build/) to create this site, if you hadn't already figured that out by inspect the page source. Unlike a fully featured CMS, ala Wordpress or Drupal, I have to implement some functionality myself to get creature comforts. This trade-off is worth to me since I can build and render the whole site in seconds and deploy it on Vercel, Cloudflare, Netlify etc as a static site with minimal resources and costs.
+I use [Astro](https://astro.build/) to create this site. You may have already figured this out by inspect the page source. Unlike a fully featured CMS, such as Wordpress or Drupal, I have to implement some functionality myself to get creature comforts. This trade-off is worth to me since I can build and render the whole site in seconds and deploy it on Vercel, Cloudflare, or Netlify as a static site with minimal resources and costs.
 
 This post is about one such feature I wanted to add: Open Graph images.
 
@@ -23,25 +23,25 @@ This post is about one such feature I wanted to add: Open Graph images.
 
 You may have noticed that my posts feature a hero image. These are either custom or auto-selected from prefined lists grouped by section topics using a hash of the post's title to get an image index (perhaps a topic for another post).
 
-If I want to be hip and modern, I also need to create a Open Graph (OG) image for each post that can be used for social media sharing, but this is time-consuming and boring to do manually (boo) so can I automate it (TLDR, of course it is otherwise this post wouldn't exist)?
+If I want to be hip and modern, I also need to create an Open Graph (OG) image for each post that can be used for sharing on social media. This is time-consuming and boring to do manually (boo) so can I automate this step (TLDR, of course I can, otherwise this post wouldn't exist, right)?
 
-I want to turn my existing hero images such as this:
+My hero image might look like this:
 
 ![A hero image](/assets/images/blog/vanilla-cake.webp)
 
-into 1200x630 Open Graph versions that adds the post title over the image in frosted glass and look something like this:
+I want to turn it into 1200x630 Open Graph version that adds the post title over the image in frosted glass and looks like this:
 
 ![An Open Graph image](/assets/images/og/the-vanilla-investor.png)
 
 ## Puppet power
 
-I came across a [post](https://cassidoo.co/post/og-image-gen-astro/) discussing a very similar concept to what I had in mind, which inspired me to write this post. Cassidy used [Puppeteer](https://www.npmjs.com/package/puppeteer) to do most of the leg work. Puppeteer is a JS package to automate Chrome/Chromium by creating a headless instance of a browser and allowing it to be manipulated with an API. Hence, we can automate creating web pages, rendering them and saving images of the page very easily without having to duct tape together a janky solution using lots of separate packages. This was basically the foundation of what I needed and I reasoned a few tweaks could give me what I wanted.
+I came across a [post](https://cassidoo.co/post/og-image-gen-astro/) discussing a very similar concept to what I had in mind, which inspired me to write this post. Cassidy used [Puppeteer](https://www.npmjs.com/package/puppeteer) to do most of the leg work. Puppeteer is a JS package to automate Chrome/Chromium by creating a headless instance of a browser and allowing it to be manipulated with an API. Hence, we can automate creating web pages, rendering them and saving images of the page very easily without having to duct tape together a janky solution using lots of separate packages. This was basically the foundation of what I needed and I reasoned that with a few tweaks, it could give me what I wanted.
 
-Her solution is an SVG template, which is modified and then rendered to an image file. Let's take this a step further (or maybe that's sideways). Since I already have my hero images, why not generate a custom web page exactly the size needed for an OG image and save that as an image, no SVG required? This gives me the full power of HTML/CSS to overlay text and create whatever graphics effects I want (specifically blurred backdrops which are not supported in SVG).
+Her solution was an SVG template, which is modified and then rendered to an image file. Let's take that a step further (or maybe sideways). Since I already have my hero images, why not generate a custom web page exactly the size of an OG image and save that, no SVG required? This gives me the full power of HTML/CSS to overlay text and create whatever graphics effects I want (specifically blurred backdrops which are not properly supported in SVG).
 
 ## I love it when a plan comes together
 
-My posts are written in Markdown. The frontmatter looks similar to this
+My posts are written in Markdown. The frontmatter looks similar to this:
 
 ```markdown
 ---
@@ -54,11 +54,11 @@ hero: 'vanilla-cake.webp'
 ---
 ```
 
-The <code>hero</code> key specifies the image I want (I have some functions that translate names to real files so that I don't need to write complete paths in my posts, because I'm lazy).
+We are interested in the <code>hero</code> key which specifies the image I want (I have some functions that translate names to real files so that I don't need to write complete paths in my posts, because I'm lazy).
 
-I can use <code>[gray-matter](https://www.npmjs.com/package/gray-matter)</code> to automate extracting the <code>title</code> and <code>hero</code> from each post which means I now have what I need to generate OG images automatically.
+I can use <code>[gray-matter](https://www.npmjs.com/package/gray-matter)</code> to automate extracting the <code>title</code> and <code>hero</code> from each post which means I have what I need to generate OG images automatically.
 
-The final piece of the puzzle was creating an HTML template from which each post can be turned into an OG image:
+An image is not a webpage though. I need an HTML template from which each post can be turned into an OG image:
 
 ```html
 <!-- og-template.html -->
@@ -104,9 +104,9 @@ The final piece of the puzzle was creating an HTML template from which each post
 </html>
 ```
 
-The template contains placeholders <code>{{title}}</code>, <code>{{author}}</code>, <code>{{date}}</code>, and <code>{{hero}}</code> which are replaced by appropriate values from each post.
+The template contains placeholders <code>{{title}}</code>, <code>{{author}}</code>, <code>{{date}}</code>, and <code>{{hero}}</code> which are replaced by appropriate values from each post. Styling is done with a mixture of Tailwind and CSS.
 
-Now the part you've been waiting for, a script to actually make all of this come together:
+Finally, we need a script to actually make all of this work:
 
 ```typescript
 // scripts/generate-og.ts
@@ -237,7 +237,7 @@ This script can then be made to function through <code>packages.json</code>:
 // ... rest of packages.json
 ```
 
-I can now run <code>pnpm generate:og</code> to create my OG images. I like to do this on my workstation just before I push site updates to production so that images are added into my repo without having to run this step on a remote system (I'm not a huge fan of making everything serverless, fine in principal, but really a way to bilk people for build minutes in practice).
+We can now run <code>pnpm generate:og</code> to create OG images. I do this on my workstation just before I push site updates to production so that images are added into my repo without having to run this on a remote system (I'm not a huge fan of making everything serverless, fine in principal, but really a way to bilk people for build minutes in practice).
 
 Let's breakdown some of the key parts of the script:
 
@@ -302,7 +302,7 @@ There are some other features of the script, such as a check to see if the image
 
 ## Post-mortem
 
-For me, this design work was really fun. It's my eyes, my opinions, my attention to detail! I want to feel artistic and make it "perfect" without just completely relying on AI, which often gives rather bland, broken, soulless solutions to all anything more complicated that a single function. Side note, try prompting an LLM for a joke; no matter how much help you give it, the jokes will be terrible, both objectively and subjectively because there is a lack of original, creative thought. It's just regurgitating without regard as to what makes something intrinsically interesting, funny, or in this case, visually appealing.
+For me, this design work was jolly good fun. It's completely my eyes, my opinions, my attention to detail! I want to feel artistic and make it "perfect" without just relying on AI, which often gives rather bland, broken, soulless solutions to anything more complicated that a single function. Side note, try prompting an LLM for a joke; no matter how much help you give it, the jokes will be terrible, both objectively and subjectively because there is a lack of original, creative thought. It's just regurgitating without regard as to what makes something intrinsically interesting, funny, or in this case, visually appealing.
 
 There was a lot of trial and error with this method. You only see the finished scripts and not the various tests and fixes made along the way to get it to this state. I'm rather happy with how it turned out. One could argue it's overkill or unnecessary for a personal blog site, but that's rather missing the point. I learned a bunch, fixed a problem and got a solution that exactly matches my standards without compromise nor having to rely on someone else to do it for me.
 

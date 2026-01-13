@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Tweaked some post text.
 - Header now changes opacity on scroll to make it better integrate with background.
 
 ### Fixed
