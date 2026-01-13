@@ -26,10 +26,12 @@ interface Props extends IClassProps {
 export function Header({ tab = 'Home', mode = 'light', className }: Props) {
   const [subPath, setSubPath] = useState('/')
   const [blur, setBlur] = useState(0)
+  const [opacity, setOpacity] = useState(0)
 
   useEffect(() => {
     const onScroll = () => {
       setBlur(Math.min(MAX_BLUR, Math.floor(window.scrollY / 10)))
+      setOpacity(Math.max(0, window.scrollY / 200))
     }
 
     window.addEventListener('scroll', onScroll)
@@ -44,12 +46,18 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     <header
       data-mode={mode}
       className={cn(
-        'fixed w-full top-0 z-20 flex h-16 flex-col justify-center data-[mode=light]:bg-background/75 data-[mode=dark]:bg-gray-800/75 dark:bg-transparent!',
-        className
+        'fixed w-full top-0 z-20 flex h-16 flex-col justify-center '
       )}
-      style={{ backdropFilter: `blur(${blur}px)` }}
     >
-      <nav className="flex grow flex-col justify-center">
+      <span
+        data-mode={mode}
+        className={cn(
+          'absolute top-0 left-0 z-0 h-full w-full bg-linear-to-b data-[mode=light]:bg-background/70  data-[mode=dark]:bg-gray-700/80  dark:bg-transparent!',
+          className
+        )}
+        style={{ backdropFilter: `blur(${blur}px)`, opacity }}
+      />
+      <nav className="flex grow flex-col justify-center relative z-10">
         <ContentDiv className="grow items-center">
           <div
             slot="main"

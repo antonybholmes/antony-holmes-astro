@@ -17,11 +17,11 @@ import { RestPosts } from '@/components/posts/rest-posts'
 const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
-<BaseLayout title={SITE_TITLE} mode="trans" headerCls="bg-gray-800/50">
+<BaseLayout title={SITE_TITLE} mode="dark">
   <main class="flex flex-col gap-y-8" slot="main">
     <Fragment slot="main">
       <ContentDiv
-        className="relative bg-linear-to-b bg-[url(/assets/images/wave.webp)] from-blue-900 via-blue-900 via-25% to-emerald-500/70 bg-cover bg-center py-24"
+        className="relative bg-linear-to-b bg-[url(/assets/images/bg.webp)] from-blue-900 via-blue-900 via-25% to-emerald-500/70 bg-cover bg-center py-24"
         contentCls="gap-y-16"
       >
         <Fragment slot="main">

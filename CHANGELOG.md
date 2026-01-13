@@ -2,6 +2,10 @@
 
 ## 2.9 (Jan, 2026)
 
+### Changed
+
+- Header now changes opacity on scroll to make it better integrate with background.
+
 ### Fixed
 
 - Bug fixes and updates.

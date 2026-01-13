@@ -525,6 +525,12 @@
           "msg": "Bug fixes and updates.",
           "date": "2026-01-13T00:09:33.005Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Header now changes opacity on scroll to make it better integrate with background",
+          "date": "2026-01-13T14:42:57.999Z"
+        }
       ]
     },
     "author": "Antony Holmes",
