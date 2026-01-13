@@ -4,6 +4,7 @@
 
 ### Fixed
 
+- Bug fixes and updates.
 - Added OG image generation post.
 
 

@@ -92,33 +92,33 @@ export function Signature() {
 
   return (
     <VCenterRow
-      className="relative text-2xl font-semibold h-8 w-48"
+      className="relative text-2xl font-bold h-8 w-48"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ fontFamily: 'var(--font-heading)' }}
     >
       <span
         ref={antonyRef}
-        className="absolute pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent left-0"
+        className="absolute pointer-events-none bg-linear-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent left-0"
       >
         Antony
       </span>
 
       <span
-        className="absolute left-21 -top-5 -rotate-30  text-sky-700 pointer-events-none"
+        className="absolute left-20 -top-5 -rotate-30  text-sky-700 pointer-events-none"
         style={{ fontFamily: 'Dancing Script' }}
         ref={spanBRef}
       >
         B
       </span>
       <ChevronUp
-        className="text-foreground/40 absolute scale-y-150 top-5 h-4 w-4 left-[5.2rem] pointer-events-none"
+        className="text-foreground/40 absolute scale-y-150 top-5 h-4 w-4 left-20 pointer-events-none"
         ref={insertRef}
       />
 
       <span
         ref={holmesRef}
-        className="absolute left-24 pointer-events-none bg-gradient-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+        className="absolute left-24 pointer-events-none bg-linear-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
       >
         Holmes
       </span>

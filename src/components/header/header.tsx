@@ -75,12 +75,15 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
               ))}
             </ul>
 
-            <VCenterRow slot="right" className="justify-end gap-x-2">
+            <VCenterRow
+              slot="right"
+              className="justify-end gap-x-2 hidden md:flex"
+            >
               <ThemeToggle mode={mode} />
               <BaseLink
                 href="/rss.xml"
                 title="Subscribe to RSS feed"
-                className="stroke-foreground trans-color hidden lg:inline-flex group"
+                className="stroke-foreground trans-color group"
               >
                 <Rss className={RSS_CLS} data-mode={mode} />
               </BaseLink>
