@@ -2,6 +2,10 @@
 
 ## 2.9 (Jan, 2026)
 
+### Added
+
+- Added Hudson Hawk review.
+
 ### Changed
 
 - Tweaked some post text.

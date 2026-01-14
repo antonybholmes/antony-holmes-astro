@@ -27,12 +27,12 @@ export async function getStaticPaths() {
 
   for (const [time, posts] of tagMap.entries()) {
     paths = paths.concat(
-      paginate(posts, `${time}-min`).map(p => ({
+      paginate(posts, `${time}-min-reads`).map(p => ({
         ...p,
         props: {
           ...p.props,
-          title: `${time} min read`,
-          pageTitle: `${time} min read - Page ${p.props.page + 1} of ${p.props.pages}`,
+          title: `${time} Minute Reads`,
+          pageTitle: `${time} Minute Reads - Page ${p.props.page + 1} of ${p.props.pages}`,
           showTitle: true,
           root: getTimeBaseUrl(time),
         },
@@ -40,6 +40,7 @@ export async function getStaticPaths() {
     )
   }
 
+  console.log(paths)
   return paths
 }
 

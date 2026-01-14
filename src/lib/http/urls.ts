@@ -91,7 +91,7 @@ export function getTagBaseUrl(tag: string) {
 }
 
 export function getTimeBaseUrl(time: number) {
-  return `${READ_TIME_SLUG}/${time}-min`
+  return `${READ_TIME_SLUG}/${Math.ceil(time)}-min-reads`
 }
 
 export function getSlug(path: string): string {

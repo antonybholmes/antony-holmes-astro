@@ -2,7 +2,7 @@ import { capitalCase } from './text/capital-case'
 import { fixName, type UndefStr } from './text/text'
 
 // Parts of the path to exclude from breadcrumbs navigation
-const EXCLUDE = new Set(['Tag', 'Category', 'Section', 'Page'])
+const EXCLUDE = new Set(['tag', 'category', 'section', 'page'])
 
 export type ICrumb = {
   label: string
@@ -20,7 +20,14 @@ function _formatName(name: string) {
 
 export function createCrumbs(url: UndefStr): ICrumb[] {
   url = url ?? '/'
-  const segments = url.split('/').filter((s: string) => s.length > 0)
+
+  console.log(`Creating crumbs for url: ${url}`)
+  const segments = url
+    .split('/')
+    .filter(
+      (s: string) => s.length > 0 && !EXCLUDE.has(s) && s.search(/^\d+$/) === -1
+    )
+    .slice(0, -1)
 
   const crumbs: ICrumb[] = []
 
@@ -31,9 +38,8 @@ export function createCrumbs(url: UndefStr): ICrumb[] {
     const label = _formatName(segments[i])
 
     const path = `/${segments.slice(0, i + 1).join('/')}`
-    if (!EXCLUDE.has(label) && label.search(/^\d+$/) === -1) {
-      crumbs.push({ label, path })
-    }
+
+    crumbs.push({ label, path })
   }
 
   return crumbs

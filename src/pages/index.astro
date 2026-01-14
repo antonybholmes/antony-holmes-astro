@@ -1,5 +1,5 @@
 ---
-import { RECORDS_PER_PAGE, SITE_SUBTITLE, SITE_TITLE } from '../consts'
+import { RECORDS_PER_PAGE, SITE_TITLE } from '../consts'
 
 import { BaseCol } from '@/components/layout/base-col'
 
@@ -13,20 +13,23 @@ import type { IPost } from '@/lib/post'
 
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
+import { ChevronRight } from 'lucide-react'
 
 const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
-<BaseLayout title={SITE_TITLE} mode="dark">
+<BaseLayout title={SITE_TITLE} mode="trans" headerCls="bg-blue-800/80">
   <main class="flex flex-col gap-y-8" slot="main">
     <Fragment slot="main">
-      <ContentDiv
-        className="relative bg-linear-to-b bg-[url(/assets/images/bg.webp)] from-blue-900 via-blue-900 via-25% to-emerald-500/70 bg-cover bg-center py-24"
-        contentCls="gap-y-16"
-      >
+      <ContentDiv className="relative pt-24 pb-16" contentCls="gap-y-12">
         <Fragment slot="main">
+          <span
+            class="absolute top-0 left-0 z-0 h-164 w-full bg-[url(/assets/images/bg.webp)] bg-cover bg-center"
+          >
+          </span>
+
           <!-- <span
-            class="absolute top-0 left-0 z-0 h-full w-full bg-linear-to-b from-black/30 to-black/20"
+            class="absolute top-0 left-0 z-0 h-192 w-full bg-linear-to-b from-white/0 via-white/50 to-white"
           >
           </span> -->
 
@@ -35,19 +38,18 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           >
             <BaseCol className="gap-y-2">
               <h1
-                class="text-center text-4xl font-bold md:text-5xl lg:text-left"
+                class="flex items-center gap-x-2 text-center text-4xl font-bold text-white/80 md:text-5xl lg:text-left"
               >
-                <a
-                  href="/"
-                  class="bg-linear-to-r from-white to-white/70 bg-clip-text text-transparent"
-                >
-                  &gt; {SITE_TITLE}
-                </a>
+                <ChevronRight
+                  size={32}
+                  className="cursor-chevron stroke-white"
+                />
+                Hi there, I'm <a href="/" class="text-white">Antony</a>.
               </h1>
 
-              <h2 class="text-center text-2xl md:text-3xl lg:text-left">
+              <!-- <h2 class="text-center text-2xl md:text-3xl lg:text-left">
                 {SITE_SUBTITLE}
-              </h2>
+              </h2> -->
             </BaseCol>
 
             <RoundedImage
@@ -58,43 +60,34 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
           </div>
 
           <section
-            class="relative z-10 flex flex-col gap-y-6 rounded-4xl bg-black/20 p-8 text-justify text-lg text-white backdrop-blur-md md:p-16"
+            class="relative z-10 flex flex-col gap-y-6 rounded-3xl bg-gray-950/50 p-6 text-justify text-base text-white shadow-2xl backdrop-blur-lg md:rounded-4xl md:p-12"
           >
-            <p class="text-3xl font-bold">Hi there! I'm Antony.</p>
+            <!-- <p class="text-3xl font-bold">Hi there! I'm Antony.</p> -->
             <p>
-              Like all the best sites, I must begin with some blurb about
-              myself, that's the rule. That's me posing by the mighty Hudson
-              River for no particular reason, except maybe to look cool wearing
-              Risky Business sunglasses.
+              Like all the best sites, I must begin with some blurb about myself
+              (them's the rules). That's me posing by the mighty Hudson River
+              for no particular reason, except maybe to look cool wearing Risky
+              Business sunglasses.
             </p>
             <p>
-              I'm a researcher and software engineer who's learned how to do a
-              few cool things with Java, Python, C++, Go, Typescript, and React
-              amongst others.
-            </p>
-            <p>
-              Some of what I've learnt was used to make the very site you're
-              looking at right now. I made this with love, to try and get high{
-                ' '
-              }
+              I'm a researcher and software engineer in New York who's learned
+              how to do a few cool things with Java, Python, C++, Go,
+              Typescript, and React. Some of what I've learnt was used to make
+              this site. I made this with love, to get high{' '}
               <a
                 href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
                 >Lighthouse</a
               >{' '}
-              scores, and to handcraft something unique in my own personal style that
-              doesn't involve lazily asking some AI agent to do all the work for me.
-              I think I mostly succeeded.
+              scores, and to handcraft something in my own personal style that doesn't
+              involve asking some AI agent to do all the work for me. I think I mostly
+              succeeded.
             </p>
 
             <p>
-              I cover an assortment of topics, mostly tech, projects, transit,
-              finance, but really just whatever takes my fancy.
-            </p>
-
-            <p>
-              I have an aptly named publications page where you can view all of
-              the scientific literature I have written, primarily focused on
-              cancer genetics.
+              I write about tech, projects, transit, finance, really just
+              whatever takes my fancy. I have an aptly named publications page
+              where you can view all of the scientific literature I have
+              written, primarily focused on cancer genetics.
             </p>
 
             <p>

@@ -327,3 +327,7 @@ export function getPostExcerpt(post: IPost): string {
 
   return firstParagraph?.replace(/\n/g, ' ').trim() ?? ''
 }
+
+export function getReadTimeUrl(minutes: number): string {
+  return `${BLOG_SLUG}/read-time/${Math.ceil(minutes)}-min-reads`
+}

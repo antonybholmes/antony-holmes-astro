@@ -1,9 +1,9 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
-import { BLOG_SLUG, READ_TIME_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { getTimePostMap } from '@/lib/astro/time'
+import { getReadTimeUrl } from '@/lib/post'
 
 const posts = await getSortedPosts()
 
@@ -35,9 +35,7 @@ const tags = [...tagMap.keys()]
           const n = tagMap.get(tag)?.length ?? 0
           return (
             <li class="flex flex-row items-center gap-x-2">
-              <ThemeLink href={`${BLOG_SLUG}/${READ_TIME_SLUG}/${tag}-min/`}>
-                {`${tag} min`}
-              </ThemeLink>
+              <ThemeLink href={getReadTimeUrl(tag)}>{`${tag} min`}</ThemeLink>
               <span class="border-border/50 text-foreground/50 flex h-5 min-w-5 flex-row items-center justify-center rounded-full border px-1 text-xs">
                 {n.toLocaleString()}
               </span>

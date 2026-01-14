@@ -59,15 +59,15 @@ export const StarRating = ({ rating }: IProps) => {
   }
 
   return (
-    <VCenterRow className="gap-x-4">
+    <VCenterRow className="gap-x-5">
       <ul className="flex flex-row gap-x-1 items-center flex-nowrap fill-amber-300 stroke-amber-300 text-sm">
         {stars}
       </ul>
 
-      <span className="text-sm flex flex-row gap-x-1 items-center">
-        <span>{rating.toLocaleString()}</span>
+      <span className="font-medium text-sm flex flex-row gap-x-2 items-center">
+        <span className="text-xl">{rating.toLocaleString()}</span>
         <span className="text-foreground/50">/</span>
-        <span>5</span>
+        <span className="text-xl">5</span>
       </span>
     </VCenterRow>
   )

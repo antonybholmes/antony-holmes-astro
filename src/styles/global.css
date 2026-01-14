@@ -534,3 +534,24 @@ input[type='search']::-webkit-search-results-decoration {
   overflow: -moz-scrollbars-none; /* Hides the scrollbar */
   scrollbar-width: none;
 }
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+
+  100% {
+    opacity: 0.5;
+    transform: translateX(0);
+  }
+}
+
+.cursor-chevron {
+  animation: cursor-blink 3s ease-in-out infinite;
+}

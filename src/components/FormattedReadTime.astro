@@ -1,6 +1,6 @@
 ---
-import { BLOG_SLUG } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
+import { getReadTimeUrl } from '@/lib/post'
 import { Clock } from 'lucide-react'
 import { VCenterRow } from './layout/v-center-row'
 
@@ -8,7 +8,7 @@ interface Props extends IClassProps {
   readingTime: { text: string; minutes: number }
 }
 
-const { readingTime, className } = Astro.props
+const { readingTime } = Astro.props
 ---
 
 <VCenterRow className="gap-x-1.5">
@@ -17,10 +17,7 @@ const { readingTime, className } = Astro.props
     className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
     strokeWidth={1.5}
   />
-  <a
-    href={`${BLOG_SLUG}/read-time/${readingTime.minutes}-min`}
-    class="hover:underline"
-  >
+  <a href={getReadTimeUrl(readingTime.minutes)} class="hover:underline">
     {readingTime.text}
   </a>
 </VCenterRow>

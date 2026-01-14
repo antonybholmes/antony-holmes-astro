@@ -31,7 +31,7 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
   useEffect(() => {
     const onScroll = () => {
       setBlur(Math.min(MAX_BLUR, Math.floor(window.scrollY / 10)))
-      setOpacity(Math.max(0, window.scrollY / 200))
+      setOpacity(Math.max(0, window.scrollY / 100))
     }
 
     window.addEventListener('scroll', onScroll)
@@ -46,13 +46,13 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     <header
       data-mode={mode}
       className={cn(
-        'fixed w-full top-0 z-20 flex h-16 flex-col justify-center '
+        'fixed w-full top-0 z-100 flex h-16 flex-col justify-center '
       )}
     >
       <span
         data-mode={mode}
         className={cn(
-          'absolute top-0 left-0 z-0 h-full w-full bg-linear-to-b data-[mode=light]:bg-background/70  data-[mode=dark]:bg-gray-700/80  dark:bg-transparent!',
+          'absolute top-0 left-0 z-0 h-full w-full bg-linear-to-b data-[mode=light]:bg-background/70 data-[mode=dark]:bg-gray-800/80 dark:bg-transparent!',
           className
         )}
         style={{ backdropFilter: `blur(${blur}px)`, opacity }}
