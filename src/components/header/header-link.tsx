@@ -6,6 +6,12 @@ const BAR_WIDTH = '3px'
 export const LINK_CLS =
   'block relative whitespace-nowrap font-semibold tracking-tight py-2 animate-button'
 
+const A_CLS = `"flex group flex-col justify-center 
+  items-center relative data-[state=active]:font-semibold text-foreground/50 
+  data-[mode=trans]:text-white/50 data-[mode=dark]:text-white/50 
+  data-[mode=light]:data-[state=active]:text-foreground data-[mode=trans]:data-[state=active]:text-white 
+  data-[mode=dark]:data-[state=active]:text-white boldable-text-tab h-16`
+
 interface IHeaderLinkProps extends ILinkProps {
   isActive?: boolean
   mode?: ColorMode
@@ -78,7 +84,7 @@ export const HeaderLink = ({
       href={href}
       data-state={isActive ? 'active' : 'inactive'}
       data-mode={mode}
-      className="flex group flex-col justify-center items-center relative data-[state=active]:font-semibold data-[mode=trans]:text-white data-[mode=dark]:text-white data-[state=active]:text-theme boldable-text-tab h-16"
+      className={A_CLS}
       {...props}
       //onMouseEnter={handleMouseEnter}
       //onMouseLeave={handleMouseLeave}
