@@ -31,10 +31,10 @@ const sections = (await getUniqueSections()).filter(
 const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
 ---
 
-<footer class="mt-32 mb-8 text-xs">
+<footer class="mt-32 mb-8 text-sm">
   <ContentDiv>
     <BaseCol slot="main" className="gap-y-16">
-      <div class="grid grid-cols-1 gap-16 xl:grid-cols-5">
+      <div class="grid grid-cols-1 gap-16 lg:grid-cols-5">
         <BaseCol className="text-foreground/50 col-span-2 gap-y-3">
           <VCenterRow><Signature client:visible /></VCenterRow>
 
@@ -46,10 +46,8 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
           <RandomQuote client:visible />
         </BaseCol>
 
-        <div
-          class="col-span-3 flex flex-col justify-center gap-12 md:flex-row xl:justify-end"
-        >
-          <BaseCol className="gap-y-2">
+        <div class="col-span-3 grid grid-cols-2 gap-8 lg:grid-cols-3">
+          <BaseCol className="gap-y-4">
             <span class="font-semibold tracking-wide uppercase">Sections</span>
             <ul class="flex flex-col gap-y-1.5">
               {
@@ -67,7 +65,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
             </ul>
           </BaseCol>
 
-          <BaseCol className="gap-y-2">
+          <BaseCol className="gap-y-4">
             <span class="font-semibold tracking-wide uppercase">Tags</span>
             <ul class="grid grid-cols-1 gap-1.5">
               {
@@ -90,7 +88,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
 
           {
             FOOTER_ITEMS.map(item => (
-              <BaseCol className="gap-y-2">
+              <BaseCol className="gap-y-4">
                 <span class="font-semibold tracking-wide uppercase">
                   {item.label}
                 </span>
