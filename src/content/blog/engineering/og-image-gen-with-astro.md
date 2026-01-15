@@ -4,7 +4,7 @@ description: "Let's automate creating those pesky Open Graph images."
 type: post
 
 sections:
-  - ['Engineering', 'Web']
+  - ['Engineering']
 authors:
   - 'Antony Holmes'
 added: '2026-01-11'
