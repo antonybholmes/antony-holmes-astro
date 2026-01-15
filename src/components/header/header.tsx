@@ -13,7 +13,7 @@ import { ThemeToggle } from '../theme-toggle'
 import { HeaderLink } from './header-link'
 import { Logo } from './logo'
 
-const MAX_BLUR = 20
+const MAX_BLUR = 10
 const RSS_CLS = `h-5 w-5 trans-color aspect-square
   data-[mode=dark]:text-white data-[mode=trans]:text-white 
   data-[mode=light]:group-hover:text-orange-400 data-[mode=dark]:group-hover:text-orange-400`
@@ -27,11 +27,13 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
   const [subPath, setSubPath] = useState('/')
   const [blur, setBlur] = useState(0)
   const [opacity, setOpacity] = useState(0)
+  const [addShadow, setAddShadow] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
       setBlur(Math.min(MAX_BLUR, Math.floor(window.scrollY / 10)))
       setOpacity(Math.max(0, window.scrollY / 100))
+      setAddShadow(window.scrollY > 100)
     }
 
     window.addEventListener('scroll', onScroll)
@@ -46,59 +48,59 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     <header
       data-mode={mode}
       className={cn(
-        'fixed w-full top-0 z-100 flex h-16 flex-col justify-center '
+        'fixed top-2 w-full z-100 flex h-16 flex-col justify-center'
       )}
     >
       <span
         data-mode={mode}
         className={cn(
-          'absolute top-0 left-0 z-0 h-full w-full bg-linear-to-b data-[mode=light]:bg-background/70 data-[mode=dark]:bg-gray-800/80 dark:bg-transparent!',
+          'absolute top-0 left-2 right-2 z-0 h-full rounded-2xl data-[mode=light]:border data-[mode=light]:border-border/10 data-[mode=light]:bg-background/50 data-[mode=dark]:bg-gray-900/50 trans-shadow',
+          { 'shadow-lg': addShadow },
           className
         )}
         style={{ backdropFilter: `blur(${blur}px)`, opacity }}
       />
-      <nav className="flex grow flex-col justify-center relative z-10">
-        <ContentDiv className="grow items-center">
-          <div
+
+      <ContentDiv className="grow items-center z-10">
+        <div
+          slot="main"
+          className="grid grow grid-cols-5 items-center justify-between"
+        >
+          <Logo />
+
+          <ul
+            className="col-span-3 flex h-full flex-row items-center justify-center gap-x-6"
             slot="main"
-            className="grid grow grid-cols-5 items-center justify-between"
           >
-            <Logo />
+            {MENU_ITEMS.map(item => (
+              <li key={item.label}>
+                <HeaderLink
+                  aria-label={item.label}
+                  href={item.path}
+                  isActive={item.path === subPath}
+                  mode={mode}
+                >
+                  {item.label}
+                </HeaderLink>
+              </li>
+            ))}
+          </ul>
 
-            <ul
-              className="col-span-3 flex h-full flex-row items-center justify-center gap-x-6"
-              slot="main"
+          <VCenterRow
+            slot="right"
+            className="justify-end gap-x-3 hidden md:flex"
+          >
+            <ThemeToggle mode={mode} />
+            <BaseLink
+              href="/rss.xml"
+              title="Subscribe to RSS feed"
+              className="stroke-foreground trans-color group"
             >
-              {MENU_ITEMS.map(item => (
-                <li key={item.label}>
-                  <HeaderLink
-                    aria-label={item.label}
-                    href={item.path}
-                    isActive={item.path === subPath}
-                    mode={mode}
-                  >
-                    {item.label}
-                  </HeaderLink>
-                </li>
-              ))}
-            </ul>
-
-            <VCenterRow
-              slot="right"
-              className="justify-end gap-x-3 hidden md:flex"
-            >
-              <ThemeToggle mode={mode} />
-              <BaseLink
-                href="/rss.xml"
-                title="Subscribe to RSS feed"
-                className="stroke-foreground trans-color group"
-              >
-                <Rss className={RSS_CLS} data-mode={mode} />
-              </BaseLink>
-            </VCenterRow>
-          </div>
-        </ContentDiv>
-      </nav>
+              <Rss className={RSS_CLS} data-mode={mode} />
+            </BaseLink>
+          </VCenterRow>
+        </div>
+      </ContentDiv>
     </header>
   )
 }

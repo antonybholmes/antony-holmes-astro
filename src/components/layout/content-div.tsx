@@ -25,7 +25,7 @@ export function ContentDiv({
       ref={ref}
       data-mode={mode}
       className={cn(
-        'px-4 grow w-full h-full',
+        'px-4 xl:px-0 grow w-full h-full',
 
         className
       )}

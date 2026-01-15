@@ -6,11 +6,12 @@ const BAR_WIDTH = '3px'
 export const LINK_CLS =
   'block relative whitespace-nowrap font-semibold tracking-tight py-2 animate-button'
 
-const A_CLS = `"flex group flex-col justify-center 
+const A_CLS = `"flex group flex-col justify-center trans-color font-medium
   items-center relative data-[state=active]:font-semibold text-foreground/50 
   data-[mode=trans]:text-white/50 data-[mode=dark]:text-white/50 
   data-[mode=light]:data-[state=active]:text-foreground data-[mode=trans]:data-[state=active]:text-white 
-  data-[mode=dark]:data-[state=active]:text-white boldable-text-tab h-16`
+  data-[mode=dark]:data-[state=active]:text-white data-[mode=dark]:hover:text-white
+  data-[mode=trans]:hover:text-white boldable-text-tab h-16`
 
 interface IHeaderLinkProps extends ILinkProps {
   isActive?: boolean

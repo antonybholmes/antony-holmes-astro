@@ -3,6 +3,7 @@ import { Breadcrumb } from '@/components/breadcrumb'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
 import { BaseCol } from '@/components/layout/base-col'
 import { PageTitle } from '@/components/page-title'
+import type { ColorMode } from '@/interfaces/color-mode'
 import { type ICrumbProps } from '@/lib/crumbs'
 import type { ILayoutProps } from '@interfaces/layout-props'
 import BaseLayout from './BaseLayout.astro'
@@ -12,6 +13,7 @@ export interface Props extends ILayoutProps, ICrumbProps {
   subTitle?: string
   superTitle?: string
   contentCls?: string
+  mode?: ColorMode
 }
 
 let {
@@ -23,6 +25,7 @@ let {
   tab,
   crumbs,
   contentCls = 'mt-24',
+  mode = 'light',
   className,
 } = Astro.props
 ---
@@ -32,6 +35,7 @@ let {
   description={description}
   tab={tab}
   className={className}
+  mode={mode}
 >
   <slot name="head" slot="head" />
   <ContentDiv slot="main" className={contentCls}>

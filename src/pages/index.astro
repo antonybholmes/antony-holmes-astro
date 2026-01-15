@@ -18,7 +18,7 @@ import { ChevronRight } from 'lucide-react'
 const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 ---
 
-<BaseLayout title={SITE_TITLE} mode="trans" headerCls="bg-blue-800/80">
+<BaseLayout title={SITE_TITLE} mode="dark">
   <main class="flex flex-col gap-y-8" slot="main">
     <Fragment slot="main">
       <ContentDiv className="relative pt-24 pb-16" contentCls="gap-y-12">

@@ -1,6 +1,5 @@
 import { gsap } from 'gsap'
 import { useEffect, useRef } from 'react'
-import { HCenterRow } from '../layout/h-center-row'
 
 export function Logo() {
   const ref = useRef<HTMLAnchorElement>(null)
@@ -30,19 +29,13 @@ export function Logo() {
   }
 
   return (
-    <HCenterRow
-      className="items-center w-12 h-12 group"
-      //onMouseEnter={handleMouseEnter}
-      //onMouseLeave={handleMouseLeave}
+    <a
+      ref={ref}
+      href="/"
+      className="flex w-10 h-10 aspect-square rounded-2xl bg-blue-500 hover:bg-fuchsia-400 flex-row items-center justify-center font-semibold text-lg text-white hover:rounded-none transition-all duration-500 ease-in-out"
+      aria-label="Home"
     >
-      <a
-        ref={ref}
-        href="/"
-        className="flex w-10 h-10 aspect-square rounded-[1rem] bg-blue-500 hover:bg-indigo-500 flex-row items-center justify-center font-semibold text-lg text-white hover:rounded-none transition-all duration-500 ease-in-out"
-        aria-label="Home"
-      >
-        ah
-      </a>
-    </HCenterRow>
+      ah
+    </a>
   )
 }
