@@ -10,6 +10,10 @@
 
 - Added empty nester post. Fixed some UI.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 2.9 (Jan, 2026)
 

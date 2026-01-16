@@ -10,20 +10,17 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^4.3.13
-        version: 4.3.13(astro@5.16.9(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))
+        version: 4.3.13(astro@5.16.11(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))
       '@astrojs/react':
         specifier: ^4.4.2
         version: 4.4.2(@types/node@24.0.13)(@types/react-dom@19.2.3(@types/react@19.2.8))(@types/react@19.2.8)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(tsx@4.21.0)
       '@astrojs/rss':
-        specifier: ^4.0.14
-        version: 4.0.14
+        specifier: ^4.0.15
+        version: 4.0.15
       '@astrojs/sitemap':
-        specifier: ^3.6.1
-        version: 3.6.1
+        specifier: ^3.7.0
+        version: 3.7.0
       '@fontsource/dancing-script':
-        specifier: ^5.2.8
-        version: 5.2.8
-      '@fontsource/dm-sans':
         specifier: ^5.2.8
         version: 5.2.8
       '@fontsource/figtree':
@@ -33,6 +30,9 @@ importers:
         specifier: ^5.2.8
         version: 5.2.8
       '@fontsource/inter':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/mona-sans':
         specifier: ^5.2.8
         version: 5.2.8
       '@fontsource/poppins':
@@ -114,8 +114,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.8)
       astro:
-        specifier: ^5.16.9
-        version: 5.16.9(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
+        specifier: ^5.16.11
+        version: 5.16.11(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
       axios:
         specifier: ^1.13.2
         version: 1.13.2
@@ -260,11 +260,11 @@ packages:
       react: ^17.0.2 || ^18.0.0 || ^19.0.0
       react-dom: ^17.0.2 || ^18.0.0 || ^19.0.0
 
-  '@astrojs/rss@4.0.14':
-    resolution: {integrity: sha512-KCe1imDcADKOOuO/wtKOMDO/umsBD6DWF+94r5auna1jKl5fmlK9vzf+sjA3EyveXA/FoB3khtQ/u/tQgETmTw==}
+  '@astrojs/rss@4.0.15':
+    resolution: {integrity: sha512-uXO/k6AhRkIDXmRoc6xQpoPZrimQNUmS43X4+60yunfuMNHtSRN5e/FiSi7NApcZqmugSMc5+cJi8ovqgO+qIg==}
 
-  '@astrojs/sitemap@3.6.1':
-    resolution: {integrity: sha512-+o+TbxXqQJAOd+HxCjz/5RdAMrRFGjeuO+U6zddUuTO59WqMqXnsc8uveRiEr2Ff+3McZiEne7iG4J5cnuI6kA==}
+  '@astrojs/sitemap@3.7.0':
+    resolution: {integrity: sha512-+qxjUrz6Jcgh+D5VE1gKUJTA3pSthuPHe6Ao5JCxok794Lewx8hBFaWHtOnN0ntb2lfOf7gvOi9TefUswQ/ZVA==}
 
   '@astrojs/telemetry@3.3.0':
     resolution: {integrity: sha512-UFBgfeldP06qu6khs/yY+q1cDAaArM2/7AEIqQ9Cuvf7B1hNLq0xDrZkct+QoIGyjq56y8IaE2I3CTvG99mlhQ==}
@@ -712,9 +712,6 @@ packages:
   '@fontsource/dancing-script@5.2.8':
     resolution: {integrity: sha512-zHVVgIQ5/rAIM0VVp1QMsqvJm9INHO5/C82E9rHT6NlabjaPTFYn8wl9lT4vPWizfB0TublGQM1999kfdA+XFA==}
 
-  '@fontsource/dm-sans@5.2.8':
-    resolution: {integrity: sha512-tlovG42m9ESG28WiHpLq3F5umAlm64rv0RkqTbYowRn70e9OlRr5a3yTJhrhrY+k5lftR/OFJjPzOLQzk8EfCA==}
-
   '@fontsource/figtree@5.2.10':
     resolution: {integrity: sha512-nlO06N1qad88ySqzi/a2xwDBkamfZ4MFilP8la5dDyRY36ED0UYTs2hhtwJf8fM52+Nn7dQO2r27reKaXOyOIg==}
 
@@ -723,6 +720,9 @@ packages:
 
   '@fontsource/inter@5.2.8':
     resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
+
+  '@fontsource/mona-sans@5.2.8':
+    resolution: {integrity: sha512-xsZE75lQlcPx/WzAuz7EfOHyPbaOMoHU6FAeLUB3J4f8zjPe8g5Ifh8JCWID9vjpQM9Ty1UxqLXgCMVSktlOlw==}
 
   '@fontsource/poppins@5.2.7':
     resolution: {integrity: sha512-6uQyPmseo4FgI97WIhA4yWRlNaoLk4vSDK/PyRwdqqZb5zAEuc+Kunt8JTMcsHYUEGYBtN15SNkMajMdqUSUmg==}
@@ -1956,8 +1956,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro@5.16.9:
-    resolution: {integrity: sha512-gJvoZv0v8xCcKBcsxz1ZfXqoJ7sJJcyoKP8bUTjkuD4vDShLe0N26em4LQxitVv/2HLOpldQg67bEHB/qGoxJA==}
+  astro@5.16.11:
+    resolution: {integrity: sha512-Z7kvkTTT5n6Hn5lCm6T3WU6pkxx84Hn25dtQ6dR7ATrBGq9eVa8EuB/h1S8xvaoVyCMZnIESu99Z9RJfdLRLDA==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2384,8 +2384,8 @@ packages:
     resolution: {integrity: sha512-KxektNH63SrbfUyDiwXqRb1rLwKt33AmMv+5Nhsw1kqZ13SJBRTgZHtGbE+hH3a1mVW1cz+4pqSWVPAtLVXTzQ==}
     engines: {node: '>=18'}
 
-  devalue@5.6.1:
-    resolution: {integrity: sha512-jDwizj+IlEZBunHcOuuFVBnIMPAEHvTsJj0BcIp94xYguLRVBcXO853px/MyIJvbVzWdsGvrRweIUWJw8hBP7A==}
+  devalue@5.6.2:
+    resolution: {integrity: sha512-nPRkjWzzDQlsejL1WVifk5rvcFi/y1onBRxjaFMjZeR9mFpqu2gmAZ9xUB9/IEanEP/vBtGeGganC/GO1fmufg==}
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
@@ -2393,8 +2393,8 @@ packages:
   devtools-protocol@0.0.1534754:
     resolution: {integrity: sha512-26T91cV5dbOYnXdJi5qQHoTtUoNEqwkHcAyu/IKtjIAxiEqPMrDiRkDOPWVsGfNZGmlQVHQbZRSjD8sxagWVsQ==}
 
-  diff@5.2.0:
-    resolution: {integrity: sha512-uIFDxqpRZGZ6ThOk84hEfqWoHx2devRFvpTZcTHur85vImfaxUbTW9Ryh4CpCuDnToOP1CEtXKIgytHBPVff5A==}
+  diff@8.0.3:
+    resolution: {integrity: sha512-qejHi7bcSD4hQAZE0tNAawRK1ZtafHDmMTMkrrIGgSLl7hTnQHmKCeB45xAcbfTqK2zowkM3j3bHt/4b/ARbYQ==}
     engines: {node: '>=0.3.1'}
 
   dlv@1.1.3:
@@ -4722,12 +4722,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.13(astro@5.16.9(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))':
+  '@astrojs/mdx@4.3.13(astro@5.16.11(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.16.9(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
+      astro: 5.16.11(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -4768,12 +4768,12 @@ snapshots:
       - tsx
       - yaml
 
-  '@astrojs/rss@4.0.14':
+  '@astrojs/rss@4.0.15':
     dependencies:
       fast-xml-parser: 5.3.3
       piccolore: 0.1.3
 
-  '@astrojs/sitemap@3.6.1':
+  '@astrojs/sitemap@3.7.0':
     dependencies:
       sitemap: 8.0.2
       stream-replace-string: 2.0.0
@@ -5110,13 +5110,13 @@ snapshots:
 
   '@fontsource/dancing-script@5.2.8': {}
 
-  '@fontsource/dm-sans@5.2.8': {}
-
   '@fontsource/figtree@5.2.10': {}
 
   '@fontsource/geist@5.2.8': {}
 
   '@fontsource/inter@5.2.8': {}
+
+  '@fontsource/mona-sans@5.2.8': {}
 
   '@fontsource/poppins@5.2.7': {}
 
@@ -6316,7 +6316,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@5.16.9(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3):
+  astro@5.16.11(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -6336,8 +6336,8 @@ snapshots:
       cssesc: 3.0.0
       debug: 4.4.3
       deterministic-object-hash: 2.0.2
-      devalue: 5.6.1
-      diff: 5.2.0
+      devalue: 5.6.2
+      diff: 8.0.3
       dlv: 1.1.3
       dset: 3.1.4
       es-module-lexer: 1.7.0
@@ -6823,7 +6823,7 @@ snapshots:
     dependencies:
       base-64: 1.0.0
 
-  devalue@5.6.1: {}
+  devalue@5.6.2: {}
 
   devlop@1.1.0:
     dependencies:
@@ -6831,7 +6831,7 @@ snapshots:
 
   devtools-protocol@0.0.1534754: {}
 
-  diff@5.2.0: {}
+  diff@8.0.3: {}
 
   dlv@1.1.3: {}
 
