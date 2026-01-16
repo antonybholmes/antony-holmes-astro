@@ -560,6 +560,12 @@
           "msg": "Added tags to small view",
           "date": "2026-01-15T04:46:11.797Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Added empty nester post. Fixed some UI",
+          "date": "2026-01-16T03:36:54.001Z"
+        }
       ]
     },
     "author": "Antony Holmes",

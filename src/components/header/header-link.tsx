@@ -6,12 +6,19 @@ const BAR_WIDTH = '3px'
 export const LINK_CLS =
   'block relative whitespace-nowrap font-semibold tracking-tight py-2 animate-button'
 
-const A_CLS = `"flex group flex-col justify-center trans-color font-medium
-  items-center relative data-[state=active]:font-semibold text-foreground/50 
-  data-[mode=trans]:text-white/50 data-[mode=dark]:text-white/50 
-  data-[mode=light]:data-[state=active]:text-foreground data-[mode=trans]:data-[state=active]:text-white 
-  data-[mode=dark]:data-[state=active]:text-white data-[mode=dark]:hover:text-white
-  data-[mode=trans]:hover:text-white boldable-text-tab h-16`
+const A_CLS = `flex group flex-col  justify-center trans-color 
+  data-[state=active]:font-medium text-foreground/60 
+  data-[mode=trans]:text-white/50 data-[mode=dark]:text-white/80 
+  data-[mode=light]:data-[state=active]:text-foreground 
+  data-[mode=trans]:data-[state=active]:text-white 
+  data-[mode=dark]:data-[state=active]:text-white 
+  data-[mode=dark]:hover:text-white
+  data-[mode=light]:hover:text-foreground
+  data-[mode=trans]:hover:text-white boldable-text-tab h-12
+  border-b border-transparent
+  data-[mode=light]:data-[state=active]:border-foreground
+  data-[mode=dark]:data-[state=active]:border-background
+  data-[mode=trans]:data-[state=active]:border-background`
 
 interface IHeaderLinkProps extends ILinkProps {
   isActive?: boolean
@@ -90,14 +97,8 @@ export const HeaderLink = ({
       //onMouseEnter={handleMouseEnter}
       //onMouseLeave={handleMouseLeave}
     >
-      <span className="flex flex-row items-center justify-center h-14 relative">
+      <span className="flex flex-row items-center justify-center relative">
         {children}
-        <span
-          ref={ref}
-          data-mode={mode}
-          className="absolute w-full opacity-0 scale-x-80 left-0 bottom-0 bg-theme data-[mode=trans]:bg-white data-[mode=dark]:bg-white rounded-full group-hover:scale-x-100 group-hover:opacity-100 transition-all duration-500 ease-in-out origin-center"
-          style={{ height: BAR_WIDTH }}
-        />
       </span>
     </a>
   )

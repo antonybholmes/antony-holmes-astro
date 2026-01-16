@@ -6,6 +6,10 @@
 
 - Added tags to small view.
 
+### Changed
+
+- Added empty nester post. Fixed some UI.
+
 
 ## 2.9 (Jan, 2026)
 

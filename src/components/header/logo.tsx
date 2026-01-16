@@ -32,7 +32,7 @@ export function Logo() {
     <a
       ref={ref}
       href="/"
-      className="flex w-10 h-10 aspect-square rounded-2xl bg-blue-500 hover:bg-fuchsia-400 flex-row items-center justify-center font-semibold text-lg text-white hover:rounded-none transition-all duration-500 ease-in-out"
+      className="flex w-9 h-9 aspect-square rounded-xl bg-blue-500 hover:bg-fuchsia-400 flex-row items-center justify-center font-semibold text-lg text-white hover:rounded-none transition-all duration-500 ease-in-out"
       aria-label="Home"
     >
       ah

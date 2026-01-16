@@ -13,7 +13,7 @@ import { ThemeToggle } from '../theme-toggle'
 import { HeaderLink } from './header-link'
 import { Logo } from './logo'
 
-const MAX_BLUR = 10
+const MAX_BLUR = 16
 const RSS_CLS = `h-5 w-5 trans-color aspect-square
   data-[mode=dark]:text-white data-[mode=trans]:text-white 
   data-[mode=light]:group-hover:text-orange-400 data-[mode=dark]:group-hover:text-orange-400`
@@ -48,14 +48,14 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     <header
       data-mode={mode}
       className={cn(
-        'fixed top-2 w-full z-100 flex h-16 flex-col justify-center'
+        'fixed top-0 w-full z-100 flex h-12 flex-col justify-center'
       )}
     >
       <span
         data-mode={mode}
         className={cn(
-          'absolute top-0 left-2 right-2 z-0 h-full rounded-2xl data-[mode=light]:border data-[mode=light]:border-border/10 data-[mode=light]:bg-background/50 data-[mode=dark]:bg-gray-900/50 trans-shadow',
-          { 'shadow-lg': addShadow },
+          'absolute top-0 left-0 w-full z-0 h-12 data-[mode=light]:bg-background/50 data-[mode=dark]:bg-gray-900/30 trans-shadow',
+          //{ 'shadow-xl': addShadow },
           className
         )}
         style={{ backdropFilter: `blur(${blur}px)`, opacity }}
@@ -69,7 +69,7 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
           <Logo />
 
           <ul
-            className="col-span-3 flex h-full flex-row items-center justify-center gap-x-6"
+            className="col-span-3 flex h-full flex-row items-center justify-center gap-x-8 text-sm"
             slot="main"
           >
             {MENU_ITEMS.map(item => (
