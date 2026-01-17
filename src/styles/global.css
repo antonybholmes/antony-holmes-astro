@@ -353,7 +353,7 @@ input[type='search']::-webkit-search-cancel-button {
   }
 
   ul {
-    @apply mb-4 ml-4 list-disc;
+    @apply my-6 ml-6 list-disc;
   }
 
   ol {
@@ -362,18 +362,6 @@ input[type='search']::-webkit-search-cancel-button {
 
   a {
     @apply text-theme hover:underline;
-  }
-
-  blockquote {
-    @apply bg-muted/30 relative my-8 flex flex-col gap-y-4 overflow-hidden rounded-r-lg p-6 text-base italic;
-
-    a {
-      @apply text-foreground;
-    }
-
-    p {
-      @apply m-0;
-    }
   }
 }
 
@@ -394,8 +382,16 @@ input[type='search']::-webkit-search-cancel-button {
     @apply text-sm leading-none;
   }
 
-  .blockquote {
-    @apply m-4 overflow-hidden rounded-md bg-gray-100 px-8 py-6 font-medium;
+  blockquote {
+    @apply bg-muted/30 relative my-8 flex flex-col gap-y-8 overflow-hidden rounded-r-lg p-8 text-base font-medium italic;
+
+    a {
+      @apply text-foreground font-normal;
+    }
+
+    p {
+      @apply m-0;
+    }
   }
 
   /* p:first-of-type::first-letter {
