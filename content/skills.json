@@ -20,7 +20,7 @@
       },
       {
         "name": "Web Development",
-        "details": ["Javascript", "react", "Typescript", "Gatsby", "Astro"],
+        "details": ["Javascript", "React", "Typescript", "Next", "Astro"],
         "notes": ""
       },
       {
@@ -45,11 +45,18 @@
     "skills": [
       {
         "name": "Amazon Web Services",
-        "details": ["EC2", "S3", "Lambda", "CloudFront", "Route 53"]
+        "details": [
+          "EC2",
+          "S3",
+          "Lambda",
+          "CloudFront",
+          "Route 53",
+          "API Gateway"
+        ]
       },
       {
         "name": "Databases",
-        "details": ["Postgresql", "MySQL/MariaDB"]
+        "details": ["Postgresql", "MySQL/MariaDB", "Sqlite3"]
       }
     ]
   }

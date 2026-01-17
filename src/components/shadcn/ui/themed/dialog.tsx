@@ -19,9 +19,9 @@ const DialogPortal = DialogPrimitive.Portal
 const DialogClose = DialogPrimitive.Close
 
 const BG_CLS = cn(
-  'fixed inset-0 z-overlay z-(--z-overlay) data-[state=open]:animate-in data-[state=closed]:animate-out',
-  'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-  'flex flex-row items-center justifiy-center'
+  'fixed inset-0 z-(--z-overlay) data-[state=open]:animate-in',
+  'data-[state=closed]:animate-out data-[state=closed]:fade-out-0',
+  'data-[state=open]:fade-in-0 flex flex-row items-center justify-center'
 )
 
 export const overlayVariants = cva(BG_CLS, {
@@ -43,9 +43,9 @@ export const overlayVariants = cva(BG_CLS, {
 
 export const contentVariants = cva(
   cn(
-    'fixed left-[50%] top-[50%] z-(--z-modal)',
-    'translate-x-[-50%] translate-y-[-50%]',
-    'flex flex-col rounded-xl shadow-3xl'
+    'fixed left-[50%] z-(--z-modal)',
+    'translate-x-[-50%]',
+    'flex flex-col rounded-2xl shadow-3xl'
   ),
   {
     variants: {
@@ -72,6 +72,12 @@ export const contentVariants = cva(
         default: 'data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95',
         none: '',
       },
+      position: {
+        center: 'top-[50%] translate-y-[-50%]',
+        '1/10': 'top-[10%]',
+        '1/4': 'top-[25%]',
+        '1/3': 'top-[33%]',
+      },
     },
     defaultVariants: {
       contentVariant: 'default',
@@ -79,6 +85,7 @@ export const contentVariants = cva(
       motion: 'default',
       fade: 'default',
       zoom: 'default',
+      position: 'center',
     },
   }
 )
@@ -150,6 +157,7 @@ const DialogContent = forwardRef<
       contentVariant,
       overlayVariant,
       overlayColor,
+      position,
       animation,
       fade,
       motion,
@@ -161,10 +169,12 @@ const DialogContent = forwardRef<
     ref
   ) => (
     <DialogPortal>
-      <DialogOverlay
-        overlayVariant={overlayVariant}
-        overlayColor={overlayColor}
-      />
+      {overlayColor !== 'trans' && (
+        <DialogOverlay
+          overlayVariant={overlayVariant}
+          overlayColor={overlayColor}
+        />
+      )}
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
@@ -174,6 +184,7 @@ const DialogContent = forwardRef<
             motion,
             fade,
             zoom,
+            position,
             className,
           }),
           className

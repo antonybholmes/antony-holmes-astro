@@ -21,7 +21,7 @@ function Portfolio({ portfolio, index }: IProps) {
       <h1 className="text-2xl font-bold">{portfolio.name}</h1>
       <p className="mt-4">{portfolio.description}</p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4">
         {portfolio.brokerages.map((brokerage: any, porfolioIndex: number) => {
           let bg: string
 
@@ -39,11 +39,11 @@ function Portfolio({ portfolio, index }: IProps) {
           return (
             <div key={porfolioIndex}>
               <div key={porfolioIndex}>
-                <h2 className="font-bold text-sm text-foreground/50">
+                <h2 className="font-semibold text-sm text-foreground/50 uppercase">
                   {brokerage.name}
                 </h2>
 
-                <table key={porfolioIndex} className="w-full mt-2">
+                <table key={porfolioIndex} className="w-full">
                   <tbody>
                     {brokerage.stocks.map(
                       (stock: any, brokerageIndex: number) => {
@@ -108,7 +108,7 @@ export function PortfolioPage({ portfolios }: { portfolios: IPortfolio[] }) {
         return (
           <li
             key={index}
-            className="flex flex-col border border-border rounded-xl p-8"
+            className="flex flex-col border border-border/50 rounded-2xl p-8"
           >
             <Portfolio index={index} portfolio={portfolio} />
           </li>

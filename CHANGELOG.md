@@ -4,6 +4,7 @@
 
 ### Added
 
+- Added search using pagefind.
 - Added tags to small view.
 
 ### Changed

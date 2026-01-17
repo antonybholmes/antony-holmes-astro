@@ -6,7 +6,11 @@ import skills from '../../../content/skills.json'
 import volunteer from '../../../content/volunteer.json'
 import ContentLayout from '../../layouts/ContentLayout.astro'
 
-const skillList: any[] = []
+const skillList: {
+  name: string
+  details: string[]
+  //skills: { name: string; details: string[] }[]
+}[] = []
 
 skills.map((skillset: any) => {
   skillset.skills

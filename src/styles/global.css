@@ -563,3 +563,9 @@ input[type='search']::-webkit-search-results-decoration {
 .cursor-chevron {
   animation: cursor-blink 3s ease-in-out infinite;
 }
+
+.search {
+  mark {
+    @apply text-foreground bg-muted/50;
+  }
+}

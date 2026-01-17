@@ -9,6 +9,7 @@ import { Rss } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { ContentDiv } from '../layout/content-div'
 import { BaseLink } from '../link/base-link'
+import { Search } from '../search'
 import { ThemeToggle } from '../theme-toggle'
 import { HeaderLink } from './header-link'
 import { Logo } from './logo'
@@ -89,8 +90,9 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
 
           <VCenterRow
             slot="right"
-            className="justify-end gap-x-3 hidden md:flex"
+            className="justify-end gap-x-4 hidden md:flex"
           >
+            <Search />
             <ThemeToggle mode={mode} />
             <BaseLink
               href="/rss.xml"
