@@ -50,7 +50,7 @@ export function HeroPostSmall({
           {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink
             post={post}
-            className="text-2xl lg:text-xl font-semibold"
+            className="text-xl font-semibold"
             mode={mode}
           />
         </BaseCol>
