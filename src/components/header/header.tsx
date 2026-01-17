@@ -18,6 +18,11 @@ const RSS_CLS = `h-5 w-5 trans-color aspect-square
   data-[mode=dark]:text-white data-[mode=trans]:text-white 
   data-[mode=light]:group-hover:text-orange-400 data-[mode=dark]:group-hover:text-orange-400`
 
+const HEADER_BG_CLS = `absolute top-0 left-2 right-2 z-0 h-15 rounded-xl 
+  data-[mode=light]:bg-background/50 data-[mode=dark]:bg-gray-900/30
+  data-[mode=light]:border data-[mode=light]:border-border/20
+  transition-color transition-shadow duration-300 ease-in-out`
+
 interface Props extends IClassProps {
   tab?: string
   mode?: ColorMode
@@ -48,20 +53,16 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     <header
       data-mode={mode}
       className={cn(
-        'fixed top-0 w-full z-100 flex h-12 flex-col justify-center'
+        'fixed top-2 w-full z-100 flex h-15 flex-col justify-center'
       )}
     >
       <span
         data-mode={mode}
-        className={cn(
-          'absolute top-0 left-0 w-full z-0 h-12 data-[mode=light]:bg-background/50 data-[mode=dark]:bg-gray-900/30 trans-shadow',
-          //{ 'shadow-xl': addShadow },
-          className
-        )}
+        className={cn(HEADER_BG_CLS, { 'shadow-xl': addShadow }, className)}
         style={{ backdropFilter: `blur(${blur}px)`, opacity }}
       />
 
-      <ContentDiv className="grow items-center z-10">
+      <ContentDiv className="grow items-center z-10" padding="px-5">
         <div
           slot="main"
           className="grid grow grid-cols-5 items-center justify-between"

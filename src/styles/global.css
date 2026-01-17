@@ -4,7 +4,7 @@
 
 @theme {
   --font-*: initial;
-  --font-sans: Inter, Figtree, Helvetica, Arial;
+  --font-sans: 'Mona Sans', Inter, Figtree, Helvetica, Arial;
 
   --spacing-header: 3rem;
 
@@ -289,8 +289,8 @@ h3,
 h4,
 h5,
 h6 {
-  @apply tracking-tight;
-  font-family: var(--font-heading);
+  @apply m-0 p-0 tracking-tight;
+  /* font-family: var(--font-heading); */
 }
 
 strong,
@@ -362,6 +362,18 @@ input[type='search']::-webkit-search-cancel-button {
 
   a {
     @apply text-theme hover:underline;
+  }
+
+  blockquote {
+    @apply bg-muted/30 relative my-8 flex flex-col gap-y-4 overflow-hidden rounded-r-lg p-6 text-base italic;
+
+    a {
+      @apply text-foreground;
+    }
+
+    p {
+      @apply m-0;
+    }
   }
 }
 

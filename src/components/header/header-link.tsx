@@ -2,20 +2,21 @@ import type { ColorMode } from '@/interfaces/color-mode'
 import type { ILinkProps } from '@/interfaces/link-props'
 import { useRef, useState } from 'react'
 
-const BAR_WIDTH = '3px'
-export const LINK_CLS =
-  'block relative whitespace-nowrap font-semibold tracking-tight py-2 animate-button'
+// const BAR_WIDTH = '3px'
+// export const LINK_CLS =
+//   'block relative whitespace-nowrap font-semibold tracking-tight py-2 animate-button'
 
-const A_CLS = `flex group flex-col  justify-center trans-color 
-  data-[state=active]:font-medium text-foreground/60 
-  data-[mode=trans]:text-white/50 data-[mode=dark]:text-white/80 
+const A_CLS = `flex group flex-col justify-center trans-color 
+  data-[state=active]:font-medium
+  text-foreground/60 data-[mode=trans]:text-white/50 
+  data-[mode=dark]:text-white/60 
   data-[mode=light]:data-[state=active]:text-foreground 
   data-[mode=trans]:data-[state=active]:text-white 
   data-[mode=dark]:data-[state=active]:text-white 
   data-[mode=dark]:hover:text-white
   data-[mode=light]:hover:text-foreground
-  data-[mode=trans]:hover:text-white boldable-text-tab h-12
-  border-b border-transparent
+  data-[mode=trans]:hover:text-white 
+  boldable-text-tab h-15 border-b border-transparent
   data-[mode=light]:data-[state=active]:border-foreground
   data-[mode=dark]:data-[state=active]:border-background
   data-[mode=trans]:data-[state=active]:border-background`

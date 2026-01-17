@@ -8,12 +8,18 @@ import { BaseCol } from './base-col'
 export function ContentDiv({
   ref,
   className,
+  padding = 'px-4',
   colCls = 'xl:w-3/5',
   contentCls,
   mode = 'light',
   children,
   ...props
-}: IDivProps & { colCls?: string; contentCls?: string; mode?: ColorMode }) {
+}: IDivProps & {
+  padding?: string
+  colCls?: string
+  contentCls?: string
+  mode?: ColorMode
+}) {
   const c = Children.toArray(children)
 
   if (c.length === 0) {
@@ -24,11 +30,7 @@ export function ContentDiv({
     <div
       ref={ref}
       data-mode={mode}
-      className={cn(
-        'px-4 xl:px-0 grow w-full h-full',
-
-        className
-      )}
+      className={cn('xl:px-0 grow w-full h-full', padding, className)}
       {...props}
     >
       {/* <BaseCol className="hidden h-full grow lg:flex">

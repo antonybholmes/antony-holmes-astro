@@ -95,7 +95,7 @@ export function Signature() {
       className="relative text-2xl font-bold h-8 w-48"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ fontFamily: 'var(--font-heading)' }}
+      //style={{ fontFamily: 'var(--font-heading)' }}
     >
       <span
         ref={antonyRef}
