@@ -8,6 +8,7 @@
 
 ### Changed
 
+- Fixed site map.
 - Added empty nester post. Fixed some UI.
 
 ### Fixed
