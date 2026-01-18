@@ -7,6 +7,8 @@ export type PaginationType = 'posts' | 'post'
 export interface IPageProps {
   page: number
   pages: number
+
+  indexPage?: boolean
 }
 
 export interface IPaginationProps<T> extends IPageProps {
@@ -42,6 +44,7 @@ export function paginate<T>(
       page: 0,
       pages,
       data: getPageItems(data, 0),
+      indexPage: true,
     },
   })
   //}
@@ -60,6 +63,7 @@ export function paginate<T>(
         page,
         pages,
         data: getPageItems(data, page),
+        indexPage: false,
       },
     })
   }

@@ -58,15 +58,20 @@ interface Props {
   page: number
   pages: number
   root: string
+  indexPage?: boolean
 }
 
-const { person, data, page, pages, root } = Astro.props
+const { person, data, page, pages, root, indexPage } = Astro.props
 
 const { Content } = await render(person)
 ---
 
 <ContentLayout title={person.data.name}>
-  <BaseCol className="gap-y-16" slot="main">
+  <BaseCol
+    className="gap-y-16"
+    slot="main"
+    {...indexPage && { 'data-pagefind-body': true }}
+  >
     <BaseRow className="gap-x-8">
       <div class="w-full">
         <HCenterRow className="mb-8 lg:hidden">

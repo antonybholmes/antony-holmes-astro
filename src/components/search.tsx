@@ -157,7 +157,7 @@ export function Search({ mode = 'light' }: { mode: ColorMode }) {
         overlayColor="trans"
         contentVariant="glass"
         position="1/10"
-        className="p-4 search w-19/20 lg:w-2/3 xl:w-1/2 flex flex-col gap-y-4"
+        className="p-4 search w-19/20 lg:w-2/3 xl:w-1/2 2xl:w-1/3 flex flex-col gap-y-4"
         aria-describedby={undefined}
       >
         <DialogHeader>
