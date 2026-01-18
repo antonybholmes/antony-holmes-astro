@@ -20,7 +20,7 @@ const RSS_CLS = `h-5 w-5 trans-color aspect-square
   data-[mode=light]:group-hover:text-orange-400 data-[mode=dark]:group-hover:text-orange-400`
 
 const HEADER_BG_CLS = `absolute top-0 left-2 right-2 z-0 h-15 rounded-xl 
-  data-[mode=light]:bg-background/50 data-[mode=dark]:bg-gray-900/30
+  data-[mode=light]:bg-background/50 data-[mode=dark]:bg-black/50
   data-[mode=light]:border data-[mode=light]:border-border/20
   transition-color transition-shadow duration-300 ease-in-out`
 

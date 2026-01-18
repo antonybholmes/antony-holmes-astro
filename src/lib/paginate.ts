@@ -7,8 +7,7 @@ export type PaginationType = 'posts' | 'post'
 export interface IPageProps {
   page: number
   pages: number
-
-  indexPage?: boolean
+  indexPage?: boolean // to indicate if this is the index page which is also page 0 but different to page/1
 }
 
 export interface IPaginationProps<T> extends IPageProps {
