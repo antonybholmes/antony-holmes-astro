@@ -21,20 +21,22 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 <BaseLayout title={SITE_TITLE} mode="dark">
   <main class="flex flex-col gap-y-8" slot="main">
     <Fragment slot="main">
-      <ContentDiv className="relative pt-24 pb-16" contentCls="gap-y-12">
+      <ContentDiv
+        className="group relative bg-[url(/assets/images/bg.webp)] bg-cover bg-center pt-24 pb-16"
+        contentCls="gap-y-12"
+      >
         <Fragment slot="main">
-          <span
+          <!-- <span
             class="absolute top-0 left-0 z-0 h-164 w-full bg-[url(/assets/images/bg.webp)] bg-cover bg-center"
+          >
+          </span> -->
+          <span
+            class="trans-color absolute top-0 left-0 z-0 h-full w-full bg-black/10 group-hover:bg-black/5"
           >
           </span>
 
-          <!-- <span
-            class="absolute top-0 left-0 z-0 h-192 w-full bg-linear-to-b from-white/0 via-white/50 to-white"
-          >
-          </span> -->
-
           <div
-            class="relative z-10 flex flex-col items-center gap-8 px-8 text-white lg:flex-row lg:justify-between"
+            class="relative z-10 flex flex-col items-center gap-8 px-8 text-white lg:justify-between 2xl:flex-row"
           >
             <BaseCol className="gap-y-2">
               <h1
@@ -55,36 +57,37 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
             <RoundedImage
               className="aspect-square h-54 w-54"
               src="/assets/images/people/antony-holmes.webp"
-              title="That's me by the Hudson River"
+              title="Me by the Hudson River"
             />
           </div>
 
           <section
-            class="relative z-10 flex flex-col gap-y-6 rounded-3xl bg-gray-900/50 p-6 text-justify text-base text-white shadow-2xl backdrop-blur-lg md:rounded-4xl md:p-10"
+            class="relative z-10 mx-auto flex w-9/10 flex-col gap-y-6 text-center text-lg text-white lg:w-7/10"
           >
             <!-- <p class="text-3xl font-bold">Hi there! I'm Antony.</p> -->
             <p>
-              Like all the best sites, I must begin with some blurb about myself
-              (them's the rules). That's me posing by the mighty Hudson River
-              for no particular reason, except maybe to look cool wearing Risky
-              Business sunglasses.
+              We begin with some blurb about myself (them's the rules). That's
+              me posing by the mighty Hudson River for no particular reason,
+              except maybe to look cool wearing Risky Business sunglasses.
             </p>
             <p>
               I'm a researcher and software engineer in New York who's learned
               how to do a few cool things with Java, Python, C++, Go,
-              Typescript, and React. Some of what I've learnt was used to make
-              this site. I made this with love, to get high{' '}
+              Typescript, and React.
+            </p>
+            <p>
+              I made this site with love, to handcraft something in my own
+              personal style that doesn't involve asking AI agents to do all the
+              work for me, and to get high{' '}
               <a
                 href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
                 >Lighthouse</a
               >{' '}
-              scores, and to handcraft something in my own personal style that doesn't
-              involve asking some AI agent to do all the work for me. I think I mostly
-              succeeded.
+              scores. I think I mostly succeeded.
             </p>
 
             <p>
-              I write about tech, projects, transit, finance, really just
+              I write about tech, projects, transport, finance, really just
               whatever takes my fancy. I have an aptly named publications page
               where you can view all of the scientific literature I have
               written, primarily focused on cancer genetics.

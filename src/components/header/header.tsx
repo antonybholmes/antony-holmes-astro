@@ -88,19 +88,21 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
             ))}
           </ul>
 
-          <VCenterRow
-            slot="right"
-            className="justify-end gap-x-4 hidden md:flex"
-          >
+          <VCenterRow slot="right" className="justify-end gap-x-4">
             <Search mode={mode} />
-            <ThemeToggle mode={mode} />
-            <BaseLink
-              href="/rss.xml"
-              title="Subscribe to RSS feed"
-              className="stroke-foreground trans-color group"
+            <VCenterRow
+              slot="right"
+              className="justify-end gap-x-4 hidden md:flex"
             >
-              <Rss className={RSS_CLS} data-mode={mode} />
-            </BaseLink>
+              <ThemeToggle mode={mode} />
+              <BaseLink
+                href="/rss.xml"
+                title="Subscribe to RSS feed"
+                className="stroke-foreground trans-color group"
+              >
+                <Rss className={RSS_CLS} data-mode={mode} />
+              </BaseLink>
+            </VCenterRow>
           </VCenterRow>
         </div>
       </ContentDiv>

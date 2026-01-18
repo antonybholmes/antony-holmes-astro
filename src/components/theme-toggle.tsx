@@ -27,8 +27,8 @@ export function ThemeToggle({ mode }: { mode?: ColorMode }) {
 
   return (
     <button
-      aria-label="Toggle Theme"
-      title="Toggle Theme"
+      aria-label="Toggle theme"
+      title="Toggle theme"
       onClick={toggleTheme}
       className="flex aspect-square h-5 w-5 cursor-pointer items-center justify-center"
     >
