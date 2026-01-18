@@ -27,6 +27,7 @@ let {
   contentCls = 'mt-24',
   mode = 'light',
   className,
+  ...props
 } = Astro.props
 ---
 
@@ -36,6 +37,7 @@ let {
   tab={tab}
   className={className}
   mode={mode}
+  {...props}
 >
   <slot name="head" slot="head" />
   <ContentDiv slot="main" className={contentCls}>

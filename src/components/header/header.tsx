@@ -92,7 +92,7 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
             slot="right"
             className="justify-end gap-x-4 hidden md:flex"
           >
-            <Search />
+            <Search mode={mode} />
             <ThemeToggle mode={mode} />
             <BaseLink
               href="/rss.xml"

@@ -103,7 +103,12 @@ const dateAdded = post.data.added ? post.data.added : new Date()
     <meta property="twitter:image" content={ogImage} />
   </Fragment>
 
-  <article slot="main" class="relative flex flex-col gap-y-16">
+  <!-- index for searching data-pagefind-body -->
+  <article
+    slot="main"
+    class="relative flex flex-col gap-y-16"
+    data-pagefind-body
+  >
     <header class="relative">
       <span
         class="absolute top-0 left-0 z-0 h-96 w-full bg-gray-800 lg:h-128 dark:invisible"

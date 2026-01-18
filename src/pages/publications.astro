@@ -1,4 +1,5 @@
 ---
+import { BaseCol } from '@/components/layout/base-col'
 import { PublicationsPage } from '@components/pages/publications/publications-page'
 
 import ContentLayout from '@layouts/ContentLayout.astro'
@@ -12,5 +13,9 @@ import ContentLayout from '@layouts/ContentLayout.astro'
   description="Hey look, it's all the articles I've authored."
   contentCls="mt-24"
 >
-  <PublicationsPage client:only="react" slot="main" />
+  <BaseCol slot="main" className="gap-y-8" data-pagefind-body>
+    <h1 class="text-4xl font-semibold">Publications</h1>
+
+    <PublicationsPage client:only="react" />
+  </BaseCol>
 </ContentLayout>

@@ -1,14 +1,14 @@
 import { cn } from '@/lib/shadcn-utils'
 import { type IDivProps } from '@interfaces/div-props'
 
-export const BASE_GLASS_CLS = 'backdrop-blur-lg'
+export const BASE_GLASS_CLS = 'backdrop-blur-xl'
 // export const GLASS_CLS = cn(
 //   'shadow-glass dark:shadow-dark-glass',
 //   BASE_GLASS_CLS
 // )
 
 export const GLASS_CLS = cn(
-  'bg-gray-100/50 dark:bg-gray-800/50',
+  'bg-gray-200/70 dark:bg-gray-800/50',
   BASE_GLASS_CLS
 )
 

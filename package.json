@@ -9,7 +9,8 @@
     "generate:og": "tsx scripts/generate-og.ts",
     "generate:hero": "tsx scripts/generate-hero.ts",
     "prebuild": "pnpm update-version",
-    "build": "astro build --force",
+    "build": "astro build --force && pnpm build-search",
+    "build-search": "pagefind",
     "preview": "astro preview",
     "astro": "astro",
     "make-changelog-markdown": "tsx scripts/make-changelog-markdown.ts"
@@ -51,7 +52,6 @@
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
     "astro": "^5.16.11",
-    "astro-pagefind": "^1.8.5",
     "axios": "^1.13.2",
     "chart.js": "^4.5.1",
     "class-variance-authority": "^0.7.1",

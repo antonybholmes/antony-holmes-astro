@@ -383,7 +383,7 @@ input[type='search']::-webkit-search-cancel-button {
   }
 
   blockquote {
-    @apply bg-muted/30 relative my-8 flex flex-col gap-y-8 overflow-hidden rounded-r-lg p-8 text-base font-medium italic;
+    @apply bg-muted/30 relative my-8 flex flex-col gap-y-8 overflow-hidden px-8 py-6 text-base font-medium italic;
 
     a {
       @apply text-foreground font-normal;
@@ -566,6 +566,6 @@ input[type='search']::-webkit-search-results-decoration {
 
 .search {
   mark {
-    @apply text-foreground bg-muted/50;
+    @apply text-foreground bg-transparent! font-bold;
   }
 }

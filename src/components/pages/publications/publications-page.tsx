@@ -413,8 +413,8 @@ export function PublicationsPage() {
 
   return (
     <SidebarDiv>
-      <>
-        <VCenterRow className="justify-between pt-2 text-xs">
+      <BaseCol className="gap-y-8">
+        <VCenterRow className="justify-between text-xs">
           <span>{results(query, pageStart, yearFilteredPublications)}</span>
           <Switch
             onCheckedChange={state => setShowAbstract(state)}
@@ -429,9 +429,6 @@ export function PublicationsPage() {
           publications={sortedPublications}
           showAbstract={showAbstract}
           showCount={true}
-          className="mt-8"
-          //page={pageStart}
-          //pageBreak={recordsPerPage}
         />
 
         {pageStart < pages - 1 && (
@@ -447,23 +444,13 @@ export function PublicationsPage() {
             </div>
           </HCenterRow>
         )}
-      </>
-
-      <BaseCol className="text-sm">
-        <JournalFilter
-          journals={journals}
-          selected={selectedJournals}
-          onClick={onJournalClick}
-          max={8}
-        />
-
-        {/* <AuthorFilter
-          authors={authors.slice(0, 20)}
-          selected={selectedAuthors}
-          onClick={onAuthorClick}
-          max={8}
-        /> */}
       </BaseCol>
+      <JournalFilter
+        journals={journals}
+        selected={selectedJournals}
+        onClick={onJournalClick}
+        max={8}
+      />
     </SidebarDiv>
   )
 }

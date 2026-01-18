@@ -3,7 +3,6 @@ import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
-import pagefind from 'astro-pagefind'
 import { defineConfig } from 'astro/config'
 import rehypeSlug from 'rehype-slug'
 import remarkSectionize from 'remark-sectionize'
@@ -23,7 +22,7 @@ export default defineConfig({
   },
   //base: '/',
   output: 'static',
-  integrations: [mdx(), sitemap(), react(), pagefind()],
+  integrations: [mdx(), sitemap(), react()],
 
   vite: {
     plugins: [tailwindcss()],
