@@ -6,7 +6,7 @@ interface IProps {
   data2: number[]
 }
 
-export const FeeGraph = ({ data1 = [], data2 = [] }: IProps) => {
+export function FeeGraph({ data1 = [], data2 = [] }: IProps) {
   const labels = []
 
   for (var i = 0; i < data1.length; ++i) {

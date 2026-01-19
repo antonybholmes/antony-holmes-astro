@@ -1,11 +1,11 @@
-import "chart.js/auto"
-import { Line } from "react-chartjs-2"
+import 'chart.js/auto'
+import { Line } from 'react-chartjs-2'
 
 interface IProps {
   data1: number[]
 }
 
-const RetirementGraph = ({ data1 }: IProps) => {
+export function RetirementGraph({ data1 }: IProps) {
   const labels = []
 
   for (var i = 0; i < data1.length; ++i) {
@@ -19,10 +19,10 @@ const RetirementGraph = ({ data1 }: IProps) => {
         //Bring in data
         datasets: [
           {
-            label: "Retirement",
+            label: 'Retirement',
             data: data1,
-            backgroundColor: "rgba(100, 149, 237, 0.8)",
-            borderColor: "rgba(100, 149, 237, 0)",
+            backgroundColor: 'rgba(100, 149, 237, 0.8)',
+            borderColor: 'rgba(100, 149, 237, 0)',
             fill: true,
           },
         ],
@@ -42,9 +42,9 @@ const RetirementGraph = ({ data1 }: IProps) => {
             display: true,
             title: {
               display: true,
-              text: "Years",
+              text: 'Years',
               font: {
-                weight: "bold",
+                weight: 'bold',
               },
             },
             grid: {
@@ -55,9 +55,9 @@ const RetirementGraph = ({ data1 }: IProps) => {
             display: true,
             title: {
               display: true,
-              text: "Dollars (millions)",
+              text: 'Dollars (millions)',
               font: {
-                weight: "bold",
+                weight: 'bold',
               },
             },
             grid: {
@@ -69,9 +69,3 @@ const RetirementGraph = ({ data1 }: IProps) => {
     />
   )
 }
-
-RetirementGraph.defaultProps = {
-  data1: [],
-}
-
-export default RetirementGraph

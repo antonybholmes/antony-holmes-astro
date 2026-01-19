@@ -7,14 +7,14 @@ interface IProps {
   className?: string
 }
 
-const RangeSlider = ({
-  min,
-  max,
-  step,
-  value,
+export function RangeSlider({
+  min = 1,
+  max = 100,
+  step = 1,
+  value = 1,
   onChange,
   className,
-}: IProps) => {
+}: IProps) {
   //const [_value, _setValue] = useState(value)
 
   const handleInput = (e: any) => {
@@ -39,14 +39,3 @@ const RangeSlider = ({
     </div>
   )
 }
-
-RangeSlider.defaultProps = {
-  min: 1,
-  max: 100,
-  step: 1,
-  value: 10,
-  onChange: null,
-  className: "",
-}
-
-export default RangeSlider

@@ -1,5 +1,5 @@
-import "chart.js/auto"
-import { Line } from "react-chartjs-2"
+import 'chart.js/auto'
+import { Line } from 'react-chartjs-2'
 
 interface IProps {
   age: number
@@ -7,7 +7,7 @@ interface IProps {
   data2: number[]
 }
 
-const MillionGraph = ({ age, data1 = [], data2 = [] }: IProps) => {
+export function MillionGraph({ age, data1 = [], data2 = [] }: IProps) {
   const labels = []
 
   for (var i = 0; i < data1.length; ++i) {
@@ -21,17 +21,17 @@ const MillionGraph = ({ age, data1 = [], data2 = [] }: IProps) => {
         //Bring in data
         datasets: [
           {
-            label: "Balance After Inflation",
+            label: 'Balance After Inflation',
             data: data2,
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
-            borderColor: "rgba(0, 0, 0, 0)",
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+            borderColor: 'rgba(0, 0, 0, 0)',
             fill: true,
           },
           {
-            label: "Balance",
+            label: 'Balance',
             data: data1,
-            backgroundColor: "rgba(100, 149, 237, 0.8)",
-            borderColor: "rgba(100, 149, 237, 0)",
+            backgroundColor: 'rgba(100, 149, 237, 0.8)',
+            borderColor: 'rgba(100, 149, 237, 0)',
             fill: true,
           },
         ],
@@ -49,7 +49,7 @@ const MillionGraph = ({ age, data1 = [], data2 = [] }: IProps) => {
             callbacks: {
               label: (tooltipItem: any) => {
                 return (
-                  "$" +
+                  '$' +
                   Math.round(tooltipItem.parsed.y * 1000000).toLocaleString()
                 )
               },
@@ -61,9 +61,9 @@ const MillionGraph = ({ age, data1 = [], data2 = [] }: IProps) => {
           x: {
             title: {
               display: true,
-              text: "Years",
+              text: 'Years',
               font: {
-                weight: "bold",
+                weight: 'bold',
               },
             },
             grid: {
@@ -73,9 +73,9 @@ const MillionGraph = ({ age, data1 = [], data2 = [] }: IProps) => {
           y: {
             title: {
               display: true,
-              text: "Dollars (millions)",
+              text: 'Dollars (millions)',
               font: {
-                weight: "bold",
+                weight: 'bold',
               },
             },
             grid: {

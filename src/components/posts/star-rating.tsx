@@ -8,7 +8,7 @@ interface IProps {
 const STAR_WIDTH = 1.5 // Width of each star icon
 const STAR_GAP = 0.25 // Gap between stars in rem
 const STAR_COUNT = 5 // Total number of stars
-const WIDTH = STAR_COUNT * STAR_WIDTH + (STAR_COUNT - 1) * STAR_GAP
+//const WIDTH = STAR_COUNT * STAR_WIDTH + (STAR_COUNT - 1) * STAR_GAP
 
 export const StarRating = ({ rating }: IProps) => {
   const stars = []

@@ -1,5 +1,5 @@
 import { FeeGraph } from '@/components/graph/fee-graph'
-import SidebarHeading from '@/components/graph/sidebar-heading'
+import { SidebarHeading } from '@/components/graph/sidebar-heading'
 import { BaseCol } from '@/components/layout/base-col'
 import { SidebarDiv } from '@/components/layout/sidebar-div'
 import { NumericalInput } from '@/components/shadcn/ui/themed/numerical-input'

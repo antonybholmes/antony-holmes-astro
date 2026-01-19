@@ -9,7 +9,6 @@ export function IndexArrowIcon({
   w = 'w-4 h-4',
   stroke = 'stroke-white',
   strokeWidth = 2.5,
-  hover,
   className,
 }: IIconProps) {
   // const lineRef = useRef<SVGLineElement>(null)
@@ -68,7 +67,7 @@ export function IndexArrowIcon({
       <path
         //ref={arrowRef}
         d={`M 9,${Y1} L 15,${Y2} L 9,${Y3}`}
-        className="transition-transform duration-300 ease-in-out group-hover:translate-x-[6px]"
+        className="transition-transform duration-300 ease-in-out group-hover:translate-x-1.5"
       />
     </svg>
   )

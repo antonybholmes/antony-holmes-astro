@@ -5,7 +5,7 @@ interface IProps {
   tooltip?: string
 }
 
-const SidebarHeading = ({ title, tooltip }: IProps) => {
+export function SidebarHeading({ title }: IProps) {
   return (
     <VCenterRow className="justify-between">
       <div className="font-semibold text-sm mb-1">{title}</div>
@@ -14,5 +14,3 @@ const SidebarHeading = ({ title, tooltip }: IProps) => {
     </VCenterRow>
   )
 }
-
-export default SidebarHeading

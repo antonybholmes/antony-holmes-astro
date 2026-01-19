@@ -1,6 +1,6 @@
 //import SecondaryButtonLink from "../link/secondary-button-link"
 
-import PubMedIcon from '@/components/icons/pubmed-icon'
+import { PubMedIcon } from '@/components/icons/pubmed-icon'
 import { BaseLink } from '@components/link/base-link'
 import type { CollectionEntry } from 'astro:content'
 

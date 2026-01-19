@@ -1,9 +1,9 @@
+import type { IClassProps } from '@/interfaces/class-props'
 import { cn } from '@/lib/shadcn-utils'
 import {
   RadioGroup,
   RadioGroupItem,
 } from '@components/shadcn/ui/themed/radio-group'
-import type { IElementProps } from '@interfaces/element-props'
 
 const ITEMS = [
   'Publication Date',
@@ -13,7 +13,7 @@ const ITEMS = [
   'Last Author',
 ]
 
-interface SortProps extends IElementProps {
+interface SortProps extends IClassProps {
   onChange: any
   selected: string
 }

@@ -1,6 +1,6 @@
-import type { IIconProps } from "@interfaces/icon-props"
+import type { IIconProps } from '@interfaces/icon-props'
 
-export default function PubMedIcon({ className, style }: IIconProps) {
+export function PubMedIcon({ className, style }: IIconProps) {
   return (
     <svg
       data-name="Layer 1"
