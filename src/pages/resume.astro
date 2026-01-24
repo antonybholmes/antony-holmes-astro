@@ -32,8 +32,8 @@ skills.map((skillset: any) => {
       <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
         <header class="mt-4">
           <h3 class="font-semibold">Technologies</h3>
-          <h4 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
-            What I use to build things
+          <h4 class="text-foreground/50 mt-1 text-sm font-normal">
+            I like to build things
           </h4>
         </header>
         <ul
@@ -62,12 +62,8 @@ skills.map((skillset: any) => {
               <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
                 <header class="mt-4">
                   <h3 class="font-semibold">{job.title}</h3>
-                  <h4 class="text-foreground/50 mt-1 text-sm font-normal">
-                    {job.company}
-                  </h4>
-                  <p class="text-foreground/50 mt-2 text-sm font-normal">
-                    {job.date}
-                  </p>
+                  <h4 class="text-foreground/50 mt-1 text-sm">{job.company}</h4>
+                  <p class="text-foreground/50 mt-2 text-sm">{job.date}</p>
                 </header>
                 <div class="trans-300 transition-color bg-muted/25 hover:bg-muted/50 col-span-3 rounded-2xl p-6 lg:p-10">
                   <p>{job.overview}</p>
