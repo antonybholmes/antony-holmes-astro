@@ -3,11 +3,10 @@
     "title": "Senior Developer",
     "company": "Institute for Cancer Genetics Columbia University New York",
     "date": "2015 - Present",
-    "overview": "I design data pipelines for processing single cell RNA-seq data as well as specialized biology application development, database administration, and REST based web application development.",
+    "overview": "I develop specialized full stack applications for analyzing and visualizing high throughput sequence data for cancer genetics research.",
     "details": [
+      "Develop a web based modular genomic data analysis suite to support research biologists. This runs on Amazon Web Services and is a React/Typescript web app connected to Golang microservices backed by Postgresql databases.",
       "AWS administrator leading project to move lab to based cloud infrastructure due to the lab transitioning from purely wet biology to a mixed biology and computational group. This reduced storage and data costs by 50% from in house solutions.",
-      
-      "Developed database backed genomic web applications running on Amazon Web Services using a mixture of Django, Spring Boot, and Postgresql.",
       "Managed the complete redesign of the Institute for Cancer Genetic's web site as a JAMStack application using React and Gatsby in less than 6 months. This modernized and optimized the site to be performant as well as offering a solution tailored to the institute's need. It resulted in a saving of $40,000 by eliminating the reliance on Drupal and an external provider to manage it."
     ]
   },
@@ -15,10 +14,10 @@
     "title": "Associate Research Scientist",
     "company": "Institute for Cancer Genetics Columbia University New York",
     "date": "2012 - 2015",
-    "overview": "I design data pipelines for processing single cell RNA-seq data as well as specialized biology application development, database administration, and REST based web application development.",
+    "overview": "I analyze next generation sequencing data and provide bioinformatics support for the world renowned Dalla-Favera research lab.",
     "details": [
-      "Lead bioinformatician managing all lab next generation sequencing projects.",
-      "Reduced data analysis time on many projects from days to hours by bringing data analysis in house and standardizing processes and methods.",
+      "Lead bioinformatician managing all lab next generation sequencing projects focused on cancer genetics.",
+      "Focused on bringing data analysis in house and standardizing processes and methods to reduce data analysis time on many projects from days to hours.",
       "Developed a suite of open source applications in Java for biological data analysis with easy to use interfaces to allow non computational scientists to do common tasks including performing statistical analysis and visualizing large data sets."
     ]
   },

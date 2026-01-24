@@ -29,20 +29,28 @@ skills.map((skillset: any) => {
     <BaseCol className="gap-y-8">
       <h2 class="text-3xl font-semibold">Skills</h2>
 
-      <ul
-        class="grid grid-cols-1 gap-x-4 gap-y-4 text-sm md:grid-cols-3 xl:grid-cols-4"
-      >
-        {
-          skillList.map(skill => {
-            return (
-              <li class="trans-color rounded-xl bg-indigo-400 bg-linear-to-br px-4 py-8 text-white hover:bg-indigo-500">
-                <h3 class="font-semibold">{skill.name}</h3>
-                <p>{skill.details.sort().join(', ')}</p>
-              </li>
-            )
-          })
-        }
-      </ul>
+      <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
+        <header class="mt-4">
+          <h3 class="font-semibold">Technologies</h3>
+          <h4 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+            What I use to build things
+          </h4>
+        </header>
+        <ul
+          class="col-span-3 grid grid-cols-2 gap-x-4 gap-y-4 text-sm md:grid-cols-4 xl:grid-cols-3 2xl:grid-cols-4"
+        >
+          {
+            skillList.map(skill => {
+              return (
+                <li class="trans-color flex aspect-4/3 h-full flex-col items-center justify-center gap-y-1 rounded-2xl bg-indigo-500/70 bg-linear-to-br px-4 text-center text-white hover:bg-indigo-500">
+                  <h3 class="font-bold">{skill.name}</h3>
+                  <p>{skill.details.sort().join(', ')}</p>
+                </li>
+              )
+            })
+          }
+        </ul>
+      </article>
     </BaseCol>
 
     <BaseCol className="gap-y-8">
@@ -54,14 +62,14 @@ skills.map((skillset: any) => {
               <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
                 <header class="mt-4">
                   <h3 class="font-semibold">{job.title}</h3>
-                  <h4 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <h4 class="text-foreground/50 mt-1 text-sm font-normal">
                     {job.company}
                   </h4>
-                  <h4 class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <p class="text-foreground/50 mt-2 text-sm font-normal">
                     {job.date}
-                  </h4>
+                  </p>
                 </header>
-                <div class="trans-300 transition-color col-span-3 rounded-2xl bg-gray-100 p-6 hover:bg-gray-200 lg:p-10 dark:bg-white/10">
+                <div class="trans-300 transition-color bg-muted/25 hover:bg-muted/50 col-span-3 rounded-2xl p-6 lg:p-10">
                   <p>{job.overview}</p>
                   <ul class="mt-4 ml-6 flex list-disc flex-col gap-y-2">
                     {job.details.map(detail => (
@@ -85,14 +93,14 @@ skills.map((skillset: any) => {
               <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
                 <header class="mt-4">
                   <h3 class="font-semibold">{job.title}</h3>
-                  <h4 class="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <h4 class="text-foreground/50 mt-1 text-sm font-normal">
                     {job.company}
                   </h4>
-                  <h4 class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                  <p class="text-foreground/50 mt-2 text-sm font-normal">
                     {job.date}
-                  </h4>
+                  </p>
                 </header>
-                <div class="trans-300 transition-color col-span-3 rounded-2xl bg-gray-100 p-8 hover:bg-gray-200 dark:bg-white/10">
+                <div class="trans-300 transition-color bg-muted/25 hover:bg-muted/50 col-span-3 rounded-2xl p-8">
                   <ul class="ml-6 flex list-disc flex-col gap-y-2">
                     {job.details.map(detail => (
                       <li>{detail}</li>
@@ -111,17 +119,25 @@ skills.map((skillset: any) => {
 
       <ul class="flex flex-col gap-y-8">
         {
-          education.map(degree => (
+          education.map((degree, di) => (
             <li>
-              <article class="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-4">
-                <div />
-                <div class="trans-300 transition-color hover:bg-theme/5 border-border/25 col-span-3 h-full w-full rounded-2xl border px-8 py-12 shadow-lg">
+              <article class="grid grid-cols-1 gap-x-8 gap-y-8 lg:grid-cols-4">
+                {di === 0 ? (
+                  <header class="mt-4">
+                    <h3 class="font-semibold">School</h3>
+
+                    <p class="text-foreground/50 mt-2 text-sm font-normal">
+                      Places I've studied
+                    </p>
+                  </header>
+                ) : (
+                  <span />
+                )}
+                <div class="trans-300 transition-color hover:text-theme border-border/25 col-span-3 flex min-h-32 w-full flex-col justify-center rounded-2xl border p-12 shadow-lg">
                   <header>
                     <h3 class="text-xl font-semibold">{degree.title}</h3>
-                    {/* {degree.date !== '' && (
-      <h3 class="degree-date">{degree.date}</h3>
-      )} */}
-                    <h4 class="font-light">{degree.school}</h4>
+
+                    <h4>{degree.school}</h4>
                   </header>
 
                   <ul class="mt-2 text-sm text-gray-500">

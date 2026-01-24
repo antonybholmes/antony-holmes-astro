@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/mdx':
         specifier: ^4.3.13
-        version: 4.3.13(astro@5.16.14(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))
+        version: 4.3.13(astro@5.16.15(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))
       '@astrojs/react':
         specifier: ^4.4.2
         version: 4.4.2(@types/node@24.0.13)(@types/react-dom@19.2.3(@types/react@19.2.9))(@types/react@19.2.9)(jiti@2.6.1)(lightningcss@1.30.2)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(tsx@4.21.0)
@@ -114,8 +114,8 @@ importers:
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.9)
       astro:
-        specifier: ^5.16.14
-        version: 5.16.14(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
+        specifier: ^5.16.15
+        version: 5.16.15(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
       axios:
         specifier: ^1.13.2
         version: 1.13.2
@@ -144,8 +144,8 @@ importers:
         specifier: ^3.14.2
         version: 3.14.2
       lucide-react:
-        specifier: ^0.562.0
-        version: 0.562.0(react@19.2.3)
+        specifier: ^0.563.0
+        version: 0.563.0(react@19.2.3)
       mdast-util-to-string:
         specifier: ^4.0.0
         version: 4.0.0
@@ -2007,8 +2007,8 @@ packages:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
 
-  astro@5.16.14:
-    resolution: {integrity: sha512-+XtShBCwsL5IezGvSeJTIHoZl3RGDOiB2u54t5phS+3haa0A5kGWXbZAmh5O/xFIv19/1cxHbDFa2i0Ot16SMw==}
+  astro@5.16.15:
+    resolution: {integrity: sha512-+X1Z0NTi2pa5a0Te6h77Dgc44fYj63j1yx6+39Nvg05lExajxSq7b1Uj/gtY45zoum8fD0+h0nak+DnHighs3A==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -3283,8 +3283,8 @@ packages:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}
     engines: {node: '>=12'}
 
-  lucide-react@0.562.0:
-    resolution: {integrity: sha512-82hOAu7y0dbVuFfmO4bYF1XEwYk/mEbM5E+b1jgci/udUBEE/R7LF5Ip0CCEmXe8AybRM8L+04eP+LGZeDvkiw==}
+  lucide-react@0.563.0:
+    resolution: {integrity: sha512-8dXPB2GI4dI8jV4MgUDGBeLdGk8ekfqVZ0BdLcrRzocGgG75ltNEmWS+gE7uokKF/0oSUuczNDT+g9hFJ23FkA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
@@ -4778,12 +4778,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.13(astro@5.16.14(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))':
+  '@astrojs/mdx@4.3.13(astro@5.16.15(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.16.14(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
+      astro: 5.16.15(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -6421,7 +6421,7 @@ snapshots:
 
   astring@1.9.0: {}
 
-  astro@5.16.14(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3):
+  astro@5.16.15(@types/node@24.0.13)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.45.0)(tsx@4.21.0)(typescript@5.8.3):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -7984,7 +7984,7 @@ snapshots:
 
   lru-cache@7.18.3: {}
 
-  lucide-react@0.562.0(react@19.2.3):
+  lucide-react@0.563.0(react@19.2.3):
     dependencies:
       react: 19.2.3
 
