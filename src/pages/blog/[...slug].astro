@@ -6,8 +6,9 @@ import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { getPostSectionMap } from '@/lib/astro/sections'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { paginate, type PaginationType } from '@/lib/paginate'
+import { paginate, type AstroPage } from '@/lib/paginate'
 import { getPostSlugs } from '@/lib/post'
+import { produce } from 'immer'
 
 // interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
 //   title: string
@@ -17,18 +18,7 @@ import { getPostSlugs } from '@/lib/post'
 export async function getStaticPaths() {
   let posts = await getSortedPosts()
 
-  let paths: {
-    params: { slug?: string }
-    props: {
-      type: PaginationType
-      title: string
-      root: string
-      page: number
-      pages: number
-      data: PostWithHero[]
-      featuredPosts?: PostWithHero[]
-    }
-  }[] = []
+  let paths: AstroPage<PostWithHero>[] = []
 
   // create a page for every post
   for (const post of posts) {
@@ -78,34 +68,17 @@ export async function getStaticPaths() {
     const featuredPosts = posts.filter(post => post.data.featured)
     const otherPosts = posts.filter(post => !post.data.featured)
 
-    // create a path for each section
-    // e.g. /blog/engineering/page/2/
-    // paths.push({
-    //   params: { slug: section },
-    //   props: {
-    //     type: 'posts',
-    //     title: section,
-    //     root: `/blog/${section}/`,
-    //     page: 1,
-    //     pages: Math.ceil(posts.length / 10), // assuming 10 posts per page
-    //     data: posts.slice(0, 10), // first page of posts
-    //   },
-    // })
     const sectionParts = section.split('/').map(part => part.trim())
     const title = sectionParts.pop()!
     const slug = getUrlFriendlyTag(section)
     const root = `${BLOG_SLUG}/${slug}`
 
-    const pages = paginate(otherPosts, slug).map(p => ({
-      ...p,
-      props: {
-        ...p.props,
-        type: 'posts' as PaginationType,
-        title,
-        root,
-        featuredPosts: p.props.page === 0 ? featuredPosts : [],
-      },
-    }))
+    const pages = paginate(otherPosts, { slug, title: title }).map(p =>
+      produce(p, draft => {
+        draft.props.root = root
+        draft.props.featuredPosts = p.props.page === 0 ? featuredPosts : []
+      })
+    )
 
     paths = paths.concat(pages)
   }
@@ -128,12 +101,12 @@ const { type, title, root, page, pages, data, featuredPosts } = Astro.props
 {
   type === 'posts' && (
     <BlogPostsLayout
-      title={title}
+      title={title!}
       page={page}
       pages={pages}
       posts={data}
       featuredPosts={featuredPosts}
-      root={root}
+      root={root!}
       showSectionLinks={root === BLOG_SLUG}
       showTitle={root !== BLOG_SLUG}
     />

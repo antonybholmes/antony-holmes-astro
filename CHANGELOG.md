@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.3 (Jan, 2026)
+
+### Changed
+
+- Standardized and simplified pagination.
+
+
 ## 3.2 (Jan, 2026)
 
 ### Fixed

@@ -2,45 +2,30 @@
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getTimePostMap } from '@/lib/astro/time'
 import { getTimeBaseUrl } from '@/lib/http/urls'
-import { getSortedPosts } from '@lib/astro/post'
-import { paginate } from '@lib/paginate'
-
-import type { CollectionEntry } from 'astro:content'
+import { getSortedPosts, type PostWithHero } from '@lib/astro/post'
+import { paginate, type AstroPage } from '@lib/paginate'
+import { produce } from 'immer'
 
 export async function getStaticPaths() {
   const allPosts = await getSortedPosts()
 
   const tagMap = await getTimePostMap(allPosts)
 
-  let paths: {
-    params: { slug?: string }
-    props: {
-      title: string
-      pageTitle: string
-      showTitle: boolean
-      root: string
-      page: number
-      pages: number
-      data: CollectionEntry<'blog'>[]
-    }
-  }[] = []
+  let paths: AstroPage<PostWithHero>[] = []
 
   for (const [time, posts] of tagMap.entries()) {
-    paths = paths.concat(
-      paginate(posts, `${time}-min-reads`).map(p => ({
-        ...p,
-        props: {
-          ...p.props,
-          title: `${time} Minute Reads`,
-          pageTitle: `${time} Minute Reads - Page ${p.props.page + 1} of ${p.props.pages}`,
-          showTitle: true,
-          root: getTimeBaseUrl(time),
-        },
-      }))
+    const page = paginate(posts, {
+      slug: `${time}-min-reads`,
+      title: `${time} Minute Reads`,
+    }).map(p =>
+      produce(p, draft => {
+        draft.props.root = getTimeBaseUrl(time)
+      })
     )
+
+    paths = paths.concat(page)
   }
 
-  console.log(paths)
   return paths
 }
 
@@ -48,11 +33,11 @@ const { title, pageTitle, page, root, pages, data } = Astro.props
 ---
 
 <BlogPostsLayout
-  title={title}
+  title={title!}
   pageTitle={pageTitle}
   page={page}
   pages={pages}
   posts={data}
-  root={root}
+  root={root!}
   showTitle={true}
 />

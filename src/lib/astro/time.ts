@@ -1,10 +1,10 @@
 import { render, type CollectionEntry } from 'astro:content'
 
-export async function getTimePostMap(
-  posts: CollectionEntry<'blog'>[],
+export async function getTimePostMap<T extends CollectionEntry<'blog'>>(
+  posts: T[],
   max: number = -1
-): Promise<Map<number, CollectionEntry<'blog'>[]>> {
-  const tagMap = new Map<number, CollectionEntry<'blog'>[]>()
+): Promise<Map<number, T[]>> {
+  const tagMap = new Map<number, T[]>()
 
   for (const post of posts) {
     const { remarkPluginFrontmatter } = await render(post)

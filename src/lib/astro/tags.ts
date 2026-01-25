@@ -1,10 +1,10 @@
 import { getCollection, type CollectionEntry } from 'astro:content'
 
-export function getTagPostMap(
-  posts: CollectionEntry<'blog'>[],
+export function getTagPostMap<T extends CollectionEntry<'blog'>>(
+  posts: T[],
   max: number = -1
-): Map<string, CollectionEntry<'blog'>[]> {
-  const tagMap = new Map<string, CollectionEntry<'blog'>[]>()
+): Map<string, T[]> {
+  const tagMap = new Map<string, T[]>()
 
   for (const post of posts.filter(
     post => post.data.tags && post.data.tags.length > 0

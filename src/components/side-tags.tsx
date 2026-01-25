@@ -15,17 +15,24 @@ export function SideTags({
         className
       )}
     >
-      {tags.map(tag => (
-        <li className="border-border/50 hover:border-border trans-color rounded-full border px-3 py-1.5">
-          <ThemeLink
-            startingColor="text-foreground"
-            endingColor="text-theme"
-            href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(tag)}`}
+      {tags.map(tag => {
+        const t = getUrlFriendlyTag(tag)
+
+        return (
+          <li
+            className="border-border/50 hover:border-border trans-color rounded-full border px-3 py-1.5"
+            key={t}
           >
-            {tag}
-          </ThemeLink>
-        </li>
-      ))}
+            <ThemeLink
+              startingColor="text-foreground"
+              endingColor="text-theme"
+              href={`${BLOG_SLUG}/tag/${t}`}
+            >
+              {tag}
+            </ThemeLink>
+          </li>
+        )
+      })}
     </ul>
   )
 }

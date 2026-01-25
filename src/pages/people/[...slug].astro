@@ -1,30 +1,32 @@
 ---
-import { MarkdownContent } from '@components/markdown-content'
-import { PageTitle } from '@components/page-title'
-import { AvatarImage } from '@components/people/avatar-image'
-import { BaseCol } from '@layout/base-col'
-import { BaseRow } from '@layout/base-row'
-import { HCenterRow } from '@layout/h-center-row'
-import ContentLayout from '@layouts/ContentLayout.astro'
 import { render } from 'astro:content'
 
 import {
   getAuthorPostMap,
   getSortedPosts,
   sortPostsByDateDesc,
+  type PostWithHero,
 } from '@lib/astro/post'
-import { paginate } from '@lib/paginate'
+import { paginate, type AstroPage } from '@lib/paginate'
 
+import { BaseCol } from '@/components/layout/base-col'
+import { BaseRow } from '@/components/layout/base-row'
+import { HCenterRow } from '@/components/layout/h-center-row'
+import { MarkdownContent } from '@/components/markdown-content'
 import { PagePagination } from '@/components/page-pagination'
+import { PageTitle } from '@/components/page-title'
+import { AvatarImage } from '@/components/people/avatar-image'
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
+import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getAuthorBaseUrl } from '@/lib/astro/author'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import type { IPost } from '@/lib/post'
-import { type CollectionEntry, getCollection } from 'astro:content'
+import { getCollection, type CollectionEntry } from 'astro:content'
+import { produce } from 'immer'
 
 export async function getStaticPaths() {
-  let paths: any[] = []
+  let paths: AstroPage<PostWithHero>[] = []
 
   const people = await getCollection('people')
   const allPosts = await getSortedPosts()
@@ -37,17 +39,19 @@ export async function getStaticPaths() {
     const slug = person.id.split('/').pop() || person.id // = getUrlFriendlyTag(person.data.name)
     const posts = postMap.get(getUrlFriendlyTag(person.data.name)) || []
 
-    paths = paths.concat(
-      paginate(posts, slug).map(p => ({
-        ...p,
-        props: {
-          ...p.props,
-          person,
-          root: getAuthorBaseUrl(person.data.name),
-        },
-      }))
+    const pages = paginate(posts, { slug, title: person.data.name }).map(p =>
+      produce(p, draft => {
+        draft.props.person = person
+        draft.props.root = getAuthorBaseUrl(person.data.name)
+      })
     )
+
+    console.log(pages)
+
+    paths = paths.concat(pages)
   }
+
+  console.log(`Generated ${paths} `)
 
   return paths
 }
@@ -58,10 +62,10 @@ interface Props {
   page: number
   pages: number
   root: string
-  indexPage?: boolean
+  isTopLevelPage?: boolean
 }
 
-const { person, data, page, pages, root, indexPage } = Astro.props
+const { person, data, page, pages, root, isTopLevelPage } = Astro.props
 
 const { Content } = await render(person)
 ---
@@ -70,7 +74,7 @@ const { Content } = await render(person)
   <BaseCol
     className="gap-y-16"
     slot="main"
-    {...indexPage && { 'data-pagefind-body': true }}
+    {...isTopLevelPage && { 'data-pagefind-body': true }}
   >
     <BaseRow className="gap-x-8">
       <div class="w-full">
