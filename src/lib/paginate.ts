@@ -8,7 +8,7 @@ export type AstroPage<T> = {
     showTitle?: boolean
     root?: string
     featuredPosts?: T[]
-    type: PaginationType
+    type: PageType
     page: number
     pages: number
     data: T[]
@@ -18,7 +18,7 @@ export type AstroPage<T> = {
   params: { slug: string | undefined }
 }
 
-export type PaginationType = 'posts' | 'post'
+export type PageType = 'posts' | 'post'
 
 export interface IPageProps {
   page: number
@@ -27,7 +27,7 @@ export interface IPageProps {
 }
 
 export interface IPaginationProps<T> extends IPageProps {
-  type: PaginationType
+  type: PageType
   data: T[]
 }
 
@@ -63,7 +63,7 @@ export function paginate<T>(
       slug: slug !== '' ? slug : undefined,
     },
     props: {
-      type: 'posts' as PaginationType,
+      type: 'posts' as PageType,
       title: title ? title : undefined,
       pageTitle: title ? title : undefined,
       showTitle: title ? true : false,
@@ -85,7 +85,7 @@ export function paginate<T>(
         slug: `${slug}${page + 1}`,
       },
       props: {
-        type: 'posts' as PaginationType,
+        type: 'posts' as PageType,
         title: title ? title : undefined,
         pageTitle: title
           ? `${title} - Page ${page + 1} of ${pages}`

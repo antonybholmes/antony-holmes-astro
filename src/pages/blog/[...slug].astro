@@ -6,7 +6,7 @@ import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { getPostSectionMap } from '@/lib/astro/sections'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
-import { paginate, type AstroPage } from '@/lib/paginate'
+import { paginate, type AstroPage, type PageType } from '@/lib/paginate'
 import { getPostSlugs } from '@/lib/post'
 import { produce } from 'immer'
 
@@ -50,18 +50,6 @@ export async function getStaticPaths() {
     }
   }
 
-  // const pages = paginate(otherPosts, '').map(p => ({
-  //   ...p,
-  //   props: {
-  //     ...p.props,
-  //     type: 'posts' as PaginationType,
-  //     title: 'Blog',
-  //     root: `/blog`,
-  //   },
-  // }))
-
-  // paths = paths.concat(pages)
-
   const sectionMap = getPostSectionMap(posts)
 
   for (const [section, posts] of sectionMap.entries()) {
@@ -73,7 +61,7 @@ export async function getStaticPaths() {
     const slug = getUrlFriendlyTag(section)
     const root = `${BLOG_SLUG}/${slug}`
 
-    const pages = paginate(otherPosts, { slug, title: title }).map(p =>
+    const pages = paginate(otherPosts, { slug, title }).map(p =>
       produce(p, draft => {
         draft.props.root = root
         draft.props.featuredPosts = p.props.page === 0 ? featuredPosts : []
@@ -86,18 +74,24 @@ export async function getStaticPaths() {
   return paths
 }
 
-// interface Props {
-//   post: CollectionEntry<'blog'>
-// }
-
-//const { post } = Astro.props
-//const { slug } = Astro.params
+interface Props {
+  type: PageType
+  title?: string
+  root?: string
+  page: number
+  pages: number
+  data: PostWithHero[]
+  featuredPosts?: PostWithHero[]
+}
 
 const { type, title, root, page, pages, data, featuredPosts } = Astro.props
 ---
 
-{type === 'post' && data.length > 0 && <BlogPostLayout post={data[0]} />}
+<!-- Render a single post -->{
+  type === 'post' && data.length > 0 && <BlogPostLayout post={data[0]} />
+}
 
+<!-- Render a page containing a list of posts -->
 {
   type === 'posts' && (
     <BlogPostsLayout
