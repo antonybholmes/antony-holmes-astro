@@ -1,6 +1,6 @@
 ---
-title: 'React Window Resize Hook'
-description: 'Monitoring when a window resizes'
+title: 'Window Resize Hook'
+description: 'Monitoring when a window resizes with React.'
 type: post
 status: added
 

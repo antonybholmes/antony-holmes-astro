@@ -6,6 +6,10 @@
 
 - Standardized and simplified pagination.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 3.2 (Jan, 2026)
 
