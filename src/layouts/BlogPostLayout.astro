@@ -10,9 +10,10 @@ import { Calendar, Minus, Plus } from 'lucide-react'
 import { Breadcrumb } from '@/components/breadcrumb'
 import FormattedReadTime from '@/components/FormattedReadTime.astro'
 import { BaseCol } from '@/components/layout/base-col'
+import { BaseRow } from '@/components/layout/base-row'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
-import { ThemeIndexLink } from '@/components/link/theme-index-link'
+import { ThemeLink } from '@/components/link/theme-link'
 import { HeroImageCaption } from '@/components/posts/hero-image-caption'
 import { StarRating } from '@/components/posts/star-rating'
 import { SideTags } from '@/components/side-tags'
@@ -164,64 +165,47 @@ const dateAdded = post.data.added ? post.data.added : new Date()
     <ContentDiv colCls="lg:w-1/2">
       <BaseCol slot="main" className="gap-y-8">
         <BaseCol className="gap-y-4 text-sm">
-          <VCenterRow className="justify-between gap-x-2">
-            <CompactAvatars people={post.data.authors ?? []} />
+          <BaseRow className="items-start justify-between gap-x-2">
+            <BaseCol className="gap-y-4">
+              <CompactAvatars people={post.data.authors ?? []} />
+
+              <VCenterRow
+                data-mode="light"
+                className="text-foreground/50 gap-x-5 data-[mode=dark]:text-white"
+              >
+                <VCenterRow className="gap-x-1.5">
+                  <Calendar
+                    data-mode="light"
+                    className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
+                    strokeWidth={1.5}
+                  />
+                  <FormattedDate date={dateAdded} />
+                </VCenterRow>
+
+                <FormattedReadTime
+                  readingTime={remarkPluginFrontmatter.readingTime}
+                />
+              </VCenterRow>
+            </BaseCol>
 
             {
               post.data.links && (
-                <ul class="gap-x-2">
+                <ul class="flex flex-col items-start gap-y-1">
                   {post.data.links.map(link => (
                     <li>
-                      <ThemeIndexLink
+                      <ThemeLink
                         href={link.url}
                         target={TARGET_BLANK}
                         startingColor="text-theme"
                       >
                         {link.title}
-                      </ThemeIndexLink>
+                      </ThemeLink>
                     </li>
                   ))}
                 </ul>
               )
             }
-          </VCenterRow>
-          <VCenterRow
-            data-mode="light"
-            className="text-foreground/50 justify-between gap-2 data-[mode=dark]:text-white"
-          >
-            <VCenterRow className="gap-x-5">
-              <VCenterRow className="gap-x-1.5">
-                <Calendar
-                  data-mode="light"
-                  className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
-                  strokeWidth={1.5}
-                />
-                <FormattedDate date={dateAdded} />
-              </VCenterRow>
-
-              <FormattedReadTime
-                readingTime={remarkPluginFrontmatter.readingTime}
-              />
-            </VCenterRow>
-
-            <!-- {
-              post.data.links && (
-                <ul class="gap-x-2">
-                  {post.data.links.map(link => (
-                    <li>
-                      <ThemeIndexLink
-                        href={link.url}
-                        target={TARGET_BLANK}
-                        startingColor="text-theme"
-                      >
-                        {link.title}
-                      </ThemeIndexLink>
-                    </li>
-                  ))}
-                </ul>
-              )
-            } -->
-          </VCenterRow>
+          </BaseRow>
 
           <SideTags tags={post.data.tags} className="md:hidden" />
         </BaseCol>

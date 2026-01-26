@@ -13,6 +13,7 @@ import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
 
 interface IProps extends IPostProps {
+  showBorder?: boolean
   showAvatar?: boolean
   showAuthors?: boolean
   showDescription?: boolean
@@ -21,6 +22,7 @@ interface IProps extends IPostProps {
 
 export function HeroPostSmall({
   post,
+  showBorder = false,
   showAvatar = false,
   showAuthors = false,
   showDescription = true,
@@ -32,9 +34,11 @@ export function HeroPostSmall({
 
   return (
     <article
+      id="hero-post-small"
+      data-show-border={showBorder}
       data-mode={mode}
       className={cn(
-        'group grid grid-cols-1 gap-y-4 data-[mode=dark]:text-white',
+        'group grid grid-cols-1 gap-y-4 data-[mode=dark]:text-white data-[show-border=true]:pt-6 data-[show-border=true]:border-border/50 data-[show-border=true]:border-t',
         hasImage && 'md:grid-cols-3 md:gap-x-5',
         className
       )}
@@ -45,7 +49,7 @@ export function HeroPostSmall({
           className="col-span-1 aspect-video md:aspect-4/3 rounded-lg"
         />
       )}
-      <BaseCol className="col-span-2 gap-y-1">
+      <BaseCol className="col-span-2 gap-y-2 -translate-y-1">
         <BaseCol>
           {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink
@@ -54,14 +58,11 @@ export function HeroPostSmall({
             mode={mode}
           />
         </BaseCol>
-        {/* <CondComp cond={showDescription}>
-          <HTML html={post.excerpt} className="text-sm text-gray-600" />
-        </CondComp> */}
 
         {showDescription && (
           <p
             data-mode={mode}
-            className="text-foreground/50 data-[mode=dark]:text-white/50"
+            className="text-foreground/50 data-[mode=dark]:text-white/50 text-base"
           >
             {getPostExcerpt(post)}
           </p>

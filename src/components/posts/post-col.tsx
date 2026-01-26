@@ -20,13 +20,14 @@ export function BasePostCol({
   mode = 'light',
 }: Omit<IProps, 'title'>) {
   return (
-    <ul className="flex flex-col gap-y-12">
+    <ul className="flex flex-col gap-y-8">
       {posts.slice(0, maxPosts).map((post, index) => {
         return (
           <li key={index}>
             <HeroPostSmall
               post={post}
               key={index}
+              showBorder={index > 0}
               showSectionLinks={showSectionLinks}
               //className="border border-border/50 shadow-lg rounded-xl overflow-hidden"
               showAvatar={showAvatar}

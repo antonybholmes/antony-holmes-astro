@@ -6,9 +6,10 @@ import { getPostUrls } from '@/lib/post'
 import type { IPostProps } from './post-tags'
 
 const CLS = `group-hover:underline underline-offset-4 
+  hover:text-sky-500 hover:decoration-sky-500
   group-hover:text-sky-500 group-hover:decoration-sky-500
-  data-[mode=dark]:text-white data-[mode=dark]:group-hover:text-sky-400 
-  data-[mode=dark]:group-hover:decoration-sky-400`
+  data-[mode=dark]:text-white data-[mode=dark]:hover:text-sky-500 data-[mode=dark]:hover:decoration-sky-500
+  data-[mode=dark]:group-hover:text-sky-500 data-[mode=dark]:group-hover:decoration-sky-500`
 
 export function PostTitleLink({ post, mode = 'light', className }: IPostProps) {
   const urls = getPostUrls(post)

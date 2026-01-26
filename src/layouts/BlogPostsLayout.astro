@@ -9,7 +9,7 @@ import { PagePagination } from '@/components/page-pagination'
 import { PageTitle } from '@/components/page-title'
 
 import { FeaturedPost } from '@/components/posts/featured-post'
-import { HeroPosts } from '@/components/posts/hero-posts'
+import { LeadPost } from '@/components/posts/lead-post'
 import { RestPosts } from '@/components/posts/rest-posts'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
@@ -52,7 +52,7 @@ if (!crumbs) {
   crumbs = createCrumbs(Astro.url.pathname)
 }
 
-const headPostStart = page === 0 ? 4 : 0
+const headPostStart = page === 0 ? 1 : 0
 ---
 
 <BaseLayout title={pageTitle ?? title} tab="Blog">
@@ -81,19 +81,21 @@ const headPostStart = page === 0 ? 4 : 0
         }
 
         <section id="latest" class="flex flex-col gap-y-8">
-          <BaseCol className="gap-y-24">
+          <BaseCol className="gap-y-16">
             {
               page === 0 && (
-                <HeroPosts
-                  posts={posts as IPost[]}
-                  showSectionLinks={showSectionLinks}
-                />
+                // <HeroPosts
+                //   posts={posts as IPost[]}
+                //   showSectionLinks={showSectionLinks}
+                // />
+                <LeadPost post={posts[0]} showSectionLinks={showSectionLinks} />
               )
             }
 
             <RestPosts
               posts={posts.slice(headPostStart) as IPost[]}
               showSectionLinks={showSectionLinks}
+              className="border-border/50 border-t pt-16"
             />
 
             <PagePagination page={page} pages={pages} root={root} />

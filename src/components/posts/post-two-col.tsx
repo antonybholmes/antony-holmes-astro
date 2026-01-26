@@ -25,6 +25,7 @@ export function PostTwoCol({
         {posts.slice(0, maxPosts).map((post, index) => {
           return (
             <HeroPostSmall
+              showBorder={index > 1}
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}

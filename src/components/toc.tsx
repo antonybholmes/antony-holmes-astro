@@ -51,11 +51,9 @@ export function TableOfContents() {
   }
 
   return (
-    <nav>
-      <h2 className="mb-4 text-base font-semibold border-b border-border/50 pb-2">
-        Table of Contents
-      </h2>
-      <ul className="text-xs">
+    <nav className="flex flex-col gap-y-2">
+      <h2 className="text-base font-semibold ">Table of Contents</h2>
+      <ul className="text-xs border-t border-border/50 pt-4">
         {headings.map(({ id, text, level }) => (
           <li key={id} data-active={activeId === id} className="">
             <button

@@ -1,9 +1,8 @@
 ---
 title: 'Maximum Overdrive'
-added: '2026-01-20'
-draft: true
-description: 'A misunderstood classic?'
-heroAlt: "It's weird to me that cinemas in the US only served salted, buttery popcorn."
+added: '2026-01-25'
+description: 'Maximum fun, minimal intellect.'
+heroAlt: 'Films look better on film. I hate digital cinema.'
 authors:
   - 'Antony Holmes'
 sections:
@@ -12,16 +11,24 @@ tags:
   - 'Comedy'
   - 'Horror'
 rating: 4
+links:
+  - { title: 'IMDb', url: 'https://www.imdb.com/title/tt0091499' }
+  - {
+      title: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Maximum_Overdrive',
+    }
 ---
 
-[Hudson Hawk](https://en.wikipedia.org/wiki/Hudson_Hawk) is an under-rated comedy in my opinion. Largely a star vehicle for Bruce Willis, it is an absurdist, screwball comedy that sees him as showtune singing cat burglar on a quest around Europe.
+<!-- [Maximum Overdrive](https://en.wikipedia.org/wiki/Maximum_Overdrive) is an oddball horror comedy directed by Stephen King based on one of his own stories. -->
 
-It failed at the box office, but I could never understand why. It's part comedy, part musical, part action film. I guess people at the time were expecting another Die Hard, and this is certainly not that, so they were put off, but it showcases perhaps the best example of the cocky, self-assured Bruce Willis on-screen persona, so if you like that, you should enjoy this. He's on fine form, especially for the musical numbers, with "Swinging on a Star" being a highlight.
+Stephen King famously hates pretty much all film adaptations of his stories, so it was an incongruous choice he made to direct this bizarre, low-brow, comedy that hardly seems befitting of him. Certainly, if you were going to look at all the films of Stephen King stories, you would be hard pressed to view this as one of the great ones.
 
-Describing the plot is a bit redundant as it is deliberately nonsensical and cartoonish. This is probably not helped by the editing, which feels like it was one of those troubled high budget films where the studio forced the director to cut out lots of material. Even so almost everything works. It's joyously silly, filled with quotable dialog, and has excellent cinematography as it jumps around New York, London and Rome.
+That being said, it's a funny film with a catchy soundtrack by AC/DC. The basic premise is a comet passing by Earth causes machines to become sentient and go on a rampage (though no explanation is given as to why the machines hate humans). A group of individuals get stranded at a remote gas station / rest stop and pit their wits against the , seemingly led by a sinister looking truck with a giant joker face on its hood.
 
-All of the cast are great, with Richard E. Grant and Sandra Bernhard being standouts as the insane Mayflowers.
+The film follows in the mould of Smokey And The Bandit by portraying people from the Southern states as being dim-witted and casually sexist and rascist (but these tropes were prevalent in many 80s films). Indeed, Jackie Gleason showing up as Buford T. Justice would not seem out of place here.
 
-Notably it is one of the only, if not the only, mainstream films to feature the automated [London Post Office Railway](https://en.wikipedia.org/wiki/London_Post_Office_Railway), supposedly running under the Vatican, but it's quite obvious what it is. It acts a little time capsule, preserving the service in high definition, now that it is permanently closed.
+Unlike many of its peers of that era, it surprisingly doesn't feature nudity, which is a rarity for 80s R rated films. It does of course feature profanity and violence but it's not really much of a horror film in the vein of films like The Thing; there aren't monsters, jump scares or creepy prosthetic makeup effects that characterize pre-CGI films. Instead there is a lot truck and car destruction. I'd go as far as calling it a smash'em up
 
-_Toll both? Exact change?_
+It's a loud, stupid, action comedy that features lots of memorable dialogue and scenes. Stephen King disowned it, but I think it's under-rated and highly enjoyable and fun.
+
+_Honey, come on over here, sugarbuns. This machine just called me an asshole._

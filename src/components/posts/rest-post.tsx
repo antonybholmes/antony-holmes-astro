@@ -39,7 +39,7 @@ export function RestPost({
       {post.data.resolvedHero && (
         <PostImage post={post} className="aspect-video w-full rounded-xl" />
       )}
-      <BaseCol className="gap-y-1">
+      <BaseCol className="gap-y-2">
         <BaseCol>
           {showSectionLinks && <PostSectionLink post={post} />}
           <PostTitleLink
