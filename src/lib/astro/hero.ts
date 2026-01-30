@@ -52,7 +52,7 @@ export function getHeroImage(
   if (
     sections?.some(
       s =>
-        s.includes('Finances') ||
+        s.includes('Finance') ||
         s.includes('Economics') ||
         s.includes('Business') ||
         s.includes('Brokerages') ||

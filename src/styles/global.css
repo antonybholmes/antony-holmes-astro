@@ -345,7 +345,7 @@ input[type='search']::-webkit-search-cancel-button {
   }
 
   h3 {
-    @apply mt-4 text-xl;
+    @apply mt-2 text-lg;
   }
 
   p {
@@ -353,7 +353,7 @@ input[type='search']::-webkit-search-cancel-button {
   }
 
   ul {
-    @apply my-6 ml-6 list-disc;
+    @apply mb-6 ml-6 list-disc;
   }
 
   ol {
