@@ -8,8 +8,7 @@ sections:
 tags:
   - 'Finance'
   - 'Investing'
-
-heroCaption: 'Random walks.'
+heroAlt: 'This graph is not the stock market.'
 draft: false
 related: []
 added: '2026-01-29'
