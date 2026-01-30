@@ -22,7 +22,7 @@ export async function getStaticPaths() {
     paths = paths.concat(
       paginate(posts, {
         slug: getUrlFriendlyTag(tag),
-        title: `${title} Posts`,
+        title,
       }).map(p =>
         produce(p, draft => {
           draft.props.root = getTagBaseUrl(tag)

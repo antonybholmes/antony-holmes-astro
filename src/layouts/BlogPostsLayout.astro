@@ -11,6 +11,7 @@ import { PageTitle } from '@/components/page-title'
 import { FeaturedPost } from '@/components/posts/featured-post'
 import { LeadPost } from '@/components/posts/lead-post'
 import { RestPosts } from '@/components/posts/rest-posts'
+import { TwoColPosts } from '@/components/posts/two-col-posts'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
 import type { CollectionEntry } from 'astro:content'
@@ -53,6 +54,9 @@ if (!crumbs) {
 }
 
 const headPostStart = page === 0 ? 1 : 0
+
+const twoColPosts = posts.slice(headPostStart, headPostStart + 2)
+const restPosts = posts.slice(headPostStart + 2)
 ---
 
 <BaseLayout title={pageTitle ?? title} tab="Blog">
@@ -92,11 +96,25 @@ const headPostStart = page === 0 ? 1 : 0
               )
             }
 
-            <RestPosts
-              posts={posts.slice(headPostStart) as IPost[]}
-              showSectionLinks={showSectionLinks}
-              className="border-border/50 border-t pt-16"
-            />
+            {
+              twoColPosts.length > 0 && (
+                <TwoColPosts
+                  posts={twoColPosts}
+                  showSectionLinks={showSectionLinks}
+                  className="border-border/50 border-t pt-16"
+                />
+              )
+            }
+
+            {
+              restPosts.length > 0 && (
+                <RestPosts
+                  posts={restPosts}
+                  showSectionLinks={showSectionLinks}
+                  className="border-border/50 border-t pt-16"
+                />
+              )
+            }
 
             <PagePagination page={page} pages={pages} root={root} />
           </BaseCol>
