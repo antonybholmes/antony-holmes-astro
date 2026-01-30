@@ -6,8 +6,8 @@ authors:
 sections:
   - ['Finance']
 tags:
-  - 'Finance'
   - 'Investing'
+  - 'Mutual Funds'
 heroAlt: 'This graph is not the stock market.'
 draft: false
 related: []
