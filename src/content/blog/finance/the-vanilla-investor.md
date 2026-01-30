@@ -11,6 +11,7 @@ authors:
   - 'Antony Holmes'
 added: '2021-12-09'
 tags:
+  - 'Investing'
   - 'Portfolio Design'
   - 'Guides'
 ---
