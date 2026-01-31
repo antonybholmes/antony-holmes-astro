@@ -1,19 +1,20 @@
 ---
-title: 'Hudson Hawk'
-added: '2026-01-15'
-
-description: 'Watch it while eating a reindeer goat cheese pizza.'
+title: 'Les Vacances de Monsieur Hulot'
+added: '2026-01-20'
+draft: true
+description: 'A misunderstood classic?'
 heroAlt: "It's weird to me that cinemas in the US only served salted, buttery popcorn."
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Reviews', 'Films']
+  - ['Films']
 tags:
   - 'Comedy'
+  - 'Reviews'
 rating: 4
 ---
 
-[Hudson Hawk](https://en.wikipedia.org/wiki/Hudson_Hawk) is an under-rated comedy in my opinion. Largely a star vehicle for Bruce Willis, it's an absurdist, screwball comedy that sees him as showtune singing cat burglar on a quest around Europe.
+[Hudson Hawk](https://en.wikipedia.org/wiki/Hudson_Hawk) is an under-rated comedy in my opinion. Largely a star vehicle for Bruce Willis, it is an absurdist, screwball comedy that sees him as showtune singing cat burglar on a quest around Europe.
 
 It failed at the box office, but I could never understand why. It's part comedy, part musical, part action film. I guess people at the time were expecting another Die Hard, and this is certainly not that, so they were put off, but it showcases perhaps the best example of the cocky, self-assured Bruce Willis on-screen persona, so if you like that, you should enjoy this. He's on fine form, especially for the musical numbers, with "Swinging on a Star" being a highlight.
 

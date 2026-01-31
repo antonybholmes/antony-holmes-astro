@@ -2,7 +2,7 @@ import { cn } from '@/lib/shadcn-utils'
 import type { IPostsProps } from './hero-posts'
 import { RestPost } from './rest-post'
 
-export function TwoColPosts({
+export function TopPosts({
   posts,
   showSectionLinks = true,
   className,

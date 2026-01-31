@@ -5,9 +5,10 @@ authors:
 description: 'What is cryptocurrency and should you buy it?'
 hero: 'money'
 sections:
-  - ['Opinions']
+  - ['Finance']
 tags:
   - 'Investing'
+  - 'Opinions'
   - 'Cryptocurrency'
 related: ''
 added: '2022-02-02'

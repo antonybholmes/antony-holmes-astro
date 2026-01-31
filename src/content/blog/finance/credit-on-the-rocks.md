@@ -6,10 +6,11 @@ description: 'How to freeze your credit.'
 
 hero: 'ice'
 sections:
-  - ['Guides & Tutorials']
+  - ['Finance']
 tags:
   - 'Credit'
   - 'Finance'
+  - 'Guides & Tutorials'
 related: ''
 added: '2022-02-21'
 ---

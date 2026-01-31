@@ -139,7 +139,8 @@ export function addHeroToPost(entry: CollectionEntry<'blog'>): PostWithHero {
       resolvedHero: getHeroImage(
         entry.data.title,
         entry.data.hero,
-        entry.data.sections ?? []
+        entry.data.sections ?? [],
+        entry.data.tags ?? []
       ),
     },
   }

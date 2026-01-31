@@ -2,7 +2,7 @@
 product: 'Fidelity'
 description: 'My review of Fidelity.'
 sections:
-  - ['Reviews', 'Brokerages']
+  - ['Finance']
 type: review
 heroAlt: 'This looks cool, but has nothing to do with banking.'
 rating: 4.5
@@ -29,6 +29,7 @@ tags:
   - 'Low Cost'
   - 'Banking'
   - 'Investing'
+  - 'Reviews'
 updated: '2022-07-18'
 ---
 

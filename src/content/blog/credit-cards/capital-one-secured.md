@@ -4,24 +4,24 @@ description: My review of the Capital One Secured Mastercard credit card.
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Reviews', 'Credit Cards']
+  - ['Credit Cards']
 type: review
 rating: 4
 pros:
   - Easy to get approved for.
   - Cashback automatically deposited into Fidelity account.
 cons:
-  - No rewards.
-  - Slow website.
-  - Requires refundable deposit.
+  - 'No rewards.'
+  - 'Slow website.'
+  - 'Requires refundable deposit.'
 details:
-  - Great starter credit card.
+  - 'Great starter credit card.'
 url: https://www.capitalone.com/credit-cards/secured-mastercard
 status: added
-title: Capital One Secured Mastercard Credit Card
+title: 'Capital One Secured Mastercard Credit Card'
 added: '2022-04-22'
 tags:
-  - Secured
+  - 'Reviews'
 ---
 
 A great card for someone wanting to build a credit history.

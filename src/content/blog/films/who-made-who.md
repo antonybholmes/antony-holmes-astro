@@ -6,10 +6,11 @@ heroAlt: 'Films look better on film. I hate digital cinema.'
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Reviews', 'Films']
+  - ['Films']
 tags:
   - 'Comedy'
   - 'Horror'
+  - 'Reviews'
 rating: 4
 links:
   - { title: 'IMDb', url: 'https://www.imdb.com/title/tt0091499' }

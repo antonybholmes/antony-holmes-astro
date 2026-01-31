@@ -4,11 +4,11 @@ description: 'Some Frugal Hacks For Automatically Saving Money.'
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Opinions']
+  - ['Finance']
 tags:
   - 'Budgeting'
   - 'Personal Finance'
-  - Spending
+  - 'Spending'
 hero: 'axe'
 heroAlt: "It's the wood that makes it good."
 draft: false

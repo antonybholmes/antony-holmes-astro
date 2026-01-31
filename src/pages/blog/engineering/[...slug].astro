@@ -7,15 +7,19 @@ import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { produce } from 'immer'
 
 export async function getStaticPaths() {
-  const posts = await getSortedPosts()
+  let posts = await getSortedPosts()
+
+  posts = posts.filter(post =>
+    post.data.sections?.some(section => section.includes('Engineering'))
+  )
 
   const featuredPosts = posts.filter(post => post.data.featured)
   const otherPosts = posts.filter(post => !post.data.featured)
 
-  const paths = paginate(otherPosts, { title: 'Latest Posts' }).map(p =>
+  const paths = paginate(otherPosts, { title: 'Engineering' }).map(p =>
     produce(p, draft => {
       draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
-      draft.props.root = `${BLOG_SLUG}/latest`
+      draft.props.root = `${BLOG_SLUG}/engineering`
     })
   )
 
@@ -24,8 +28,8 @@ export async function getStaticPaths() {
 
 const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
 
-const description = `Explore the latest blogs on all things software, finance, news, films, and more. 
-Stay updated with fresh insights and stories from my world.`
+const description = `Over the years, I've had the opportunity to work on a variety of engineering projects, 
+using multiple programming languages. Here I share some insights, experiences, and lessons learned.`
 ---
 
 <BlogPostsLayout

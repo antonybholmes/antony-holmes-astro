@@ -62,7 +62,7 @@ export function HeroPostSmall({
         {showDescription && (
           <p
             data-mode={mode}
-            className="text-foreground/50 data-[mode=dark]:text-white/50 text-base"
+            className="text-foreground/40 data-[mode=dark]:text-white/50 text-base"
           >
             {getPostExcerpt(post)}
           </p>

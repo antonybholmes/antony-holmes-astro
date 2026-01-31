@@ -3,12 +3,11 @@ title: 'DI-Why Invest Yourself?'
 description: 'How to be a DIY investor.'
 authors:
   - 'Antony Holmes'
-readtime: '1 min'
 sections:
-  - ['Guides & Tutorials']
+  - ['Finance']
 tags:
-  - 'Finance'
   - 'Investing'
+  - 'Guides & Tutorials'
 hero: 'diy'
 related: ''
 added: '2022-06-21'

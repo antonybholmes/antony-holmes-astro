@@ -2,7 +2,7 @@
 product: Cricket
 description: Cricket.
 sections:
-  - ['Reviews', 'Cell Phones']
+  - ['Finance']
 type: review
 rating: 4
 pros:
@@ -22,11 +22,13 @@ authors:
   - 'Antony Holmes'
 added: '2022-08-20'
 tags:
-  - Low Cost
-  - MNVO
+  - 'Low Cost'
+  - 'MNVO'
+  - 'Cell Phones'
+  - 'Reviews'
 ---
 
-Mint Mobile is a great low cost wireless provider
+Mint Mobile is a great low cost wireless provider if you're trying to save money on your cell phone bill.
 
 <!-- more -->
 

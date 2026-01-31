@@ -6,16 +6,22 @@ import { BLOG_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { produce } from 'immer'
 
+const ROOT = `${BLOG_SLUG}/finance`
+
 export async function getStaticPaths() {
-  const posts = await getSortedPosts()
+  let posts = await getSortedPosts()
+
+  posts = posts.filter(post =>
+    post.data.sections?.some(section => section.includes('Finance'))
+  )
 
   const featuredPosts = posts.filter(post => post.data.featured)
   const otherPosts = posts.filter(post => !post.data.featured)
 
-  const paths = paginate(otherPosts, { title: 'Latest Posts' }).map(p =>
+  const paths = paginate(otherPosts, { title: 'Finance' }).map(p =>
     produce(p, draft => {
       draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
-      draft.props.root = `${BLOG_SLUG}/latest`
+      draft.props.root = `${BLOG_SLUG}/finance`
     })
   )
 
@@ -24,8 +30,8 @@ export async function getStaticPaths() {
 
 const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
 
-const description = `Explore the latest blogs on all things software, finance, news, films, and more. 
-Stay updated with fresh insights and stories from my world.`
+const description = `Understanding finance is crucial. In this section, I share my knowledge on personal finance,
+investments, and economic insights to help you make informed financial decisions.`
 ---
 
 <BlogPostsLayout
@@ -36,7 +42,7 @@ Stay updated with fresh insights and stories from my world.`
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root=`${BLOG_SLUG}/latest`
+  root={ROOT}
   showTitle={true}
   showSectionLinks={true}
 />

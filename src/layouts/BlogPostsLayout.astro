@@ -11,7 +11,7 @@ import { PageTitle } from '@/components/page-title'
 import { FeaturedPost } from '@/components/posts/featured-post'
 import { LeadPost } from '@/components/posts/lead-post'
 import { RestPosts } from '@/components/posts/rest-posts'
-import { TwoColPosts } from '@/components/posts/two-col-posts'
+import { TopPosts } from '@/components/posts/top-posts'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
 import type { CollectionEntry } from 'astro:content'
@@ -23,6 +23,7 @@ interface Props extends IPageProps, ICrumbProps {
   mode?: ColorMode
   posts: CollectionEntry<'blog'>[]
   featuredPosts?: CollectionEntry<'blog'>[]
+  description?: string
   // the root without page numbers etc added to it
   // e.g. /blog/tag/javascript/ instead of /blog/tag/javascript/page/2
   // this is used to generate the correct links for pagination
@@ -38,7 +39,7 @@ let {
   pageTitle,
   showTitle,
   crumbs,
-
+  description,
   posts,
   featuredPosts = [],
   page,
@@ -59,67 +60,81 @@ const twoColPosts = posts.slice(headPostStart, headPostStart + 2)
 const restPosts = posts.slice(headPostStart + 2)
 ---
 
-<BaseLayout title={pageTitle ?? title} tab="Blog">
-  <ContentDiv slot="main" className="mt-24">
-    <BaseCol slot="main" className="gap-y-16">
-      {
-        (showTitle || crumbs) && (
-          <BaseCol className="gap-y-4">
-            {crumbs && <Breadcrumb crumbs={crumbs} />}
-            {showTitle && <PageTitle title={title} />}
-          </BaseCol>
-        )
-      }
-
-      <main class="flex flex-col gap-y-16">
+<BaseLayout title={pageTitle ?? title} tab="Blog" mode="dark">
+  <Fragment slot="main">
+    <ContentDiv className="bg-gray-800 py-24">
+      <BaseCol className="gap-y-16" slot="main">
         {
-          featuredPosts.length > 0 && (
-            <section id="featured">
-              <FeaturedPost
-                post={featuredPosts[0]! as IPost}
-                showSectionLinks={showSectionLinks}
-                mode={mode}
-              />
-            </section>
+          (showTitle || crumbs) && (
+            <BaseCol className="gap-y-4">
+              {crumbs && <Breadcrumb crumbs={crumbs} mode="dark" />}
+              {showTitle && <PageTitle title={title} mode="dark" />}
+              {description && (
+                <p
+                  class="w-3/5 text-lg data-[mode=dark]:text-white"
+                  data-mode="dark"
+                >
+                  {description}
+                </p>
+              )}
+            </BaseCol>
           )
         }
 
-        <section id="latest" class="flex flex-col gap-y-8">
-          <BaseCol className="gap-y-16">
-            {
-              page === 0 && (
-                // <HeroPosts
-                //   posts={posts as IPost[]}
-                //   showSectionLinks={showSectionLinks}
-                // />
-                <LeadPost post={posts[0]} showSectionLinks={showSectionLinks} />
-              )
-            }
-
-            {
-              twoColPosts.length > 0 && (
-                <TwoColPosts
-                  posts={twoColPosts}
+        <main class="flex flex-col gap-y-16">
+          {
+            featuredPosts.length > 0 && (
+              <section id="featured">
+                <FeaturedPost
+                  mode="dark"
+                  post={featuredPosts[0]! as IPost}
                   showSectionLinks={showSectionLinks}
-                  className="border-border/50 border-t pt-16"
+                  mode={mode}
                 />
-              )
-            }
+              </section>
+            )
+          }
 
-            {
-              restPosts.length > 0 && (
-                <RestPosts
-                  posts={restPosts}
-                  showSectionLinks={showSectionLinks}
-                  className="border-border/50 border-t pt-16"
-                />
-              )
-            }
+          {
+            page === 0 && (
+              // <HeroPosts
+              //   posts={posts as IPost[]}
+              //   showSectionLinks={showSectionLinks}
+              // />
+              <LeadPost
+                post={posts[0]}
+                showSectionLinks={showSectionLinks}
+                mode="dark"
+              />
+            )
+          }
+        </main>
+      </BaseCol>
+    </ContentDiv>
+    <ContentDiv>
+      <section id="latest" class="flex flex-col gap-y-16" slot="main">
+        {
+          twoColPosts.length > 0 && (
+            <TopPosts
+              posts={twoColPosts}
+              showSectionLinks={showSectionLinks}
+              className="border-border/50 border-t pt-16"
+            />
+          )
+        }
 
-            <PagePagination page={page} pages={pages} root={root} />
-          </BaseCol>
-        </section>
-      </main>
-    </BaseCol>
-  </ContentDiv>
-</BaseLayout>
+        {
+          restPosts.length > 0 && (
+            <RestPosts
+              posts={restPosts}
+              showSectionLinks={showSectionLinks}
+              className="border-border/50 border-t pt-16"
+            />
+          )
+        }
+
+        {pages > 1 && <PagePagination page={page} pages={pages} root={root} />}
+      </section>
+    </ContentDiv>
+  </Fragment></BaseLayout
+>

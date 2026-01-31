@@ -5,9 +5,10 @@ authors:
   - 'Antony Holmes'
 readtime: '1 min'
 sections:
-  - ['Opinions']
+  - ['Finance']
 tags:
   - 'Investing'
+  - 'Opinions'
 hero: 'potatoes'
 related: ''
 added: '2022-02-07'

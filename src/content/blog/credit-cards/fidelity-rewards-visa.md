@@ -2,7 +2,7 @@
 product: Fidelity Rewards Visa Signature
 description: My review of the Fidelity Rewards Visa Signature credit card.
 sections:
-  - ['Reviews', 'Credit Cards']
+  - ['Credit Cards']
 type: review
 rating: 4.5
 pros:
@@ -25,6 +25,7 @@ authors:
 added: '2022-10-22'
 tags:
   - 'Cash Back'
+  - 'Reviews'
 ---
 
 Fidelity's credit card is a solid 2% cash back card that works exactly as expected.

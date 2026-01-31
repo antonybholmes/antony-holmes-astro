@@ -4,6 +4,7 @@
 
 ### Changed
 
+- Reorganized posts, new blog layout, custom blog pages with descriptions.
 - Standardized and simplified pagination.
 
 ### Fixed

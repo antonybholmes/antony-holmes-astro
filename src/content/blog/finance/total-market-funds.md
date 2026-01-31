@@ -4,11 +4,11 @@ description: 'How to invest across the whole market.'
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Guides & Tutorials']
+  - ['Finance']
 tags:
-  - 'Finance'
   - 'Investing'
   - 'Brokerages'
+  - 'Guides & Tutorials'
 hero: 'market'
 related: ''
 added: '2022-05-04'
