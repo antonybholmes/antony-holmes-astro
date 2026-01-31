@@ -6,6 +6,10 @@
 
 - Added finance section to front page of blog.
 
+### Fixed
+
+- Bug fixes and updates.
+
 
 ## 3.3 (Jan, 2026)
 

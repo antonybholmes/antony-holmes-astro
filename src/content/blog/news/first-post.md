@@ -1,5 +1,5 @@
 ---
-description: 'First post euphoria.'
+description: 'First post euphoria, second post anxiety.'
 type: post
 heroAlt: 'This post is more technologically advanced than a Gutenberg Press.'
 status: added
