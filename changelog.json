@@ -620,5 +620,18 @@
     },
     "author": "Antony Holmes",
     "date": "2026-01-25T01:31:04.166Z"
+  },
+  {
+    "version": "3.4",
+    "messages": {
+      "Added": [
+        {
+          "msg": "Added finance section to front page of blog",
+          "date": "2026-01-31T05:06:27.537Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-01-31T05:06:27.537Z"
   }
 ]

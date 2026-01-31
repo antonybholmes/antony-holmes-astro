@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.4 (Jan, 2026)
+
+### Added
+
+- Added finance section to front page of blog.
+
+
 ## 3.3 (Jan, 2026)
 
 ### Changed

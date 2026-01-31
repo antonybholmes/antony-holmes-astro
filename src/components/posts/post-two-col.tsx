@@ -15,7 +15,7 @@ export function PostTwoCol({
   title,
   href,
   posts,
-  maxPosts = 9,
+  maxPosts = 6,
   showSectionLinks = true,
   children,
 }: IProps) {
