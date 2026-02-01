@@ -1,5 +1,5 @@
 ---
-title: 'A Temple To Cosumerism'
+title: 'A Temple To Consumerism'
 description: '"This place has everything"'
 type: post
 # draft: true
