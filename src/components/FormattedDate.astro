@@ -14,8 +14,8 @@ const formattedYear = format(date, 'yyyy')
 ---
 
 <time datetime={date.toISOString()} class={className}>
-  {formattedDate}, <a
-    href={`${BLOG_SLUG}/year/${formattedYear}`}
-    class="hover:underline">{formattedYear}</a
-  >
+  {formattedDate},
+  <a href={`${BLOG_SLUG}/year/${formattedYear}`} class="hover:underline"
+    >{formattedYear}
+  </a>
 </time>

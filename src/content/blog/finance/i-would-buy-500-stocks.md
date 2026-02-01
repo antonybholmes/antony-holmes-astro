@@ -1,6 +1,6 @@
 ---
 title: '500 Reasons To Invest'
-description: 'Why the S&P 500 might be all you need.'
+description: 'Why an S&P 500 fund might be all you need.'
 authors:
   - 'Antony Holmes'
 sections:

@@ -1,7 +1,7 @@
 ---
 title: 'Maximum Overdrive'
 added: '2026-01-25'
-description: 'Maximum fun, minimal intellect.'
+description: 'Maximum fun, minimum intellect.'
 heroAlt: 'Films look better on film. I hate digital cinema.'
 authors:
   - 'Antony Holmes'

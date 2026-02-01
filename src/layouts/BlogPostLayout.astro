@@ -24,6 +24,7 @@ import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
 import { type IPost } from '@/lib/post'
 import { growingSubsets } from '@/lib/utils'
 import { CompactAvatars } from '@components/people/compact-avatars'
+import { format } from 'date-fns'
 import BaseLayout from './BaseLayout.astro'
 
 // type Props = CollectionEntry<'blog'>['data'] & {
@@ -186,6 +187,18 @@ const dateAdded = post.data.added ? post.data.added : new Date()
                   readingTime={remarkPluginFrontmatter.readingTime}
                 />
               </VCenterRow>
+
+              {
+                post.data.updated &&
+                  post.data.updated.getTime() > post.data.added.getTime() && (
+                    <span
+                      data-mode="light"
+                      class="text-foreground/50 gap-x-2 italic data-[mode=dark]:text-white"
+                    >
+                      Updated on {format(post.data.updated, 'MMM dd, yyyy')}
+                    </span>
+                  )
+              }
             </BaseCol>
 
             {
