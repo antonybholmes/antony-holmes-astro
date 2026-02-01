@@ -1,0 +1,45 @@
+---
+import { getSortedPosts } from '@lib/astro/post'
+import { paginate } from '@lib/paginate'
+
+import { BLOG_SLUG } from '@/consts'
+import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
+import { produce } from 'immer'
+
+export async function getStaticPaths() {
+  let posts = await getSortedPosts()
+
+  posts = posts.filter(post =>
+    post.data.sections?.some(section => section.includes('Photos'))
+  )
+
+  const featuredPosts = posts.filter(post => post.data.featured)
+  const otherPosts = posts.filter(post => !post.data.featured)
+
+  const paths = paginate(otherPosts, { title: 'Photos' }).map(p =>
+    produce(p, draft => {
+      draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
+      draft.props.root = `${BLOG_SLUG}/photos`
+    })
+  )
+
+  return paths
+}
+
+const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
+
+const description = `A shadowy flight into the dangerous world of a man who occasionally takes random photos.`
+---
+
+<BlogPostsLayout
+  title={title ?? ''}
+  pageTitle={pageTitle}
+  description={description}
+  page={page}
+  pages={pages}
+  featuredPosts={featuredPosts}
+  posts={data}
+  root=`${BLOG_SLUG}/latest`
+  showTitle={true}
+  showSectionLinks={true}
+/>

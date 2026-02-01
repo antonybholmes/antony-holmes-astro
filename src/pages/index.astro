@@ -104,7 +104,9 @@ const posts = getPageItems(await getSortedPosts(), 0, RECORDS_PER_PAGE)
 
       <ContentDiv className="gap-y-4">
         <section id="latest" class="flex flex-col gap-y-8" slot="main">
-          <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
+          <h2 class="border-border border-b py-2! text-2xl font-bold">
+            Latest
+          </h2>
 
           <BaseCol className="gap-y-24">
             <HeroPosts posts={posts as IPost[]} />
