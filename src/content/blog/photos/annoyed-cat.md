@@ -3,7 +3,7 @@ title: "What you lookin' at?"
 description: '"Enough with the photos already. Just quit it."'
 type: post
 # draft: true
-hero: '/assets/images/photos/annoyed-cat.webp'
+hero: 'https://res.cloudinary.com/dilw4nc6h/image/upload/annoyed-cat.webp'
 heroAlt: 'Could I BE any more interested?'
 sections:
   - ['Photos']

@@ -44,6 +44,7 @@ const finance = allPosts.filter(post =>
         pages={pages}
         slot="main"
         mode="dark"
+        client:only="react"
       />
     </ContentDiv>
     <ContentDiv>
@@ -57,6 +58,7 @@ const finance = allPosts.filter(post =>
           posts={allPosts as IPost[]}
           page={0}
           pages={pages}
+          client:only="react"
         >
           <ArrowLink
             href="/blog/latest"
@@ -67,7 +69,7 @@ const finance = allPosts.filter(post =>
           </ArrowLink>
         </PostCol>
 
-        <PostSectionCol section="All" postMap={postMap} client:visible />
+        <PostSectionCol section="All" postMap={postMap} client:only="react" />
       </section>
     </ContentDiv>
     <ContentDiv>
@@ -79,6 +81,7 @@ const finance = allPosts.filter(post =>
         page={0}
         pages={pages}
         showSectionLinks={false}
+        client:only="react"
       >
         <ArrowLink
           href="/blog/engineering"
@@ -99,6 +102,7 @@ const finance = allPosts.filter(post =>
         page={0}
         pages={pages}
         showSectionLinks={false}
+        client:only="react"
       >
         <ArrowLink
           href="/blog/finance"
@@ -119,6 +123,7 @@ const finance = allPosts.filter(post =>
         page={0}
         pages={pages}
         showSectionLinks={false}
+        client:only="react"
       >
         <ArrowLink
           href="/blog/news"

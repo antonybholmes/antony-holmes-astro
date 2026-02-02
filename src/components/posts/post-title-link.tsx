@@ -2,16 +2,29 @@ import { cn } from '@lib/shadcn-utils'
 
 import { BaseLink } from '@components/link/base-link'
 
-import { getPostUrls } from '@/lib/post'
-import type { IPostProps } from './post-tags'
+import type { ColorMode } from '@/interfaces/color-mode'
+import type { ILinkProps } from '@/interfaces/link-props'
+import { getPostUrls, type IPost } from '@/lib/post'
 
 const CLS = `group-hover:underline underline-offset-4 
   hover:text-sky-500 hover:decoration-sky-500
   group-hover:text-sky-500 group-hover:decoration-sky-500
-  data-[mode=dark]:text-white data-[mode=dark]:hover:text-sky-500 data-[mode=dark]:hover:decoration-sky-500
-  data-[mode=dark]:group-hover:text-sky-500 data-[mode=dark]:group-hover:decoration-sky-500`
+  data-[hover=true]:underline data-[hover=true]:text-sky-500 data-[hover=true]:decoration-sky-500
+  data-[mode=dark]:text-white  
+  data-[mode=dark]:group-hover:text-sky-500 data-[mode=dark]:group-hover:decoration-sky-500
+  data-[mode=dark]:data-[hover=true]:text-sky-500 data-[mode=dark]:data-[hover=true]:decoration-sky-500`
 
-export function PostTitleLink({ post, mode = 'light', className }: IPostProps) {
+interface IPostTitleLink extends ILinkProps {
+  post: IPost
+  mode?: ColorMode
+}
+
+export function PostTitleLink({
+  post,
+  mode = 'light',
+  className,
+  ...props
+}: IPostTitleLink) {
   const urls = getPostUrls(post)
 
   return (
@@ -22,6 +35,7 @@ export function PostTitleLink({ post, mode = 'light', className }: IPostProps) {
         //data-underline={true}
         data-mode={mode}
         className={CLS}
+        {...props}
       >
         {post.data.title}
       </BaseLink>

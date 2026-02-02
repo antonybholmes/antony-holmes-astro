@@ -1,9 +1,9 @@
 ---
 title: 'A Temple To Consumerism'
-description: '"This place has everything"'
+description: '"This place has everything".'
 type: post
 # draft: true
-hero: '/assets/images/photos/consumerism.webp'
+hero: 'https://res.cloudinary.com/dilw4nc6h/image/upload/consumerism.webp'
 heroAlt: 'New Oldsmobiles are in early this year.'
 sections:
   - ['Photos']

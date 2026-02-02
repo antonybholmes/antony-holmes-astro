@@ -3,7 +3,7 @@ title: 'Where Have All The Cowboys Gone?'
 description: "It's too quiet..."
 type: post
 # draft: true
-hero: '/assets/images/photos/henry-hudson.webp'
+hero: 'https://res.cloudinary.com/dilw4nc6h/image/upload/henry-hudson.webp'
 heroAlt: 'The Henry Hudson Bridge.'
 sections:
   - ['Photos']

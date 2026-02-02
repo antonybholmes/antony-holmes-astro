@@ -1,6 +1,6 @@
 ---
 title: '500 Reasons To Invest'
-description: 'Why an S&P 500 fund might be all you need.'
+description: 'Why an S&P 500 fund might be all you need for retirement.'
 authors:
   - 'Antony Holmes'
 sections:
@@ -8,7 +8,7 @@ sections:
 tags:
   - 'Investing'
   - 'Mutual Funds'
-heroAlt: 'This graph is not the stock market.'
+heroAlt: 'No idea what this graph shows.'
 draft: false
 related: []
 added: '2026-01-29'

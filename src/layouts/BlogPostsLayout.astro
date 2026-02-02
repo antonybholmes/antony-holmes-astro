@@ -29,6 +29,7 @@ interface Props extends IPageProps, ICrumbProps {
   // this is used to generate the correct links for pagination
   // and for the "back to section" link
   // this is useful for SEO and readability
+  tab?: string
   root: string
   showTitle?: boolean
   showSectionLinks?: boolean
@@ -44,7 +45,7 @@ let {
   featuredPosts = [],
   page,
   pages,
-
+  tab = 'Blog',
   root,
   showSectionLinks = false,
   mode = 'light',
@@ -60,7 +61,7 @@ const twoColPosts = posts.slice(headPostStart, headPostStart + 2)
 const restPosts = posts.slice(headPostStart + 2)
 ---
 
-<BaseLayout title={pageTitle ?? title} tab="Blog" mode="dark">
+<BaseLayout title={pageTitle ?? title} tab={tab} mode="dark">
   <Fragment slot="main">
     <ContentDiv className="bg-gray-800 py-24">
       <BaseCol className="gap-y-16" slot="main">
@@ -97,14 +98,11 @@ const restPosts = posts.slice(headPostStart + 2)
 
           {
             page === 0 && (
-              // <HeroPosts
-              //   posts={posts as IPost[]}
-              //   showSectionLinks={showSectionLinks}
-              // />
               <LeadPost
                 post={posts[0]}
                 showSectionLinks={showSectionLinks}
                 mode="dark"
+                client:only="react"
               />
             )
           }
@@ -119,6 +117,7 @@ const restPosts = posts.slice(headPostStart + 2)
               posts={twoColPosts}
               showSectionLinks={showSectionLinks}
               className="border-border/50 border-t pt-16"
+              client:only="react"
             />
           )
         }
@@ -129,6 +128,7 @@ const restPosts = posts.slice(headPostStart + 2)
               posts={restPosts}
               showSectionLinks={showSectionLinks}
               className="border-border/50 border-t pt-16"
+              client:only="react"
             />
           )
         }

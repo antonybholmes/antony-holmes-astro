@@ -5,7 +5,9 @@ import { BaseCol } from '@layout/base-col'
 
 import { getPostExcerpt } from '@/lib/post'
 import { PostAuthorsAndDate } from './hero-post-small'
-import { PostImage } from './post-image'
+
+import { useState } from 'react'
+import { BasePostImage } from './base-post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
 
@@ -35,28 +37,42 @@ export function LeadPost({
   showSectionLinks = true,
   mode = 'light',
 }: IProps) {
-  const date = post.data.added
-
-  //{post.data.description}
+  const [hover, setHover] = useState(false)
 
   return (
     <article
-      className={cn('grid grid-cols-1 lg:grid-cols-5 gap-8', className)}
+      className={cn('grid grid-cols-1 lg:grid-cols-5', className)}
       data-mode={mode}
     >
       {post.data.resolvedHero && (
-        <PostImage
+        <BasePostImage
           post={post}
           className={cn('lg:hidden col-span-3', imgClassName)}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          data-hover={hover}
         />
       )}
 
       <BaseCol
         className={cn('gap-y-2 -translate-y-1 col-span-2', innerClassName)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
       >
-        <BaseCol>
-          {showSectionLinks && <PostSectionLink post={post} />}
-          <PostTitleLink post={post} className={headerClassName} mode={mode} />
+        <BaseCol className="pt-8 lg:pt-0 pr-8">
+          {showSectionLinks && (
+            <PostSectionLink
+              post={post}
+              onMouseEnter={() => setHover(false)}
+              onMouseLeave={() => setHover(true)}
+            />
+          )}
+          <PostTitleLink
+            post={post}
+            className={headerClassName}
+            mode={mode}
+            data-hover={hover}
+          />
         </BaseCol>
         {showDescription && (
           <p
@@ -70,13 +86,22 @@ export function LeadPost({
           </p>
         )}
 
-        <PostAuthorsAndDate post={post} showAvatar={showAvatar} mode={mode} />
+        <PostAuthorsAndDate
+          post={post}
+          showAvatar={showAvatar}
+          mode={mode}
+          onMouseEnter={() => setHover(false)}
+          onMouseLeave={() => setHover(true)}
+        />
       </BaseCol>
 
       {post.data.resolvedHero && (
-        <PostImage
+        <BasePostImage
           post={post}
           className={cn('hidden lg:block col-span-3', imgClassName)}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          data-hover={hover}
         />
       )}
     </article>
