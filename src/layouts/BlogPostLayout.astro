@@ -1,16 +1,14 @@
 ---
 import { render } from 'astro:content'
 
-import FormattedDate from '../components/FormattedDate.astro'
-
 import { VCenterRow } from '@/components/layout/v-center-row'
 import { TableOfContents } from '@/components/toc'
 import { Calendar, Minus, Plus } from 'lucide-react'
 
 import { Breadcrumb } from '@/components/breadcrumb'
+import { FormattedDate } from '@/components/formatted-date'
 import FormattedReadTime from '@/components/FormattedReadTime.astro'
 import { BaseCol } from '@/components/layout/base-col'
-import { BaseRow } from '@/components/layout/base-row'
 import ContentDiv from '@/components/layout/ContentDiv.astro'
 import SidebarDiv from '@/components/layout/SidebarDiv.astro'
 import { ThemeLink } from '@/components/link/theme-link'
@@ -166,44 +164,12 @@ const dateAdded = post.data.added ? post.data.added : new Date()
     <ContentDiv colCls="lg:w-1/2">
       <BaseCol slot="main" className="gap-y-8">
         <BaseCol className="gap-y-4 text-sm">
-          <BaseRow className="items-start justify-between gap-x-2">
-            <BaseCol className="gap-y-4">
-              <CompactAvatars people={post.data.authors ?? []} />
-
-              <VCenterRow
-                data-mode="light"
-                className="text-foreground/50 gap-x-5 data-[mode=dark]:text-white"
-              >
-                <VCenterRow className="gap-x-2">
-                  <Calendar
-                    data-mode="light"
-                    className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
-                    strokeWidth={1.5}
-                  />
-                  <FormattedDate date={dateAdded} />
-                </VCenterRow>
-
-                <FormattedReadTime
-                  readingTime={remarkPluginFrontmatter.readingTime}
-                />
-              </VCenterRow>
-
-              {
-                post.data.updated &&
-                  post.data.updated.getTime() > post.data.added.getTime() && (
-                    <span
-                      data-mode="light"
-                      class="text-foreground/50 gap-x-2 italic data-[mode=dark]:text-white"
-                    >
-                      Updated on {format(post.data.updated, 'MMM dd, yyyy')}
-                    </span>
-                  )
-              }
-            </BaseCol>
+          <VCenterRow className="justify-between gap-x-2">
+            <CompactAvatars people={post.data.authors ?? []} />
 
             {
               post.data.links && (
-                <ul class="flex flex-col items-start gap-y-1">
+                <ul class="flex flex-row items-center gap-x-4">
                   {post.data.links.map(link => (
                     <li>
                       <ThemeLink
@@ -218,7 +184,37 @@ const dateAdded = post.data.added ? post.data.added : new Date()
                 </ul>
               )
             }
-          </BaseRow>
+          </VCenterRow>
+
+          <VCenterRow
+            data-mode="light"
+            className="text-foreground/50 gap-x-5 data-[mode=dark]:text-white"
+          >
+            <VCenterRow className="gap-x-2">
+              <Calendar
+                data-mode="light"
+                className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
+                strokeWidth={1.5}
+              />
+              <FormattedDate date={dateAdded} />
+            </VCenterRow>
+
+            <FormattedReadTime
+              readingTime={remarkPluginFrontmatter.readingTime}
+            />
+          </VCenterRow>
+
+          {
+            post.data.updated &&
+              post.data.updated.getTime() > post.data.added.getTime() && (
+                <span
+                  data-mode="light"
+                  class="text-foreground/50 gap-x-2 italic data-[mode=dark]:text-white"
+                >
+                  Updated on {format(post.data.updated, 'MMM dd, yyyy')}
+                </span>
+              )
+          }
 
           <SideTags tags={post.data.tags} className="md:hidden" />
         </BaseCol>
