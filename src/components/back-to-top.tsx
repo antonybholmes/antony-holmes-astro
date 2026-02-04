@@ -3,7 +3,7 @@ import { ChevronUp } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const SCROLL_THRESHOLD = 300
-const SCALE = 1.1
+//const SCALE = 1.1
 
 const CLS = `fixed bottom-6 right-6 z-50
         h-12 w-12 rounded-full aspect-square
@@ -14,7 +14,7 @@ const CLS = `fixed bottom-6 right-6 z-50
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
-  const [hover, setHover] = useState(false)
+  //const [hover, setHover] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -32,13 +32,13 @@ export default function BackToTop() {
     })
   }
 
-  const parentScale = hover ? SCALE : 1
+  //const parentScale = hover ? SCALE : 1
 
   return (
     <button
       onClick={scrollToTop}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      //onMouseEnter={() => setHover(true)}
+      //onMouseLeave={() => setHover(false)}
       title="Back to top"
       className={cn(
         CLS,
@@ -46,11 +46,13 @@ export default function BackToTop() {
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 -translate-y-2 pointer-events-none'
       )}
-      style={{ transform: `scale(${parentScale})` }}
+      //style={{ transform: `scale(${parentScale})` }}
     >
       <ChevronUp
         className="transition-all duration-300 ease-in-out w-6 h-6 aspect-square"
-        style={{ transform: `scale(${1 / parentScale})` }}
+        style={{
+          transform: `translateY(${visible ? '0' : '-0.4rem'})`,
+        }}
       />
     </button>
   )
