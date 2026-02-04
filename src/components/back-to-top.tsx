@@ -46,13 +46,13 @@ export default function BackToTop() {
           ? 'opacity-100 translate-y-0 pointer-events-auto'
           : 'opacity-0 -translate-y-2 pointer-events-none'
       )}
-      //style={{ transform: `scale(${parentScale})` }}
+      style={{ transform: `scale(${visible ? '1' : '0.7'})` }}
     >
       <ChevronUp
-        className="transition-all duration-300 ease-in-out w-6 h-6 aspect-square"
-        style={{
-          transform: `translateY(${visible ? '0' : '-0.4rem'})`,
-        }}
+        className="w-6 h-6 aspect-square"
+        // style={{
+        //   transform: `translateY(${visible ? '0' : '-0.4rem'})`,
+        // }}
       />
     </button>
   )
