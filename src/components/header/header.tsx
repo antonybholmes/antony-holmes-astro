@@ -16,7 +16,7 @@ import { HeaderLink } from './header-link'
 import { Logo } from './logo'
 
 const MAX_BLUR = 16
-const SCROLL_THRESHOLD = 100
+const SCROLL_THRESHOLD = 50
 
 const RSS_CLS = `h-5 w-5 trans-color aspect-square
   data-[mode=dark]:text-white data-[mode=trans]:text-white 
