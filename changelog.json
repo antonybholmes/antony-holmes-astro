@@ -635,6 +635,12 @@
           "msg": "Bug fixes and updates.",
           "date": "2026-01-31T05:18:28.393Z"
         }
+      ],
+      "Changed": [
+        {
+          "msg": "Animations for scrolling",
+          "date": "2026-02-05T02:53:30.891Z"
+        }
       ]
     },
     "author": "Antony Holmes",

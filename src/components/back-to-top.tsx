@@ -1,6 +1,7 @@
 import { cn } from '@/lib/shadcn-utils'
+import { gsap } from 'gsap'
 import { ChevronUp } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const SCROLL_THRESHOLD = 300
 //const SCALE = 1.1
@@ -9,12 +10,14 @@ const CLS = `fixed bottom-6 right-6 z-50
         h-12 w-12 rounded-full aspect-square
         bg-foreground/70 backdrop-blur-sm text-background
         flex items-center justify-center
-        shadow-lg transition-all duration-300 ease-in-out
-        hover:bg-foreground/90 cursor-pointer`
+        shadow-lg hover:bg-foreground/90 cursor-pointer`
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
   //const [hover, setHover] = useState(false)
+
+  const buttonRef = useRef(null)
+  const arrowRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => {
@@ -32,27 +35,40 @@ export default function BackToTop() {
     })
   }
 
-  //const parentScale = hover ? SCALE : 1
+  useEffect(() => {
+    gsap.to([buttonRef.current, arrowRef.current], {
+      y: visible ? 0 : '-0.5rem',
+      opacity: visible ? 1 : 0,
+      scale: visible ? 1 : 0.8,
+      duration: 0.4,
+      ease: 'back.out',
+      stagger: 0.05,
+    })
+  }, [visible])
 
   return (
     <button
+      ref={buttonRef}
       onClick={scrollToTop}
       //onMouseEnter={() => setHover(true)}
       //onMouseLeave={() => setHover(false)}
       title="Back to top"
       className={cn(
         CLS,
-        visible
-          ? 'opacity-100 translate-y-0 pointer-events-auto'
-          : 'opacity-0 -translate-y-2 pointer-events-none'
+        visible ? 'pointer-events-auto' : 'pointer-events-none'
       )}
-      style={{ transform: `scale(${visible ? '1' : '0.8'})` }}
+      // style={{
+      //   transform: `scale(${visible ? '1' : '0.8'})`,
+      //   opacity: visible ? 1 : 0,
+      // }}
     >
       <ChevronUp
-        className="w-6 h-6 aspect-square transition-transform duration-300 ease-in-out"
-        style={{
-          transform: `rotate(${visible ? '0' : '180deg'})`,
-        }}
+        ref={arrowRef}
+        className="w-6 h-6 aspect-square "
+        // style={{
+        //   transform: `scale(${visible ? 1 : 1.25})`,
+        //   opacity: visible ? 1 : 0,
+        // }}
       />
     </button>
   )

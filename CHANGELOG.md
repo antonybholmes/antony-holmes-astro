@@ -6,6 +6,10 @@
 
 - Added finance section to front page of blog.
 
+### Changed
+
+- Animations for scrolling.
+
 ### Fixed
 
 - Bug fixes and updates.

@@ -5,8 +5,9 @@ import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
 
 import type { IClassProps } from '@/interfaces/class-props'
+import { gsap } from 'gsap'
 import { Rss } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ContentDiv } from '../layout/content-div'
 import { BaseLink } from '../link/base-link'
 import { Search } from '../search'
@@ -15,14 +16,18 @@ import { HeaderLink } from './header-link'
 import { Logo } from './logo'
 
 const MAX_BLUR = 16
+const SCROLL_THRESHOLD = 100
+
 const RSS_CLS = `h-5 w-5 trans-color aspect-square
   data-[mode=dark]:text-white data-[mode=trans]:text-white 
-  data-[mode=light]:group-hover:text-orange-400 data-[mode=dark]:group-hover:text-orange-400`
+  data-[mode=light]:group-hover:text-orange-400 
+  data-[mode=dark]:group-hover:text-orange-400`
 
-const HEADER_BG_CLS = `absolute top-0 left-2 right-2 z-0 h-15 rounded-xl 
-  data-[mode=light]:bg-background/50 data-[mode=dark]:bg-black/50
-  data-[mode=light]:border data-[mode=light]:border-border/20
-  transition-color transition-shadow duration-300 ease-in-out`
+const HEADER_BG_CLS = `absolute top-0 w-[calc(100%-1rem)]  xl:w-[calc(60%+2rem)] 
+  left-1/2 -translate-x-1/2
+  z-0 h-15 rounded-xl data-[mode=light]:bg-background/50 
+  data-[mode=dark]:bg-black/50 data-[mode=light]:border 
+  data-[mode=light]:border-border/20`
 
 interface Props extends IClassProps {
   tab?: string
@@ -34,12 +39,16 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
   const [blur, setBlur] = useState(0)
   const [opacity, setOpacity] = useState(0)
   const [addShadow, setAddShadow] = useState(false)
+  const [visible, setVisible] = useState(false)
+
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const onScroll = () => {
       setBlur(Math.min(MAX_BLUR, Math.floor(window.scrollY / 10)))
       setOpacity(Math.max(0, window.scrollY / 100))
       setAddShadow(window.scrollY > 100)
+      setVisible(window.scrollY > SCROLL_THRESHOLD)
     }
 
     window.addEventListener('scroll', onScroll)
@@ -50,6 +59,17 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    gsap.to(ref.current, {
+      //y: visible ? 0 : '-0.5rem',
+      opacity: visible ? 1 : 0,
+      scale: visible ? 1 : 0.95,
+      duration: 0.5,
+      ease: 'back.out',
+      backdropFilter: `blur(${visible ? MAX_BLUR : 0}px)`,
+    })
+  }, [visible])
+
   return (
     <header
       data-mode={mode}
@@ -58,12 +78,13 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
       )}
     >
       <span
+        ref={ref}
         data-mode={mode}
         className={cn(HEADER_BG_CLS, { 'shadow-xl': addShadow }, className)}
-        style={{ backdropFilter: `blur(${blur}px)`, opacity }}
+        //style={{ backdropFilter: `blur(${blur}px)`, opacity }}
       />
 
-      <ContentDiv className="grow items-center z-10" padding="px-5">
+      <ContentDiv className="grow items-center z-10 relative" padding="px-5">
         <div
           slot="main"
           className="grid grow grid-cols-5 items-center justify-between"
