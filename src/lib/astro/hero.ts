@@ -52,14 +52,14 @@ export function getHeroImage(
 
   if (
     sections?.some(s => s.includes('Phone')) ||
-    tags.some(s => s.includes('Phone'))
+    tags?.some(s => s.includes('Phone'))
   ) {
     return fallbackImages['phone'][hash % fallbackImages['phone'].length]
   }
 
   if (
     sections?.some(s => s.includes('Bank') || s.includes('Credit')) ||
-    tags.some(s => s.includes('Bank'))
+    tags?.some(s => s.includes('Bank'))
   ) {
     return fallbackImages['bank'][hash % fallbackImages['bank'].length]
   }
