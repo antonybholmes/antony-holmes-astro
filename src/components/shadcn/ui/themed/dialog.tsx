@@ -75,6 +75,8 @@ export const contentVariants = cva(
       position: {
         center: 'top-[50%] translate-y-[-50%]',
         '1/10': 'top-[10%]',
+        '20': 'top-20',
+        '1/5': 'top-[20%]',
         '1/4': 'top-[25%]',
         '1/3': 'top-[33%]',
       },
