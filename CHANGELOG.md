@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.5 (Feb, 2026)
+
+### Fixed
+
+- Bug fixes and updates.
+
+
 ## 3.4 (Jan, 2026)
 
 ### Added
