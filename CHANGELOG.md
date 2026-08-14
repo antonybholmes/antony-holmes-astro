@@ -1,5 +1,39 @@
 # Changelog
 
+## 3.5 (Feb, 2026)
+
+### Fixed
+
+- Bug fixes and updates.
+
+
+## 3.4 (Jan, 2026)
+
+### Added
+
+- Added finance section to front page of blog.
+
+### Changed
+
+- Animations for scrolling.
+
+### Fixed
+
+- Bug fixes and updates.
+
+
+## 3.3 (Jan, 2026)
+
+### Changed
+
+- Reorganized posts, new blog layout, custom blog pages with descriptions.
+- Standardized and simplified pagination.
+
+### Fixed
+
+- Bug fixes and updates.
+
+
 ## 3.2 (Jan, 2026)
 
 ### Fixed

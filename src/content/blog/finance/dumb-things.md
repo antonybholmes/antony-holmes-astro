@@ -9,7 +9,7 @@ tags:
   - 'Finance'
   - 'Investing'
 hero: 'money'
-heroCaption: "Don't keep all your money in a briefcase though."
+heroAlt: "Don't keep all your money in a briefcase though."
 draft: false
 related: []
 added: '2022-05-25'

@@ -5,7 +5,9 @@ import { BaseCol } from '@layout/base-col'
 
 import { getPostExcerpt } from '@/lib/post'
 import { PostAuthorsAndDate } from './hero-post-small'
-import { PostImage } from './post-image'
+
+import { useState } from 'react'
+import { BasePostImage } from './base-post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
 
@@ -37,38 +39,67 @@ export function HeroPost({
 }: IProps) {
   const date = post.data.added
 
-  //{post.data.description}
+  const [hover, setHover] = useState(false)
 
   return (
     <article
       className={cn(
-        'flex flex-col gap-y-4 group pb-6 data-[mode=light]:bg-muted/30 data-[mode=dark]:bg-white/5 rounded-xl overflow-hidden',
+        'flex flex-col data-[mode=light]:bg-muted/30 data-[mode=dark]:bg-white/5 rounded-xl overflow-hidden',
         className
       )}
       data-mode={mode}
     >
       {post.data.resolvedHero && (
-        <PostImage post={post} className={imgClassName} />
+        <BasePostImage
+          post={post}
+          className={imgClassName}
+          data-hover={hover}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        />
       )}
 
-      <BaseCol className={cn('gap-y-2 px-4', innerClassName)}>
-        <BaseCol>
-          {showSectionLinks && <PostSectionLink post={post} />}
-          <PostTitleLink post={post} className={headerClassName} mode={mode} />
-        </BaseCol>
-        {showDescription && (
-          <p
-            data-mode={mode}
-            className={cn(
-              'text-foreground/50 data-[mode=dark]:text-white/50',
-              contentClassName
-            )}
-          >
-            {getPostExcerpt(post)}
-          </p>
+      <BaseCol
+        className={cn('p-4', innerClassName)}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        {showSectionLinks && (
+          <PostSectionLink
+            post={post}
+            onMouseEnter={() => setHover(false)}
+            onMouseLeave={() => setHover(true)}
+          />
         )}
+        <BaseCol className="gap-y-2">
+          <PostTitleLink
+            post={post}
+            className={headerClassName}
+            mode={mode}
+            data-hover={hover}
+          />
 
-        <PostAuthorsAndDate post={post} showAvatar={showAvatar} mode={mode} />
+          {showDescription && (
+            <p
+              data-mode={mode}
+              className={cn(
+                'text-foreground/50 data-[mode=dark]:text-white/50',
+                contentClassName
+              )}
+            >
+              {getPostExcerpt(post)}
+            </p>
+          )}
+        </BaseCol>
+
+        <PostAuthorsAndDate
+          post={post}
+          showAvatar={showAvatar}
+          mode={mode}
+          onMouseEnter={() => setHover(false)}
+          onMouseLeave={() => setHover(true)}
+          className="pt-4"
+        />
       </BaseCol>
     </article>
   )

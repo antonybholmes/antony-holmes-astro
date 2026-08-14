@@ -1,9 +1,10 @@
 import { BLOG_SLUG, HEADING_FONT } from '@/consts'
-import { sectionToSlug } from '@lib/post'
+import type { ILinkProps } from '@/interfaces/link-props'
+import { sectionToSlug, type IPost } from '@lib/post'
 import { cn } from '@lib/shadcn-utils'
-import type { IPostProps } from './post-tags'
 
-interface IProps extends IPostProps {
+interface IProps extends ILinkProps {
+  post: IPost
   textSize?: string
 }
 
@@ -11,6 +12,7 @@ export function PostSectionLink({
   post,
   textSize = 'text-base',
   className,
+  ...props
 }: IProps) {
   if (!post.data.sections || post.data.sections.length === 0) {
     return null
@@ -31,11 +33,12 @@ export function PostSectionLink({
       aria-label={`Read more ${sectionName} posts`}
       title={`Read more ${sectionName} posts`}
       className={cn(
-        'inline-block text-gradient font-medium',
+        'text-gradient font-medium hover:underline',
         textSize,
         className
       )}
       style={{ fontFamily: HEADING_FONT }}
+      {...props}
     >
       {sectionName}
     </a>

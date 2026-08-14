@@ -1,5 +1,5 @@
 ---
-description: Redesigning the website using Astro.
+description: Redesigning my website using Astro.
 sections:
   - ['News']
 type: post

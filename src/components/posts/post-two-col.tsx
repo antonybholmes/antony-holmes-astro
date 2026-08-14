@@ -15,7 +15,7 @@ export function PostTwoCol({
   title,
   href,
   posts,
-  maxPosts = 9,
+  maxPosts = 6,
   showSectionLinks = true,
   children,
 }: IProps) {
@@ -25,6 +25,7 @@ export function PostTwoCol({
         {posts.slice(0, maxPosts).map((post, index) => {
           return (
             <HeroPostSmall
+              showBorder={index > 1}
               post={post}
               key={index}
               showSectionLinks={showSectionLinks}

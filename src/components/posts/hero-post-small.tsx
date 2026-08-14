@@ -8,11 +8,16 @@ import { CompactAvatars } from '@components/people/compact-avatars'
 
 import type { ColorMode } from '@/interfaces/color-mode'
 import { getPostExcerpt, type IPost } from '@/lib/post'
-import { PostImage } from './post-image'
+import { Circle } from 'lucide-react'
+
+import type { IDivProps } from '@/interfaces/div-props'
+import { useState } from 'react'
+import { BasePostImage } from './base-post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
 
 interface IProps extends IPostProps {
+  showBorder?: boolean
   showAvatar?: boolean
   showAuthors?: boolean
   showDescription?: boolean
@@ -21,6 +26,7 @@ interface IProps extends IPostProps {
 
 export function HeroPostSmall({
   post,
+  showBorder = false,
   showAvatar = false,
   showAuthors = false,
   showDescription = true,
@@ -29,39 +35,53 @@ export function HeroPostSmall({
   className,
 }: IProps) {
   const hasImage = Boolean(post.data.resolvedHero)
+  const [hover, setHover] = useState(false)
 
   return (
     <article
+      id="hero-post-small"
+      data-show-border={showBorder}
       data-mode={mode}
       className={cn(
-        'group grid grid-cols-1 gap-y-4 data-[mode=dark]:text-white',
+        '  grid grid-cols-1 gap-y-4 data-[mode=dark]:text-white data-[show-border=true]:pt-6 data-[show-border=true]:border-border/50 data-[show-border=true]:border-t',
         hasImage && 'md:grid-cols-3 md:gap-x-5',
         className
       )}
     >
       {post.data.resolvedHero && (
-        <PostImage
+        <BasePostImage
           post={post}
           className="col-span-1 aspect-video md:aspect-4/3 rounded-lg"
+          data-hover={hover}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
         />
       )}
-      <BaseCol className="col-span-2 gap-y-1">
+      <BaseCol
+        className="col-span-2 gap-y-2 -translate-y-1"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
         <BaseCol>
-          {showSectionLinks && <PostSectionLink post={post} />}
+          {showSectionLinks && (
+            <PostSectionLink
+              post={post}
+              onMouseEnter={() => setHover(false)}
+              onMouseLeave={() => setHover(true)}
+            />
+          )}
           <PostTitleLink
             post={post}
             className="text-xl font-semibold"
             mode={mode}
+            data-hover={hover}
           />
         </BaseCol>
-        {/* <CondComp cond={showDescription}>
-          <HTML html={post.excerpt} className="text-sm text-gray-600" />
-        </CondComp> */}
 
         {showDescription && (
           <p
             data-mode={mode}
-            className="text-foreground/50 data-[mode=dark]:text-white/50"
+            className="text-foreground/40 data-[mode=dark]:text-white/50 text-base"
           >
             {getPostExcerpt(post)}
           </p>
@@ -72,10 +92,19 @@ export function HeroPostSmall({
           showAuthors={showAuthors}
           showAvatar={showAvatar}
           mode={mode}
+          onMouseEnter={() => setHover(false)}
+          onMouseLeave={() => setHover(true)}
         />
       </BaseCol>
     </article>
   )
+}
+
+interface IPostAuthorsAndDate extends IDivProps {
+  post: IPost
+  showAuthors?: boolean
+  showAvatar?: boolean
+  mode?: ColorMode
 }
 
 export function PostAuthorsAndDate({
@@ -83,14 +112,17 @@ export function PostAuthorsAndDate({
   showAuthors = true,
   showAvatar = true,
   mode = 'light',
-}: {
-  post: IPost
-  showAuthors?: boolean
-  showAvatar?: boolean
-  mode?: ColorMode
-}) {
+  className,
+  ...props
+}: IPostAuthorsAndDate) {
   return (
-    <div className="flex flex-col xl:flex-row gap-x-2 gap-y-1 xl:items-center text-sm">
+    <div
+      className={cn(
+        'flex flex-row gap-x-2 gap-y-2 items-center text-sm',
+        className
+      )}
+      {...props}
+    >
       {showAuthors && (
         <>
           <CompactAvatars
@@ -98,9 +130,10 @@ export function PostAuthorsAndDate({
             showImages={showAvatar}
             mode={mode}
           />
-          <span
+          <Circle
             data-mode={mode}
-            className="hidden xl:block rounded-full w-1 h-1 aspect-square shrink-0 grow-0 bg-foreground/40 data-[mode=dark]:bg-white/40"
+            className="fill-foreground/50 data-[mode=dark]:fill-white/40"
+            size={8}
           />
         </>
       )}

@@ -28,9 +28,9 @@ export function getReviewPaths() {
  * @param posts
  * @returns
  */
-export function sortPostsByDateDesc(
-  posts: CollectionEntry<'blog'>[]
-): CollectionEntry<'blog'>[] {
+export function sortPostsByDateDesc<T extends CollectionEntry<'blog'>>(
+  posts: T[]
+): T[] {
   const ret = posts
     .filter(post => !post.id.endsWith('_index.md'))
 
@@ -139,7 +139,8 @@ export function addHeroToPost(entry: CollectionEntry<'blog'>): PostWithHero {
       resolvedHero: getHeroImage(
         entry.data.title,
         entry.data.hero,
-        entry.data.sections ?? []
+        entry.data.sections ?? [],
+        entry.data.tags ?? []
       ),
     },
   }
@@ -269,11 +270,11 @@ export function getTagPaths(tag: string): string[] {
   return ret
 }
 
-export function getAuthorPostMap(
-  posts: CollectionEntry<'blog'>[],
+export function getAuthorPostMap<T extends CollectionEntry<'blog'>>(
+  posts: T[],
   max: number = -1
-): Map<string, CollectionEntry<'blog'>[]> {
-  const tagMap = new Map<string, CollectionEntry<'blog'>[]>()
+): Map<string, T[]> {
+  const tagMap = new Map<string, T[]>()
 
   posts
     .filter(post => post.data.authors && post.data.authors.length > 0)

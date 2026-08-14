@@ -95,9 +95,7 @@ export const THEME_MENU_CLS = cn(
   'border border-transparent focus:bg-theme/50 focus:text-white focus:fill-white focus:stroke-white',
   'data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50',
   'fill-foreground stroke-foreground px-1',
-  'hover:bg-theme/50 hover:text-white hover:fill-white hover:stroke-white',
-  'data-[state=checked]:bg-theme/40 data-[state=checked]:stroke-white data-[state=checked]:text-white',
-  'data-[checked=true]:bg-theme/40 data-[checked=true]:stroke-white data-[checked=true]:text-white'
+  'hover:bg-theme/50 hover:text-white hover:fill-white hover:stroke-white'
 )
 
 export const DROPDOWN_MENU_ICON_CONTAINER_CLS =
@@ -526,7 +524,8 @@ export type ButtonState = 'active' | 'inactive'
 // }
 
 export interface IButtonProps
-  extends ComponentProps<'button'>,
+  extends
+    ComponentProps<'button'>,
     VariantProps<typeof buttonVariants>,
     //Component<typeof buttonVariants2>,
     //IButtonVariantProps,

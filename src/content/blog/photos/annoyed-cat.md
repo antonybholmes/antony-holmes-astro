@@ -3,7 +3,7 @@ title: "What you lookin' at?"
 description: '"Enough with the photos already. Just quit it."'
 type: post
 # draft: true
-hero: '/assets/images/photos/annoyed-cat.webp'
+hero: 'https://res.cloudinary.com/dilw4nc6h/image/upload/annoyed-cat.webp'
 heroAlt: 'Could I BE any more interested?'
 sections:
   - ['Photos']
@@ -17,4 +17,4 @@ tags:
 
 Mr Sprinkles loves having his photo taken, which is why there is always a camera jammed in his face 24/7. Just look at his joy from knowing there is yet another photo of him doing nothing from a slightly different angle to the previous ten photos of him doing nothing.
 
-_His days consist of dreams punctuated by exquisite dalliances with food from a tin that stinks_
+_Life is but a series of meaningless distractions punctuated by exquisite dalliances with food from a tin that stinks_

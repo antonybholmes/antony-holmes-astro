@@ -1,9 +1,9 @@
 ---
 import { BLOG_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
-import { getSortedPosts } from '@/lib/astro/post'
-import { paginate } from '@/lib/paginate'
-import type { CollectionEntry } from 'astro:content'
+import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
+import { paginate, type AstroPage } from '@/lib/paginate'
+import { produce } from 'immer'
 
 // 1. Generate all unique tags for static paths
 export async function getStaticPaths() {
@@ -23,18 +23,7 @@ export async function getStaticPaths() {
     }
   }
 
-  let paths: {
-    params: { slug?: string }
-    props: {
-      title: string
-      pageTitle: string
-      showTitle: boolean
-      root: string
-      page: number
-      pages: number
-      data: CollectionEntry<'blog'>[]
-    }
-  }[] = []
+  let paths: AstroPage<PostWithHero>[] = []
 
   for (const year of yearSet) {
     const slug = year.toString()
@@ -49,16 +38,11 @@ export async function getStaticPaths() {
       })
 
     paths = paths.concat(
-      paginate(filteredPosts, slug).map(p => ({
-        ...p,
-        props: {
-          ...p.props,
-          title: `Posts from ${year}`,
-          pageTitle: `Posts from ${year} - Page ${p.props.page + 1} of ${p.props.pages}`,
-          showTitle: true,
-          root: `${BLOG_SLUG}/year/${slug}`,
-        },
-      }))
+      paginate(filteredPosts, { slug, title: `Posts from ${year}` }).map(p =>
+        produce(p, draft => {
+          draft.props.root = `${BLOG_SLUG}/year/${slug}`
+        })
+      )
     )
   }
 
@@ -69,11 +53,11 @@ const { title, pageTitle, page, root, pages, data } = Astro.props
 ---
 
 <BlogPostsLayout
-  title={title}
+  title={title!}
   pageTitle={pageTitle}
   page={page}
   pages={pages}
   posts={data}
-  root={root}
+  root={root!}
   showTitle={true}
 />

@@ -14,7 +14,10 @@ export function ArrowLink({
 
   return (
     <BaseLink
-      className={cn('inline-flex flex-row items-center group', className)}
+      className={cn(
+        'inline-flex gap-x-1 flex-row items-center group',
+        className
+      )}
       onMouseEnter={() => {
         setHover('on')
       }}

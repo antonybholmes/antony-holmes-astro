@@ -26,7 +26,7 @@ export const PageTitle = ({
 
     <h1
       data-mode={mode}
-      className="font-bold text-4xl data-[mode=dark]:text-white"
+      className="font-bold text-5xl data-[mode=dark]:text-white"
     >
       {title}
     </h1>

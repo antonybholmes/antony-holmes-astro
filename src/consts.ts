@@ -34,6 +34,7 @@ export const READ_TIME_SLUG = 'read-time'
 export const PAGE_1_SLUG = 'page-1'
 export const PEOPLE_SLUG = '/people'
 export const BLOG_SLUG = '/blog'
+export const PHOTOS_SLUG = '/photos'
 
 export const YEAR = new Date().getFullYear()
 
@@ -97,6 +98,8 @@ export const POST_EXCERPT_MARKER = '<!-- more -->'
 
 export const SVG_CRISP_EDGES = 'crispEdges'
 
+export const PHOTOS_DESCRIPTION = `A shadowy flight into the dangerous world of a man who occasionally takes random photos.`
+
 export interface IDialogParams {
   id: string
   params?: IFieldMap
@@ -131,10 +134,10 @@ export const MENU_ITEMS: {
     ariaLabel: 'Blog',
   },
   // {
-  //   label: 'Projects',
-  //   href: '/projects',
-  //   icon: 'projects',
-  //   ariaLabel: 'Projects',
+  //   label: 'Photos',
+  //   path: `/photos`,
+  //   icon: 'photos',
+  //   ariaLabel: 'Photos',
   // },
 
   {

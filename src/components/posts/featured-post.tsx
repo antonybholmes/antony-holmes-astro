@@ -6,7 +6,8 @@ import { BaseCol } from '@layout/base-col'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { getPostExcerpt } from '@/lib/post'
 import { PostAuthorsAndDate } from './hero-post-small'
-import { PostImage } from './post-image'
+
+import { BasePostImage } from './base-post-image'
 import { PostSectionLink } from './post-section-link'
 import { PostTitleLink } from './post-title-link'
 
@@ -63,7 +64,7 @@ export function FeaturedPost({
       </BaseCol>
 
       {post.data.resolvedHero && (
-        <PostImage post={post} className={imgClassName} />
+        <BasePostImage post={post} className={imgClassName} />
       )}
     </article>
   )

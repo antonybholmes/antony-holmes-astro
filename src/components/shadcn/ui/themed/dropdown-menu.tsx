@@ -286,7 +286,7 @@ export function DropdownMenuLabel({
   return (
     <DropdownMenuPrimitive.Label
       ref={ref}
-      className={cn('px-[2.25rem] pt-2 pb-1 text-xs font-semibold', className)}
+      className={cn('px-9 pt-2 pb-1 text-xs font-semibold', className)}
       {...props}
     />
   )

@@ -80,7 +80,7 @@ function SelectedPageButton({
     <BasePageButton
       page={page}
       href={href}
-      className="bg-theme text-white"
+      className="bg-theme/75 hover:bg-theme text-white"
       {...props}
     />
   )

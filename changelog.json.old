@@ -597,5 +597,53 @@
     },
     "author": "Antony Holmes",
     "date": "2026-01-18T04:29:29.418Z"
+  },
+  {
+    "version": "3.3",
+    "messages": {
+      "Changed": [
+        {
+          "msg": "Standardized and simplified pagination",
+          "date": "2026-01-25T01:31:04.166Z"
+        },
+        {
+          "msg": "Reorganized posts, new blog layout, custom blog pages with descriptions.",
+          "date": "2026-01-31T05:01:09.116Z"
+        }
+      ],
+      "Fixed": [
+        {
+          "msg": "Bug fixes and updates.",
+          "date": "2026-01-26T03:28:55.012Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-01-25T01:31:04.166Z"
+  },
+  {
+    "version": "3.4",
+    "messages": {
+      "Added": [
+        {
+          "msg": "Added finance section to front page of blog",
+          "date": "2026-01-31T05:06:27.537Z"
+        }
+      ],
+      "Fixed": [
+        {
+          "msg": "Bug fixes and updates.",
+          "date": "2026-01-31T05:18:28.393Z"
+        }
+      ],
+      "Changed": [
+        {
+          "msg": "Animations for scrolling",
+          "date": "2026-02-05T02:53:30.891Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-01-31T05:06:27.537Z"
   }
 ]

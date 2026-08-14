@@ -24,6 +24,10 @@ const news = allPosts.filter(post =>
 const engineering = allPosts.filter(post =>
   post.data.sections?.some(section => section.includes('Engineering'))
 )
+
+const finance = allPosts.filter(post =>
+  post.data.sections?.some(section => section.includes('Finance'))
+)
 ---
 
 <BaseLayout
@@ -40,6 +44,7 @@ const engineering = allPosts.filter(post =>
         pages={pages}
         slot="main"
         mode="dark"
+        client:only="react"
       />
     </ContentDiv>
     <ContentDiv>
@@ -53,6 +58,7 @@ const engineering = allPosts.filter(post =>
           posts={allPosts as IPost[]}
           page={0}
           pages={pages}
+          client:only="react"
         >
           <ArrowLink
             href="/blog/latest"
@@ -63,7 +69,7 @@ const engineering = allPosts.filter(post =>
           </ArrowLink>
         </PostCol>
 
-        <PostSectionCol section="All" postMap={postMap} client:visible />
+        <PostSectionCol section="All" postMap={postMap} client:only="react" />
       </section>
     </ContentDiv>
     <ContentDiv>
@@ -75,6 +81,7 @@ const engineering = allPosts.filter(post =>
         page={0}
         pages={pages}
         showSectionLinks={false}
+        client:only="react"
       >
         <ArrowLink
           href="/blog/engineering"
@@ -89,12 +96,34 @@ const engineering = allPosts.filter(post =>
     <ContentDiv>
       <PostTwoCol
         slot="main"
+        title="Finance"
+        href="/blog/finance"
+        posts={finance}
+        page={0}
+        pages={pages}
+        showSectionLinks={false}
+        client:only="react"
+      >
+        <ArrowLink
+          href="/blog/finance"
+          className="hover:text-theme trans-color text-sm"
+          stroke="stroke-foreground group-hover:stroke-theme"
+        >
+          More finance
+        </ArrowLink>
+      </PostTwoCol>
+    </ContentDiv>
+
+    <ContentDiv>
+      <PostTwoCol
+        slot="main"
         title="News"
         href="/blog/news"
         posts={news as IPost[]}
         page={0}
         pages={pages}
         showSectionLinks={false}
+        client:only="react"
       >
         <ArrowLink
           href="/blog/news"

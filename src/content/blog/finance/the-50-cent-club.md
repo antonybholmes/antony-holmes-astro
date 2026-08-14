@@ -7,7 +7,7 @@ authors:
 sections:
   - ['Finance']
 tags:
-  - 'Finance'
+  - 'Investing'
   - 'Saving'
 heroAlt: "This stock image doesn't even show a 50 cent coin"
 draft: false
