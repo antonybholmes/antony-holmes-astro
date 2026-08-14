@@ -15,8 +15,11 @@ export function SideTags({
         className
       )}
     >
-      {tags.map(tag => (
-        <li className="border-border/50 hover:border-border trans-color rounded-full border px-3 py-1.5">
+      {tags.map((tag, ti) => (
+        <li
+          key={ti}
+          className="border-border/50 hover:border-border trans-color rounded-full border px-3 py-1.5"
+        >
           <ThemeLink
             startingColor="text-foreground"
             endingColor="text-theme"

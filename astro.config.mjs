@@ -1,4 +1,5 @@
 // @ts-check
+import { unified } from '@astrojs/markdown-remark'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
@@ -17,8 +18,10 @@ export default defineConfig({
   },
   markdown: {
     // Applied to .md and .mdx files
-    remarkPlugins: [remarkReadingTime, remarkSectionize],
-    rehypePlugins: [rehypeSlug],
+    processor: unified({
+      remarkPlugins: [remarkReadingTime, remarkSectionize],
+      rehypePlugins: [rehypeSlug],
+    }),
   },
   //base: '/',
   output: 'static',
