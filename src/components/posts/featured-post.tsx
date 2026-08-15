@@ -23,6 +23,7 @@ interface IProps extends IPostProps {
   dateBelow?: boolean
   showSectionLinks?: boolean
   mode?: ColorMode
+  root?: string
 }
 
 export function FeaturedPost({
@@ -36,16 +37,13 @@ export function FeaturedPost({
   showAvatar = true,
   showSectionLinks = true,
   mode = 'light',
+  root,
 }: IProps) {
-  const date = post.data.added
-
-  //{post.data.description}
-
   return (
     <article className={cn('grid grid-cols-5 gap-4 group', className)}>
       <BaseCol className={cn('gap-y-2 col-span-2', innerClassName)}>
         <BaseCol className="gap-y-1">
-          {showSectionLinks && <PostSectionLink post={post} />}
+          {showSectionLinks && <PostSectionLink post={post} root={root} />}
           <PostTitleLink post={post} className={headerClassName} mode={mode} />
         </BaseCol>
         {showDescription && (

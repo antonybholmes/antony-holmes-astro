@@ -23,6 +23,8 @@ export async function getStaticPaths() {
     })
   )
 
+  console.log('paths', paths)
+
   return paths
 }
 
@@ -40,7 +42,7 @@ using multiple programming languages. Here's a few of my insights, experiences, 
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root=`${BLOG_SLUG}/latest`
+  root={`${BLOG_SLUG}/engineering`}
   showTitle={true}
   showSectionLinks={true}
 />

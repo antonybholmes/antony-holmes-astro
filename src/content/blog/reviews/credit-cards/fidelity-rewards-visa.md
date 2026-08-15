@@ -3,7 +3,7 @@ product: Fidelity Rewards Visa Signature
 description: My review of the Fidelity Rewards Visa Signature credit card.
 sections:
   - ['Credit Cards']
-type: review
+type: 'review'
 rating: 4.5
 pros:
   - 'Unlimited 2% cash back.'

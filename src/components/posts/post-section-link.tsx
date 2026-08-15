@@ -1,4 +1,4 @@
-import { BLOG_SLUG, HEADING_FONT } from '@/consts'
+import { HEADING_FONT } from '@/consts'
 import type { ILinkProps } from '@/interfaces/link-props'
 import { sectionToSlug, type IPost } from '@lib/post'
 import { cn } from '@lib/shadcn-utils'
@@ -6,12 +6,14 @@ import { cn } from '@lib/shadcn-utils'
 interface IProps extends ILinkProps {
   post: IPost
   textSize?: string
+  root?: string
 }
 
 export function PostSectionLink({
   post,
   textSize = 'text-base',
   className,
+  root = '/',
   ...props
 }: IProps) {
   if (!post.data.sections || post.data.sections.length === 0) {
@@ -25,7 +27,7 @@ export function PostSectionLink({
   const sectionName = section[section.length - 1]!
 
   // create the href for the post section link
-  const href = `${BLOG_SLUG}/${sectionToSlug(section)}`
+  const href = `${root}/${sectionToSlug(section)}` //`${BLOG_SLUG}/${sectionToSlug(section)}`
 
   return (
     <a

@@ -80,6 +80,10 @@ export function sectionToParts(section: string): string[] {
 //   return `${BLOG_SLUG}/${getSlug(post.id)}`
 // }
 
+export function getPostFlatUrl(post: IPost, root: string = BLOG_SLUG): string {
+  return `${root}/${getPostFlatSlug(post)} `
+}
+
 export function getPostUrls(post: IPost, root: string = BLOG_SLUG): string[] {
   const paths: string[] = getPostSlugs(post).map(path => {
     return `${root}/${path}`
@@ -92,8 +96,21 @@ export function sectionToSlug(section: string[]): string {
   return section.map(s => getUrlFriendlyTag(s)).join(PATH_SEP)
 }
 
+/**
+ * Give all posts a flat slug based on their id.
+ * This is useful for generating URLs that are independent of the file structure.
+ *
+ * @param post
+ * @returns
+ */
+export function getPostFlatSlug(post: IPost): string {
+  return post.id.split('/').pop() || post.id
+}
+
 export function getPostSlugs(post: IPost): string[] {
   const id = post.id.split('/').pop()!
+
+  console.log('getPostSlugs', post.id, id, post.data.sections)
 
   if (!post.data.sections || post.data.sections.length === 0) {
     return [id]

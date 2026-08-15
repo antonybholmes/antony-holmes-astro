@@ -3,7 +3,7 @@ product: Cricket
 description: Cricket.
 sections:
   - ['Finance']
-type: review
+type: 'review'
 rating: 4
 pros:
   - Good value plans.

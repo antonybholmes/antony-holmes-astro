@@ -5,6 +5,7 @@ import { RestPost } from './rest-post'
 export function RestPosts({
   posts,
   showSectionLinks = true,
+  root,
   className,
 }: IPostsProps) {
   return (
@@ -16,6 +17,7 @@ export function RestPosts({
               post={post}
               className={cn(index > 0 && 'pt-6 border-t border-border/50')}
               showSectionLinks={showSectionLinks}
+              root={root}
             />
           </li>
         ))}
@@ -29,6 +31,7 @@ export function RestPosts({
               post={post}
               className={cn(index > 1 && 'pt-6 border-t border-border/50')}
               showSectionLinks={showSectionLinks}
+              root={root}
             />
           </li>
         ))}
@@ -40,6 +43,7 @@ export function RestPosts({
               post={post}
               className={cn(index > 2 && 'pt-6 border-t border-border/50')}
               showSectionLinks={showSectionLinks}
+              root={root}
             />
           </li>
         ))}

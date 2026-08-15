@@ -3,7 +3,7 @@ product: 'Mint Mobile'
 description: 'Minty fresh cell service for everyone.'
 sections:
   - ['Finance']
-type: review
+type: 'review'
 rating: 4.5
 pros:
   - '$22 for 10GB service.'

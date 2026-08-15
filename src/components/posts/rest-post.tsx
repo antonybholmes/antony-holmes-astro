@@ -15,6 +15,7 @@ interface IProps extends IPostProps {
   showAuthors?: boolean
   showDescription?: boolean
   showSectionLinks?: boolean
+  root?: string
 }
 
 export function RestPost({
@@ -24,6 +25,7 @@ export function RestPost({
   showDescription = true,
   showSectionLinks = false,
   mode = 'light',
+  root,
   className,
 }: IProps) {
   const [hover, setHover] = useState(false)
@@ -39,6 +41,7 @@ export function RestPost({
       {post.data.resolvedHero && (
         <BasePostImage
           post={post}
+          root={root}
           className="aspect-video w-full rounded-xl"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
@@ -54,6 +57,7 @@ export function RestPost({
           {showSectionLinks && (
             <PostSectionLink
               post={post}
+              root={root}
               onMouseEnter={() => setHover(false)}
               onMouseLeave={() => setHover(true)}
             />

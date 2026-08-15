@@ -1,25 +1,27 @@
 import type { ColorMode } from '@/interfaces/color-mode'
-import { getPostUrls, type IPost } from '@/lib/post'
+import { getPostFlatUrl, type IPost } from '@/lib/post'
 import { cn } from '@lib/shadcn-utils'
 import type { ComponentProps } from 'react'
 
 export interface IPostImageProps extends ComponentProps<'a'> {
   post: IPost
+  root?: string
   mode?: ColorMode
   imgClassName?: string
 }
 
 export function BasePostImage({
   post,
+  root,
   imgClassName,
   className,
   ...props
 }: IPostImageProps) {
-  const urls = getPostUrls(post)
+  const url = getPostFlatUrl(post)
 
   return (
     <a
-      href={urls[0]}
+      href={url}
       aria-label={post.data.title}
       className={cn('overflow-hidden block z-10 group', className)}
       {...props}

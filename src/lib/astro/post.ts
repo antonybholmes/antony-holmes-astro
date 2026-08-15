@@ -51,8 +51,14 @@ export function sortPostsByDateDesc<T extends CollectionEntry<'blog'>>(
   return ret
 }
 
-export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
+export async function getPublishedPosts(
+  types: string[] = []
+): Promise<CollectionEntry<'blog'>[]> {
   let posts = await getCollection('blog')
+
+  if (types.length > 0) {
+    posts = posts.filter(post => types.includes(post.data.type))
+  }
 
   // filter out posts that are drafts
   // this is useful for development so we can see all posts
@@ -82,47 +88,49 @@ export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
   return posts
 }
 
-export async function getOrderedSections(): Promise<CollectionEntry<'blog'>[]> {
-  let posts = await getCollection('blog')
+// export async function getOrderedSections(): Promise<CollectionEntry<'blog'>[]> {
+//   let posts = await getCollection('blog')
 
-  // filter out posts that are drafts
-  // this is useful for development so we can see all posts
-  // but in production we only want to show published posts
-  // and not drafts
-  // this is also useful for the blog page where we want to show
-  // all posts but not drafts
-  // so we can use this function to get all posts
-  // and then filter out drafts
-  // in the component that renders the posts
-  // this way we can still see drafts in development
-  // but not in production
+//   // filter out posts that are drafts
+//   // this is useful for development so we can see all posts
+//   // but in production we only want to show published posts
+//   // and not drafts
+//   // this is also useful for the blog page where we want to show
+//   // all posts but not drafts
+//   // so we can use this function to get all posts
+//   // and then filter out drafts
+//   // in the component that renders the posts
+//   // this way we can still see drafts in development
+//   // but not in production
 
-  // keep index posts
-  posts = posts
-    .filter(post => post.id.endsWith('_index.md'))
-    .sort((a, b) => {
-      let d = (a.data.order ?? 0) - (b.data.order ?? 0)
+//   // keep index posts
+//   posts = posts
+//     .filter(post => post.id.endsWith('_index.md'))
+//     .sort((a, b) => {
+//       let d = (a.data.order ?? 0) - (b.data.order ?? 0)
 
-      if (d !== 0) {
-        return d
-      }
+//       if (d !== 0) {
+//         return d
+//       }
 
-      // dates equal so compare names
-      return a.data.title.localeCompare(b.data.title)
-    })
+//       // dates equal so compare names
+//       return a.data.title.localeCompare(b.data.title)
+//     })
 
-  // fix id to flatten the path
-  // posts = posts.map(post => {
-  //   // flatten the path to just the slug
-  //   post.id = post.id.split('/').pop() ?? post.id
-  //   return post
-  // })
+//   // fix id to flatten the path
+//   // posts = posts.map(post => {
+//   //   // flatten the path to just the slug
+//   //   post.id = post.id.split('/').pop() ?? post.id
+//   //   return post
+//   // })
 
-  return posts
-}
+//   return posts
+// }
 
-export async function getSortedPosts(): Promise<PostWithHero[]> {
-  return addHeroToPosts(sortPostsByDateDesc(await getPublishedPosts()))
+export async function getSortedPosts(
+  types: string[] = []
+): Promise<PostWithHero[]> {
+  return addHeroToPosts(sortPostsByDateDesc(await getPublishedPosts(types)))
 }
 
 export type PostWithHero = CollectionEntry<'blog'> & {

@@ -5,7 +5,7 @@ authors:
   - 'Antony Holmes'
 sections:
   - ['Credit Cards']
-type: review
+type: 'review'
 rating: 4
 pros:
   - Easy to get approved for.

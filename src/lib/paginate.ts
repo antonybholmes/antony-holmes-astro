@@ -1,6 +1,8 @@
 import { RECORDS_PER_PAGE } from '@/consts'
 import type { CollectionEntry } from 'astro:content'
 
+export type PageType = 'posts' | 'post' | 'review'
+
 export type AstroPage<T> = {
   props: {
     title?: string
@@ -18,7 +20,6 @@ export type AstroPage<T> = {
   params: { slug: string | undefined }
 }
 
-export type PageType = 'posts' | 'post'
 
 export interface IPageProps {
   page: number

@@ -2,14 +2,11 @@
 import { getSortedPosts } from '@lib/astro/post'
 import { paginate } from '@lib/paginate'
 
-import { BLOG_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { produce } from 'immer'
 
-const ROOT = `${BLOG_SLUG}/reviews/films`
-
 export async function getStaticPaths() {
-  let posts = await getSortedPosts()
+  let posts = await getSortedPosts(['review'])
 
   posts = posts.filter(post =>
     post.data.sections?.some(section => section.includes('Films'))
@@ -21,7 +18,7 @@ export async function getStaticPaths() {
   const paths = paginate(otherPosts, { title: 'Films' }).map(p =>
     produce(p, draft => {
       draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
-      draft.props.root = `${BLOG_SLUG}/reviews/films`
+      draft.props.root = '/reviews/films'
     })
   )
 
@@ -42,7 +39,7 @@ This is a look at an eclectic mix of old films that I enjoy.`
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root={ROOT}
+  root="/reviews"
   showTitle={true}
   showSectionLinks={true}
 />

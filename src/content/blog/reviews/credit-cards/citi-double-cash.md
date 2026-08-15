@@ -3,7 +3,7 @@ product: Citi Double Cash
 description: My review of the Citi Double Cash credit card.
 sections:
   - ['Credit Cards']
-type: review
+type: 'review'
 rating: 4
 pros:
   - Unlimited 2% cash back.

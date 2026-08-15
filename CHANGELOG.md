@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.4 (Aug, 2026)
+
+### Fixed
+
+- Flattened urls.
+
+
 ## 3.2 (Aug, 2026)
 
 ### Fixed

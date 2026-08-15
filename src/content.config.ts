@@ -1,18 +1,20 @@
 import { glob } from 'astro/loaders'
-import { defineCollection, z } from 'astro:content'
+import { z } from 'astro/zod'
+import { defineCollection } from 'astro:content'
 import { parseISO } from 'date-fns'
 
 const blog = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
   loader: glob({ base: './src/content/blog', pattern: '**/{*.md,*.mdx}' }),
   // Type-check frontmatter using a schema
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
       // Transform string to Date object
       title: z.string(),
       description: z.string().optional(),
       order: z.number().optional(),
       authors: z.array(z.string()).optional(),
+      type: z.enum(['post', 'review']).default('post'),
       // Transform string to Date object
       added: z.string().transform<Date>(str => parseISO(str)),
       updated: z

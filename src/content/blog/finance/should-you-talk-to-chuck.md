@@ -3,7 +3,7 @@ product: Schwab
 description: My review of Schwab.
 sections:
   - ['Finance']
-type: review
+type: 'review'
 rating: 4.2
 pros:
   - No cost investing.
