@@ -11,6 +11,7 @@ import { getSortedPosts } from '@/lib/astro/post'
 import { getPageItems } from '@/lib/paginate'
 import type { IPost } from '@/lib/post'
 
+import { Signature } from '@/components/header/signature'
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
 import { ChevronRight } from 'lucide-react'
@@ -33,41 +34,33 @@ const P_CLS =
           >
           </span> -->
           <span
-            class="trans-color absolute top-0 left-0 z-0 h-full w-full bg-black/10 group-hover:bg-black/5"
-          >
-          </span>
+            class="trans-color absolute top-0 left-0 z-0 h-full w-full bg-black/15 group-hover:bg-black/10"
+          ></span>
 
           <div
-            class="relative z-10 flex flex-col items-center gap-8 px-8 text-white lg:justify-between 2xl:flex-row"
+            class="relative z-10 flex flex-col items-center gap-8 px-8 text-white 2xl:flex-row"
           >
-            <BaseCol className="gap-y-2">
-              <h1
-                class="flex items-center gap-x-2 text-center text-4xl font-bold text-white/50 md:text-5xl lg:text-left"
-              >
-                <ChevronRight
-                  size={32}
-                  className="cursor-chevron hidden stroke-white lg:inline-block"
-                />
-                Hi there, I'm{' '}
-                <a href="/people/antony-holmes" class="text-white">Antony</a>
-              </h1>
-
-              <!-- <h2 class="text-center text-2xl md:text-3xl lg:text-left">
-                {SITE_SUBTITLE}
-              </h2> -->
-            </BaseCol>
-
             <RoundedImage
               className="aspect-square h-54 w-54"
               src="/assets/images/people/antony-holmes.webp"
               title="Me by the Hudson River"
             />
+
+            <h1
+              class="flex items-center gap-x-2 text-center text-4xl font-bold text-white/50 md:text-5xl lg:text-left"
+            >
+              <ChevronRight
+                size={32}
+                className="cursor-chevron hidden stroke-white lg:inline-block"
+              />
+              Hi there, I'm{' '}
+              <a href="/people/antony-holmes" class="text-white">Antony</a>
+            </h1>
           </div>
 
           <section
-            class="relative z-10 mx-auto flex w-9/10 flex-col gap-y-1 text-justify text-lg text-white lg:w-4/5"
+            class="relative z-10 mx-auto flex flex-col gap-y-1 text-justify text-lg text-white"
           >
-            <!-- <p class="text-3xl font-bold">Hi there! I'm Antony.</p> -->
             <p class={P_CLS}>
               That's me posing by the mighty Hudson River for no particular
               reason, except maybe to look cool wearing Risky Business
@@ -76,20 +69,20 @@ const P_CLS =
               Go, Typescript, and React.
             </p>
             <p class={P_CLS}>
-              I made this site with love, to handcraft something in my own
-              personal style that doesn't involve asking AI agents to do all the
-              work for me, and to get high{' '}
+              I made this site with love, to handcraft something that doesn't
+              involve AI slop. All this rubbish is me. Also, I wanted to get
+              high{' '}
               <a
                 href="https://pagespeed.web.dev/analysis/https-antonyholmes-dev/pzyo54v1fb?form_factor=desktop"
                 >Lighthouse</a
               >{' '}
-              scores. I think I mostly succeeded.
+              scores. I think I've mostly succeeded.
             </p>
 
             <p class={P_CLS}>
-              I write about tech, projects, transport, finance, really just
-              whatever takes my fancy. I have an aptly named publications page
-              where you can view all of the scientific literature I have
+              I write about tech, projects, books, transport, finance, really
+              just whatever takes my fancy. I have an aptly named publications
+              page where you can view all of the scientific literature I've
               written, primarily focused on cancer genetics.
             </p>
 
@@ -98,28 +91,35 @@ const P_CLS =
               movie contains the music of Kraftwerk.
             </p>
           </section>
+
+          <section
+            class="relative z-10 flex w-full flex-row items-center justify-center"
+          >
+            <span title="Fun fact, this is not actually my signature.">
+              <Signature className="w-24 fill-white stroke-white" />
+            </span>
+          </section>
         </Fragment>
-      </ContentDiv>
 
-      <ContentDiv className="gap-y-4">
-        <section id="latest" class="flex flex-col gap-y-8" slot="main">
-          <h2 class="border-border border-b py-2! text-2xl font-bold">
-            Latest
-          </h2>
+        <ContentDiv className="gap-y-4">
+          <section id="latest" class="flex flex-col gap-y-8" slot="main">
+            <h2 class="border-border border-b py-2! text-2xl font-bold">
+              Latest
+            </h2>
 
-          <BaseCol className="gap-y-24">
-            <HeroPosts posts={posts as IPost[]} />
+            <BaseCol className="gap-y-24">
+              <HeroPosts posts={posts as IPost[]} />
 
-            <RestPosts posts={posts.slice(4) as IPost[]} />
+              <RestPosts posts={posts.slice(4) as IPost[]} />
 
-            <!-- <PagePagination page={0} pages={pages} root={root} /> -->
-          </BaseCol>
-        </section>
+              <!-- <PagePagination page={0} pages={pages} root={root} /> -->
+            </BaseCol>
+          </section>
+        </ContentDiv>
       </ContentDiv>
     </Fragment>
-  </main>
 
-  <!-- <PostSection title="Latest posts">
+    <!-- <PostSection title="Latest posts">
       <BaseLink
         href="/blog/latest"
         data-underline={true}
@@ -131,4 +131,5 @@ const P_CLS =
         />
       </BaseLink>
     </PostSection> -->
+  </main>
 </BaseLayout>

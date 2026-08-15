@@ -5,17 +5,23 @@ import { useEffect, useState } from 'react'
 import { BaseRow } from './layout/base-row'
 import { BaseLink } from './link/base-link'
 
+interface IQuote {
+  quote: string
+  url: string
+}
+
 export function RandomQuote() {
-  const [quote, setQuote] = useState<{ quote: string; url: string } | null>(
-    null
-  )
+  const [quotes, setQuotes] = useState<IQuote[]>([])
+
+  const [quote, setQuote] = useState<IQuote | null>(null)
 
   async function fetchQuote() {
-    const quotes =
-      await httpFetch.getJson<{ quote: string; url: string }[]>(
-        '/api/quotes.json'
-      )
+    const quotes = await httpFetch.getJson<IQuote[]>('/api/quotes.json')
+    setQuotes(quotes)
+    getQuote(quotes)
+  }
 
+  async function getQuote(quotes: IQuote[]) {
     const randomIndex = Math.floor(Math.random() * quotes.length)
     setQuote({
       quote: quotes[randomIndex].quote,
@@ -44,7 +50,7 @@ export function RandomQuote() {
         <span> {`"${quote.quote}"`} </span>
       )}
       <button
-        onClick={() => fetchQuote()}
+        onClick={() => getQuote(quotes)}
         className="group group-hover:opacity-100 opacity-0 transition-opacity cursor-pointer"
         title="Another delicious quote, perhaps?"
       >

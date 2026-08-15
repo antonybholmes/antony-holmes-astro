@@ -3,8 +3,8 @@ import { DraftingCompass } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
 const LOGO_CLS = `flex w-10 h-10 aspect-square rounded-2xl bg-blue-500 
-  hover:bg-sky-700 flex-row items-center justify-center font-bold 
-  text-lg text-white hover:rounded-sm transition-all duration-500 ease-in-out
+  hover:bg-sky-600 flex-row items-center justify-center font-bold 
+  text-xl text-white/90 hover:rounded-sm transition-all duration-500 ease-in-out
   relative group overflow-hidden`
 
 export function Logo() {
@@ -36,9 +36,10 @@ export function Logo() {
 
   return (
     <a ref={ref} href="/" className={LOGO_CLS} aria-label="Home">
-      <DraftingCompass className="absolute left-1/2 top-1/2 -translate-1/2 group-hover:opacity-0 group-hover:scale-80 transition-all duration-500 ease-in-out" />
-      <span className="absolute left-1/2 top-1/2 -translate-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-80 transition-all duration-500 ease-in-out">
-        ah
+      <DraftingCompass className="absolute left-1/2 top-1/2 -translate-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-80 transition-all duration-500 ease-in-out" />
+      <span className="absolute left-1/2 top-1/2 -translate-1/2 group-hover:opacity-0 group-hover:scale-80 transition-all duration-500 ease-in-out tracking-wide">
+        <span>a</span>
+        <span className="font-normal">h</span>
       </span>
     </a>
   )
