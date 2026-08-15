@@ -105,40 +105,39 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
         </div>
       </div>
 
-      <div class="grid grid-cols-1 items-start gap-y-4 text-xs md:grid-cols-4">
-        <span class="font-medium">
+      <div class="grid grid-cols-1 items-start gap-y-4 text-xs lg:grid-cols-4">
+        <span class="text-center font-medium lg:text-left">
           &copy; {today.getFullYear()}
-          {SITE_AUTHOR}. All rights reserved.
+          {SITE_AUTHOR}
         </span>
-        <BaseCol className="col-span-2 items-center gap-y-3">
-          <div class="flex flex-col items-center gap-x-4 gap-y-2 md:flex-row">
-            <BaseLink
-              href="/sitemap"
-              title="View site map"
-              className="hover:underline"
-            >
-              Site Map
-            </BaseLink>
 
-            <BaseLink
-              href="/privacy"
-              title="View privacy policy"
-              className="hover:underline"
-            >
-              Privacy Policy
-            </BaseLink>
+        <VCenterRow className="col-span-2 justify-center gap-x-4 gap-y-2">
+          <BaseLink
+            href="/sitemap"
+            title="View site map"
+            className="hover:underline"
+          >
+            Site Map
+          </BaseLink>
 
-            <BaseLink
-              href="/terms"
-              title="View terms of use"
-              className="hover:underline"
-            >
-              Terms of Use
-            </BaseLink>
-          </div>
-        </BaseCol>
+          <BaseLink
+            href="/privacy"
+            title="View privacy policy"
+            className="hover:underline"
+          >
+            Privacy Policy
+          </BaseLink>
 
-        <VCenterRow className="justify-center gap-x-4 md:justify-end">
+          <BaseLink
+            href="/terms"
+            title="View terms of use"
+            className="hover:underline"
+          >
+            Terms of Use
+          </BaseLink>
+        </VCenterRow>
+
+        <VCenterRow className="justify-center gap-x-4 lg:justify-end">
           <a href={GITHUB_URL} target={TARGET_BLANK} title="My GitHub">
             <GitHubIcon />
           </a>
