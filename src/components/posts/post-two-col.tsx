@@ -9,6 +9,7 @@ interface IProps extends IPostsProps, IChildrenProps {
   title: string
   href?: string
   maxPosts?: number
+  root?: string
 }
 
 export function PostTwoCol({
@@ -17,6 +18,7 @@ export function PostTwoCol({
   posts,
   maxPosts = 6,
   showSectionLinks = true,
+  root,
   children,
 }: IProps) {
   return (
@@ -27,6 +29,7 @@ export function PostTwoCol({
             <HeroPostSmall
               showBorder={index > 1}
               post={post}
+              root={root}
               key={index}
               showSectionLinks={showSectionLinks}
               className={cn(

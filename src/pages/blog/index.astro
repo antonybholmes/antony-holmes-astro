@@ -28,6 +28,8 @@ const engineering = allPosts.filter(post =>
 const finance = allPosts.filter(post =>
   post.data.sections?.some(section => section.includes('Finance'))
 )
+
+const ROOT = '/blog'
 ---
 
 <BaseLayout
@@ -45,6 +47,7 @@ const finance = allPosts.filter(post =>
         slot="main"
         mode="dark"
         client:only="react"
+        root={ROOT}
       />
     </ContentDiv>
     <ContentDiv>
@@ -59,6 +62,7 @@ const finance = allPosts.filter(post =>
           page={0}
           pages={pages}
           client:only="react"
+          root={ROOT}
         >
           <ArrowLink
             href="/blog/latest"
@@ -69,7 +73,12 @@ const finance = allPosts.filter(post =>
           </ArrowLink>
         </PostCol>
 
-        <PostSectionCol section="All" postMap={postMap} client:only="react" />
+        <PostSectionCol
+          section="All"
+          postMap={postMap}
+          client:only="react"
+          root={ROOT}
+        />
       </section>
     </ContentDiv>
     <ContentDiv>
@@ -81,6 +90,7 @@ const finance = allPosts.filter(post =>
         page={0}
         pages={pages}
         showSectionLinks={false}
+        root={ROOT}
         client:only="react"
       >
         <ArrowLink
@@ -98,7 +108,8 @@ const finance = allPosts.filter(post =>
         slot="main"
         title="Finance"
         href="/blog/finance"
-        posts={finance}
+        posts={finance as IPost[]}
+        root={ROOT}
         page={0}
         pages={pages}
         showSectionLinks={false}
@@ -123,6 +134,7 @@ const finance = allPosts.filter(post =>
         page={0}
         pages={pages}
         showSectionLinks={false}
+        root={ROOT}
         client:only="react"
       >
         <ArrowLink

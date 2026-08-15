@@ -697,5 +697,18 @@
     },
     "author": "Antony Holmes",
     "date": "2026-08-15T18:43:09.125Z"
+  },
+  {
+    "version": "3.6",
+    "messages": {
+      "Fixed": [
+        {
+          "msg": "Fix flattened url routes",
+          "date": "2026-08-15T21:28:04.225Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-08-15T21:28:04.225Z"
   }
 ]

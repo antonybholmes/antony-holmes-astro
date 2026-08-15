@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.6 (Aug, 2026)
+
+### Fixed
+
+- Fix flattened url routes.
+
+
 ## 3.4 (Aug, 2026)
 
 ### Fixed

@@ -15,9 +15,10 @@ interface IProps extends IClassProps {
   section: string
   href?: string
   postMap: Map<string, any[]>
+  root?: string
 }
 
-export function PostSectionCol({ section, href, postMap }: IProps) {
+export function PostSectionCol({ section, href, postMap, root }: IProps) {
   const [_section, setSection] = useState(section)
   const [open, setOpen] = useState(false)
 
@@ -32,6 +33,7 @@ export function PostSectionCol({ section, href, postMap }: IProps) {
       title="Popular"
       href={href}
       posts={posts ?? []}
+      root={root}
       page={0}
       pages={0}
       showSectionLinks={_section === 'All'}

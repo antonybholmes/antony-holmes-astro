@@ -13,8 +13,9 @@ added: '2026-01-02'
 tags:
   - 'New York City'
   - 'Cats'
+  - 'Photos'
 ---
 
 Mr Sprinkles loves having his photo taken, which is why there is always a camera jammed in his face 24/7. Just look at his joy from knowing there is yet another photo of him doing nothing from a slightly different angle to the previous ten photos of him doing nothing.
 
-_Life is but a series of meaningless distractions punctuated by exquisite dalliances with food from a tin that stinks_
+_Life is but a series of meaningless distractions punctuated by exquisite dalliances with food from a tin that stinks - Me._

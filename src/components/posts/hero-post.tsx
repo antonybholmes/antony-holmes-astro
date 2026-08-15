@@ -23,6 +23,7 @@ interface IProps extends IPostProps {
   dateBelow?: boolean
   showSectionLinks?: boolean
   mode?: 'light' | 'dark'
+  root?: string
 }
 
 export function HeroPost({
@@ -36,6 +37,7 @@ export function HeroPost({
   showAvatar = true,
   showSectionLinks = true,
   mode = 'light',
+  root,
 }: IProps) {
   const date = post.data.added
 
@@ -67,6 +69,7 @@ export function HeroPost({
         {showSectionLinks && (
           <PostSectionLink
             post={post}
+            root={root}
             onMouseEnter={() => setHover(false)}
             onMouseLeave={() => setHover(true)}
           />

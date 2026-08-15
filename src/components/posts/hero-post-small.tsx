@@ -22,6 +22,8 @@ interface IProps extends IPostProps {
   showAuthors?: boolean
   showDescription?: boolean
   showSectionLinks?: boolean
+
+  root?: string
 }
 
 export function HeroPostSmall({
@@ -32,6 +34,7 @@ export function HeroPostSmall({
   showDescription = true,
   showSectionLinks = false,
   mode = 'light',
+  root,
   className,
 }: IProps) {
   const hasImage = Boolean(post.data.resolvedHero)
@@ -66,6 +69,7 @@ export function HeroPostSmall({
           {showSectionLinks && (
             <PostSectionLink
               post={post}
+              root={root}
               onMouseEnter={() => setHover(false)}
               onMouseLeave={() => setHover(true)}
             />

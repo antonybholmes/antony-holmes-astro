@@ -12,6 +12,7 @@ authors:
 added: '2026-01-31'
 tags:
   - 'New York City'
+  - 'Photos'
 ---
 
 The Westfield World Trade Center is certainly an impressive building, but it has a certain sterile, slightly dystopian quality to it.

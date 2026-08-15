@@ -18,6 +18,7 @@ export function HeroPosts({
   posts,
   showSectionLinks = true,
   mode = 'light',
+  root,
 }: IPostsProps) {
   if (!posts || posts.length === 0) {
     return null
@@ -35,6 +36,7 @@ export function HeroPosts({
         post={topPost}
         showSectionLinks={showSectionLinks}
         mode={mode}
+        root={root}
       />
 
       <BasePostCol
@@ -43,6 +45,7 @@ export function HeroPosts({
         showAvatar={false}
         showSectionLinks={showSectionLinks}
         mode={mode}
+        root={root}
       />
     </main>
   )

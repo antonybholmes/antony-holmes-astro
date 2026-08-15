@@ -30,14 +30,14 @@ const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
 ---
 
 <BlogPostsLayout
-  title={title ?? ''}
+  title={title}
   pageTitle={pageTitle}
   description={PHOTOS_DESCRIPTION}
   page={page}
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root=`${BLOG_SLUG}/photos`
+  root={BLOG_SLUG}
   showTitle={true}
   showSectionLinks={true}
   tab="Photos"

@@ -18,6 +18,7 @@ import { PageTitle } from '@/components/page-title'
 import { AvatarImage } from '@/components/people/avatar-image'
 import { HeroPosts } from '@/components/posts/hero-posts'
 import { RestPosts } from '@/components/posts/rest-posts'
+import { BLOG_SLUG } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getAuthorBaseUrl } from '@/lib/astro/author'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
@@ -93,9 +94,12 @@ const { Content } = await render(person)
       <h2 class="border-border border-b py-2 text-2xl font-bold">Latest</h2>
 
       <BaseCol className="gap-y-24">
-        {page === 0 && <HeroPosts posts={data as IPost[]} />}
+        {page === 0 && <HeroPosts posts={data as IPost[]} root={BLOG_SLUG} />}
 
-        <RestPosts posts={(page === 0 ? data.slice(4) : data) as IPost[]} />
+        <RestPosts
+          posts={(page === 0 ? data.slice(4) : data) as IPost[]}
+          root={BLOG_SLUG}
+        />
 
         <PagePagination page={page} pages={pages} root={root} />
       </BaseCol>

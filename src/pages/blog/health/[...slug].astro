@@ -2,19 +2,24 @@
 import { getSortedPosts } from '@lib/astro/post'
 import { paginate } from '@lib/paginate'
 
+import { BLOG_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { produce } from 'immer'
 
 export async function getStaticPaths() {
-  let posts = await getSortedPosts(['review'])
+  let posts = await getSortedPosts()
+
+  posts = posts.filter(post =>
+    post.data.sections?.some(section => section.includes('Health'))
+  )
 
   const featuredPosts = posts.filter(post => post.data.featured)
   const otherPosts = posts.filter(post => !post.data.featured)
 
-  const paths = paginate(otherPosts, { title: 'Reviews' }).map(p =>
+  const paths = paginate(otherPosts, { title: 'Health' }).map(p =>
     produce(p, draft => {
       draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
-      draft.props.root = '/reviews'
+      draft.props.root = `${BLOG_SLUG}/health`
     })
   )
 
@@ -23,7 +28,7 @@ export async function getStaticPaths() {
 
 const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
 
-const description = `A collection of my reviews of things that interest me.`
+const description = `Health is wealth.`
 ---
 
 <BlogPostsLayout
@@ -34,7 +39,7 @@ const description = `A collection of my reviews of things that interest me.`
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root="/reviews"
+  root={BLOG_SLUG}
   showTitle={true}
   showSectionLinks={true}
 />

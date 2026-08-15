@@ -10,6 +10,7 @@ interface IProps extends IPostsProps, IChildrenProps {
   showTopSectionSeparator?: boolean
   maxPosts?: number
   showAvatar?: boolean
+  root?: string
 }
 
 export function BasePostCol({
@@ -18,6 +19,7 @@ export function BasePostCol({
   showSectionLinks = true,
   showAvatar = false,
   mode = 'light',
+  root,
 }: Omit<IProps, 'title'>) {
   return (
     <ul className="flex flex-col gap-y-8">
@@ -32,6 +34,7 @@ export function BasePostCol({
               //className="border border-border/50 shadow-lg rounded-xl overflow-hidden"
               showAvatar={showAvatar}
               mode={mode}
+              root={root}
             />
           </li>
         )
@@ -47,6 +50,7 @@ export function PostCol({
   maxPosts = 3,
   showSectionLinks = true,
   showTopSectionSeparator = false,
+  root,
   children,
 }: IProps) {
   return (
@@ -56,6 +60,7 @@ export function PostCol({
         maxPosts={maxPosts}
         showSectionLinks={showSectionLinks}
         showTopSectionSeparator={showTopSectionSeparator}
+        root={root}
       />
     </PostSection>
   )
