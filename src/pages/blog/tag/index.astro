@@ -40,7 +40,7 @@ const tags = [...tagMap.keys()].sort((a, b) => {
               <ThemeLink href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(tag)}/`}>
                 {tag}
               </ThemeLink>
-              <span class="border-border/50 text-foreground/50 flex h-5 min-w-5 flex-row items-center justify-center rounded-full border px-1 text-xs">
+              <span class="flex h-6 min-w-6 flex-row items-center justify-center rounded-full border bg-blue-400 text-xs text-white">
                 {n.toLocaleString()}
               </span>
             </li>
