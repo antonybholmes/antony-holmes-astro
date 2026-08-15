@@ -3,8 +3,8 @@ import { DraftingCompass } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
 const LOGO_CLS = `flex w-10 h-10 aspect-square rounded-2xl bg-blue-500 
-  hover:bg-violet-400 flex-row items-center justify-center font-bold 
-  text-lg text-white hover:rounded-none transition-all duration-500 ease-in-out
+  hover:bg-sky-700 flex-row items-center justify-center font-bold 
+  text-lg text-white hover:rounded-sm transition-all duration-500 ease-in-out
   relative group overflow-hidden`
 
 export function Logo() {

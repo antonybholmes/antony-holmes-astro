@@ -29,6 +29,7 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: 'Mona Sans',
       cssVariable: '--font-sans',
+      weights: ['400 500 600 700'],
     },
   ],
   //base: '/',

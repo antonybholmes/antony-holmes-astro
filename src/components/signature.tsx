@@ -1,5 +1,4 @@
 import { gsap } from 'gsap'
-import { ChevronUp } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { VCenterRow } from './layout/v-center-row'
 
@@ -11,65 +10,48 @@ export function Signature() {
   const timelineRef = useRef<gsap.core.Timeline | null>(null)
 
   useEffect(() => {
-    if (spanBRef.current && insertRef.current) {
-      timelineRef.current = gsap
-        .timeline()
-        .to(spanBRef.current, {
-          rotate: 0,
+    timelineRef.current = gsap
+      .timeline()
+      .to(
+        antonyRef.current,
+        {
           duration: 1,
-          ease: 'elastic.out',
+          opacity: 0.6,
+          ease: 'power3.inOut',
+        },
+        0
+      )
+      .to(
+        holmesRef.current,
+        {
+          x: '1.5rem',
+          duration: 1,
+          opacity: 0.6,
+          //ease: 'elastic.out',
           //yoyo: true,
           //repeat: -1,
-        })
-        .to(
-          spanBRef.current,
-          {
-            y: '1.25rem',
-            //x: '0.25rem',
-            duration: 1,
-            ease: 'elastic.out',
-            //yoyo: true,
-            //repeat: -1,
-          },
-          '<'
-        )
-        .to(
-          insertRef.current,
-          {
-            y: 3,
-            opacity: 0,
-            duration: 0.3,
-            ease: 'power1.inOut',
-            //yoyo: true,
-            //repeat: -1,
-          },
-          '<'
-        )
-        .to(
-          antonyRef.current,
-          {
-            x: '-0.4rem',
+          ease: 'power3.inOut',
+        },
+        0
+      )
+      .to(
+        spanBRef.current,
+        {
+          opacity: 1,
+          duration: 1,
+          x: 0,
 
-            duration: 1,
-            ease: 'elastic.out',
-            //yoyo: true,
-            //repeat: -1,
-          },
-          '<'
-        )
-        .to(
-          holmesRef.current,
-          {
-            x: '0.4rem',
-            duration: 1,
-            ease: 'elastic.out',
-            //yoyo: true,
-            //repeat: -1,
-          },
-          '<'
-        )
-        .pause()
-    }
+          //fontSize: '2rem',
+          ease: 'power3.inOut',
+          //scale: 1.2,
+          //ease: 'elastic.out',
+          //yoyo: true,
+          //repeat: -1,
+        },
+        0
+      )
+
+      .pause()
 
     return () => {
       // Clean up on unmount
@@ -92,36 +74,42 @@ export function Signature() {
 
   return (
     <VCenterRow
-      className="relative text-2xl font-bold h-8 w-48"
+      className="relative text-2xl font-bold h-8 gap-x-1"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       //style={{ fontFamily: 'var(--font-heading)' }}
     >
       <span
         ref={antonyRef}
-        className="absolute pointer-events-none bg-linear-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent left-0"
+        className="pointer-events-none bg-linear-to-br from-cyan-300 to-blue-600 bg-clip-text text-transparent left-0"
       >
         Antony
       </span>
+      <VCenterRow
+        className="relative gap-x-2"
 
-      <span
-        className="absolute left-20 -top-5 -rotate-30  text-sky-700 pointer-events-none"
-        style={{ fontFamily: 'Dancing Script' }}
-        ref={spanBRef}
+        //style={{ fontFamily: 'var(--font-heading)' }}
       >
-        B
-      </span>
-      <ChevronUp
+        <span
+          className="text-sky-700 pointer-events-none absolute opacity-0"
+          //style={{ fontFamily: 'Dancing Script' }}
+          ref={spanBRef}
+          style={{ transform: 'translateX(0.5rem)' }}
+        >
+          B.
+        </span>
+        {/* <ChevronUp
         className="text-foreground/40 absolute scale-y-150 top-5 h-4 w-4 left-20 pointer-events-none"
         ref={insertRef}
-      />
+      /> */}
 
-      <span
-        ref={holmesRef}
-        className="absolute left-24 pointer-events-none bg-linear-to-br from-cyan-400 to-blue-500 bg-clip-text text-transparent"
-      >
-        Holmes
-      </span>
+        <span
+          ref={holmesRef}
+          className="  pointer-events-none bg-linear-to-br from-cyan-300 to-blue-600 bg-clip-text text-transparent"
+        >
+          Holmes
+        </span>
+      </VCenterRow>
     </VCenterRow>
   )
 }

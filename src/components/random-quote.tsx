@@ -48,7 +48,7 @@ export function RandomQuote() {
         className="group group-hover:opacity-100 opacity-0 transition-opacity cursor-pointer"
         title="Another delicious quote, perhaps?"
       >
-        <RotateCw className="opacity-50 hover:opacity-100 trans-opacitystroke-foreground w-4 h-4 aspect-square" />
+        <RotateCw className="opacity-50 hover:opacity-100 trans-opacity stroke-foreground w-4 h-4 aspect-square animate-[spin_3s_linear_infinite]" />
       </button>
     </BaseRow>
   )
