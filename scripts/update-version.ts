@@ -41,20 +41,20 @@ if (!currentDate || modDate.getTime() > currentDate.getTime()) {
   patch = parseInt(patch)
   build = parseInt(build)
 
-  build++
+  build += 2
 
   //if (build % 10 === 0) {
-  patch++
+  patch += 2
   //}
 
   if (patch > 9) {
     patch = 0
-    minor++
+    minor += 2
   }
 
   if (minor > 9) {
     minor = 0
-    major++
+    major += 2
   }
 
   // update version and modified date to latest file modification date

@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.2 (Aug, 2026)
+
+### Fixed
+
+- Bug fixes and updates.
+
+
 ## 3.3 (Aug, 2026)
 
 ### Fixed

@@ -658,5 +658,18 @@
     },
     "author": "Antony Holmes",
     "date": "2026-02-14T02:45:52.769Z"
+  },
+  {
+    "version": "3.3",
+    "messages": {
+      "Fixed": [
+        {
+          "msg": "Upgraded to astro v7",
+          "date": "2026-08-15T02:17:01.461Z"
+        }
+      ]
+    },
+    "author": "Antony Holmes",
+    "date": "2026-08-15T02:17:01.461Z"
   }
 ]
