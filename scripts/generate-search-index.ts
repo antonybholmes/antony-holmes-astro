@@ -46,8 +46,6 @@ for (const file of files) {
     body: content, // Use plain text or stripped markdown
   }
 
-  console.log(doc)
-
   index.add(doc)
 
   documents.push(doc)

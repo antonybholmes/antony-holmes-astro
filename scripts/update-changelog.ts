@@ -3,8 +3,6 @@ import fs from 'fs'
 
 const args = process.argv.slice(2) // Skip first two: node and script name
 
-console.log('Arguments:', args)
-
 const msg = args[0]!
 const type = args[1]!
 

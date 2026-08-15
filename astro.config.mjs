@@ -1,13 +1,11 @@
 // @ts-check
-import { unified } from '@astrojs/markdown-remark'
+import { satteri } from '@astrojs/markdown-satteri'
 import mdx from '@astrojs/mdx'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
-import { defineConfig } from 'astro/config'
-import rehypeSlug from 'rehype-slug'
-import remarkSectionize from 'remark-sectionize'
-import { remarkReadingTime } from './remark-reading-time.mjs'
+import { readingTime } from '@xsynaptic/satteri-reading-time'
+import { defineConfig, fontProviders } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,13 +14,23 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  // markdown: {
+  //   // Applied to .md and .mdx files
+  //   processor: unified({
+  //     remarkPlugins: [remarkReadingTime, remarkSectionize],
+  //     rehypePlugins: [rehypeSlug],
+  //   }),
+  // },
   markdown: {
-    // Applied to .md and .mdx files
-    processor: unified({
-      remarkPlugins: [remarkReadingTime, remarkSectionize],
-      rehypePlugins: [rehypeSlug],
-    }),
+    processor: satteri({ mdastPlugins: [readingTime()] }),
   },
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: 'Mona Sans',
+      cssVariable: '--font-sans',
+    },
+  ],
   //base: '/',
   output: 'static',
   integrations: [mdx(), sitemap(), react()],

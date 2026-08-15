@@ -4,7 +4,7 @@
 
 @theme {
   --font-*: initial;
-  --font-sans: 'Mona Sans', Inter, Figtree, Helvetica, Arial;
+  --font-sans: var(--font-sans);
 
   --spacing-header: 3rem;
 

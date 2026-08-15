@@ -5,7 +5,7 @@ import { Clock } from 'lucide-react'
 import { VCenterRow } from './layout/v-center-row'
 
 interface Props extends IClassProps {
-  readingTime: { text: string; minutes: number }
+  readingTime: number
 }
 
 const { readingTime } = Astro.props
@@ -17,7 +17,7 @@ const { readingTime } = Astro.props
     className="stroke-foreground/40 w-5 data-[mode=dark]:stroke-white"
     strokeWidth={1.5}
   />
-  <a href={getReadTimeUrl(readingTime.minutes)} class="hover:underline">
-    {readingTime.text}
+  <a href={getReadTimeUrl(readingTime)} class="hover:underline">
+    {readingTime} min{readingTime > 1 ? 's' : ''} read
   </a>
 </VCenterRow>

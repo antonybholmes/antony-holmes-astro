@@ -9,7 +9,7 @@ export async function getTimePostMap<T extends CollectionEntry<'blog'>>(
   for (const post of posts) {
     const { remarkPluginFrontmatter } = await render(post)
 
-    const time = remarkPluginFrontmatter?.readingTime?.minutes ?? 0
+    const time = remarkPluginFrontmatter?.minutesRead ?? 0
 
     if (!tagMap.has(time)) {
       tagMap.set(time, [])

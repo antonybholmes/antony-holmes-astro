@@ -11,6 +11,9 @@ importers:
       '@astrojs/markdown-remark':
         specifier: ^7.2.2
         version: 7.2.2
+      '@astrojs/markdown-satteri':
+        specifier: ^0.3.5
+        version: 0.3.5
       '@astrojs/mdx':
         specifier: ^7.0.5
         version: 7.0.5(@astrojs/markdown-satteri@0.3.5)(astro@7.2.2(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(tsx@4.23.12))
@@ -23,24 +26,6 @@ importers:
       '@astrojs/sitemap':
         specifier: ^3.7.3
         version: 3.7.3
-      '@fontsource/dancing-script':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/figtree':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/geist':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/inter':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/mona-sans':
-        specifier: ^5.3.0
-        version: 5.3.0
-      '@fontsource/poppins':
-        specifier: ^5.3.0
-        version: 5.3.0
       '@radix-ui/react-accordion':
         specifier: ^1.2.20
         version: 1.2.20(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -116,6 +101,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.4
         version: 19.2.4(@types/react@19.2.18)
+      '@xsynaptic/satteri-reading-time':
+        specifier: ^0.2.1
+        version: 0.2.1(satteri@0.9.5)
       astro:
         specifier: ^7.2.2
         version: 7.2.2(@astrojs/markdown-remark@7.2.2)(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@24.13.3)(jiti@2.7.0)(tsx@4.23.12)
@@ -696,24 +684,6 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
-
-  '@fontsource/dancing-script@5.3.0':
-    resolution: {integrity: sha512-/FFbz4ZCNN+eG2a6phkZB41iKmyCC6rq2blA/kG9OFeI3/tpzLNazND1bBdEnogLhpfg7o4NfauTbEEYSpSUGg==}
-
-  '@fontsource/figtree@5.3.0':
-    resolution: {integrity: sha512-/iTcTXL1eRBGhvD7NN9dnKzXzWqDLVZVEUFI9xIxAC1G/hXU8tCyYeXCAuPOuvSYPInFUP7H6KLGgygmDfy1SA==}
-
-  '@fontsource/geist@5.3.0':
-    resolution: {integrity: sha512-u03ftlfVwb05uijq2jGDJ03/HKGqMKaNFk7KOhkpBUex8+BhrAOfMs/XciJ2UUNUX9fEsZbZQld/RWMA2oFU7g==}
-
-  '@fontsource/inter@5.3.0':
-    resolution: {integrity: sha512-RofMylZmjlJEfELXeNHFWBRcSs75rGU/6bV2S2jfnvv/3rPXPGe0LgUJTklcHZ9lM4OZmAVFhcJPnACfb91A3g==}
-
-  '@fontsource/mona-sans@5.3.0':
-    resolution: {integrity: sha512-+K4yLnbbtNfYuR1Znpq9kWEJUYD1W0yQ5DhWde93lC3O8VHXtydoM0bHZBvO6DofIYEXgZlZU14A9yFClisL+g==}
-
-  '@fontsource/poppins@5.3.0':
-    resolution: {integrity: sha512-cms1nM7U6SN8epIV1WMVOV8VsA645aSm3wHfzIQnkk188U341ThbJGSl2Sv54V29gnDbT2arMPfLzvVIIVCceQ==}
 
   '@img/colour@1.1.0':
     resolution: {integrity: sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ==}
@@ -2210,6 +2180,14 @@ packages:
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       vite: ^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
+
+  '@xsynaptic/satteri-reading-time@0.2.1':
+    resolution: {integrity: sha512-ojqz0JPCHF/Z7msXbK1KpAkixKVLdJtjL+gCxOPCnvLOeHslMhynoyL2EDx0bsEjnAkDc7iIATZ875rgeMa8YQ==}
+    peerDependencies:
+      satteri: ^0.9.5
+
+  '@xsynaptic/word-count@1.0.0':
+    resolution: {integrity: sha512-fpWM+G6dNGPhzoftFs1HNs+9o0nTQriXNJ+4MaD0CzVlgYwahHHnBN+ciKsDeV+8hRvRFWmKqB4tdRslAQfJ5w==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -5384,18 +5362,6 @@ snapshots:
 
   '@floating-ui/utils@0.2.10': {}
 
-  '@fontsource/dancing-script@5.3.0': {}
-
-  '@fontsource/figtree@5.3.0': {}
-
-  '@fontsource/geist@5.3.0': {}
-
-  '@fontsource/inter@5.3.0': {}
-
-  '@fontsource/mona-sans@5.3.0': {}
-
-  '@fontsource/poppins@5.3.0': {}
-
   '@img/colour@1.1.0': {}
 
   '@img/sharp-darwin-arm64@0.34.5':
@@ -6724,6 +6690,14 @@ snapshots:
       vite: 8.2.1(@types/node@24.13.3)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.12)
     transitivePeerDependencies:
       - supports-color
+
+  '@xsynaptic/satteri-reading-time@0.2.1(satteri@0.9.5)':
+    dependencies:
+      '@xsynaptic/word-count': 1.0.0
+      satteri: 0.9.5
+      zod: 4.4.3
+
+  '@xsynaptic/word-count@1.0.0': {}
 
   accepts@1.3.8:
     dependencies:

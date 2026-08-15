@@ -1,7 +1,7 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import '@fontsource/dancing-script/400.css'
+//import '@fontsource/dancing-script/400.css'
 
 // import '@fontsource/geist/400.css'
 // import '@fontsource/geist/500.css'
@@ -13,10 +13,10 @@ import '@fontsource/dancing-script/400.css'
 // import '@fontsource/inter/600.css'
 // import '@fontsource/inter/700.css'
 
-import '@fontsource/mona-sans/400.css'
-import '@fontsource/mona-sans/500.css'
-import '@fontsource/mona-sans/600.css'
-import '@fontsource/mona-sans/700.css'
+// import '@fontsource/mona-sans/400.css'
+// import '@fontsource/mona-sans/500.css'
+// import '@fontsource/mona-sans/600.css'
+// import '@fontsource/mona-sans/700.css'
 
 // import '@fontsource/poppins/400.css'
 // import '@fontsource/poppins/500.css'
@@ -41,6 +41,7 @@ import '@fontsource/mona-sans/700.css'
 import '../styles/global.css'
 
 import { fixHeroPath } from '@/lib/astro/hero'
+import { Font } from 'astro:assets'
 import { ClientRouter } from 'astro:transitions'
 import { SITE_TITLE } from '../consts'
 interface Props {
@@ -60,6 +61,8 @@ if (image) {
 const absoluteImage = image ? new URL(image, Astro.url) : ''
 ---
 
+<Font cssVariable="--font-sans" />
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -74,15 +77,10 @@ const absoluteImage = image ? new URL(image, Astro.url) : ''
   title={SITE_TITLE}
   href={new URL('rss.xml', Astro.site)}
 />
-<meta name="generator" content={Astro.generator} />
+<!-- <meta name="generator" content={Astro.generator} /> -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
-
-<!-- Primary Meta Tags -->
-<title>{title} - {SITE_TITLE}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -97,5 +95,10 @@ const absoluteImage = image ? new URL(image, Astro.url) : ''
 <meta property="twitter:title" content={title} />
 {description && <meta property="twitter:description" content={description} />}
 {image && <meta property="twitter:image" content={absoluteImage} />}
+
+<!-- Primary Meta Tags -->
+<title>{title} - {SITE_TITLE}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
 
 <ClientRouter />

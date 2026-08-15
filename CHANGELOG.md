@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.3 (Aug, 2026)
+
+### Fixed
+
+- Upgraded to astro v7.
+
+
 ## 3.5 (Feb, 2026)
 
 ### Fixed

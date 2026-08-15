@@ -4,14 +4,13 @@ import sharp from 'sharp'
 
 function resizeImage(f: string, out: string, size: number) {
   //if (!fs.existsSync(out)) {
-  console.log(out)
+
   sharp(f).resize({ width: size }).toFile(out)
   //}
 }
 
 function placeHolder(f: string, out: string) {
   if (!fs.existsSync(out)) {
-    console.log(out)
     sharp(f).resize({ width: 32 }).blur(4).toFile(out)
   }
 }

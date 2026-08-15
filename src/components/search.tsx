@@ -122,7 +122,6 @@ export function Search({ mode = 'light' }: { mode: ColorMode }) {
       setIsSearching(true)
       const search = await pagefind.debouncedSearch(value)
       if (search) {
-        console.log(search)
         const results = []
         for (const result of search.results) {
           if (results.length == 5) {
@@ -138,8 +137,6 @@ export function Search({ mode = 'light' }: { mode: ColorMode }) {
 
           results.push(data)
         }
-
-        console.log(results)
 
         setIsSearching(false)
         setResults(results)
