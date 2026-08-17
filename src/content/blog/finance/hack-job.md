@@ -6,7 +6,7 @@ authors:
 sections:
   - ['Finance']
 tags:
-  - 'Budgeting'
+  - 'Budget'
   - 'Personal Finance'
   - 'Spending'
 hero: 'axe'

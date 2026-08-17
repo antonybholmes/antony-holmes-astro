@@ -45,9 +45,12 @@ const tags = [...tagMap.keys()]
         tags.map(tag => {
           const n = tagMap.get(tag)?.length ?? 0
           return (
-            <li>
-              <ThemeLink href={`${BLOG_PATH}/year/${tag}/`}>{tag}</ThemeLink>{' '}
-              {`(${n.toLocaleString()} post${n !== 1 ? 's' : ''})`}
+            <li class="flex flex-row items-center gap-x-2">
+              <ThemeLink href={`${BLOG_PATH}/year/${tag}/`}>{tag}</ThemeLink>
+
+              <span class="flex h-5 min-w-5 flex-row items-center justify-center rounded-full bg-sky-400 text-xs text-white">
+                {n.toLocaleString()}
+              </span>
             </li>
           )
         })
