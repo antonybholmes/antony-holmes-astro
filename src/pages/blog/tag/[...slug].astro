@@ -5,9 +5,11 @@ import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { getSortedPosts, type PostWithHero } from '@lib/astro/post'
 import { paginate, type AstroPage } from '@lib/paginate'
 
+import { BLOG_HOME_SLUG, TAG_SLUG as TAGS_SLUG } from '@/consts'
+
+import { joinSlug } from '@/lib/post/join-slug'
 import { capitalCase } from '@/lib/text/capital-case'
 import { fixName } from '@/lib/text/text'
-import { getTagBaseUrl } from '@lib/http/urls'
 import { produce } from 'immer'
 
 export async function getStaticPaths() {
@@ -19,13 +21,15 @@ export async function getStaticPaths() {
 
   for (const [tag, posts] of tagMap.entries()) {
     const title = fixName(capitalCase(tag))
+    const slug = [{ name: tag, path: getUrlFriendlyTag(tag) }]
+
     paths = paths.concat(
       paginate(posts, {
-        slug: getUrlFriendlyTag(tag),
+        slug,
         title,
       }).map(p =>
         produce(p, draft => {
-          draft.props.root = getTagBaseUrl(tag)
+          draft.props.root = joinSlug(BLOG_HOME_SLUG, TAGS_SLUG, slug)
         })
       )
     )
@@ -34,12 +38,11 @@ export async function getStaticPaths() {
   return paths
 }
 
-const { title, pageTitle, page, root, pages, data } = Astro.props
+const { title, page, root, pages, data } = Astro.props
 ---
 
 <BlogPostsLayout
   title={title!}
-  pageTitle={pageTitle}
   page={page}
   pages={pages}
   posts={data}

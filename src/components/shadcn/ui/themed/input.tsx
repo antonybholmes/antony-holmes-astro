@@ -75,8 +75,7 @@ export interface IPlaceholderProps extends IDivProps {
 }
 
 export interface IInputProps
-  extends ComponentProps<'input'>,
-    VariantProps<typeof inputVariants> {
+  extends ComponentProps<'input'>, VariantProps<typeof inputVariants> {
   error?: boolean
   inputCls?: string
   inputStyle?: CSSProperties
@@ -167,7 +166,6 @@ export function Input({
             onChange?.(e)
           }}
           onKeyDown={e => {
-            //console.log(e)
             if (e.key === 'Enter') {
               onTextChanged?.(e.currentTarget.value)
             }

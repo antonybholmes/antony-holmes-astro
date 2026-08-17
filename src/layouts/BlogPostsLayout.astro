@@ -1,6 +1,6 @@
 ---
 import type { IPageProps } from '@/lib/paginate'
-import type { IPost } from '@/lib/post'
+import { type IPost } from '@/lib/post/post'
 
 import { Breadcrumb } from '@/components/breadcrumb'
 import { BaseCol } from '@/components/layout/base-col'
@@ -12,14 +12,15 @@ import { FeaturedPost } from '@/components/posts/featured-post'
 import { LeadPost } from '@/components/posts/lead-post'
 import { RestPosts } from '@/components/posts/rest-posts'
 import { TopPosts } from '@/components/posts/top-posts'
+import type { SlugPath } from '@/consts'
 import type { ColorMode } from '@/interfaces/color-mode'
-import { createCrumbs, type ICrumbProps } from '@/lib/crumbs'
+import { slugToBreadcrumbs } from '@/lib/post/slug'
 import type { CollectionEntry } from 'astro:content'
 import BaseLayout from './BaseLayout.astro'
 
-interface Props extends IPageProps, ICrumbProps {
+interface Props extends IPageProps {
   title?: string
-  pageTitle?: string
+
   mode?: ColorMode
   posts: CollectionEntry<'blog'>[]
   featuredPosts?: CollectionEntry<'blog'>[]
@@ -30,16 +31,15 @@ interface Props extends IPageProps, ICrumbProps {
   // and for the "back to section" link
   // this is useful for SEO and readability
   tab?: string
-  root?: string
+  root?: SlugPath
   showTitle?: boolean
   showSectionLinks?: boolean
 }
 
 let {
   title,
-  pageTitle,
-  showTitle,
-  crumbs,
+  //pageTitle,
+  showTitle = true,
   description,
   posts,
   featuredPosts = [],
@@ -51,36 +51,36 @@ let {
   mode = 'light',
 } = Astro.props
 
-if (!crumbs) {
-  crumbs = createCrumbs(Astro.url.pathname)
-}
+// if (!crumbs) {
+//   crumbs = createCrumbs(Astro.url.pathname)
+// }
 
 const headPostStart = page === 0 ? 1 : 0
 
 const twoColPosts = posts.slice(headPostStart, headPostStart + 2)
 const restPosts = posts.slice(headPostStart + 2)
+
+const crumbs = slugToBreadcrumbs(root ?? [])
 ---
 
-<BaseLayout title={pageTitle ?? title} tab={tab} mode="dark">
+<BaseLayout title={title} tab={tab} mode="dark">
   <Fragment slot="main">
     <ContentDiv className="bg-gray-800 py-24">
       <BaseCol className="gap-y-16" slot="main">
-        {
-          (showTitle || crumbs) && (
-            <BaseCol className="gap-y-4">
-              {crumbs && <Breadcrumb crumbs={crumbs} mode="dark" />}
-              {showTitle && <PageTitle title={title} mode="dark" />}
-              {description && (
-                <p
-                  class="text-lg data-[mode=dark]:text-white md:w-3/5"
-                  data-mode="dark"
-                >
-                  {description}
-                </p>
-              )}
-            </BaseCol>
-          )
-        }
+        <BaseCol className="gap-y-4">
+          {root && <Breadcrumb crumbs={crumbs} mode="dark" />}
+          {showTitle && <PageTitle title={title} mode="dark" />}
+          {
+            description && (
+              <p
+                class="text-lg data-[mode=dark]:text-white md:w-3/5"
+                data-mode="dark"
+              >
+                {description}
+              </p>
+            )
+          }
+        </BaseCol>
 
         <main class="flex flex-col gap-y-16">
           {
@@ -91,7 +91,6 @@ const restPosts = posts.slice(headPostStart + 2)
                   post={featuredPosts[0]! as IPost}
                   showSectionLinks={showSectionLinks}
                   mode={mode}
-                  root={root}
                 />
               </section>
             )
@@ -104,7 +103,6 @@ const restPosts = posts.slice(headPostStart + 2)
                 showSectionLinks={showSectionLinks}
                 mode="dark"
                 client:only="react"
-                root={root}
               />
             )
           }
@@ -120,7 +118,6 @@ const restPosts = posts.slice(headPostStart + 2)
               showSectionLinks={showSectionLinks}
               className="border-border/50 border-t pt-16"
               client:only="react"
-              root={root}
             />
           )
         }
@@ -132,7 +129,6 @@ const restPosts = posts.slice(headPostStart + 2)
               showSectionLinks={showSectionLinks}
               className="border-border/50 border-t pt-16"
               client:only="react"
-              root={root}
             />
           )
         }

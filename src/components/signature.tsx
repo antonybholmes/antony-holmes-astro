@@ -60,7 +60,6 @@ export function Signature() {
   }, [])
 
   const handleMouseEnter = () => {
-    console.log('Mouse entered signature area')
     timelineRef.current?.play()
   }
 

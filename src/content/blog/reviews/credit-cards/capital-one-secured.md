@@ -4,7 +4,7 @@ description: My review of the Capital One Secured Mastercard credit card.
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Credit Cards']
+  - ['Reviews', 'Credit Cards']
 type: 'review'
 rating: 4
 pros:

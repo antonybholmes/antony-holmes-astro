@@ -2,7 +2,8 @@
 
 //import { join } from "path"
 
-import { BLOG_SLUG, POST_EXCERPT_MARKER } from '@/consts'
+import { BLOG_PATH, POST_EXCERPT_MARKER, type SlugPath } from '@/consts'
+
 import {
   getSlug,
   getSlugBaseName,
@@ -10,8 +11,8 @@ import {
   getSlugSubPaths,
   getUrlFriendlyTag,
   PATH_SEP,
-} from './http/urls'
-import { capitalCase } from './text/capital-case'
+} from '../http/urls'
+import { capitalCase } from '../text/capital-case'
 
 export const POSTS_DIR = 'src/content/posts'
 export const REVIEWS_DIR = 'src/content/review'
@@ -64,53 +65,18 @@ export function sectionToParts(section: string): string[] {
   return section.split(PATH_SEP).map(part => part.trim())
 }
 
-// export function getPostExcerpt(post: IPost) {
-//   console.log(post.body)
-//   const sentences =
-//     post.body?.split('\n').filter((x: string) => x.length > 0) ?? []
+export const PATH_SEP_REGEX = /[\\/]+/g
 
-//   if (sentences.length > 0) {
-//     return sentences[0]
-//   } else {
-//     return ''
-//   }
-// }
-
-// export function getPostUrl(post: IPost): string {
-//   return `${BLOG_SLUG}/${getSlug(post.id)}`
-// }
-
-export function getPostFlatUrl(post: IPost, root: string = BLOG_SLUG): string {
-  return `${root}/${getPostFlatSlug(post)} `
-}
-
-export function getPostUrls(post: IPost, root: string = BLOG_SLUG): string[] {
-  const paths: string[] = getPostSlugs(post).map(path => {
-    return `${root}/${path}`
-  })
-
-  return paths
+export function fixPath(path: string): string {
+  return `${path}`.replace(PATH_SEP_REGEX, PATH_SEP)
 }
 
 export function sectionToSlug(section: string[]): string {
-  return section.map(s => getUrlFriendlyTag(s)).join(PATH_SEP)
-}
-
-/**
- * Give all posts a flat slug based on their id.
- * This is useful for generating URLs that are independent of the file structure.
- *
- * @param post
- * @returns
- */
-export function getPostFlatSlug(post: IPost): string {
-  return post.id.split('/').pop() || post.id
+  return fixPath(section.map(s => getUrlFriendlyTag(s)).join(PATH_SEP))
 }
 
 export function getPostSlugs(post: IPost): string[] {
   const id = post.id.split('/').pop()!
-
-  console.log('getPostSlugs', post.id, id, post.data.sections)
 
   if (!post.data.sections || post.data.sections.length === 0) {
     return [id]
@@ -143,6 +109,36 @@ export function getPostSection(post: IPost): string {
  */
 export function getPostSlugSubPaths(post: IPost): string[] {
   return getSlugSubPaths(post.id)
+}
+
+export function postSectionToSlug(post: IPost): string {
+  let section = post.data.sections?.[0] ?? []
+
+  if (section.length === 0) {
+    return '/'
+  }
+
+  const slugPath: string[] = section.map(part => {
+    part = part.trim()
+    return getUrlFriendlyTag(part)
+  })
+
+  return slugPath.join(PATH_SEP)
+}
+
+export function postSectionToSlugPath(post: IPost): SlugPath {
+  let section = post.data.sections?.[0] ?? []
+
+  if (section.length === 0) {
+    return []
+  }
+
+  const slugPath: SlugPath = section.map(part => {
+    part = part.trim()
+    return { name: part, path: getUrlFriendlyTag(part) }
+  })
+
+  return slugPath
 }
 
 // export function getAllPosts(authorMap: IAuthorMap): IAuthorPost[] {
@@ -346,5 +342,5 @@ export function getPostExcerpt(post: IPost): string {
 }
 
 export function getReadTimeUrl(minutes: number): string {
-  return `${BLOG_SLUG}/read-time/${Math.ceil(minutes)}-min-reads`
+  return `${BLOG_PATH}/read-time/${Math.ceil(minutes)}-min-reads`
 }

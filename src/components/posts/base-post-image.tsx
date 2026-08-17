@@ -1,18 +1,20 @@
 import type { ColorMode } from '@/interfaces/color-mode'
-import { getPostFlatUrl, type IPost } from '@/lib/post'
+import { type IPost } from '@/lib/post/post'
+import { getPostFlatUrl } from '@/lib/post/slug'
 import { cn } from '@lib/shadcn-utils'
 import type { ComponentProps } from 'react'
 
 export interface IPostImageProps extends ComponentProps<'a'> {
   post: IPost
-  root?: string
+
+  className?: string
   mode?: ColorMode
   imgClassName?: string
 }
 
 export function BasePostImage({
   post,
-  root,
+
   imgClassName,
   className,
   ...props

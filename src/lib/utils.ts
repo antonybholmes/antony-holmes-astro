@@ -91,7 +91,8 @@ export function uniqueInOrder<T>(values: T[]): T[] {
 /**
  * Returns all growing subsets of an array.
  * For example, for [1, 2, 3], it returns:
- * [ [1], [1, 2], [1, 2, 3], [2]]
+ * [ [1], [1, 2], [1, 2, 3]]
+ *
  * @param values
  * @returns
  */

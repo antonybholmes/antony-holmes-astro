@@ -10,7 +10,6 @@ interface IProps extends IPostsProps, IChildrenProps {
   showTopSectionSeparator?: boolean
   maxPosts?: number
   showAvatar?: boolean
-  root?: string
 }
 
 export function BasePostCol({

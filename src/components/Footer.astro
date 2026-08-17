@@ -1,6 +1,7 @@
 ---
 import {
-  BLOG_SLUG,
+  BLOG_HOME_SLUG,
+  BLOG_PATH,
   FOOTER_ITEMS,
   GITHUB_URL,
   SITE_AUTHOR,
@@ -54,7 +55,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
                 sections.map(section => (
                   <li>
                     <BaseLink
-                      href={`${BLOG_SLUG}/${getUrlFriendlyTag(section.name)}`}
+                      href={`${BLOG_PATH}/${getUrlFriendlyTag(section.name)}`}
                       className="hover:underline"
                     >
                       {section.name}
@@ -72,7 +73,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
                 tags.map(t => (
                   <li>
                     <BaseLink
-                      href={`${BLOG_SLUG}/tag/${getUrlFriendlyTag(t.name)}`}
+                      href={`${BLOG_PATH}/tag/${getUrlFriendlyTag(t.name)}`}
                     >
                       {t.name}
                     </BaseLink>
@@ -81,7 +82,7 @@ const tags = (await getUniqueTags()).slice(0, MAX_ITEMS)
               }
 
               <li>
-                <BaseLink href={`${BLOG_SLUG}/tag`}>More...</BaseLink>
+                <BaseLink href={`${BLOG_HOME_SLUG}/tag`}>More...</BaseLink>
               </li>
             </ul>
           </BaseCol>

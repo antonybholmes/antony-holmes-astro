@@ -19,7 +19,7 @@ build = parseInt(build)
 
 const version = `${major}.${minor}`
 
-const changelogFile = 'changelog.json'
+const changelogFile = './src/changelog.json'
 
 // Get latest commit info
 // const commitHash = execSync('git rev-parse HEAD').toString().trim()
@@ -35,7 +35,10 @@ if (fs.existsSync(changelogFile)) {
     changelog = JSON.parse(content)
 
     // cache the version before we update it
-    fs.writeFileSync('changelog.json.old', JSON.stringify(changelog, null, 2))
+    fs.writeFileSync(
+      './src/changelog.json.old',
+      JSON.stringify(changelog, null, 2)
+    )
   } catch (e) {
     console.error('Error parsing changelog.json:', e)
   }
@@ -73,29 +76,3 @@ if (
 // Save changelog
 fs.writeFileSync(changelogFile, JSON.stringify(changelog, null, 2))
 console.log('✅ changelog.json updated')
-
-// create markdown
-
-// const TYPES = ['Added', 'Changed', 'Deprecated', 'Fixed', 'Removed', 'Security']
-
-// let markdown = '# Changelog\n\n'
-
-// for (const entry of changelog.toReversed()) {
-//   markdown += `## ${entry.version}\n\n`
-
-//   for (const type of TYPES) {
-//     if (entry.messages[type]) {
-//       markdown += `### ${type}\n\n`
-//       for (const message of entry.messages[type].toReversed()) {
-//         markdown += `- ${message.msg}${message.msg.endsWith('.') ? '' : '.'}\n`
-//       }
-//       markdown += `\n`
-//     }
-//   }
-
-//   markdown += `\n`
-// }
-
-// fs.writeFileSync('CHANGELOG.md', markdown.trim() + '\n')
-
-// console.log('✅ CHANGELOG.md generated')

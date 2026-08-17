@@ -1,4 +1,5 @@
 import { getCollection } from 'astro:content'
+import { PATH_SEP } from '../http/urls'
 import { growingSubsets } from '../utils'
 import type { PostWithHero } from './post'
 
@@ -17,16 +18,16 @@ export function getPostSectionMap(
       // e.g. from ["Reviews", "Engineering", "AI"] we get:
       // [["Reviews"], ["Reviews",Engineering"], ["Reviews","Engineering","AI"]]
       // so we can map each post to more specific sections
-      for (const sectionNames of growingSubsets(section)) {
-        const sectionName = sectionNames.join('/')
+      for (const slugParts of growingSubsets(section)) {
+        const sectionPath = slugParts.join(PATH_SEP)
 
-        if (!sectionMap.has(sectionName)) {
-          sectionMap.set(sectionName, [])
+        if (!sectionMap.has(sectionPath)) {
+          sectionMap.set(sectionPath, [])
         }
 
         // if max is -1 or the section has less than max posts, add the post
-        if (max === -1 || sectionMap.get(sectionName)!.length < max) {
-          sectionMap.get(sectionName)!.push(post)
+        if (max === -1 || sectionMap.get(sectionPath)!.length < max) {
+          sectionMap.get(sectionPath)!.push(post)
         }
       }
     }

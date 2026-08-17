@@ -2,6 +2,13 @@ import type { IFieldMap } from '@interfaces/field-map'
 
 import versionConfig from '../version.json'
 
+export interface ISlug {
+  name: string
+  path: string
+}
+
+export type SlugPath = ISlug[]
+
 //export const SITE = "https://edb.rdf-lab.org"
 export const SITE_TITLE = 'Antony Holmes'
 export const SITE_SUBTITLE = 'Researcher & Software Engineer in New York City'
@@ -29,12 +36,36 @@ export const GITHUB_URL = 'https://github.com/antonybholmes'
 export const ANIMATION_DURATION_S = 0.3
 export const ANIMATION_DURATION_MS = 250
 
-export const TAG_SLUG = 'tag'
-export const READ_TIME_SLUG = 'read-time'
 export const PAGE_1_SLUG = 'page-1'
-export const PEOPLE_SLUG = '/people'
-export const BLOG_SLUG = '/blog'
-export const PHOTOS_SLUG = '/photos'
+
+export const BLOG_PATH = '/blog'
+export const BLOG_HOME_SLUG: SlugPath = [{ name: 'Home', path: BLOG_PATH }]
+export const BOOKS_SLUG: SlugPath = [{ name: 'Books', path: '/books' }]
+export const PHOTOS_SLUG: SlugPath = [{ name: 'Photos', path: '/photos' }]
+export const REVIEWS_SLUG: SlugPath = [{ name: 'Reviews', path: '/reviews' }]
+export const FILMS_SLUG: SlugPath = [{ name: 'Films', path: '/films' }]
+export const ENGINEERING_SLUG: SlugPath = [
+  { name: 'Engineering', path: '/engineering' },
+]
+
+export const PEOPLE_PATH = '/people'
+export const PEOPLE_SLUG: SlugPath = [{ name: 'People', path: PEOPLE_PATH }]
+
+export const FINANCE_SLUG: SlugPath = [{ name: 'Finance', path: '/finance' }]
+
+export const HEALTH_SLUG: SlugPath = [{ name: 'Health', path: '/health' }]
+
+export const NEWS_SLUG: SlugPath = [{ name: 'News', path: '/news' }]
+
+export const READTIME_SLUG: SlugPath = [
+  { name: 'Read Time', path: '/read-time' },
+]
+
+export const TAG_SLUG: SlugPath = [{ name: 'Tags', path: '/tag' }]
+
+export const YEAR_SLUG: SlugPath = [{ name: 'Year', path: '/year' }]
+
+export const LATEST_SLUG: SlugPath = [{ name: 'Latest', path: '/latest' }]
 
 export const YEAR = new Date().getFullYear()
 
@@ -115,12 +146,10 @@ export const TARGET_BLANK = '_blank'
 
 export const HEADING_FONT = 'var(--font-heading)'
 
-export const MENU_ITEMS: {
-  label: string
-  path: string
+export const MENU_ITEMS: (ISlug & {
   icon: string
   ariaLabel: string
-}[] = [
+})[] = [
   // {
   //   label: TEXT_HOME,
   //   path: '/',
@@ -128,8 +157,8 @@ export const MENU_ITEMS: {
   //   ariaLabel: 'Home',
   // },
   {
-    label: 'Blog',
-    path: BLOG_SLUG,
+    name: 'Blog',
+    path: '/blog',
     icon: 'blog',
     ariaLabel: 'Blog',
   },
@@ -141,13 +170,13 @@ export const MENU_ITEMS: {
   // },
 
   {
-    label: 'Publications',
+    name: 'Publications',
     path: '/publications',
     icon: 'publications',
     ariaLabel: 'Publications',
   },
   {
-    label: 'Resume',
+    name: 'Resume',
     path: '/resume',
     icon: 'resume',
     ariaLabel: 'Resume',

@@ -1,19 +1,16 @@
 ---
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_HOME_SLUG, type SlugPath } from '@/consts'
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro'
 
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { getPostSectionMap } from '@/lib/astro/sections'
-import { getUrlFriendlyTag } from '@/lib/http/urls'
+import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
 import { paginate, type AstroPage, type PageType } from '@/lib/paginate'
-import { getPostFlatSlug } from '@/lib/post'
-import { produce } from 'immer'
+import { getPostFlatSlug, joinSlug } from '@/lib/post/join-slug'
 
-// interface Props extends IPaginationProps<CollectionEntry<'blog'>> {
-//   title: string
-//   root: string
-// }
+import { getSectionDescription } from '@/sections'
+import { produce } from 'immer'
 
 export async function getStaticPaths() {
   let posts = await getSortedPosts()
@@ -41,7 +38,7 @@ export async function getStaticPaths() {
       props: {
         type: 'post',
         title: post.data.title,
-        root: '',
+        root: BLOG_HOME_SLUG,
         page: 0,
         pages: 1,
         data: [post],
@@ -56,14 +53,26 @@ export async function getStaticPaths() {
     const featuredPosts = posts.filter(post => post.data.featured)
     const otherPosts = posts.filter(post => !post.data.featured)
 
-    const sectionParts = section.split('/').map(part => part.trim())
-    const title = sectionParts.pop()!
-    const slug = getUrlFriendlyTag(section)
+    const sectionParts = section.split(PATH_SEP).map(part => part.trim())
+    const title = sectionParts[sectionParts.length - 1] || 'Blog'
+
+    // we need slug to be relative to blog beacause we are generating
+    // pages in the blog folder
+    const slug: SlugPath = sectionParts.map(s => ({
+      name: s,
+      path: getUrlFriendlyTag(s),
+    }))
+
+    const description = getSectionDescription(title)
 
     const pages = paginate(otherPosts, { slug, title }).map(p =>
       produce(p, draft => {
-        draft.props.root = `${BLOG_SLUG}/${slug}`
+        //the root needs to be the full path to the section,
+        // so we can generate the correct links for pagination
+        // and for the "back to section" link
+        draft.props.root = joinSlug(BLOG_HOME_SLUG, slug)
         draft.props.featuredPosts = p.props.page === 0 ? featuredPosts : []
+        draft.props.description = description
       })
     )
 
@@ -76,18 +85,22 @@ export async function getStaticPaths() {
 interface Props {
   type: PageType
   title?: string
-  root?: string
+  description?: string
+  root?: SlugPath
   page: number
   pages: number
   data: PostWithHero[]
   featuredPosts?: PostWithHero[]
 }
 
-const { type, title, root, page, pages, data, featuredPosts } = Astro.props
+const { type, title, description, root, page, pages, data, featuredPosts } =
+  Astro.props
 ---
 
-<!-- Render a single post -->{
-  type !== 'posts' && data.length > 0 && <BlogPostLayout post={data[0]} />
+{
+  (type == 'post' || type == 'review') && data.length > 0 && (
+    <BlogPostLayout post={data[0]} />
+  )
 }
 
 <!-- Render a page containing a list of posts -->
@@ -95,13 +108,13 @@ const { type, title, root, page, pages, data, featuredPosts } = Astro.props
   type === 'posts' && (
     <BlogPostsLayout
       title={title!}
+      description={description}
       page={page}
       pages={pages}
       posts={data}
       featuredPosts={featuredPosts}
       root={root}
-      showSectionLinks={root === BLOG_SLUG}
-      showTitle={root !== BLOG_SLUG}
+      showSectionLinks={root![0].name === BLOG_HOME_SLUG[0].name}
     />
   )
 }

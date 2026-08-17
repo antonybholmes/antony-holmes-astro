@@ -8,7 +8,7 @@ type: 'review'
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Films']
+  - ['Reviews', 'Films']
 tags:
   - 'Comedy'
   - 'Reviews'

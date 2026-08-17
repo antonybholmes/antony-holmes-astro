@@ -1,4 +1,5 @@
 ---
+import type { SlugPath } from '@/consts'
 import { render } from 'astro:content'
 
 import { VCenterRow } from '@/components/layout/v-center-row'
@@ -15,12 +16,12 @@ import { ThemeLink } from '@/components/link/theme-link'
 import { HeroImageCaption } from '@/components/posts/hero-image-caption'
 import { StarRating } from '@/components/posts/star-rating'
 import { SideTags } from '@/components/side-tags'
-import { BLOG_SLUG, SITE_URL, TARGET_BLANK } from '@/consts'
+import { BLOG_HOME_SLUG, SITE_URL, TARGET_BLANK } from '@/consts'
+import type { ColorMode } from '@/interfaces/color-mode'
 import type { PostWithHero } from '@/lib/astro/post'
-import type { ICrumb } from '@/lib/crumbs'
-import { getUrlFriendlyTag, PATH_SEP } from '@/lib/http/urls'
-import { type IPost } from '@/lib/post'
-import { growingSubsets } from '@/lib/utils'
+import { getPostFlatSlug } from '@/lib/post/join-slug'
+import { type IPost } from '@/lib/post/post'
+import { getPostSectionBreadcrumbs } from '@/lib/post/slug'
 import { CompactAvatars } from '@components/people/compact-avatars'
 import { format } from 'date-fns'
 import BaseLayout from './BaseLayout.astro'
@@ -38,7 +39,8 @@ import BaseLayout from './BaseLayout.astro'
 
 interface Props {
   post: PostWithHero
-  mode?: 'light' | 'dark'
+  mode?: ColorMode
+  root?: SlugPath
 }
 
 // const {
@@ -52,9 +54,9 @@ interface Props {
 //   tags,
 // } = Astro.props
 
-const { post, mode = 'dark' } = Astro.props
+let { post, mode = 'dark', root } = Astro.props
 
-const slug = post.id.split('/').pop() || post.id // Flatten the slug
+const slug = getPostFlatSlug(post)
 
 const { Content, remarkPluginFrontmatter } = await render(post)
 
@@ -65,28 +67,11 @@ const ogImage = `${SITE_URL}/assets/images/og/${slug}.png` //png`/assets/images/
 //   ? post.data.hero
 //   : `/assets/images/blog/${slug}.webp`
 
-const crumbs: ICrumb[] = [
-  {
-    label: 'Blog',
-    path: BLOG_SLUG,
-  },
-]
-
-// use the first to make a breadcrumb for nested
-// sections that are otherwise not given in the slug
-const section = post.data.sections?.[0] ?? []
-
-if (section) {
-  const parts = growingSubsets(section)
-
-  for (const part of parts) {
-    const name = part[part.length - 1]! // last part is the full section name
-    crumbs.push({
-      label: name,
-      path: `${BLOG_SLUG}/${getUrlFriendlyTag(part.join(PATH_SEP))}`,
-    })
-  }
+if (!root) {
+  root = BLOG_HOME_SLUG
 }
+
+const crumbs = getPostSectionBreadcrumbs(post, root)
 
 const dateAdded = post.data.added ? post.data.added : new Date()
 ---
@@ -115,7 +100,7 @@ const dateAdded = post.data.added ? post.data.added : new Date()
         id="blog-header-bg"></span>
 
       <ContentDiv className="relative z-10 mt-24" colCls="lg:w-1/2">
-        <BaseCol slot="main" className="gap-y-8 lg:gap-y-16">
+        <BaseCol slot="main" className="gap-y-8 lg:gap-y-12">
           <Breadcrumb crumbs={crumbs} mode={mode} />
 
           <BaseCol className="gap-y-3 lg:gap-y-6">

@@ -1,11 +1,13 @@
+import type { SlugPath } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { ColorMode } from '@/interfaces/color-mode'
-import type { IPost } from '@/lib/post'
+import type { IPost } from '@/lib/post/post'
 import { PostTagLink } from './post-tag-link'
 
 export interface IPostProps extends IClassProps {
   post: IPost
   mode?: ColorMode
+  root?: SlugPath
 }
 
 export function PostTags({ post }: IPostProps) {

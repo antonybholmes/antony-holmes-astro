@@ -1,6 +1,9 @@
 import type { ILinkProps } from '@interfaces/link-props'
 
+import { BLOG_HOME_SLUG, type SlugPath } from '@/consts'
 import { range } from '@/lib/math/range'
+import { PATH_SEP_REGEX } from '@/lib/post/post'
+import { pathToSlug } from '@/lib/post/slug'
 import { cn } from '@/lib/shadcn-utils'
 import { EllipsisIcon } from 'lucide-react'
 import { ChevronRightIcon } from './icons/chevron-right-icon'
@@ -112,14 +115,14 @@ function Ellipsis() {
   )
 }
 
+function getPath(page: number, root: SlugPath = BLOG_HOME_SLUG): string {
+  return `${pathToSlug(root)}/page/${page + 1}`.replace(PATH_SEP_REGEX, '/')
+}
+
 interface IProps {
   page?: number
   pages?: number
-  root?: string
-}
-
-function getPath(page: number, root: string = ''): string {
-  return `${root ? `${root}/` : ''}page/${page + 1}`
+  root?: SlugPath
 }
 
 export function PagePagination({ page = 0, pages = 1, root }: IProps) {

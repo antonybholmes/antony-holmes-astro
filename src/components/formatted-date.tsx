@@ -1,4 +1,4 @@
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_PATH } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
@@ -21,7 +21,7 @@ export function FormattedDate({ date, className, mode = 'light' }: IProps) {
     >
       {formattedDate},{' '}
       <a
-        href={`${BLOG_SLUG}/year/${formattedYear}`}
+        href={`${BLOG_PATH}/year/${formattedYear}`}
         className="underline-offset-2 hover:underline"
       >
         {formattedYear}

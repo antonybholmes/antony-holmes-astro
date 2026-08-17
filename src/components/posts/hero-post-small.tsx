@@ -7,7 +7,7 @@ import { FormattedDate } from '@components/formatted-date'
 import { CompactAvatars } from '@components/people/compact-avatars'
 
 import type { ColorMode } from '@/interfaces/color-mode'
-import { getPostExcerpt, type IPost } from '@/lib/post'
+import { getPostExcerpt, type IPost } from '@/lib/post/post'
 import { Circle } from 'lucide-react'
 
 import type { IDivProps } from '@/interfaces/div-props'
@@ -22,8 +22,6 @@ interface IProps extends IPostProps {
   showAuthors?: boolean
   showDescription?: boolean
   showSectionLinks?: boolean
-
-  root?: string
 }
 
 export function HeroPostSmall({

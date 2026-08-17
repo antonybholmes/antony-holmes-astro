@@ -34,8 +34,7 @@ export const TEXT_CLS =
   ' h-full text-foreground disabled:cursor-not-allowed disabled:opacity-50 outline-hidden ring-none read-only:opacity-50 w-full grow'
 
 export interface ITextAreaProps
-  extends ComponentProps<'textarea'>,
-    VariantProps<typeof textareaVariants> {
+  extends ComponentProps<'textarea'>, VariantProps<typeof textareaVariants> {
   label?: string | undefined
   labelPos?: 'left' | 'top'
   labelW?: string
@@ -117,7 +116,6 @@ export function Textarea({
             onChange?.(e)
           }}
           onKeyDown={e => {
-            //console.log(e)
             if (e.key === 'Enter') {
               onTextChanged?.(toLines(e.currentTarget.value))
             }

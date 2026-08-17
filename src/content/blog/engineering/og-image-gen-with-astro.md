@@ -2,7 +2,6 @@
 title: 'OMG: Making Open Graph images with Astro'
 description: "Let's automate creating those pesky Open Graph images."
 type: post
-
 sections:
   - ['Engineering']
 authors:

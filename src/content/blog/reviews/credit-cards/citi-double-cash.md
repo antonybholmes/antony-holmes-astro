@@ -2,7 +2,7 @@
 product: Citi Double Cash
 description: My review of the Citi Double Cash credit card.
 sections:
-  - ['Credit Cards']
+  - ['Reviews', 'Credit Cards']
 type: 'review'
 rating: 4
 pros:

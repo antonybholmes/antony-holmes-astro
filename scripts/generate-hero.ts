@@ -63,7 +63,7 @@ async function main() {
     const outputPath = path.join(OUTPUT_DIR, `${slug}.webp`)
 
     //if (!fs.existsSync(outputPath)) {
-    await fs.writeFileSync(outputPath, buffer)
+    fs.writeFileSync(outputPath, buffer)
     console.log(`✅ Generated hero image for ${slug}`)
     //} else {
     // console.log(`⚠️ Hero image for ${slug} already exists, skipping`)

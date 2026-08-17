@@ -4,7 +4,8 @@ import { BaseLink } from '@components/link/base-link'
 
 import type { ColorMode } from '@/interfaces/color-mode'
 import type { ILinkProps } from '@/interfaces/link-props'
-import { getPostFlatUrl, type IPost } from '@/lib/post'
+import { type IPost } from '@/lib/post/post'
+import { getPostFlatUrl } from '@/lib/post/slug'
 
 const CLS = `group-hover:underline underline-offset-4 
   hover:text-sky-500 hover:decoration-sky-500

@@ -19,6 +19,10 @@
     "/assets/images/blog/generic/finance-1.webp",
     "/assets/images/blog/generic/finance-2.webp"
   ],
+  "books": [
+    "/assets/images/blog/generic/books-1.webp",
+    "/assets/images/blog/generic/books-2.webp"
+  ],
   "phone": ["/assets/images/blog/generic/phone-1.webp"],
   "photos": ["/assets/images/blog/generic/photos-1.webp"],
   "bank": ["/assets/images/blog/generic/bank-1.webp"],

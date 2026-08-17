@@ -1,3 +1,4 @@
+import { formatSection } from '@/lib/post/post'
 import { ChevronRightIcon } from '@components/icons/chevron-right-icon'
 import {
   DropdownMenu,
@@ -5,7 +6,6 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from '@components/shadcn/ui/themed/dropdown-menu'
-import { formatSection } from '@lib/post'
 
 import type { IClassProps } from '@/interfaces/class-props'
 import { useEffect, useState } from 'react'
@@ -15,10 +15,10 @@ interface IProps extends IClassProps {
   section: string
   href?: string
   postMap: Map<string, any[]>
-  root?: string
+  //root?: IPath[]
 }
 
-export function PostSectionCol({ section, href, postMap, root }: IProps) {
+export function PostSectionCol({ section, href, postMap }: IProps) {
   const [_section, setSection] = useState(section)
   const [open, setOpen] = useState(false)
 
@@ -33,7 +33,7 @@ export function PostSectionCol({ section, href, postMap, root }: IProps) {
       title="Popular"
       href={href}
       posts={posts ?? []}
-      root={root}
+
       page={0}
       pages={0}
       showSectionLinks={_section === 'All'}

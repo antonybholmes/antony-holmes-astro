@@ -1,4 +1,4 @@
-import { READ_TIME_SLUG, TAG_SLUG } from '@/consts'
+import { READTIME_SLUG, TAG_SLUG } from '@/consts'
 import { type IFieldMap } from '@interfaces/field-map'
 import { type IStringMap } from '@interfaces/string-map'
 import { range } from '../math/range'
@@ -91,7 +91,7 @@ export function getTagBaseUrl(tag: string) {
 }
 
 export function getTimeBaseUrl(time: number) {
-  return `${READ_TIME_SLUG}/${Math.ceil(time)}-min-reads`
+  return `${READTIME_SLUG[0].path}${Math.ceil(time)}-min-reads`
 }
 
 export function getSlug(path: string): string {

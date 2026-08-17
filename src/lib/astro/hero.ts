@@ -65,6 +65,13 @@ export function getHeroImage(
   }
 
   if (
+    sections?.some(s => s.includes('Books')) ||
+    tags?.some(s => s.includes('Books'))
+  ) {
+    return fallbackImages['books'][hash % fallbackImages['books'].length]
+  }
+
+  if (
     sections?.some(
       s =>
         s.includes('Finance') ||

@@ -1,7 +1,8 @@
 ---
+import { BLOG_HOME_SLUG, READTIME_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getTimePostMap } from '@/lib/astro/time'
-import { getTimeBaseUrl } from '@/lib/http/urls'
+import { joinSlug } from '@/lib/post/join-slug'
 import { getSortedPosts, type PostWithHero } from '@lib/astro/post'
 import { paginate, type AstroPage } from '@lib/paginate'
 import { produce } from 'immer'
@@ -14,12 +15,15 @@ export async function getStaticPaths() {
   let paths: AstroPage<PostWithHero>[] = []
 
   for (const [time, posts] of tagMap.entries()) {
+    const slug = [
+      { name: `${time} Minute Reads`, path: `${Math.ceil(time)}-min-reads` },
+    ]
     const page = paginate(posts, {
-      slug: `${time}-min-reads`,
+      slug,
       title: `${time} Minute Reads`,
     }).map(p =>
       produce(p, draft => {
-        draft.props.root = getTimeBaseUrl(time)
+        draft.props.root = joinSlug(BLOG_HOME_SLUG, READTIME_SLUG, slug)
       })
     )
 
@@ -29,12 +33,11 @@ export async function getStaticPaths() {
   return paths
 }
 
-const { title, pageTitle, page, root, pages, data } = Astro.props
+const { title, page, root, pages, data } = Astro.props
 ---
 
 <BlogPostsLayout
   title={title!}
-  pageTitle={pageTitle}
   page={page}
   pages={pages}
   posts={data}

@@ -26,14 +26,6 @@ export function Logo() {
     }
   }, [])
 
-  const handleMouseEnter = () => {
-    animationRef.current?.play()
-  }
-
-  const handleMouseLeave = () => {
-    animationRef.current?.reverse()
-  }
-
   return (
     <a ref={ref} href="/" className={LOGO_CLS} aria-label="Home">
       <DraftingCompass className="absolute left-1/2 top-1/2 -translate-1/2 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-80 transition-all duration-500 ease-in-out" />

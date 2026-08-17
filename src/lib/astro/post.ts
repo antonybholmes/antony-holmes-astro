@@ -11,7 +11,7 @@ import { range } from '../math/range'
 import { getAllMDFiles } from './files'
 
 import { getSlugSubPaths, getUrlFriendlyTag } from '../http/urls'
-import { POSTS_DIR, REVIEWS_DIR } from '../post'
+import { POSTS_DIR, REVIEWS_DIR } from '../post/post'
 import { getHeroImage } from './hero'
 
 export function getPostPaths() {

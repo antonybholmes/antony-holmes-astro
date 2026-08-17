@@ -2,7 +2,7 @@ import type { CollectionEntry } from 'astro:content'
 //import { join } from "path"
 import { getAllFiles } from './files'
 
-import { PEOPLE_SLUG } from '@/consts'
+import { PEOPLE_PATH } from '@/consts'
 import { getUrlFriendlyTag } from '../http/urls'
 
 export interface IAuthorMap {
@@ -78,5 +78,5 @@ export function getAuthorMap(authors: CollectionEntry<'people'>[]): IAuthorMap {
 // }
 
 export function getAuthorBaseUrl(name: string) {
-  return `${PEOPLE_SLUG}/${getUrlFriendlyTag(name)}`
+  return `${PEOPLE_PATH}/${getUrlFriendlyTag(name)}`
 }

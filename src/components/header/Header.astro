@@ -46,12 +46,12 @@ const { tab = 'Home', mode = 'light' } = Astro.props
             MENU_ITEMS.map(item => (
               <li>
                 <HeaderLink
-                  aria-label={item.label}
+                  aria-label={item.name}
                   href={item.path}
                   isActive={item.path === subpath}
                   mode={mode}
                 >
-                  {item.label}
+                  {item.name}
                 </HeaderLink>
               </li>
             ))

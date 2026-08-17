@@ -1,14 +1,16 @@
-import { RECORDS_PER_PAGE } from '@/consts'
+import { RECORDS_PER_PAGE, type SlugPath } from '@/consts'
 import type { CollectionEntry } from 'astro:content'
+import { pathToSlug } from './post/slug'
 
 export type PageType = 'posts' | 'post' | 'review'
 
 export type AstroPage<T> = {
   props: {
     title?: string
+    description?: string
     pageTitle?: string
     showTitle?: boolean
-    root?: string
+    root?: SlugPath
     featuredPosts?: T[]
     type: PageType
     page: number
@@ -19,7 +21,6 @@ export type AstroPage<T> = {
   }
   params: { slug: string | undefined }
 }
-
 
 export interface IPageProps {
   page: number
@@ -33,7 +34,7 @@ export interface IPaginationProps<T> extends IPageProps {
 }
 
 interface IPaginateOptions {
-  slug?: string
+  slug?: SlugPath
   title?: string
 }
 
@@ -41,16 +42,18 @@ export function paginate<T>(
   data: T[],
   options: IPaginateOptions = {}
 ): AstroPage<T>[] {
-  let { slug = '', title = '' } = options
+  let { slug, title = '' } = options
 
   const paths = []
 
   const pages = getPageCount(data)
 
+  let path = pathToSlug(slug)
+
   // if not the root, add a trailing slash for consistency
-  if (slug.length > 0 && !slug.endsWith('/')) {
-    slug += '/'
-  }
+  // if (path.length > 0 && !path.endsWith('/')) {
+  //   path += '/'
+  // }
 
   // generate a root page which is functionally the same as page 0
   // but has the root url rather than page/1 to make for nicer urls
@@ -61,7 +64,7 @@ export function paginate<T>(
       // if slugRoot is empty use undefined rather than an empty string
       //  https://docs.astro.build/en/guides/routing/
       //  (Setting the rest parameter to undefined allows it to match the top level page.)
-      slug: slug !== '' ? slug : undefined,
+      slug: path !== '' ? path : undefined,
     },
     props: {
       type: 'posts' as PageType,
@@ -70,6 +73,7 @@ export function paginate<T>(
       showTitle: title ? true : false,
       page: 0,
       pages,
+      //root: slug,
       data: getPageItems(data, 0),
       isTopLevelPage: true,
     },
@@ -78,12 +82,12 @@ export function paginate<T>(
 
   // add page to slug since we are going to generate an array of
   // slugs one for each page of results
-  slug += 'page/'
+  path += '/page'
 
   for (let page = 0; page < pages; page++) {
     paths.push({
       params: {
-        slug: `${slug}${page + 1}`,
+        slug: `${path}/${page + 1}`,
       },
       props: {
         type: 'posts' as PageType,
@@ -94,6 +98,7 @@ export function paginate<T>(
         showTitle: title ? true : false,
         page,
         pages,
+        //root: slug,
         data: getPageItems(data, page),
         isTopLevelPage: false,
       },

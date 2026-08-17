@@ -1,16 +1,16 @@
 import type { ReactNode } from 'react'
 
+import type { SlugPath } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
 import type { ColorMode } from '@/interfaces/color-mode'
 import { cn } from '@/lib/shadcn-utils'
-import type { ICrumb } from '@lib/crumbs'
 import { BaseLink } from './link/base-link'
 import { ThemeLink } from './link/theme-link'
 
 const LINK_CLS = 'trans-color text-primary-color/60 hover:text-primary-color'
 
 interface BreadcrumbProps extends IClassProps {
-  crumbs: ICrumb[]
+  crumbs: SlugPath
   showHome?: boolean
   mode?: ColorMode
 }
@@ -50,6 +50,7 @@ export function Breadcrumb({
   }
   // ret.push(<li key={`crumb-${ret.length}`}>{getCrumbLink(["Home", "/"], mode)}</li>)
 
+  let path = ''
   for (let i = 0; i < crumbs.length; ++i) {
     const crumb = crumbs[i]!
 
@@ -69,12 +70,12 @@ export function Breadcrumb({
       <li key={`crumb-${i}`}>
         <ThemeLink
           href={crumb.path}
-          aria-label={`Goto ${crumb.label}`}
+          aria-label={`Goto ${crumb.name}`}
           data-mode={mode}
           startingColor="text-foreground"
           className="data-[mode=dark]:text-white"
         >
-          {crumb.label}
+          {crumb.name}
         </ThemeLink>
       </li>
     )

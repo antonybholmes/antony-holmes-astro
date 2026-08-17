@@ -147,7 +147,6 @@ export function NumericalInput({
       className={className}
       inputCls="text-right"
       onKeyDown={e => {
-        //console.log(e)
         if (e.key === 'Enter') {
           const v = Number(e.currentTarget.value)
 

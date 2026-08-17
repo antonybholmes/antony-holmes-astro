@@ -4,7 +4,7 @@ import { ArrowLink } from '@/components/link/arrow-link'
 import { PostSectionCol } from '@/components/posts/post-section-col'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getPostSectionMap } from '@/lib/astro/sections'
-import type { IPost } from '@/lib/post'
+import type { IPost } from '@/lib/post/post'
 import { HeroPosts } from '@components/posts/hero-posts'
 import { PostCol } from '@components/posts/post-col'
 import { PostTwoCol } from '@components/posts/post-two-col'
@@ -28,8 +28,6 @@ const engineering = allPosts.filter(post =>
 const finance = allPosts.filter(post =>
   post.data.sections?.some(section => section.includes('Finance'))
 )
-
-const ROOT = '/blog'
 ---
 
 <BaseLayout
@@ -47,7 +45,6 @@ const ROOT = '/blog'
         slot="main"
         mode="dark"
         client:only="react"
-        root={ROOT}
       />
     </ContentDiv>
     <ContentDiv>
@@ -62,7 +59,6 @@ const ROOT = '/blog'
           page={0}
           pages={pages}
           client:only="react"
-          root={ROOT}
         >
           <ArrowLink
             href="/blog/latest"
@@ -73,12 +69,7 @@ const ROOT = '/blog'
           </ArrowLink>
         </PostCol>
 
-        <PostSectionCol
-          section="All"
-          postMap={postMap}
-          client:only="react"
-          root={ROOT}
-        />
+        <PostSectionCol section="All" postMap={postMap} client:only="react" />
       </section>
     </ContentDiv>
     <ContentDiv>
@@ -90,7 +81,6 @@ const ROOT = '/blog'
         page={0}
         pages={pages}
         showSectionLinks={false}
-        root={ROOT}
         client:only="react"
       >
         <ArrowLink
@@ -109,7 +99,6 @@ const ROOT = '/blog'
         title="Finance"
         href="/blog/finance"
         posts={finance as IPost[]}
-        root={ROOT}
         page={0}
         pages={pages}
         showSectionLinks={false}
@@ -134,7 +123,6 @@ const ROOT = '/blog'
         page={0}
         pages={pages}
         showSectionLinks={false}
-        root={ROOT}
         client:only="react"
       >
         <ArrowLink

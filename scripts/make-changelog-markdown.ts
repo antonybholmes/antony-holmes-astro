@@ -3,7 +3,7 @@ import * as datefns from 'date-fns'
 import fs from 'fs'
 
 // read version file
-const changelog = JSON.parse(fs.readFileSync('./changelog.json', 'utf-8'))
+const changelog = JSON.parse(fs.readFileSync('./src/changelog.json', 'utf-8'))
 
 // create markdown
 

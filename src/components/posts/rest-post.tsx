@@ -3,7 +3,7 @@ import type { IPostProps } from './post-tags'
 
 import { BaseCol } from '@layout/base-col'
 
-import { getPostExcerpt } from '@/lib/post'
+import { getPostExcerpt } from '@/lib/post/post'
 import { useState } from 'react'
 import { BasePostImage } from './base-post-image'
 import { PostAuthorsAndDate } from './hero-post-small'
@@ -15,7 +15,6 @@ interface IProps extends IPostProps {
   showAuthors?: boolean
   showDescription?: boolean
   showSectionLinks?: boolean
-  root?: string
 }
 
 export function RestPost({
@@ -41,7 +40,7 @@ export function RestPost({
       {post.data.resolvedHero && (
         <BasePostImage
           post={post}
-          root={root}
+
           className="aspect-video w-full rounded-xl"
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}

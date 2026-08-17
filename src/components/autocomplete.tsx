@@ -68,11 +68,6 @@ export function Autocomplete({
       data-open={_isOpen}
       className={cn('relative group', [label !== undefined, 'grow', className])}
       ref={ref}
-
-      // onBlur={() => {
-      //   console.log('blur')
-      //   setFocus(false)
-      // }}
     >
       <VCenterRow
         data-open={_isOpen}

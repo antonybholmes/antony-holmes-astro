@@ -3,7 +3,7 @@ import type { IPostProps } from './post-tags'
 
 import { BaseCol } from '@layout/base-col'
 
-import { getPostExcerpt } from '@/lib/post'
+import { getPostExcerpt } from '@/lib/post/post'
 import { PostAuthorsAndDate } from './hero-post-small'
 
 import { useState } from 'react'
@@ -22,8 +22,6 @@ interface IProps extends IPostProps {
   showAvatarImage?: boolean
   dateBelow?: boolean
   showSectionLinks?: boolean
-  mode?: 'light' | 'dark'
-  root?: string
 }
 
 export function LeadPost({
@@ -43,7 +41,7 @@ export function LeadPost({
 
   return (
     <article
-      className={cn('grid grid-cols-1 lg:grid-cols-5', className)}
+      className={cn('grid grid-cols-1 lg:grid-cols-5 gap-8', className)}
       data-mode={mode}
     >
       {post.data.resolvedHero && (

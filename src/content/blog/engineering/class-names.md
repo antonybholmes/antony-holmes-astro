@@ -8,11 +8,7 @@ sections:
 authors:
   - 'Antony Holmes'
 added: '2023-01-01'
-tags:
-  - 'Typescript'
-  - 'Tailwind'
-  - 'Tutorials'
-  - 'Web'
+tags: ['Typescript', 'Tailwind', 'Tutorials', 'Web']
 updated: '2023-01-01'
 ---
 

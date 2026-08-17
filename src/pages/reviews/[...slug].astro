@@ -2,7 +2,9 @@
 import { getSortedPosts } from '@lib/astro/post'
 import { paginate } from '@lib/paginate'
 
+import { REVIEWS_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
+import { getSectionDescription } from '@/sections'
 import { produce } from 'immer'
 
 export async function getStaticPaths() {
@@ -11,30 +13,33 @@ export async function getStaticPaths() {
   const featuredPosts = posts.filter(post => post.data.featured)
   const otherPosts = posts.filter(post => !post.data.featured)
 
-  const paths = paginate(otherPosts, { title: 'Reviews' }).map(p =>
+  const description = getSectionDescription('Reviews')
+
+  const paths = paginate(otherPosts, {
+    title: 'Reviews',
+  }).map(p =>
     produce(p, draft => {
       draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
-      draft.props.root = '/reviews'
+      draft.props.root = REVIEWS_SLUG
+      draft.props.description = description
     })
   )
 
   return paths
 }
 
-const { title, pageTitle, page, pages, featuredPosts, data } = Astro.props
-
-const description = `A collection of my reviews of things that interest me.`
+const { title, description, root, page, pages, featuredPosts, data } =
+  Astro.props
 ---
 
 <BlogPostsLayout
   title={title}
-  pageTitle={pageTitle}
   description={description}
   page={page}
   pages={pages}
   featuredPosts={featuredPosts}
   posts={data}
-  root="/reviews"
+  root={root}
   showTitle={true}
   showSectionLinks={true}
 />

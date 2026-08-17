@@ -1,4 +1,4 @@
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_PATH } from '@/consts'
 import type { IClassProps } from '@/interfaces/class-props'
 import { getUrlFriendlyTag } from '@/lib/http/urls'
 import { cn } from '@/lib/shadcn-utils'
@@ -26,7 +26,7 @@ export function SideTags({
             <ThemeLink
               startingColor="text-foreground"
               endingColor="text-theme"
-              href={`${BLOG_SLUG}/tag/${t}`}
+              href={`${BLOG_PATH}/tag/${t}`}
             >
               {tag}
             </ThemeLink>

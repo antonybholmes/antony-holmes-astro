@@ -2,16 +2,16 @@
 import { Breadcrumb } from '@/components/breadcrumb'
 import { BaseCol } from '@/components/layout/base-col'
 import { FeesPage } from '@/components/pages/calculators/fees'
+import type { SlugPath } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
-import type { ICrumb } from '@/lib/crumbs'
 
-const crumbs: ICrumb[] = [
+const crumbs: SlugPath = [
   {
-    label: 'Calculators',
+    name: 'Calculators',
     path: '/calculators',
   },
   {
-    label: 'Fees',
+    name: 'Fees',
     path: '/calculators/fees',
   },
 ]

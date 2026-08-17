@@ -8,7 +8,7 @@ heroAlt: "It's weird to me that cinemas in the US only served salted, buttery po
 authors:
   - 'Antony Holmes'
 sections:
-  - ['Films']
+  - ['Reviews', 'Films']
 tags:
   - 'Comedy'
   - 'Reviews'

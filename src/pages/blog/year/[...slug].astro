@@ -1,8 +1,10 @@
 ---
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_HOME_SLUG, YEAR_SLUG } from '@/consts'
 import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 import { paginate, type AstroPage } from '@/lib/paginate'
+import { joinSlug } from '@/lib/post/join-slug'
+
 import { produce } from 'immer'
 
 // 1. Generate all unique tags for static paths
@@ -26,7 +28,7 @@ export async function getStaticPaths() {
   let paths: AstroPage<PostWithHero>[] = []
 
   for (const year of yearSet) {
-    const slug = year.toString()
+    const slug = [{ name: year.toString(), path: `/${year.toString()}` }]
     const filteredPosts = posts
       .filter(
         post =>
@@ -40,7 +42,7 @@ export async function getStaticPaths() {
     paths = paths.concat(
       paginate(filteredPosts, { slug, title: `Posts from ${year}` }).map(p =>
         produce(p, draft => {
-          draft.props.root = `${BLOG_SLUG}/year/${slug}`
+          draft.props.root = joinSlug(BLOG_HOME_SLUG, YEAR_SLUG, slug)
         })
       )
     )
@@ -49,15 +51,14 @@ export async function getStaticPaths() {
   return paths
 }
 
-const { title, pageTitle, page, root, pages, data } = Astro.props
+const { title, page, root, pages, data } = Astro.props
 ---
 
 <BlogPostsLayout
   title={title!}
-  pageTitle={pageTitle}
   page={page}
   pages={pages}
   posts={data}
-  root={root!}
+  root={root}
   showTitle={true}
 />

@@ -3,7 +3,7 @@ import { ThemeLink } from '@/components/link/theme-link'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { getTimePostMap } from '@/lib/astro/time'
-import { getReadTimeUrl } from '@/lib/post'
+import { getReadTimeUrl } from '@/lib/post/post'
 
 const posts = await getSortedPosts()
 

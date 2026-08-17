@@ -96,14 +96,14 @@ export function Header({ tab = 'Home', mode = 'light', className }: Props) {
             slot="main"
           >
             {MENU_ITEMS.map(item => (
-              <li key={item.label}>
+              <li key={item.name}>
                 <HeaderLink
-                  aria-label={item.label}
+                  aria-label={item.name}
                   href={item.path}
                   isActive={item.path === subPath}
                   mode={mode}
                 >
-                  {item.label}
+                  {item.name}
                 </HeaderLink>
               </li>
             ))}

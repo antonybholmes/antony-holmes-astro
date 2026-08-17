@@ -1,6 +1,6 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
-import { BLOG_SLUG } from '@/consts'
+import { BLOG_PATH } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts, type PostWithHero } from '@/lib/astro/post'
 
@@ -46,7 +46,7 @@ const tags = [...tagMap.keys()]
           const n = tagMap.get(tag)?.length ?? 0
           return (
             <li>
-              <ThemeLink href={`${BLOG_SLUG}/year/${tag}/`}>{tag}</ThemeLink>{' '}
+              <ThemeLink href={`${BLOG_PATH}/year/${tag}/`}>{tag}</ThemeLink>{' '}
               {`(${n.toLocaleString()} post${n !== 1 ? 's' : ''})`}
             </li>
           )

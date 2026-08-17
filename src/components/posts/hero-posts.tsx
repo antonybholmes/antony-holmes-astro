@@ -1,6 +1,6 @@
 import type { IClassProps } from '@/interfaces/class-props'
-
-import type { IPost } from '@/lib/post'
+import type { ColorMode } from '@/interfaces/color-mode'
+import type { IPost } from '@/lib/post/post'
 import { HeroPost } from './hero-post'
 import { BasePostCol } from './post-col'
 
@@ -10,15 +10,15 @@ export interface IPostsProps extends IClassProps {
   pages?: number
   showLatestPosts?: boolean
   showSectionLinks?: boolean
-  root?: string
-  mode?: 'light' | 'dark'
+  //root?: SlugPath
+  mode?: ColorMode
 }
 
 export function HeroPosts({
   posts,
   showSectionLinks = true,
   mode = 'light',
-  root,
+  //root,
 }: IPostsProps) {
   if (!posts || posts.length === 0) {
     return null
@@ -36,7 +36,6 @@ export function HeroPosts({
         post={topPost}
         showSectionLinks={showSectionLinks}
         mode={mode}
-        root={root}
       />
 
       <BasePostCol
@@ -45,7 +44,6 @@ export function HeroPosts({
         showAvatar={false}
         showSectionLinks={showSectionLinks}
         mode={mode}
-        root={root}
       />
     </main>
   )

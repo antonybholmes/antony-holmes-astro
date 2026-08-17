@@ -9,7 +9,6 @@ interface IProps extends IPostsProps, IChildrenProps {
   title: string
   href?: string
   maxPosts?: number
-  root?: string
 }
 
 export function PostTwoCol({
