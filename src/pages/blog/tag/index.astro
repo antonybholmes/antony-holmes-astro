@@ -1,6 +1,6 @@
 ---
 import { ThemeLink } from '@/components/link/theme-link'
-import { BLOG_HOME_SLUG } from '@/consts'
+import { BLOG_PATH } from '@/consts'
 import ContentLayout from '@/layouts/ContentLayout.astro'
 import { getSortedPosts } from '@/lib/astro/post'
 import { getTagPostMap } from '@/lib/astro/tags'
@@ -24,18 +24,16 @@ const tags = [...tagMap.keys()].sort((a, b) => {
 >
   <main slot="main" class="flex flex-col gap-y-8">
     <h1 class="text-2xl font-bold">Tags</h1>
-    <ul class="grid grid-cols-2 gap-2">
+    <ul class="grid grid-cols-3 gap-2">
       {
         tags.map(tag => {
           const n = tagMap.get(tag)?.length ?? 0
           return (
             <li class="flex flex-row items-center gap-x-2">
-              <ThemeLink
-                href={`${BLOG_HOME_SLUG}/tag/${getUrlFriendlyTag(tag)}/`}
-              >
+              <ThemeLink href={`${BLOG_PATH}/tag/${getUrlFriendlyTag(tag)}/`}>
                 {tag}
-              </ThemeLink>
-              <span class="flex h-6 min-w-6 flex-row items-center justify-center rounded-full border bg-blue-400 text-xs text-white">
+              </ThemeLink>{' '}
+              <span class="flex h-5 min-w-5 flex-row items-center justify-center rounded-full bg-red-400 text-xs text-white">
                 {n.toLocaleString()}
               </span>
             </li>

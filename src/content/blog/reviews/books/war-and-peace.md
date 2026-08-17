@@ -2,7 +2,7 @@
 title: 'War and Peace'
 added: '2026-08-15'
 
-description: 'Watch it while eating a reindeer goat cheese pizza.'
+description: "Its got war and it's got peace; it's exactly what it says on the tin."
 heroAlt: "It's pretty long though."
 type: 'review'
 authors:

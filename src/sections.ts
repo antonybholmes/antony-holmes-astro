@@ -1,9 +1,9 @@
 export const ENGINEERING_DESCRIPTION = `Over the years, I've had the opportunity to work on a variety of engineering projects, 
 using multiple programming languages. Here's a few of my insights, experiences, and lessons learned.`
 
-export const REVIEW_DESCRIPTION = `A collection of my reviews of things that interest me.`
+export const REVIEW_DESCRIPTION = `A collection of reviews of things that interest me.`
 
-export const BOOKS_DESCRIPTION = `I like to read stuff.`
+export const BOOKS_DESCRIPTION = `Do you like words and the smell of paper? Then you might enjoy reading books.`
 
 export const FINANCE_DESCRIPTION = `Understanding finance is crucial. I share my thoughts on personal finance,
 investments, and economic insights to help you make informed financial decisions.`
