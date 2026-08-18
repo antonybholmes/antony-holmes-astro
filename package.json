@@ -83,7 +83,6 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "puppeteer-core": "^25.7.0",
     "rehype-slug": "^6.0.0",
     "remark-sectionize": "^2.1.0",
     "sharp": "^0.35.3",
