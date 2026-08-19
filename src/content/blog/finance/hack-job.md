@@ -7,7 +7,7 @@ sections:
   - ['Finance']
 tags:
   - 'Budget'
-  - 'Personal Finance'
+  - 'Finance'
   - 'Spending'
 hero: 'axe'
 heroAlt: "It's the wood that makes it good."

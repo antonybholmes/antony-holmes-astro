@@ -1,0 +1,59 @@
+---
+import { getSortedPosts } from '@lib/astro/post'
+import { paginate } from '@lib/paginate'
+
+import { FINANCE_SLUG } from '@/consts'
+import BlogPostsLayout from '@/layouts/BlogPostsLayout.astro'
+import { getSectionDescription } from '@/sections'
+import { produce } from 'immer'
+
+export async function getStaticPaths() {
+  let posts = await getSortedPosts([])
+
+  posts = posts.filter(
+    post =>
+      post.data.sections?.some(section =>
+        section.some(s => {
+          s = s.toLowerCase()
+          return s === 'finance'
+        })
+      ) ||
+      post.data.tags?.some(tag => {
+        tag = tag.toLowerCase()
+        return tag === 'finance'
+      })
+  )
+
+  const featuredPosts = posts.filter(post => post.data.featured)
+  const otherPosts = posts.filter(post => !post.data.featured)
+
+  const description = getSectionDescription('Finance')
+
+  const paths = paginate(otherPosts, {
+    title: 'Finance',
+  }).map(p =>
+    produce(p, draft => {
+      draft.props.featuredPosts = draft.props.page === 0 ? featuredPosts : []
+      draft.props.root = FINANCE_SLUG
+      draft.props.description = description
+    })
+  )
+
+  return paths
+}
+
+const { title, description, root, page, pages, featuredPosts, data } =
+  Astro.props
+---
+
+<BlogPostsLayout
+  title={title}
+  description={description}
+  page={page}
+  pages={pages}
+  featuredPosts={featuredPosts}
+  posts={data}
+  root={root}
+  showTitle={true}
+  showSectionLinks={true}
+/>

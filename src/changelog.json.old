@@ -11,18 +11,5 @@
     },
     "author": "Antony Holmes",
     "date": "2026-08-17T00:09:20.479Z"
-  },
-  {
-    "version": "5.4",
-    "messages": {
-      "Fixed": [
-        {
-          "msg": "Bug fixes and updates.",
-          "date": "2026-08-19T22:38:45.201Z"
-        }
-      ]
-    },
-    "author": "Antony Holmes",
-    "date": "2026-08-19T22:38:45.201Z"
   }
 ]

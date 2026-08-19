@@ -7,6 +7,7 @@ authors:
 sections:
   - ['Finance']
 tags:
+  - 'Finance'
   - 'Retirement'
   - 'Investing'
   - 'Portfolio Design'

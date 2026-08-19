@@ -6,6 +6,7 @@ authors:
 sections:
   - ['Finance']
 tags:
+  - 'Finance'
   - 'Investing'
   - 'Guides & Tutorials'
 hero: 'diy'

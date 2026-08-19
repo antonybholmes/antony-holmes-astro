@@ -26,6 +26,7 @@ authors:
   - 'Antony Holmes'
 added: '2022-07-18'
 tags:
+  - 'Finance'
   - 'Low Cost'
   - 'Banking'
   - 'Investing'

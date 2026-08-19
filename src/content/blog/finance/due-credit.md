@@ -7,6 +7,7 @@ readtime: '1 min'
 sections:
   - ['Finance']
 tags:
+  - 'Finance'
   - 'Credit Cards'
 hero: 'credit-cards'
 related: ''

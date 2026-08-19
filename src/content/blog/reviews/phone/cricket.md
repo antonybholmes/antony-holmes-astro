@@ -2,7 +2,7 @@
 product: Cricket
 description: Cricket.
 sections:
-  - ['Finance']
+  - ['Reviews', 'Cell Phone']
 type: 'review'
 rating: 4
 pros:
